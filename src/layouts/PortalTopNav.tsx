@@ -131,12 +131,12 @@ export function PortalTopNav({
 
         {/* Timetables / Viva Schedule Pill */}
         <button
-          onClick={() => openTimetable("viva")}
+          onClick={() => openTimetable("exams")}
           className="hidden md:flex items-center gap-1.5 h-10 px-3 rounded-full text-xs font-semibold border border-border bg-card text-foreground hover:border-primary/40 transition-colors cursor-pointer shrink-0"
-          title="View Official Remedial & Viva Timetables"
+          title="Semester 3 exam schedule"
         >
           <Calendar className="h-3.5 w-3.5 text-primary" />
-          <span className="hidden xl:inline">Timetable</span>
+          <span className="hidden xl:inline">Exams</span>
         </button>
 
         {/* Pomodoro Focus Pill */}

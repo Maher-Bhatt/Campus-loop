@@ -37,6 +37,7 @@ import {
   Tooltip,
 } from "recharts";
 import { openTimetable } from "@/components/GlobalTimetableModal";
+import { EXAM_SCHEDULE, examStart } from "@/data/examSchedule";
 import { FACULTY_DIRECTORY } from "@/data/timetableData";
 import { StudentContributionModal } from "@/components/StudentContributionModal";
 
@@ -52,6 +53,7 @@ const STUDY_ACTIVITY_DATA = [
 
 export default function DashboardPage() {
   const navigate = useNavigate();
+  const nextExam = EXAM_SCHEDULE.find((e) => examStart(e).getTime() + 3 * 3600_000 > Date.now());
   const { user, profile } = useAuth();
   const { semesterNumber } = useAcademic();
   const { currentUniversity, activeTimetable } = useUniversity();
@@ -151,82 +153,46 @@ export default function DashboardPage() {
         </div>
       )}
 
-      {/* ── STREAMLINED LIVE EXAM & VIVA NOTICE (CAMPUSLOOP) ── */}
-      <div className="relative overflow-hidden rounded-2xl border border-primary/20 bg-primary/10 dark:bg-primary/20 p-5 sm:p-6 shadow-xs">
-        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
-          <div className="space-y-1.5 max-w-3xl">
-            <div className="flex items-center gap-2.5 flex-wrap">
-              <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-accent text-foreground flex items-center gap-1.5 shadow-2xs">
-                <span className="w-1.5 h-1.5 rounded-full bg-success animate-ping" />
-                Live Notice
-              </span>
-              <span className="text-xs text-primary dark:text-primary font-mono font-bold">
-                Odd Sem 2026-2027 · Oct 26 – Nov 03
-              </span>
-              <span className="text-xs text-muted-foreground/50 hidden sm:inline">·</span>
-              <span className="text-xs text-muted-foreground dark:text-stone-400 hidden sm:inline">
-                Venues: NL-2, JAVA LAB, NL-6, EB-39, EB-25
-              </span>
-            </div>
-            <h2 className="text-base sm:text-lg font-bold text-foreground dark:text-white font-display">
-              B.Tech Sem 3 Submission Viva & Remedial Exam Schedules
+      {/* ── SEMESTER 3 END-SEM EXAM SCHEDULE ── */}
+      <section className="rounded-2xl border border-border bg-card p-5 sm:p-6" aria-labelledby="dash-exams-heading">
+        <div className="flex flex-wrap items-end justify-between gap-3">
+          <div>
+            <p className="text-xs font-medium uppercase tracking-[0.14em] text-muted-foreground">End-semester exams · Winter 2026</p>
+            <h2 id="dash-exams-heading" className="mt-1 text-lg font-medium text-foreground">
+              {nextExam
+                ? `Next: ${nextExam.course}, ${examStart(nextExam).toLocaleDateString("en-IN", { timeZone: "Asia/Kolkata", weekday: "long", day: "numeric", month: "long" })}`
+                : "All Semester 3 exams are over"}
             </h2>
-            <p className="text-xs text-muted-foreground dark:text-stone-400 leading-relaxed">
-              Submissions begin at <strong className="text-foreground">10:00 AM daily</strong>. Check your assigned laboratory venue, faculty evaluator, and prepare the 38 OOPJ remedial solved questions.
-            </p>
           </div>
-
-          <div className="flex items-center gap-2.5 shrink-0">
-            <button
-              onClick={() => openTimetable("viva")}
-              className="px-4 py-2.5 rounded-full bg-primary hover:bg-primary text-white font-bold text-xs shadow-xs press flex items-center gap-2 cursor-pointer font-display"
-            >
-              <Calendar className="h-4 w-4" />
-              <span>View Timetables & Venues</span>
-            </button>
-            <button
-              onClick={() => navigate("/imp-questions/oopj")}
-              className="px-3.5 py-2.5 rounded-full bg-white dark:bg-card hover:bg-stone-100 text-foreground dark:text-white font-bold text-xs border border-border dark:border-stone-800 press flex items-center gap-1.5 cursor-pointer"
-              title="Open OOPJ Solved Master Question Bank"
-            >
-              <BookOpen className="h-3.5 w-3.5 text-primary" />
-              <span>OOPJ Solved Bank</span>
-            </button>
-          </div>
-        </div>
-
-        {/* Minimal Class Quick Venue Jump Pills */}
-        <div className="mt-4 pt-3 border-t border-primary/15 flex items-center gap-2 overflow-x-auto no-scrollbar">
-          <span className="text-[10px] font-bold text-muted-foreground dark:text-stone-400 uppercase tracking-wider shrink-0">
-            Class Venues:
-          </span>
-          {[
-            { cls: 1 as const, room: "NL-2" },
-            { cls: 2 as const, room: "JAVA LAB" },
-            { cls: 3 as const, room: "NL-6" },
-            { cls: 4 as const, room: "EB-39" },
-            { cls: 5 as const, room: "EB-25" },
-          ].map((item) => (
-            <button
-              key={item.cls}
-              onClick={() => openTimetable("viva", item.cls)}
-              className="px-3 py-1 rounded-full bg-white dark:bg-card hover:bg-background text-foreground dark:text-white font-semibold text-xs border border-border dark:border-stone-800 transition-all shrink-0 flex items-center gap-1.5 cursor-pointer"
-            >
-              <span>Class {item.cls}</span>
-              <span className="text-[10px] font-mono text-stone-500 bg-stone-100 dark:bg-stone-800 px-1 rounded">
-                {item.room}
-              </span>
-            </button>
-          ))}
           <button
-            onClick={() => openTimetable("faculty")}
-            className="px-3 py-1 rounded-full text-primary dark:text-primary hover:underline text-xs font-bold transition-colors ml-auto shrink-0 flex items-center gap-1 cursor-pointer"
+            type="button"
+            onClick={() => openTimetable("exams")}
+            className="inline-flex items-center gap-2 rounded-full bg-foreground px-4 py-2 text-sm font-medium text-background transition-colors hover:bg-primary hover:text-primary-foreground"
           >
-            <Users className="h-3 w-3" />
-            <span>Faculty Directory</span>
+            <Calendar className="h-4 w-4" />
+            Full schedule
           </button>
         </div>
-      </div>
+        <ol className="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-5">
+          {EXAM_SCHEDULE.map((e) => {
+            const d = examStart(e);
+            const past = d.getTime() + 3 * 3600_000 < Date.now();
+            const isNext = nextExam?.code === e.code;
+            return (
+              <li
+                key={e.code}
+                className={`rounded-xl border px-3 py-2.5 ${isNext ? "border-primary bg-primary/10" : "border-border"} ${past ? "opacity-50" : ""}`}
+              >
+                <p className="text-xs text-muted-foreground">
+                  {d.toLocaleDateString("en-IN", { timeZone: "Asia/Kolkata", weekday: "short", day: "numeric", month: "short" })}
+                </p>
+                <p className="mt-0.5 text-sm font-medium text-foreground">{e.short}</p>
+                <p className="text-[11px] text-muted-foreground">{e.code} · 10:10 AM</p>
+              </li>
+            );
+          })}
+        </ol>
+      </section>
 
       {/* ── 2-COLUMN BENTO GRID ── */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
@@ -604,10 +570,10 @@ export default function DashboardPage() {
               </Link>
               <button
                 type="button"
-                onClick={() => openTimetable("viva")}
+                onClick={() => openTimetable("exams")}
                 className="text-[11px] text-muted-foreground hover:text-foreground press cursor-pointer"
               >
-                All Timetables
+                Exam schedule
               </button>
             </div>
           </div>

@@ -13,12 +13,12 @@ export interface Announcement {
 }
 
 export const DEFAULT_ANNOUNCEMENT: Announcement = {
-  id: 'ann-viva-remedial-schedule-2026',
-  title: 'ITM SLS Baroda Submission Viva & Remedial Timetable Live',
-  body: 'B.Tech Sem 3 practical viva (Classes 1–5 in NL-2, JAVA LAB, NL-6, EB-39, EB-25) & Sem 5 Remedials start Oct 26.',
-  severity: 'warning',
+  id: 'ann-sem3-endsem-winter-2026',
+  title: 'Semester 3 end-sem exams',
+  body: '25 Nov – 7 Dec 2026 · Java, COA, DBMS, DSA, CONMP · all papers at 10:10 AM',
+  severity: 'info',
   active: true,
-  createdAt: new Date().toISOString(),
+  createdAt: '2026-11-15T00:00:00+05:30',
 };
 
 export function AnnouncementBanner() {
@@ -104,7 +104,7 @@ export function AnnouncementBanner() {
           <span className="w-2 h-2 rounded-full bg-primary shrink-0" />
           <div className="flex flex-wrap items-center gap-2 min-w-0">
             <span className="font-bold uppercase tracking-wider text-[10px] px-2.5 py-0.5 rounded-full bg-primary text-primary-foreground">
-              {announcement.severity === 'critical' ? 'Alert' : 'Campus Update'}
+              {announcement.severity === 'critical' ? 'Alert' : 'Exams'}
             </span>
             <span className="font-bold text-foreground text-[11px] sm:text-xs">{announcement.title}:</span>
             <span className="text-muted-foreground font-normal text-[11px] sm:text-xs line-clamp-2 sm:line-clamp-1">
@@ -112,11 +112,11 @@ export function AnnouncementBanner() {
             </span>
             <button
               type="button"
-              onClick={() => openTimetable('viva')}
+              onClick={() => openTimetable('exams')}
               className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-card border border-border hover:border-primary/40 text-foreground font-bold text-[10px] cursor-pointer transition-all ml-1 shadow-2xs"
             >
               <Calendar className="h-3 w-3" />
-              <span>View Timetables</span>
+              <span>View schedule</span>
             </button>
           </div>
         </div>

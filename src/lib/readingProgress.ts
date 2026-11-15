@@ -68,7 +68,7 @@ export function minutesFor(words: number) {
   return Math.max(1, Math.round(words / WORDS_PER_MINUTE));
 }
 
-export const FINALS_START = new Date("2026-11-25T09:00:00+05:30");
+export const FINALS_START = new Date("2026-11-25T10:10:00+05:30");
 
 export function daysUntilFinals(now = new Date()) {
   const ms = FINALS_START.getTime() - now.getTime();
