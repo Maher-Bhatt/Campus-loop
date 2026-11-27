@@ -1,5 +1,5 @@
 import React from 'react';
-import { Zap, Calendar, Clock, Sparkles } from 'lucide-react';
+import { Zap, Calendar, Clock, Lightbulb } from 'lucide-react';
 
 export type CampusPulseTone = 'black' | 'lime' | 'blue' | 'white';
 
@@ -63,7 +63,7 @@ export const CampusPulseTile: React.FC<CampusPulseTileProps> = ({
       case 'clock':
         return <Clock className="w-3.5 h-3.5" />;
       case 'sparkles':
-        return <Sparkles className="w-3.5 h-3.5" />;
+        return <Lightbulb className="w-3.5 h-3.5" />;
       case 'zap':
       default:
         return <Zap className="w-3.5 h-3.5 fill-current" />;
@@ -74,14 +74,14 @@ export const CampusPulseTile: React.FC<CampusPulseTileProps> = ({
     <div
       onClick={onClick}
       className={`min-w-[270px] max-w-[320px] sm:min-w-[300px] rounded-2xl p-4 flex flex-col justify-between shrink-0 transition-all select-none ${
-        onClick ? 'cursor-pointer hover:scale-[1.02] active:scale-[0.98]' : ''
-      } ${currentTone.container} ${className}`}
+ onClick ? 'cursor-pointer hover:scale-[1.02] active:scale-[0.98]' : ''
+ } ${currentTone.container} ${className}`}
     >
       <div>
         <div className="flex items-center justify-between gap-2 mb-2.5">
           {tag && (
             <span
-              className={`text-[11px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full inline-flex items-center gap-1 ${currentTone.tag}`}
+              className={`text-[11px] font-bold px-2 py-0.5 rounded-full inline-flex items-center gap-1 ${currentTone.tag}`}
             >
               {renderIcon()}
               {tag}

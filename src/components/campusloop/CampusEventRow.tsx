@@ -50,13 +50,13 @@ export const CampusEventRow: React.FC<CampusEventRowProps> = ({
     <div
       onClick={onClick}
       className={`rounded-2xl bg-white dark:bg-card border border-border dark:border-stone-800 p-3 sm:p-4 flex items-center justify-between gap-3 transition-all select-none ${
-        onClick ? 'cursor-pointer hover:border-primary/40' : ''
-      } ${className}`}
+ onClick ? 'cursor-pointer hover:border-primary/40' : ''
+ } ${className}`}
     >
       <div className="flex items-center gap-3.5 min-w-0">
         {/* Lime Date Block */}
         <div className="w-13 h-13 sm:w-14 sm:h-14 rounded-2xl bg-accent text-foreground flex flex-col items-center justify-center shrink-0 shadow-2xs">
-          <span className="text-[10px] font-bold uppercase tracking-wider text-stone-800">
+          <span className="text-[11px] font-bold text-stone-800">
             {month}
           </span>
           <span className="text-xl sm:text-2xl font-bold leading-tight text-foreground">
@@ -91,10 +91,10 @@ export const CampusEventRow: React.FC<CampusEventRowProps> = ({
           onToggleRsvp?.(id);
         }}
         className={`px-4 sm:px-5 py-2 rounded-full font-bold text-xs sm:text-sm shrink-0 transition-all cursor-pointer ${
-          hasRsvp
-            ? 'bg-foreground text-white dark:bg-white dark:text-foreground'
-            : 'bg-primary/10 text-primary hover:bg-primary hover:text-white dark:bg-primary/15 dark:text-primary'
-        }`}
+ hasRsvp
+ ? 'bg-foreground text-white dark:bg-white dark:text-foreground'
+ : 'bg-primary/10 text-primary hover:bg-primary hover:text-white dark:bg-primary/15 dark:text-primary'
+ }`}
       >
         {hasRsvp ? (
           <span className="inline-flex items-center gap-1">

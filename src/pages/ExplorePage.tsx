@@ -2,12 +2,12 @@ import React, { useState, useMemo, useEffect } from 'react';
 import {
   MapPin,
   TrendingUp,
-  Sparkles,
+  Lightbulb,
   Search,
   Filter,
   Plus,
   Calendar,
-  Users,
+  Users
 } from 'lucide-react';
 import { toast } from 'sonner';
 import { useAuth } from '@/contexts/AuthContext';
@@ -274,7 +274,7 @@ export default function ExplorePage() {
               className="h-8 px-3 rounded-full bg-white dark:bg-card border border-border dark:border-stone-800 text-xs font-semibold text-foreground dark:text-stone-200 hover:border-primary transition-colors shrink-0 inline-flex items-center gap-1.5"
             >
               <span>{item.tag}</span>
-              <span className="text-[10px] text-stone-400 font-bold">{item.count}</span>
+              <span className="text-[11px] text-stone-400 font-bold">{item.count}</span>
             </button>
           ))}
         </div>

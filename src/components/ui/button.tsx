@@ -5,34 +5,28 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xl text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 press",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/90 hover:shadow-glow-primary shadow-sm shadow-primary/20",
-        destructive:
-          "bg-destructive text-destructive-foreground hover:bg-destructive/90 shadow-sm shadow-destructive/20",
-        outline:
-          "border border-input bg-background hover:bg-accent hover:text-accent-foreground shadow-sm",
-        secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80 shadow-sm",
-        ghost: "hover:bg-accent hover:text-accent-foreground",
+        default: "bg-primary text-primary-foreground hover:bg-primary/90",
+        destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
+        outline: "border border-input bg-card text-foreground hover:bg-secondary",
+        secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/70",
+        ghost: "text-foreground hover:bg-secondary",
         link: "text-primary underline-offset-4 hover:underline",
-        /* Tactile Minimalist Variants (Zero Green, Zero Blue, Zero Rainbow) */
-        electric:
-          "bg-amber-500 hover:bg-amber-600 text-white shadow-sm shadow-amber-500/20 hover:scale-[1.02]",
-        neon:
-          "bg-gradient-amber text-white shadow-sm hover:scale-[1.02]",
-        glass:
-          "bg-card/80 text-foreground border border-border backdrop-blur-md hover:bg-secondary shadow-xs",
-        dark:
-          "bg-secondary text-foreground hover:bg-secondary/80 border border-border shadow-xs",
+        // Legacy variant names, mapped onto the plain set
+        electric: "bg-primary text-primary-foreground hover:bg-primary/90",
+        neon: "bg-primary text-primary-foreground hover:bg-primary/90",
+        glass: "border border-input bg-card text-foreground hover:bg-secondary",
+        dark: "bg-foreground text-background hover:bg-foreground/90",
       },
       size: {
-        default: "h-10 px-4 py-2",
-        sm: "h-9 rounded-lg px-3",
-        lg: "h-11 rounded-xl px-8",
-        icon: "h-10 w-10",
-        pill: "h-9 px-6 rounded-full",
+        default: "h-10 px-4",
+        sm: "h-8 px-3 text-[13px]",
+        lg: "h-11 px-6",
+        icon: "h-9 w-9",
+        pill: "h-9 px-4",
       },
     },
     defaultVariants: {

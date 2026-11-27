@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Languages, ChevronDown, Sparkles } from "lucide-react";
+import { Languages, ChevronDown, Lightbulb } from 'lucide-react';
 
 interface BilingualExplanationProps {
   topicTitle: string;
@@ -73,7 +73,7 @@ export function BilingualExplanation({
   }
 
   return (
-    <div className="rounded-2xl border border-primary/60 dark:border-primary/40 bg-gradient-to-r from-primary/10 via-white to-primary/7 dark:from-primary/20 dark:via-background dark:to-primary/10 p-3.5 my-3 shadow-2xs">
+    <div className="rounded-2xl border border-primary/60 dark:border-primary/40 bg-primary/10 p-3.5 my-3 shadow-2xs">
       <div className="flex items-center justify-between gap-2">
         <button
           onClick={() => setIsOpen(!isOpen)}
@@ -89,20 +89,20 @@ export function BilingualExplanation({
             <button
               onClick={() => setLang("gu")}
               className={`px-2 py-0.5 rounded-md transition-all ${
-                lang === "gu"
-                  ? "bg-white dark:bg-card text-primary dark:text-primary shadow-2xs"
-                  : "text-muted-foreground"
-              }`}
+ lang === "gu"
+ ? "bg-white dark:bg-card text-primary dark:text-primary shadow-2xs"
+ : "text-muted-foreground"
+ }`}
             >
               ગુજરાતી
             </button>
             <button
               onClick={() => setLang("hi")}
               className={`px-2 py-0.5 rounded-md transition-all ${
-                lang === "hi"
-                  ? "bg-white dark:bg-card text-primary dark:text-primary shadow-2xs"
-                  : "text-muted-foreground"
-              }`}
+ lang === "hi"
+ ? "bg-white dark:bg-card text-primary dark:text-primary shadow-2xs"
+ : "text-muted-foreground"
+ }`}
             >
               हिन्दी
             </button>
@@ -113,7 +113,7 @@ export function BilingualExplanation({
       {isOpen && (
         <div className="mt-2.5 pt-2 border-t border-border dark:border-primary/40 text-xs text-foreground/90 leading-relaxed animate-fade-in font-medium">
           <div className="flex items-start gap-2">
-            <Sparkles className="h-4 w-4 text-primary shrink-0 mt-0.5" />
+            <Lightbulb className="h-4 w-4 text-primary shrink-0 mt-0.5" />
             <p className="font-sans">
               {lang === "gu" ? gu : hi}
             </p>

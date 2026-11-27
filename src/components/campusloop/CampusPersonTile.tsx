@@ -29,8 +29,8 @@ export const CampusPersonTile: React.FC<CampusPersonTileProps> = ({
     <div
       onClick={onClick}
       className={`flex flex-col items-center justify-center p-3 rounded-2xl min-w-[100px] max-w-[120px] shrink-0 transition-all select-none ${
-        onClick ? 'cursor-pointer hover:bg-stone-100/60 dark:hover:bg-stone-800/40' : ''
-      } ${className}`}
+ onClick ? 'cursor-pointer hover:bg-stone-100/60 dark:hover:bg-stone-800/40' : ''
+ } ${className}`}
     >
       <div className="relative mb-2">
         <CampusAvatar

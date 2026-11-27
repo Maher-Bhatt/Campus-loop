@@ -498,14 +498,14 @@ function QCard({ q, idx, showPattern }: { q: any; idx: number; showPattern?: boo
             </div>
           )}
           <div>
-            <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-2">Code</p>
+            <p className="text-xs font-semibold text-muted-foreground mb-2">Code</p>
             <pre className="bg-muted rounded p-3 text-xs overflow-x-auto text-foreground/90 font-mono leading-relaxed">
               {q.code}
             </pre>
           </div>
           {q.output && (
             <div>
-              <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-2">Output</p>
+              <p className="text-xs font-semibold text-muted-foreground mb-2">Output</p>
               <pre className="bg-primary/5 border border-primary/20 rounded p-3 text-xs overflow-x-auto text-primary dark:text-primary font-mono leading-relaxed">
                 {q.output}
               </pre>
@@ -563,7 +563,7 @@ export default function PythonImpQuestionsPage() {
 
         {/* Quick reference */}
         <div className="bg-muted/60 rounded p-3 mb-6">
-          <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-2">re Module Quick Reference</p>
+          <p className="text-xs font-semibold text-muted-foreground mb-2">re Module Quick Reference</p>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-center">
             {[
               ["\\d", "Any digit 0-9"], ["\\w", "Word char (a-z,0-9,_)"],
@@ -572,8 +572,8 @@ export default function PythonImpQuestionsPage() {
               ["match()", "→ start only"], ["sub()", "→ replace"],
             ].map(([k, v]) => (
               <div key={k}>
-                <p className="text-[10px] font-bold text-primary font-mono">{k}</p>
-                <p className="text-[10px] text-muted-foreground leading-tight">{v}</p>
+                <p className="text-[11px] font-bold text-primary font-mono">{k}</p>
+                <p className="text-[11px] text-muted-foreground leading-tight">{v}</p>
               </div>
             ))}
           </div>
@@ -586,17 +586,17 @@ export default function PythonImpQuestionsPage() {
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
               className={`flex-1 flex flex-col items-center justify-center py-2 px-3 rounded text-left transition-colors apple-press ${
-                activeTab === tab.id ? "bg-background shadow-sm" : "hover:bg-background/50"
-              }`}
+ activeTab === tab.id ? "bg-background shadow-sm" : "hover:bg-background/50"
+ }`}
             >
               <div className="flex items-center gap-1.5">
                 <tab.icon className="h-3.5 w-3.5 text-muted-foreground" />
                 <span className={`text-xs font-semibold ${activeTab === tab.id ? "text-foreground" : "text-muted-foreground"}`}>
                   {tab.label}
                 </span>
-                <span className="text-[10px] text-primary tabular-nums">{tab.count}</span>
+                <span className="text-[11px] text-primary tabular-nums">{tab.count}</span>
               </div>
-              <span className="text-[10px] text-muted-foreground/70 mt-0.5 hidden sm:block">{tab.sub}</span>
+              <span className="text-[11px] text-muted-foreground/70 mt-0.5 hidden sm:block">{tab.sub}</span>
             </button>
           ))}
         </div>

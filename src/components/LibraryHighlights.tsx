@@ -42,9 +42,9 @@ export function LibraryHighlights({ name, streakDays }: { name?: string; streakD
     <section className="space-y-6">
       <div className="grid gap-6 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)] lg:items-end">
         <div>
-          <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">Dashboard</p>
-          <h1 className="mt-3 text-4xl sm:text-5xl font-medium leading-[1.05] text-foreground">
-            Continue your <em className="text-primary">learning</em>
+          <p className="text-[11px] font-semibold text-muted-foreground">Dashboard</p>
+          <h1 className="mt-3 text-2xl sm:text-3xl font-semibold tracking-tight text-foreground">
+            Continue your learning
             {name ? <span className="sr-only">, {name}</span> : null}
           </h1>
           <p className="mt-3 max-w-lg text-[15px] leading-relaxed text-muted-foreground">

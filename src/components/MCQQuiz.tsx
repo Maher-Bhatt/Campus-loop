@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import type { MCQ } from "@/data/types";
-import { CheckCircle, XCircle, RotateCcw, HelpCircle, ChevronDown, ChevronUp, AlertCircle, Sparkles } from "lucide-react";
+import { CheckCircle, XCircle, RotateCcw, HelpCircle, ChevronDown, ChevronUp, AlertCircle, Lightbulb } from 'lucide-react';
 
 interface MCQQuizProps {
   mcqs: MCQ[];
@@ -108,8 +108,8 @@ export function MCQQuiz({ mcqs, topicId, onComplete }: MCQQuizProps) {
         <div className="text-center max-w-md mx-auto mb-6">
           <div
             className={`text-5xl sm:text-6xl font-bold mb-2 font-mono ${
-              pct >= 80 ? "text-primary" : pct >= 60 ? "text-primary" : "text-destructive"
-            }`}
+ pct >= 80 ? "text-primary" : pct >= 60 ? "text-primary" : "text-destructive"
+ }`}
           >
             {pct}%
           </div>
@@ -158,7 +158,7 @@ export function MCQQuiz({ mcqs, topicId, onComplete }: MCQQuizProps) {
         {showReview && (
           <div className="mt-8 border-t border-border pt-6 space-y-4 max-w-2xl mx-auto animate-fade-in">
             <h4 className="font-bold text-sm text-foreground flex items-center gap-2">
-              <Sparkles className="h-4 w-4 text-primary" />
+              <Lightbulb className="h-4 w-4 text-primary" />
               <span>Question-by-Question Mistake Breakdown & Explanations</span>
             </h4>
 
@@ -167,21 +167,21 @@ export function MCQQuiz({ mcqs, topicId, onComplete }: MCQQuizProps) {
                 <div
                   key={idx}
                   className={`p-4 rounded-xl border text-xs space-y-2.5 ${
-                    ans.isCorrect
-                      ? "bg-primary/5 border-primary/30"
-                      : "bg-destructive/5 border-destructive/30"
-                  }`}
+ ans.isCorrect
+ ? "bg-primary/5 border-primary/30"
+ : "bg-destructive/5 border-destructive/30"
+ }`}
                 >
                   <div className="flex items-start justify-between gap-3">
                     <span className="font-bold text-foreground">
                       Q{idx + 1}. {ans.question.question}
                     </span>
                     <span
-                      className={`text-[10px] font-bold px-2 py-0.5 rounded-full uppercase shrink-0 ${
-                        ans.isCorrect
-                          ? "bg-primary/20 text-primary dark:text-primary"
-                          : "bg-destructive/20 text-destructive dark:text-destructive"
-                      }`}
+                      className={`text-[11px] font-bold px-2 py-0.5 rounded-full uppercase shrink-0 ${
+ ans.isCorrect
+ ? "bg-primary/20 text-primary dark:text-primary"
+ : "bg-destructive/20 text-destructive dark:text-destructive"
+ }`}
                     >
                       {ans.isCorrect ? "Correct" : "Incorrect"}
                     </span>
@@ -205,7 +205,7 @@ export function MCQQuiz({ mcqs, topicId, onComplete }: MCQQuizProps) {
                       return (
                         <div key={optIdx} className={badgeCls}>
                           <span className="flex items-center gap-2">
-                            <span className="w-5 h-5 rounded-md bg-background/60 flex items-center justify-center font-mono font-bold text-[10px]">
+                            <span className="w-5 h-5 rounded-md bg-background/60 flex items-center justify-center font-mono font-bold text-[11px]">
                               {String.fromCharCode(65 + optIdx)}
                             </span>
                             <span>{opt}</span>

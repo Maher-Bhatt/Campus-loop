@@ -307,12 +307,12 @@ export function AdminUsersTab({
               <div
                 key={u.id}
                 className={`bg-stone-800 border rounded-2xl p-4 transition-all shadow-sm ${
-                  u.is_suspended
-                    ? "border-destructive/40 bg-destructive/10"
-                    : isSelected
-                    ? "border-[#FAFAFA]/60 bg-stone-800/90"
-                    : "border-stone-700"
-                }`}
+ u.is_suspended
+ ? "border-destructive/40 bg-destructive/10"
+ : isSelected
+ ? "border-[#FAFAFA]/60 bg-stone-800/90"
+ : "border-stone-700"
+ }`}
               >
                 <div className="flex items-start justify-between gap-3">
                   <div className="flex items-center gap-3 min-w-0">
@@ -332,7 +332,7 @@ export function AdminUsersTab({
                       <div className="flex items-center gap-1.5">
                         <p className="font-bold text-white text-sm truncate">{u.name}</p>
                         {u.is_suspended && (
-                          <span className="px-1.5 py-0.2 rounded text-[9px] font-bold uppercase tracking-wider bg-destructive/20 text-destructive border border-destructive/30">
+                          <span className="px-1.5 py-0.2 rounded text-[11px] font-bold bg-destructive/20 text-destructive border border-destructive/30">
                             Suspended
                           </span>
                         )}
@@ -352,7 +352,7 @@ export function AdminUsersTab({
 
                 <div className="mt-3 pt-3 border-t border-stone-700/60 grid grid-cols-2 gap-2 text-xs">
                   <div>
-                    <span className="text-[10px] text-stone-400 block uppercase font-medium">Role</span>
+                    <span className="text-[11px] text-stone-400 block uppercase font-medium">Role</span>
                     <select
                       value={u.role}
                       onChange={(e) => onRoleChange(u.id, u.userId, e.target.value)}
@@ -365,7 +365,7 @@ export function AdminUsersTab({
                   </div>
 
                   <div>
-                    <span className="text-[10px] text-stone-400 block uppercase font-medium">Total XP</span>
+                    <span className="text-[11px] text-stone-400 block uppercase font-medium">Total XP</span>
                     <span className="mt-0.5 inline-block font-mono font-bold text-primary">
                       ⚡ {u.xp.toLocaleString()} XP
                     </span>
@@ -377,10 +377,10 @@ export function AdminUsersTab({
                   <button
                     onClick={() => handleToggleSuspend(u)}
                     className={`text-[11px] font-bold px-2.5 py-1 rounded-lg border transition-colors ${
-                      u.is_suspended
-                        ? "bg-primary/10 text-primary border-primary/30 hover:bg-primary/20"
-                        : "bg-destructive/10 text-destructive border-destructive/30 hover:bg-destructive/20"
-                    }`}
+ u.is_suspended
+ ? "bg-primary/10 text-primary border-primary/30 hover:bg-primary/20"
+ : "bg-destructive/10 text-destructive border-destructive/30 hover:bg-destructive/20"
+ }`}
                   >
                     {u.is_suspended ? "Unsuspend" : "Suspend Account"}
                   </button>
@@ -431,8 +431,8 @@ export function AdminUsersTab({
                       <tr
                         key={u.id}
                         className={`hover:bg-stone-700/30 transition-colors ${
-                          isSelected ? "bg-stone-700/20" : ""
-                        }`}
+ isSelected ? "bg-stone-700/20" : ""
+ }`}
                       >
                         <td className="px-4 py-3">
                           <input
@@ -469,11 +469,11 @@ export function AdminUsersTab({
                         </td>
                         <td className="px-4 py-3">
                           {u.is_suspended ? (
-                            <span className="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-destructive/20 text-destructive border border-destructive/30">
+                            <span className="px-2 py-0.5 rounded-full text-[11px] font-bold bg-destructive/20 text-destructive border border-destructive/30">
                               Suspended
                             </span>
                           ) : (
-                            <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-primary/10 text-primary border border-primary/30">
+                            <span className="px-2 py-0.5 rounded-full text-[11px] font-bold bg-primary/10 text-primary border border-primary/30">
                               Active
                             </span>
                           )}
@@ -494,10 +494,10 @@ export function AdminUsersTab({
                             <button
                               onClick={() => handleToggleSuspend(u)}
                               className={`p-1.5 rounded-lg border transition-colors ${
-                                u.is_suspended
-                                  ? "bg-primary/10 text-primary border-primary/30 hover:bg-primary/20"
-                                  : "bg-destructive/10 text-destructive border-destructive/30 hover:bg-destructive/20"
-                              }`}
+ u.is_suspended
+ ? "bg-primary/10 text-primary border-primary/30 hover:bg-primary/20"
+ : "bg-destructive/10 text-destructive border-destructive/30 hover:bg-destructive/20"
+ }`}
                               title={u.is_suspended ? "Unsuspend account" : "Suspend account"}
                             >
                               {u.is_suspended ? (
@@ -565,11 +565,11 @@ export function AdminUsersTab({
                 <h3 className="text-base font-bold text-white truncate">{selectedUser.name}</h3>
                 <p className="text-xs text-stone-400 font-mono truncate">{selectedUser.email}</p>
                 <div className="flex items-center gap-2 mt-1">
-                  <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-[#FAFAFA]/10 text-[#FAFAFA] border border-[#FAFAFA]/30 uppercase">
+                  <span className="px-2 py-0.5 rounded-full text-[11px] font-bold bg-[#FAFAFA]/10 text-[#FAFAFA] border border-[#FAFAFA]/30 uppercase">
                     {selectedUser.role}
                   </span>
                   {selectedUser.is_suspended && (
-                    <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-destructive/20 text-destructive border border-destructive/30 uppercase">
+                    <span className="px-2 py-0.5 rounded-full text-[11px] font-bold bg-destructive/20 text-destructive border border-destructive/30 uppercase">
                       Suspended
                     </span>
                   )}
@@ -579,25 +579,25 @@ export function AdminUsersTab({
 
             <div className="grid grid-cols-2 gap-3 text-xs bg-stone-900/60 p-4 rounded-2xl border border-stone-700/60">
               <div>
-                <span className="text-stone-400 text-[10px] block uppercase font-medium">Semester</span>
+                <span className="text-stone-400 text-[11px] block uppercase font-medium">Semester</span>
                 <span className="text-white font-bold text-sm">
                   {selectedUser.semester ? `Semester ${selectedUser.semester}` : "Sem 3 (Default)"}
                 </span>
               </div>
               <div>
-                <span className="text-stone-400 text-[10px] block uppercase font-medium">Branch</span>
+                <span className="text-stone-400 text-[11px] block uppercase font-medium">Branch</span>
                 <span className="text-white font-bold text-sm truncate block">
                   {selectedUser.branch || "Computer Science (CSE)"}
                 </span>
               </div>
               <div>
-                <span className="text-stone-400 text-[10px] block uppercase font-medium">Experience XP</span>
+                <span className="text-stone-400 text-[11px] block uppercase font-medium">Experience XP</span>
                 <span className="text-primary font-mono font-bold text-sm">
                   ⚡ {selectedUser.xp.toLocaleString()} XP
                 </span>
               </div>
               <div>
-                <span className="text-stone-400 text-[10px] block uppercase font-medium">Study Streak</span>
+                <span className="text-stone-400 text-[11px] block uppercase font-medium">Study Streak</span>
                 <span className="text-primary font-mono font-bold text-sm">
                   🔥 {selectedUser.streak || 1} Days
                 </span>
@@ -605,17 +605,17 @@ export function AdminUsersTab({
             </div>
 
             <div className="space-y-2">
-              <label className="text-[11px] font-bold uppercase tracking-wider text-stone-400 block">
+              <label className="text-[11px] font-bold text-stone-400 block">
                 Manage Access
               </label>
               <div className="flex items-center gap-3">
                 <button
                   onClick={() => handleToggleSuspend(selectedUser)}
                   className={`flex-1 py-2 px-3 rounded-xl text-xs font-bold border transition-colors flex items-center justify-center gap-1.5 ${
-                    selectedUser.is_suspended
-                      ? "bg-primary/10 text-primary border-primary/30 hover:bg-primary/20"
-                      : "bg-destructive/10 text-destructive border-destructive/30 hover:bg-destructive/20"
-                  }`}
+ selectedUser.is_suspended
+ ? "bg-primary/10 text-primary border-primary/30 hover:bg-primary/20"
+ : "bg-destructive/10 text-destructive border-destructive/30 hover:bg-destructive/20"
+ }`}
                 >
                   {selectedUser.is_suspended ? (
                     <>

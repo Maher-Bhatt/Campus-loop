@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import { 
-  X, 
-  Sparkles, 
-  Sliders, 
-  Layers, 
-  Clock, 
-  AlertCircle, 
-  CheckSquare, 
+import { X,
+  Lightbulb,
+  Sliders,
+  Layers,
+  Clock,
+  AlertCircle,
+  CheckSquare,
   Square,
   Play
 } from 'lucide-react';
@@ -117,10 +116,10 @@ export const CustomQuizBuilderModal: React.FC<CustomQuizBuilderModalProps> = ({
                     type="button"
                     onClick={() => toggleSubject(s.id)}
                     className={`p-2.5 rounded-xl border text-xs font-semibold flex items-center gap-2 text-left transition-all apple-press ${
-                      isChecked
-                        ? 'bg-primary/10 border-primary text-primary'
-                        : 'bg-secondary/40 border-border text-muted-foreground hover:text-foreground'
-                    }`}
+ isChecked
+ ? 'bg-primary/10 border-primary text-primary'
+ : 'bg-secondary/40 border-border text-muted-foreground hover:text-foreground'
+ }`}
                   >
                     {isChecked ? (
                       <CheckSquare className="h-4 w-4 shrink-0 text-primary" />
@@ -148,10 +147,10 @@ export const CustomQuizBuilderModal: React.FC<CustomQuizBuilderModalProps> = ({
                     type="button"
                     onClick={() => toggleUnit(unitNum)}
                     className={`flex-1 py-2 rounded-xl border text-xs font-bold transition-all apple-press ${
-                      isChecked
-                        ? 'bg-primary text-primary-foreground border-primary shadow-sm'
-                        : 'bg-secondary/40 border-border text-muted-foreground hover:text-foreground'
-                    }`}
+ isChecked
+ ? 'bg-primary text-primary-foreground border-primary shadow-sm'
+ : 'bg-secondary/40 border-border text-muted-foreground hover:text-foreground'
+ }`}
                   >
                     Unit {unitNum}
                   </button>

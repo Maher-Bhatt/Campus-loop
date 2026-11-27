@@ -1,8 +1,17 @@
 import { useState, useMemo } from "react";
-import { 
-  HelpCircle, Search, Filter, Download, Plus, CheckCircle2, 
-  XCircle, ChevronDown, ChevronUp, Copy, BookOpen, Sparkles
-} from "lucide-react";
+import { HelpCircle,
+  Search,
+  Filter,
+  Download,
+  Plus,
+  CheckCircle2,
+  XCircle,
+  ChevronDown,
+  ChevronUp,
+  Copy,
+  BookOpen,
+  Lightbulb
+} from 'lucide-react';
 import { MASSIVE_QUESTION_BANK } from "@/data/massiveQuestionBank";
 import { logAdminAction } from "@/services/adminOperationsService";
 import { toast } from "sonner";
@@ -152,7 +161,7 @@ export function AdminQuestionBankTab() {
       {/* KPI Stats */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
         <div className="p-4 rounded-2xl bg-card border border-border">
-          <span className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground block">
+          <span className="text-[11px] font-bold text-muted-foreground block">
             Platform Master MCQs
           </span>
           <span className="text-2xl font-bold text-foreground mt-1 block">
@@ -164,7 +173,7 @@ export function AdminQuestionBankTab() {
         </div>
 
         <div className="p-4 rounded-2xl bg-card border border-border">
-          <span className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground block">
+          <span className="text-[11px] font-bold text-muted-foreground block">
             Subject Banks
           </span>
           <span className="text-2xl font-bold text-foreground mt-1 block">
@@ -176,7 +185,7 @@ export function AdminQuestionBankTab() {
         </div>
 
         <div className="p-4 rounded-2xl bg-card border border-border">
-          <span className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground block">
+          <span className="text-[11px] font-bold text-muted-foreground block">
             Unit Distribution
           </span>
           <span className="text-2xl font-bold text-foreground mt-1 block">
@@ -188,7 +197,7 @@ export function AdminQuestionBankTab() {
         </div>
 
         <div className="p-4 rounded-2xl bg-card border border-border">
-          <span className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground block">
+          <span className="text-[11px] font-bold text-muted-foreground block">
             Active Filter Matches
           </span>
           <span className="text-2xl font-bold text-primary mt-1 block">
@@ -217,7 +226,7 @@ export function AdminQuestionBankTab() {
         {/* Dropdowns Row */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
           <div>
-            <label className="text-[10px] font-bold uppercase text-muted-foreground block mb-1">Subject</label>
+            <label className="text-[11px] font-bold uppercase text-muted-foreground block mb-1">Subject</label>
             <select
               value={selectedSubjectKey}
               onChange={(e) => setSelectedSubjectKey(e.target.value)}
@@ -233,7 +242,7 @@ export function AdminQuestionBankTab() {
           </div>
 
           <div>
-            <label className="text-[10px] font-bold uppercase text-muted-foreground block mb-1">Unit</label>
+            <label className="text-[11px] font-bold uppercase text-muted-foreground block mb-1">Unit</label>
             <select
               value={String(selectedUnit)}
               onChange={(e) => setSelectedUnit(e.target.value === "all" ? "all" : Number(e.target.value))}
@@ -249,7 +258,7 @@ export function AdminQuestionBankTab() {
           </div>
 
           <div>
-            <label className="text-[10px] font-bold uppercase text-muted-foreground block mb-1">Difficulty</label>
+            <label className="text-[11px] font-bold uppercase text-muted-foreground block mb-1">Difficulty</label>
             <select
               value={selectedDifficulty}
               onChange={(e) => setSelectedDifficulty(e.target.value)}
@@ -282,16 +291,16 @@ export function AdminQuestionBankTab() {
                   </span>
                   <div>
                     <div className="flex items-center gap-2 flex-wrap">
-                      <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-muted text-muted-foreground border border-border">
+                      <span className="text-[11px] font-bold px-2 py-0.5 rounded-full bg-muted text-muted-foreground border border-border">
                         {item.subjectTitle}
                       </span>
-                      <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-primary/10 text-primary border border-primary/20">
+                      <span className="text-[11px] font-bold px-2 py-0.5 rounded-full bg-primary/10 text-primary border border-primary/20">
                         Unit {item.unit}
                       </span>
-                      <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${
-                        item.difficulty === "Easy" ? "bg-success/15 text-success" :
-                        item.difficulty === "Medium" ? "bg-primary/15 text-primary" : "bg-destructive/15 text-destructive"
-                      }`}>
+                      <span className={`text-[11px] font-bold px-2 py-0.5 rounded-full ${
+ item.difficulty === "Easy" ? "bg-success/15 text-success" :
+ item.difficulty === "Medium" ? "bg-primary/15 text-primary" : "bg-destructive/15 text-destructive"
+ }`}>
                         {item.difficulty}
                       </span>
                     </div>
@@ -319,14 +328,14 @@ export function AdminQuestionBankTab() {
                     <div
                       key={optIdx}
                       className={`p-2.5 rounded-xl border text-xs flex items-center gap-2 ${
-                        isCorrect
-                          ? "bg-success/10 border-success/40 text-success dark:text-success font-bold"
-                          : "bg-muted/40 border-border text-foreground"
-                      }`}
+ isCorrect
+ ? "bg-success/10 border-success/40 text-success dark:text-success font-bold"
+ : "bg-muted/40 border-border text-foreground"
+ }`}
                     >
-                      <span className={`h-5 w-5 rounded-full flex items-center justify-center text-[10px] font-bold shrink-0 ${
-                        isCorrect ? "bg-success text-white" : "bg-muted text-muted-foreground"
-                      }`}>
+                      <span className={`h-5 w-5 rounded-full flex items-center justify-center text-[11px] font-bold shrink-0 ${
+ isCorrect ? "bg-success text-white" : "bg-muted text-muted-foreground"
+ }`}>
                         {String.fromCharCode(65 + optIdx)}
                       </span>
                       <span className="leading-snug">{opt}</span>
@@ -339,7 +348,7 @@ export function AdminQuestionBankTab() {
               {isExpanded && (
                 <div className="p-3.5 rounded-xl bg-muted/60 border border-border text-xs space-y-1 animate-fade-in">
                   <span className="font-bold text-primary flex items-center gap-1.5">
-                    <Sparkles className="h-3.5 w-3.5" />
+                    <Lightbulb className="h-3.5 w-3.5" />
                     Faculty Model Explanation & Theoretical Proof:
                   </span>
                   <p className="text-muted-foreground leading-relaxed pl-5">

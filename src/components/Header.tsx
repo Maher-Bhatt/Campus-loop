@@ -89,7 +89,7 @@ export function Header({ onSearchOpen, showBack, backTo }: HeaderProps) {
               <img src={logo} alt="CampusLoop" className="w-7 h-7 object-contain" />
               <div className="flex flex-col">
                 <span className="font-bold text-sm leading-tight text-foreground">CampusLoop</span>
-                <span className="text-[9px] text-foreground/50 leading-none hidden sm:block">by Velocity Web</span>
+                <span className="text-[11px] text-foreground/50 leading-none hidden sm:block">by Velocity Web</span>
               </div>
             </Link>
 
@@ -102,7 +102,7 @@ export function Header({ onSearchOpen, showBack, backTo }: HeaderProps) {
               >
                 <Flame className="h-3.5 w-3.5 text-primary" />
                 <span>{game.streakDays}</span>
-                <span className="hidden md:inline text-[10px] text-foreground/60 font-medium">({game.xp} XP)</span>
+                <span className="hidden md:inline text-[11px] text-foreground/60 font-medium">({game.xp} XP)</span>
               </button>
             )}
           </div>
@@ -113,10 +113,10 @@ export function Header({ onSearchOpen, showBack, backTo }: HeaderProps) {
               onClick={() => setIsModalOpen(true)}
               title={isRunning ? `Focus session active: ${Math.floor(timeLeft / 60)}m left` : "Start Pomodoro Study Focus"}
               className={`press items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold transition-all border mr-1 ${
-                isRunning
-                  ? "inline-flex bg-accent/20 text-primary border-accent/30 animate-pulse"
-                  : "hidden md:inline-flex bg-secondary text-foreground/60 border-border"
-              }`}
+ isRunning
+ ? "inline-flex bg-accent/20 text-primary border-accent/30 animate-pulse"
+ : "hidden md:inline-flex bg-secondary text-foreground/60 border-border"
+ }`}
             >
               <Clock className={`h-3.5 w-3.5 ${isRunning ? "text-primary" : "text-primary"}`} />
               <span className="font-mono text-[11px] font-bold">
@@ -216,7 +216,7 @@ export function Header({ onSearchOpen, showBack, backTo }: HeaderProps) {
                   >
                     <Bell className="h-4 w-4 text-foreground" />
                     {unreadCount > 0 && (
-                      <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-gradient-electric text-[9px] font-bold text-foreground ring-2 ring-background">
+                      <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-gradient-electric text-[11px] font-bold text-foreground ring-2 ring-background">
                         {unreadCount > 9 ? '9+' : unreadCount}
                       </span>
                     )}
@@ -224,7 +224,7 @@ export function Header({ onSearchOpen, showBack, backTo }: HeaderProps) {
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end" className="w-72 sm:w-80 p-2 max-w-[calc(100vw-2rem)] rounded-2xl shadow-lg border border-border glass-card">
                   <div className="flex items-center justify-between pb-2 mb-2 border-b px-2">
-                    <span className="text-xs font-bold uppercase tracking-wider text-foreground/50">Notifications</span>
+                    <span className="text-xs font-bold text-foreground/50">Notifications</span>
                     {unreadCount > 0 && (
                       <button
                         onClick={markAllNotificationsRead}
@@ -247,7 +247,7 @@ export function Header({ onSearchOpen, showBack, backTo }: HeaderProps) {
                         >
                           <p className="font-semibold">{n.title}</p>
                           <p className="text-[11px] text-foreground/60 line-clamp-2 mt-0.5">{n.message}</p>
-                          <span className="text-[9px] text-foreground/40 font-mono mt-1 block">
+                          <span className="text-[11px] text-foreground/40 font-mono mt-1 block">
                             {new Date(n.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                           </span>
                         </div>
@@ -364,7 +364,7 @@ export function Header({ onSearchOpen, showBack, backTo }: HeaderProps) {
             </button>
           )}
 
-          <div className="px-3 pt-2 pb-1 text-xs font-bold text-foreground/50 uppercase tracking-wider">
+          <div className="px-3 pt-2 pb-1 text-xs font-bold text-foreground/50 ">
             Resources & Community
           </div>
 
@@ -372,7 +372,7 @@ export function Header({ onSearchOpen, showBack, backTo }: HeaderProps) {
             <MessageSquare className="h-5 w-5 text-primary" />
             <div className="flex items-center justify-between w-full">
               <span>Campus Social & Mask</span>
-              <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-primary/10 text-primary font-bold border border-border">Feed</span>
+              <span className="text-[11px] px-1.5 py-0.5 rounded-full bg-primary/10 text-primary font-bold border border-border">Feed</span>
             </div>
           </button>
 
@@ -386,7 +386,7 @@ export function Header({ onSearchOpen, showBack, backTo }: HeaderProps) {
             <span>IMP Questions</span>
           </button>
 
-          <div className="px-3 pt-4 pb-1 text-xs font-bold text-foreground/50 uppercase tracking-wider">
+          <div className="px-3 pt-4 pb-1 text-xs font-bold text-foreground/50 ">
             Tools
           </div>
 

@@ -16,15 +16,15 @@ export const CampusCountBadge: React.FC<CampusCountBadgeProps> = ({
   }
 
   const variantMap = {
-    blue: 'bg-primary text-white',
+    blue: 'bg-primary text-primary-foreground',
     lime: 'bg-accent text-foreground',
-    red: 'bg-[#EF4444] text-white',
+    red: 'bg-destructive text-destructive-foreground',
     dark: 'bg-foreground text-white dark:bg-white dark:text-foreground',
   };
 
   return (
     <span
-      className={`min-w-[20px] h-5 px-1.5 rounded-full text-xs font-bold flex items-center justify-center leading-none ${variantMap[variant]} ${className}`}
+      className={`min-w-[20px] h-5 px-1.5 rounded-full text-[11px] font-semibold tabular-nums flex items-center justify-center leading-none ${variantMap[variant]} ${className}`}
     >
       {count}
     </span>

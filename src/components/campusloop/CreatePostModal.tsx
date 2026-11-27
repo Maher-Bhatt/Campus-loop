@@ -11,7 +11,7 @@ import {
   Trash2,
   Check,
   Clock,
-  Sparkles,
+  Lightbulb
 } from 'lucide-react';
 import { CampusAvatar } from './CampusAvatar';
 import { CampusButton } from './CampusButton';
@@ -307,8 +307,8 @@ export const CreatePostModal: React.FC<CreatePostModalProps> = ({
             <div className="flex justify-end pt-1">
               <span
                 className={`text-xs font-semibold ${
-                  isOverLimit ? 'text-destructive font-bold' : 'text-muted-foreground dark:text-stone-400'
-                }`}
+ isOverLimit ? 'text-destructive font-bold' : 'text-muted-foreground dark:text-stone-400'
+ }`}
               >
                 {charCount} / 280
               </span>
@@ -333,7 +333,7 @@ export const CreatePostModal: React.FC<CreatePostModalProps> = ({
               >
                 <div className="w-12 h-12 rounded-2xl bg-primary/10 text-primary flex flex-col items-center justify-center shrink-0">
                   <ImageIcon className="w-5 h-5" />
-                  <span className="text-[9px] font-bold mt-0.5">Add</span>
+                  <span className="text-[11px] font-bold mt-0.5">Add</span>
                 </div>
                 <div>
                   <h4 className="font-bold text-sm text-foreground dark:text-white leading-tight">
@@ -375,7 +375,7 @@ export const CreatePostModal: React.FC<CreatePostModalProps> = ({
 
           {/* Post to a Community Chips */}
           <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-foreground dark:text-stone-300 mb-2">
+            <label className="block text-xs font-bold text-foreground dark:text-stone-300 mb-2">
               Post to a community
             </label>
             <div className="flex flex-wrap gap-2">
@@ -387,10 +387,10 @@ export const CreatePostModal: React.FC<CreatePostModalProps> = ({
                     type="button"
                     onClick={() => setSelectedCommunity(c)}
                     className={`h-9 px-4 rounded-full text-xs sm:text-sm font-semibold transition-all cursor-pointer ${
-                      isSelected
-                        ? 'bg-foreground text-white dark:bg-white dark:text-foreground shadow-xs'
-                        : 'bg-white dark:bg-card border border-border dark:border-stone-800 text-foreground dark:text-stone-300 hover:border-stone-400'
-                    }`}
+ isSelected
+ ? 'bg-foreground text-white dark:bg-white dark:text-foreground shadow-xs'
+ : 'bg-white dark:bg-card border border-border dark:border-stone-800 text-foreground dark:text-stone-300 hover:border-stone-400'
+ }`}
                   >
                     {c}
                   </button>
@@ -473,10 +473,10 @@ export const CreatePostModal: React.FC<CreatePostModalProps> = ({
                       setShowLocationPicker(false);
                     }}
                     className={`text-xs px-3 py-1.5 rounded-full font-medium transition-all ${
-                      selectedLocation === loc
-                        ? 'bg-primary text-white'
-                        : 'bg-white dark:bg-stone-800 text-stone-700 dark:text-stone-300 border border-border'
-                    }`}
+ selectedLocation === loc
+ ? 'bg-primary text-white'
+ : 'bg-white dark:bg-stone-800 text-stone-700 dark:text-stone-300 border border-border'
+ }`}
                   >
                     {loc}
                   </button>
@@ -511,10 +511,10 @@ export const CreatePostModal: React.FC<CreatePostModalProps> = ({
                       setShowAudiencePicker(false);
                     }}
                     className={`w-full text-left text-xs px-3.5 py-2 rounded-xl font-medium flex items-center justify-between transition-all ${
-                      selectedAudienceIndex === idx
-                        ? 'bg-primary text-white'
-                        : 'bg-white dark:bg-stone-800 text-stone-700 dark:text-stone-300 border border-border'
-                    }`}
+ selectedAudienceIndex === idx
+ ? 'bg-primary text-white'
+ : 'bg-white dark:bg-stone-800 text-stone-700 dark:text-stone-300 border border-border'
+ }`}
                   >
                     <span>{aud.label}</span>
                     <span className="opacity-75">~{aud.reach} students</span>
@@ -590,7 +590,7 @@ export const CreatePostModal: React.FC<CreatePostModalProps> = ({
                       <p className="text-xs font-semibold text-foreground dark:text-white line-clamp-2">
                         {d.content}
                       </p>
-                      <span className="text-[10px] text-stone-500 mt-1 block">{d.date}</span>
+                      <span className="text-[11px] text-stone-500 mt-1 block">{d.date}</span>
                     </div>
                     <button
                       type="button"

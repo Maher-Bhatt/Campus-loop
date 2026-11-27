@@ -228,17 +228,17 @@ export function ContactPage() {
         <form onSubmit={submit} className="mt-8 space-y-4 rounded-2xl border border-border bg-card p-6 sm:p-8 shadow-xs">
           <div className="grid gap-4 sm:grid-cols-2">
             <label className="block">
-              <span className="mb-1.5 block text-xs font-bold uppercase tracking-wider text-muted-foreground">Your Name</span>
+              <span className="mb-1.5 block text-xs font-bold text-muted-foreground">Your Name</span>
               <input className={field} value={name} onChange={(e) => setName(e.target.value)} placeholder="e.g. Maher Bhatt" autoComplete="name" />
             </label>
             <label className="block">
-              <span className="mb-1.5 block text-xs font-bold uppercase tracking-wider text-muted-foreground">Email Address *</span>
+              <span className="mb-1.5 block text-xs font-bold text-muted-foreground">Email Address *</span>
               <input className={field} type="email" required value={email} onChange={(e) => setEmail(e.target.value)} placeholder="student@example.com" autoComplete="email" />
             </label>
           </div>
 
           <label className="block">
-            <span className="mb-1.5 block text-xs font-bold uppercase tracking-wider text-muted-foreground">Subject / Category</span>
+            <span className="mb-1.5 block text-xs font-bold text-muted-foreground">Subject / Category</span>
             <select className={field} value={topic} onChange={(e) => setTopic(e.target.value)}>
               {[
                 "General Question",
@@ -256,7 +256,7 @@ export function ContactPage() {
           </label>
 
           <label className="block">
-            <span className="mb-1.5 block text-xs font-bold uppercase tracking-wider text-muted-foreground">Your Message *</span>
+            <span className="mb-1.5 block text-xs font-bold text-muted-foreground">Your Message *</span>
             <textarea
               className={`${field} min-h-[9rem] resize-y`}
               required

@@ -1,7 +1,7 @@
 
 import React from "react";
 import { REAL_STUDY_MATERIALS } from "@/data/materialsData";
-import { FileText, Download, Sparkles } from "lucide-react";
+import { FileText, Download, Lightbulb } from 'lucide-react';
 
 export const HighYieldHub = () => {
   // Find the exact question banks we just added
@@ -23,11 +23,11 @@ export const HighYieldHub = () => {
   if (questionBanks.length === 0) return null;
 
   return (
-    <div className="bg-gradient-to-br from-primary/10 to-destructive/5 border border-primary/20 rounded-2xl p-5 shadow-sm">
+    <div className="bg-primary/10 border border-primary/20 rounded-2xl p-5 shadow-sm">
       <div className="flex items-center gap-2 mb-4">
-        <Sparkles className="h-5 w-5 text-primary" />
+        <Lightbulb className="h-5 w-5 text-primary" />
         <h2 className="text-lg font-bold text-foreground">High-Yield Materials</h2>
-        <span className="bg-primary text-white text-[10px] font-bold px-2 py-0.5 rounded-full uppercase ml-2">New</span>
+        <span className="bg-primary text-white text-[11px] font-bold px-2 py-0.5 rounded-full uppercase ml-2">New</span>
       </div>
       
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">

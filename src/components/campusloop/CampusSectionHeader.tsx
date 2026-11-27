@@ -19,8 +19,8 @@ export const CampusSectionHeader: React.FC<CampusSectionHeaderProps> = ({
   action,
 }) => {
   return (
-    <div className={`flex items-center justify-between gap-2 mb-3.5 ${className}`}>
-      <h2 className="text-xl md:text-2xl font-bold tracking-tight text-foreground dark:text-white">
+    <div className={`flex items-center justify-between gap-2 mb-3 ${className}`}>
+      <h2 className="text-base font-semibold text-foreground">
         {title}
       </h2>
 

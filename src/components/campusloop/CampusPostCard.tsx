@@ -249,10 +249,10 @@ export const CampusPostCard: React.FC<CampusPostCardProps> = ({
                   disabled={hasVoted}
                   onClick={() => onVotePoll?.(id, option.id)}
                   className={`w-full text-left relative overflow-hidden rounded-xl p-2.5 border transition-all text-xs sm:text-sm font-semibold flex items-center justify-between ${
-                    isSelected
-                      ? 'border-primary bg-primary/15 dark:bg-primary/15 text-primary'
-                      : 'border-border dark:border-stone-800 bg-white dark:bg-card text-foreground dark:text-stone-200 hover:border-stone-400'
-                  }`}
+ isSelected
+ ? 'border-primary bg-primary/15 dark:bg-primary/15 text-primary'
+ : 'border-border dark:border-stone-800 bg-white dark:bg-card text-foreground dark:text-stone-200 hover:border-stone-400'
+ }`}
                 >
                   {hasVoted && (
                     <div
@@ -283,27 +283,27 @@ export const CampusPostCard: React.FC<CampusPostCardProps> = ({
       {images.length > 0 && (
         <div
           className={`grid gap-2 mb-3.5 overflow-hidden rounded-2xl ${
-            images.length === 1
-              ? 'grid-cols-1'
-              : images.length === 2
-              ? 'grid-cols-2'
-              : images.length === 3
-              ? 'grid-cols-2'
-              : 'grid-cols-2'
-          }`}
+ images.length === 1
+ ? 'grid-cols-1'
+ : images.length === 2
+ ? 'grid-cols-2'
+ : images.length === 3
+ ? 'grid-cols-2'
+ : 'grid-cols-2'
+ }`}
         >
           {images.slice(0, 4).map((imgUrl, idx) => (
             <div
               key={idx}
               onClick={() => setSelectedImage(imgUrl)}
               className={`relative overflow-hidden bg-stone-100 dark:bg-stone-800 cursor-pointer group ${
-                images.length === 3 && idx === 0 ? 'col-span-2 aspect-video' : 'aspect-square'
-              }`}
+ images.length === 3 && idx === 0 ? 'col-span-2 aspect-video' : 'aspect-square'
+ }`}
             >
               <img
                 src={imgUrl}
                 alt={`Post attachment ${idx + 1}`}
-                className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                className="w-full h-full object-cover transition-transform duration-300"
                 loading="lazy"
               />
             </div>
@@ -319,8 +319,8 @@ export const CampusPostCard: React.FC<CampusPostCardProps> = ({
             type="button"
             onClick={() => onLikeToggle?.(id)}
             className={`inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold transition-colors cursor-pointer ${
-              likedByMe ? 'text-primary dark:text-primary' : 'hover:text-foreground dark:hover:text-white'
-            }`}
+ likedByMe ? 'text-primary dark:text-primary' : 'hover:text-foreground dark:hover:text-white'
+ }`}
           >
             <Heart
               className={`w-4 h-4 sm:w-5 sm:h-5 ${likedByMe ? 'fill-primary text-primary' : ''}`}
@@ -354,8 +354,8 @@ export const CampusPostCard: React.FC<CampusPostCardProps> = ({
           type="button"
           onClick={() => onSaveToggle?.(id)}
           className={`p-1.5 rounded-full hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors cursor-pointer ${
-            savedByMe ? 'text-primary dark:text-primary' : 'hover:text-foreground dark:hover:text-white'
-          }`}
+ savedByMe ? 'text-primary dark:text-primary' : 'hover:text-foreground dark:hover:text-white'
+ }`}
           title={savedByMe ? 'Saved' : 'Save'}
         >
           <Bookmark className={`w-4 h-4 sm:w-5 sm:h-5 ${savedByMe ? 'fill-primary' : ''}`} />

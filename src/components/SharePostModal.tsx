@@ -92,7 +92,7 @@ export function SharePostModal({ isOpen, onClose, post }: SharePostModalProps) {
               <span className="font-bold text-xs text-foreground flex items-center gap-1.5">
                 {authorName}
               </span>
-              <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-secondary text-muted-foreground">
+              <span className="text-[11px] font-bold px-2 py-0.5 rounded bg-secondary text-muted-foreground">
                 {post.category}
               </span>
             </div>
@@ -103,7 +103,7 @@ export function SharePostModal({ isOpen, onClose, post }: SharePostModalProps) {
 
           {/* Unique Direct URL Box */}
           <div className="space-y-1.5">
-            <label className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground">
+            <label className="text-[11px] font-bold text-muted-foreground">
               Direct Post Link
             </label>
             <div className="flex items-center gap-2">
@@ -125,7 +125,7 @@ export function SharePostModal({ isOpen, onClose, post }: SharePostModalProps) {
 
           {/* Social Share Grid */}
           <div className="space-y-2 pt-2">
-            <span className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground block">
+            <span className="text-[11px] font-bold text-muted-foreground block">
               Share To Platform
             </span>
 

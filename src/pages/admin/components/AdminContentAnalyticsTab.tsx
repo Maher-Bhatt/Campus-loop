@@ -79,20 +79,20 @@ export function AdminContentAnalyticsTab({
             >
               <div className="space-y-0.5 min-w-0">
                 <div className="flex items-center gap-2">
-                  <span className="w-5 h-5 rounded-full bg-stone-700 text-stone-300 text-[10px] font-bold flex items-center justify-center shrink-0">
+                  <span className="w-5 h-5 rounded-full bg-stone-700 text-stone-300 text-[11px] font-bold flex items-center justify-center shrink-0">
                     #{idx + 1}
                   </span>
                   <p className="font-bold text-xs sm:text-sm text-white truncate font-mono">
                     "{item.query}"
                   </p>
                 </div>
-                <p className="text-[10px] text-stone-400 pl-7">
+                <p className="text-[11px] text-stone-400 pl-7">
                   Searched {item.count} times • Last requested: {new Date(item.lastSeen).toLocaleDateString()}
                 </p>
               </div>
 
               <div className="flex items-center gap-2 self-end sm:self-auto shrink-0">
-                <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-primary/20 text-primary border border-primary/30">
+                <span className="px-2 py-0.5 rounded text-[11px] font-bold bg-primary/20 text-primary border border-primary/30">
                   High Demand
                 </span>
                 <button
@@ -130,7 +130,7 @@ export function AdminContentAnalyticsTab({
           ].map((item, i) => (
             <div key={i} className="p-3.5 rounded-xl bg-stone-800/60 border border-stone-700/80 space-y-2">
               <div className="flex items-center justify-between">
-                <span className="text-[10px] font-mono font-bold px-1.5 py-0.5 rounded bg-stone-700 text-stone-300">
+                <span className="text-[11px] font-mono font-bold px-1.5 py-0.5 rounded bg-stone-700 text-stone-300">
                   {item.subject}
                 </span>
                 <span className="text-xs font-bold font-mono text-destructive">

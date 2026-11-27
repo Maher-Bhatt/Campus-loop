@@ -104,8 +104,8 @@ export default function LibraryPage() {
       {/* Header */}
       <header className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 pb-8 border-b border-border">
         <div>
-          <p className="text-xs font-medium uppercase tracking-[0.12em] text-muted-foreground">Semester 3 · Course material</p>
-          <h1 className="mt-3 text-4xl sm:text-5xl font-medium leading-[1.05] text-foreground">Your semester <em className="text-primary">library</em></h1>
+          <p className="text-xs font-medium text-muted-foreground">Semester 3 · Course material</p>
+          <h1 className="mt-3 text-2xl sm:text-3xl font-semibold tracking-tight text-foreground">Your semester library</h1>
           <p className="mt-2 max-w-xl text-[15px] leading-relaxed text-muted-foreground">
             Every study guide, lecture note, slide deck and handwritten page from your course, rewritten as clean text you can read
             without distractions.
@@ -177,8 +177,8 @@ export default function LibraryPage() {
                     type="button"
                     onClick={() => navigate(`/library/${s.slug}`, { replace: true })}
                     className={`relative px-4 py-3 text-sm transition-colors cursor-pointer ${
-                      active ? "text-foreground font-semibold" : "text-muted-foreground hover:text-foreground font-medium"
-                    }`}
+ active ? "text-foreground font-semibold" : "text-muted-foreground hover:text-foreground font-medium"
+ }`}
                     aria-current={active ? "page" : undefined}
                   >
                     {s.short}
@@ -205,7 +205,7 @@ export default function LibraryPage() {
               >
                 <div className="flex items-start justify-between gap-6">
                   <div className="min-w-0">
-                    <p className="text-xs font-medium uppercase tracking-[0.1em] text-primary">Start here</p>
+                    <p className="text-xs font-medium text-primary">Start here</p>
                     <h3 className="mt-2 text-xl font-semibold text-foreground">{guide.title}</h3>
                     <p className="mt-2 text-sm leading-relaxed text-muted-foreground max-w-2xl">{guide.summary}</p>
                     <p className="mt-3 text-xs text-muted-foreground">{docMeta(guide)} · every unit, worked examples, exam tips</p>
@@ -230,8 +230,8 @@ export default function LibraryPage() {
                   type="button"
                   onClick={() => setKind(f.label)}
                   className={`rounded-full px-4 py-1.5 text-sm transition-colors cursor-pointer ${
-                    kind === f.label ? "bg-foreground text-background font-medium" : "text-muted-foreground hover:text-foreground hover:bg-secondary"
-                  }`}
+ kind === f.label ? "bg-foreground text-background font-medium" : "text-muted-foreground hover:text-foreground hover:bg-secondary"
+ }`}
                 >
                   {f.label}
                 </button>
@@ -241,7 +241,7 @@ export default function LibraryPage() {
             <div className="mt-8 space-y-10">
               {groupByUnit(subject.docs.filter((d) => kind === "All" || FILTERS.find((f) => f.label === kind)?.kinds.includes(d.kind))).map(([group, docs]) => (
                 <div key={group}>
-                  <h3 className="text-xs font-semibold uppercase tracking-[0.1em] text-muted-foreground mb-3">{group}</h3>
+                  <h3 className="text-xs font-semibold text-muted-foreground mb-3">{group}</h3>
                   <DocList items={docs.map((d) => ({ s: subject, d }))} progress={progress} />
                 </div>
               ))}

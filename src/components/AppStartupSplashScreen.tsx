@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Sparkles, ChevronRight, BookOpen } from "lucide-react";
+import { Lightbulb, ChevronRight, BookOpen } from 'lucide-react';
 import { Capacitor } from "@capacitor/core";
 import { Haptics, ImpactStyle } from "@capacitor/haptics";
 import { CampusLoopLogo } from "@/components/campusloop/CampusLoopLogo";
@@ -75,8 +75,8 @@ export function AppStartupSplashScreen({ onComplete }: AppStartupSplashScreenPro
     <div
       onClick={handleSkip}
       className={`fixed inset-0 z-50 flex flex-col items-center justify-between p-6 sm:p-8 bg-[#161412] text-[#F6F2EC] select-none cursor-pointer transition-opacity duration-300 ${
-        isFading ? "opacity-0 pointer-events-none" : "opacity-100"
-      }`}
+ isFading ? "opacity-0 pointer-events-none" : "opacity-100"
+ }`}
     >
       {/* Top University Branding + Skip affordance */}
       <div className="pt-6 w-full flex items-center justify-between animate-fade-in max-w-sm">
@@ -84,7 +84,7 @@ export function AppStartupSplashScreen({ onComplete }: AppStartupSplashScreenPro
           <div className="p-1.5 rounded-lg bg-white/10 text-[#F6F2EC] border border-white/15">
             <BookOpen className="h-4 w-4" />
           </div>
-          <span className="text-xs font-semibold tracking-wider uppercase text-stone-300 font-sans">
+          <span className="text-xs font-semibold text-stone-300 font-sans">
             Semester 3 Library
           </span>
         </div>
@@ -94,7 +94,7 @@ export function AppStartupSplashScreen({ onComplete }: AppStartupSplashScreenPro
             e.stopPropagation();
             handleSkip();
           }}
-          className="px-2.5 py-1 rounded-full bg-white/10 hover:bg-white/20 text-[#F6F2EC] text-[11px] font-medium border border-white/10 flex items-center gap-1 transition-all active:scale-95"
+          className="px-2.5 py-1 rounded-full bg-white/10 hover:bg-white/20 text-[#F6F2EC] text-[11px] font-medium border border-white/10 flex items-center gap-1 transition-all"
         >
           <span>Skip</span>
           <ChevronRight className="h-3 w-3" />
@@ -112,7 +112,7 @@ export function AppStartupSplashScreen({ onComplete }: AppStartupSplashScreenPro
             CampusLoop
           </h1>
           <p className="text-xs font-sans text-stone-400 tracking-wide">
-            Your semester, in one calm place
+            Notes, questions and exam practice
           </p>
         </div>
       </div>
@@ -130,7 +130,7 @@ export function AppStartupSplashScreen({ onComplete }: AppStartupSplashScreenPro
 
           <div className="flex items-center justify-between w-full text-[11px] text-stone-400 font-mono">
             <span className="flex items-center gap-1">
-              <Sparkles className="h-3 w-3 text-[#A85A32] animate-spin" />
+              <Lightbulb className="h-3 w-3 text-[#A85A32] animate-spin" />
               Loading library...
             </span>
             <span className="font-semibold text-stone-300">{Math.min(100, progress)}%</span>

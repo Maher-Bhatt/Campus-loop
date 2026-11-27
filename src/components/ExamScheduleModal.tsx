@@ -110,7 +110,7 @@ export function ExamScheduleModal({ isOpen, onClose }: { isOpen: boolean; onClos
         {/* Header */}
         <header className="flex items-start justify-between gap-4 border-b border-border px-5 py-5 sm:px-7">
           <div className="min-w-0">
-            <p className="text-xs font-medium uppercase tracking-[0.14em] text-muted-foreground">Exam schedule · {range}</p>
+            <p className="text-xs font-medium text-muted-foreground">Exam schedule · {range}</p>
             <h2 id="exam-schedule-title" className="mt-1.5 text-2xl font-medium leading-tight sm:text-[28px]">
               Semester 3 end-semester exams
             </h2>
@@ -154,17 +154,17 @@ export function ExamScheduleModal({ isOpen, onClose }: { isOpen: boolean; onClos
               return (
                 <li key={e.code} className={i > 0 ? "border-t border-border" : ""}>
                   {gap !== null && gap > 0 && (
-                    <p className="pt-2 pl-[4.75rem] text-[11px] uppercase tracking-wider text-muted-foreground">
+                    <p className="pt-2 pl-[4.75rem] text-[11px] text-muted-foreground">
                       {gap} {gap === 1 ? "day" : "days"} to prepare
                     </p>
                   )}
                   <div className={`flex gap-4 ${gap ? "pb-4 pt-2" : "py-4"} ${st.tone === "done" ? "opacity-55" : ""}`}>
                     <div
                       className={`flex h-16 w-[3.75rem] shrink-0 flex-col items-center justify-center rounded-xl border ${
-                        isNext ? "border-primary bg-primary text-primary-foreground" : "border-border bg-background"
-                      }`}
+ isNext ? "border-primary bg-primary text-primary-foreground" : "border-border bg-background"
+ }`}
                     >
-                      <span className="text-[11px] font-medium uppercase tracking-wider opacity-80">{fmt(start, { month: "short" })}</span>
+                      <span className="text-[11px] font-medium opacity-80">{fmt(start, { month: "short" })}</span>
                       <span className="text-2xl font-medium leading-none">{fmt(start, { day: "numeric" })}</span>
                       <span className="mt-0.5 text-[11px] opacity-80">{fmt(start, { weekday: "short" })}</span>
                     </div>
@@ -173,8 +173,8 @@ export function ExamScheduleModal({ isOpen, onClose }: { isOpen: boolean; onClos
                         <h3 className="text-[16px] font-medium leading-snug">{e.course}</h3>
                         <span
                           className={`inline-flex shrink-0 items-center gap-1 rounded-full px-2.5 py-0.5 text-xs ${
-                            st.tone === "today" ? "bg-primary text-primary-foreground" : st.tone === "done" ? "bg-secondary text-muted-foreground" : "bg-secondary text-foreground"
-                          }`}
+ st.tone === "today" ? "bg-primary text-primary-foreground" : st.tone === "done" ? "bg-secondary text-muted-foreground" : "bg-secondary text-foreground"
+ }`}
                         >
                           {st.tone === "done" && <Check className="h-3 w-3" />}
                           {st.label}

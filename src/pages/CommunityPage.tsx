@@ -4,7 +4,7 @@ import { useSearchParams } from 'react-router-dom';
 import { useUniversity } from '@/contexts/UniversityContext';
 import { useGamification } from '@/hooks/useGamification';
 import {
-  Sparkles,
+  Lightbulb,
   Plus,
   Image as ImageIcon,
   Flame,
@@ -12,7 +12,7 @@ import {
   Filter,
   RefreshCw,
   Bell,
-  X,
+  X
 } from 'lucide-react';
 import { toast } from 'sonner';
 import {
@@ -310,10 +310,10 @@ export default function CommunityPage() {
               type="button"
               onClick={() => setActiveTab('for_you')}
               className={`pb-2.5 text-base sm:text-lg font-bold transition-all relative cursor-pointer ${
-                activeTab === 'for_you'
-                  ? 'text-primary dark:text-primary'
-                  : 'text-muted-foreground dark:text-stone-400 hover:text-foreground dark:hover:text-white'
-              }`}
+ activeTab === 'for_you'
+ ? 'text-primary dark:text-primary'
+ : 'text-muted-foreground dark:text-stone-400 hover:text-foreground dark:hover:text-white'
+ }`}
             >
               All Campuses
               {activeTab === 'for_you' && (
@@ -325,10 +325,10 @@ export default function CommunityPage() {
               type="button"
               onClick={() => setActiveTab('my_campus')}
               className={`pb-2.5 text-base sm:text-lg font-bold transition-all relative cursor-pointer ${
-                activeTab === 'my_campus'
-                  ? 'text-primary dark:text-primary'
-                  : 'text-muted-foreground dark:text-stone-400 hover:text-foreground dark:hover:text-white'
-              }`}
+ activeTab === 'my_campus'
+ ? 'text-primary dark:text-primary'
+ : 'text-muted-foreground dark:text-stone-400 hover:text-foreground dark:hover:text-white'
+ }`}
             >
               {currentUniversity.shortName}
               {activeTab === 'my_campus' && (
@@ -340,10 +340,10 @@ export default function CommunityPage() {
               type="button"
               onClick={() => setActiveTab('following')}
               className={`pb-2.5 text-base sm:text-lg font-bold transition-all relative cursor-pointer ${
-                activeTab === 'following'
-                  ? 'text-primary dark:text-primary'
-                  : 'text-muted-foreground dark:text-stone-400 hover:text-foreground dark:hover:text-white'
-              }`}
+ activeTab === 'following'
+ ? 'text-primary dark:text-primary'
+ : 'text-muted-foreground dark:text-stone-400 hover:text-foreground dark:hover:text-white'
+ }`}
             >
               Following
               {activeTab === 'following' && (
@@ -355,10 +355,10 @@ export default function CommunityPage() {
               type="button"
               onClick={() => setActiveTab('my_clubs')}
               className={`pb-2.5 text-base sm:text-lg font-bold transition-all relative cursor-pointer ${
-                activeTab === 'my_clubs'
-                  ? 'text-primary dark:text-primary'
-                  : 'text-muted-foreground dark:text-stone-400 hover:text-foreground dark:hover:text-white'
-              }`}
+ activeTab === 'my_clubs'
+ ? 'text-primary dark:text-primary'
+ : 'text-muted-foreground dark:text-stone-400 hover:text-foreground dark:hover:text-white'
+ }`}
             >
               My Clubs
               {activeTab === 'my_clubs' && (
@@ -372,8 +372,8 @@ export default function CommunityPage() {
             onClick={loadData}
             title="Refresh Feed"
             className={`p-2 rounded-full text-stone-400 hover:text-primary transition-colors cursor-pointer ${
-              isRefreshing ? 'animate-spin text-primary' : ''
-            }`}
+ isRefreshing ? 'animate-spin text-primary' : ''
+ }`}
           >
             <RefreshCw className="w-4 h-4" />
           </button>
@@ -382,11 +382,11 @@ export default function CommunityPage() {
         {/* 2. Campus Pulse LIVE Carousel (Horizontal Scrollable) */}
         <div>
           <div className="flex items-center gap-2 mb-2.5">
-            <span className="text-[11px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-accent text-foreground inline-flex items-center gap-1 shadow-2xs">
+            <span className="text-[11px] font-bold px-2 py-0.5 rounded-full bg-accent text-foreground inline-flex items-center gap-1 shadow-2xs">
               <span className="w-1.5 h-1.5 rounded-full bg-success animate-pulse" />
               LIVE
             </span>
-            <span className="text-xs font-bold text-muted-foreground dark:text-stone-400 uppercase tracking-wider">
+            <span className="text-xs font-bold text-muted-foreground dark:text-stone-400 ">
               Campus Pulse · ITM SLS Baroda
             </span>
           </div>
@@ -475,7 +475,7 @@ export default function CommunityPage() {
         ) : filteredPosts.length === 0 ? (
           <div className="rounded-2xl bg-white dark:bg-card border border-border dark:border-stone-800 p-8 sm:p-12 text-center space-y-3 shadow-xs">
             <div className="w-14 h-14 rounded-full bg-primary/10 text-primary flex items-center justify-center mx-auto">
-              <Sparkles className="w-7 h-7" />
+              <Lightbulb className="w-7 h-7" />
             </div>
             <h3 className="font-bold text-lg text-foreground dark:text-white">
               {activeTab === 'following'

@@ -1,13 +1,12 @@
 import { useState, useEffect, useCallback, useMemo } from 'react';
-import { 
-  X, 
-  RotateCw, 
-  ChevronLeft, 
-  ChevronRight, 
-  Sparkles, 
-  CheckCircle2, 
-  HelpCircle, 
-  Shuffle, 
+import { X,
+  RotateCw,
+  ChevronLeft,
+  ChevronRight,
+  Lightbulb,
+  CheckCircle2,
+  HelpCircle,
+  Shuffle,
   Award,
   Layers,
   Calendar,
@@ -188,10 +187,10 @@ export function FlashcardsModal({
                 setIsFlipped(false);
               }}
               className={`px-2.5 py-1 rounded-lg text-xs font-semibold border transition-all ${
-                showDueOnly 
-                  ? 'bg-primary/15 border-primary/60 text-primary dark:text-primary' 
-                  : 'bg-secondary border-border text-muted-foreground hover:text-foreground'
-              }`}
+ showDueOnly 
+ ? 'bg-primary/15 border-primary/60 text-primary dark:text-primary' 
+ : 'bg-secondary border-border text-muted-foreground hover:text-foreground'
+ }`}
               title="Toggle Due Only Filter"
             >
               {showDueOnly ? 'Due Only' : 'All Cards'}
@@ -235,14 +234,14 @@ export function FlashcardsModal({
           className="perspective-1000 w-full min-h-[17rem] sm:min-h-[19rem] cursor-pointer select-none mb-4"
         >
           <div className={`relative w-full h-full min-h-[17rem] sm:min-h-[19rem] transition-transform duration-500 transform-style-3d rounded-2xl border ${
-            isFlipped 
-              ? 'rotate-y-180 border-primary/40 bg-gradient-to-br from-primary/5 via-card to-background shadow-lg' 
-              : 'border-border/80 bg-card hover:border-primary/30 shadow-md'
-          }`}>
+ isFlipped 
+ ? 'rotate-y-180 border-primary/40 bg-primary/5 shadow-lg' 
+ : 'border-border/80 bg-card hover:border-primary/30 shadow-md'
+ }`}>
             {/* FRONT of card */}
             <div className={`absolute inset-0 backface-hidden p-6 flex flex-col justify-between transition-opacity duration-200 ${isFlipped ? 'pointer-events-none opacity-0 invisible' : 'opacity-100 visible'}`}>
               <div className="flex items-center justify-between text-[11px] font-semibold text-muted-foreground">
-                <span className="uppercase tracking-wider px-2 py-0.5 rounded bg-secondary">
+                <span className=" px-2 py-0.5 rounded bg-secondary">
                   {currentCard.category || 'Question / Concept'}
                 </span>
                 <span className="flex items-center gap-1 text-primary">
@@ -269,7 +268,7 @@ export function FlashcardsModal({
             {/* BACK of card */}
             <div className={`absolute inset-0 backface-hidden rotate-y-180 p-6 flex flex-col justify-between transition-opacity duration-200 ${!isFlipped ? 'pointer-events-none opacity-0 invisible' : 'opacity-100 visible'}`}>
               <div className="flex items-center justify-between text-[11px] font-semibold text-primary">
-                <span className="uppercase tracking-wider px-2 py-0.5 rounded bg-primary/10 dark:bg-primary/15 text-primary">
+                <span className=" px-2 py-0.5 rounded bg-primary/10 dark:bg-primary/15 text-primary">
                   Model Answer & Explanation
                 </span>
                 <span className="flex items-center gap-1 text-muted-foreground">
@@ -288,7 +287,7 @@ export function FlashcardsModal({
                 className="pt-2 border-t border-border/50" 
                 onClick={(e) => e.stopPropagation()}
               >
-                <p className="text-[10px] text-center text-muted-foreground mb-2 font-medium">
+                <p className="text-[11px] text-center text-muted-foreground mb-2 font-medium">
                   Rate how well you knew this (computes next review):
                 </p>
                 <div className="grid grid-cols-4 gap-2">
@@ -297,28 +296,28 @@ export function FlashcardsModal({
                     className="flex flex-col items-center py-2 px-1 rounded-xl bg-destructive/10 hover:bg-destructive/20 text-destructive dark:text-destructive border border-destructive/20 text-xs font-bold transition-all apple-press"
                   >
                     <span>Again</span>
-                    <span className="text-[10px] opacity-75 font-normal">10m</span>
+                    <span className="text-[11px] opacity-75 font-normal">10m</span>
                   </button>
                   <button
                     onClick={() => handleSrsRating(3, 'Hard')}
                     className="flex flex-col items-center py-2 px-1 rounded-xl bg-primary/10 hover:bg-primary/20 text-primary dark:text-primary border border-primary/20 text-xs font-bold transition-all apple-press"
                   >
                     <span>Hard</span>
-                    <span className="text-[10px] opacity-75 font-normal">1d</span>
+                    <span className="text-[11px] opacity-75 font-normal">1d</span>
                   </button>
                   <button
                     onClick={() => handleSrsRating(4, 'Good')}
                     className="flex flex-col items-center py-2 px-1 rounded-xl bg-primary/10 hover:bg-primary/20 text-primary dark:text-primary border border-primary/20 text-xs font-bold transition-all apple-press"
                   >
                     <span>Good</span>
-                    <span className="text-[10px] opacity-75 font-normal">3d</span>
+                    <span className="text-[11px] opacity-75 font-normal">3d</span>
                   </button>
                   <button
                     onClick={() => handleSrsRating(5, 'Easy')}
                     className="flex flex-col items-center py-2 px-1 rounded-xl bg-primary/10 hover:bg-primary/20 text-primary dark:text-primary border border-primary/20 text-xs font-bold transition-all apple-press"
                   >
                     <span>Easy</span>
-                    <span className="text-[10px] opacity-75 font-normal">6d</span>
+                    <span className="text-[11px] opacity-75 font-normal">6d</span>
                   </button>
                 </div>
               </div>

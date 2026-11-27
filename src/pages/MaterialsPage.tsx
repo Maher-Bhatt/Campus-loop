@@ -7,7 +7,7 @@ import {
   FolderDown,
   FileText,
   ExternalLink,
-  Sparkles,
+  Lightbulb,
   Eye,
   FileCheck,
   X,
@@ -24,8 +24,8 @@ import {
   CheckCircle2,
   Calendar,
   MapPin,
-  UserCheck,
-} from "lucide-react";
+  UserCheck
+} from 'lucide-react';
 import {
   ResponsiveContainer,
   LineChart,
@@ -426,18 +426,18 @@ function PlainMaterialCard({ mat }: { mat: StudyMaterial }) {
       <div className="flex items-start justify-between gap-2">
         <div className="flex items-center gap-1.5 flex-wrap">
           <span
-            className={`text-[10px] font-bold px-2 py-0.5 rounded-full border ${categoryBadgeClass(mat.category)} flex items-center gap-1`}
+            className={`text-[11px] font-bold px-2 py-0.5 rounded-full border ${categoryBadgeClass(mat.category)} flex items-center gap-1`}
           >
             <CategoryIcon category={mat.category} />
             {mat.category}
           </span>
           <span
-            className={`text-[10px] font-mono font-bold px-1.5 py-0.5 rounded ${fileTypeClass(mat.fileType)}`}
+            className={`text-[11px] font-mono font-bold px-1.5 py-0.5 rounded ${fileTypeClass(mat.fileType)}`}
           >
             {mat.fileType}
           </span>
         </div>
-        <span className="text-[10px] font-mono text-muted-foreground shrink-0">
+        <span className="text-[11px] font-mono text-muted-foreground shrink-0">
           Sem {mat.semester}
         </span>
       </div>
@@ -469,7 +469,7 @@ function PlainMaterialCard({ mat }: { mat: StudyMaterial }) {
       {mat.badge && (
         <div>
           <span
-            className={`text-[10px] font-semibold px-2 py-0.5 rounded-full border ${mat.badgeColor ?? "bg-stone-500/10 text-stone-600 border-stone-500/20"}`}
+            className={`text-[11px] font-semibold px-2 py-0.5 rounded-full border ${mat.badgeColor ?? "bg-stone-500/10 text-stone-600 border-stone-500/20"}`}
           >
             {mat.badge}
           </span>
@@ -487,7 +487,7 @@ function PlainMaterialCard({ mat }: { mat: StudyMaterial }) {
         </button>
         <button
           onClick={handleDownload}
-          className="flex-1 h-7 rounded-lg bg-primary hover:bg-primary text-primary-foreground font-semibold text-[11px] flex items-center justify-center gap-1 transition-all active:scale-95"
+          className="flex-1 h-7 rounded-lg bg-primary hover:bg-primary text-primary-foreground font-semibold text-[11px] flex items-center justify-center gap-1 transition-all"
         >
           <Download className="h-3 w-3 text-[#FAFAFA]" />
           <span>Save</span>
@@ -513,10 +513,10 @@ function RichOverviewCard({
     <div className="bg-card border border-border rounded-2xl p-4 shadow-sm hover:shadow-md hover:border-primary/30 transition-all flex flex-col gap-3 group relative overflow-hidden">
       {/* Top */}
       <div className="flex items-center justify-between gap-2">
-        <span className="font-mono text-[10px] font-bold text-muted-foreground tracking-wide">
+        <span className="font-mono text-[11px] font-bold text-muted-foreground tracking-wide">
           {item.code}
         </span>
-        <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${item.tagColor}`}>
+        <span className={`text-[11px] font-bold px-2 py-0.5 rounded-full ${item.tagColor}`}>
           {item.tag}
         </span>
       </div>
@@ -537,7 +537,7 @@ function RichOverviewCard({
         <span>·</span>
         <span className="font-mono font-semibold">{item.fileSize}</span>
         <span>·</span>
-        <span className="text-[10px] px-1.5 py-0.5 rounded bg-primary/10 text-primary font-semibold">
+        <span className="text-[11px] px-1.5 py-0.5 rounded bg-primary/10 text-primary font-semibold">
           Rich View
         </span>
       </div>
@@ -550,7 +550,7 @@ function RichOverviewCard({
             className="h-7 px-2.5 rounded-lg bg-primary hover:bg-primary text-stone-950 font-bold text-[11px] flex items-center justify-center gap-1 transition-colors cursor-pointer"
             title="Open Interactive Master Guide"
           >
-            <Sparkles className="h-3 w-3" />
+            <Lightbulb className="h-3 w-3" />
             <span>Guide</span>
           </button>
         )}
@@ -563,7 +563,7 @@ function RichOverviewCard({
         </button>
         <button
           onClick={() => onDownload(item)}
-          className="flex-1 h-7 rounded-lg bg-primary hover:bg-primary text-primary-foreground font-semibold text-[11px] flex items-center justify-center gap-1 transition-all active:scale-95 cursor-pointer"
+          className="flex-1 h-7 rounded-lg bg-primary hover:bg-primary text-primary-foreground font-semibold text-[11px] flex items-center justify-center gap-1 transition-all cursor-pointer"
         >
           <Download className="h-3 w-3 text-[#FAFAFA]" />
           <span>PDF</span>
@@ -745,7 +745,7 @@ export default function MaterialsPage() {
         <div>
           <h1 className="text-2xl font-bold tracking-tight text-foreground flex items-center gap-2 flex-wrap">
             <span>CampusLoop · Study Materials</span>
-            <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-primary/10 text-primary dark:text-primary border border-primary/20 font-bold">
+            <span className="text-[11px] font-mono px-2 py-0.5 rounded-full bg-primary/10 text-primary dark:text-primary border border-primary/20 font-bold">
               {stats.total} Files
             </span>
           </h1>
@@ -782,10 +782,10 @@ export default function MaterialsPage() {
       </div>
 
       {/* ── REMEDIAL SPECIAL HERO BANNER ── */}
-      <div className="p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-primary via-primary to-[#27272A] text-foreground border border-[#FAFAFA]/40 shadow-lg flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className="p-4 sm:p-5 rounded-2xl bg-primary text-foreground border border-[#FAFAFA]/40 shadow-lg flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div className="space-y-1">
           <div className="flex items-center gap-2">
-            <span className="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-[#FAFAFA] text-primary">
+            <span className="px-2 py-0.5 rounded-full text-[11px] font-bold bg-[#FAFAFA] text-primary">
               🔥 Remedial Special 2026
             </span>
             <span className="text-xs font-mono text-[#FAFAFA] font-bold">
@@ -802,7 +802,7 @@ export default function MaterialsPage() {
 
         <Link
           to="/imp-questions/oopj"
-          className="px-4 py-2.5 rounded-xl bg-[#FAFAFA] hover:bg-[#c4d64d] text-primary font-bold text-xs shrink-0 flex items-center justify-center gap-2 shadow-md transition-all active:scale-95 cursor-pointer font-display"
+          className="px-4 py-2.5 rounded-xl bg-[#FAFAFA] hover:bg-[#c4d64d] text-primary font-bold text-xs shrink-0 flex items-center justify-center gap-2 shadow-md transition-all cursor-pointer font-display"
         >
           <span>Open Remedial Master Guide →</span>
         </Link>
@@ -821,7 +821,7 @@ export default function MaterialsPage() {
             className="bg-card border border-border rounded-2xl p-4 text-center shadow-sm"
           >
             <span className={`text-2xl font-bold font-mono ${s.color}`}>{s.value}</span>
-            <p className="text-[11px] text-muted-foreground mt-0.5 font-medium uppercase tracking-wide">
+            <p className="text-[11px] text-muted-foreground mt-0.5 font-medium ">
               {s.label}
             </p>
           </div>
@@ -842,10 +842,10 @@ export default function MaterialsPage() {
               key={s}
               onClick={() => setSemesterFilter(s)}
               className={`px-3 py-1 rounded-lg transition-all whitespace-nowrap ${
-                semesterFilter === s
-                  ? "bg-primary text-[#FAFAFA] font-bold"
-                  : "text-muted-foreground hover:text-foreground"
-              }`}
+ semesterFilter === s
+ ? "bg-primary text-[#FAFAFA] font-bold"
+ : "text-muted-foreground hover:text-foreground"
+ }`}
             >
               {s === "all" ? "All Semesters" : `Semester ${s}`}
             </button>
@@ -859,10 +859,10 @@ export default function MaterialsPage() {
               key={cat}
               onClick={() => setTypeFilter(cat)}
               className={`px-2.5 py-1 rounded-lg text-[11px] font-medium transition-all border whitespace-nowrap ${
-                typeFilter === cat
-                  ? "bg-primary text-[#FAFAFA] border-primary"
-                  : "bg-secondary text-muted-foreground border-border hover:text-foreground"
-              }`}
+ typeFilter === cat
+ ? "bg-primary text-[#FAFAFA] border-primary"
+ : "bg-secondary text-muted-foreground border-border hover:text-foreground"
+ }`}
             >
               {cat === "all" ? "All Types" : cat}
             </button>
@@ -958,7 +958,7 @@ export default function MaterialsPage() {
             <div>
               <h3 className="font-bold text-sm text-foreground flex items-center gap-2">
                 <span>Question Bank Trend</span>
-                <span className="text-[10px] font-mono px-2 py-0.5 rounded-md bg-primary/10 text-primary dark:text-primary font-bold">
+                <span className="text-[11px] font-mono px-2 py-0.5 rounded-md bg-primary/10 text-primary dark:text-primary font-bold">
                   High Yield
                 </span>
               </h3>
@@ -1000,10 +1000,10 @@ export default function MaterialsPage() {
         </div>
 
         {/* Solved Questions promo */}
-        <div className="lg:col-span-4 bg-gradient-to-br from-stone-900 to-primary text-foreground border border-border rounded-2xl p-5 shadow-lg flex flex-col justify-between">
+        <div className="lg:col-span-4 bg-stone-900 text-foreground border border-border rounded-2xl p-5 shadow-lg flex flex-col justify-between">
           <div className="space-y-3">
             <div className="flex items-center gap-2">
-              <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-primary/30 text-primary border border-primary/30">
+              <span className="px-2 py-0.5 rounded text-[11px] font-bold bg-primary/30 text-primary border border-primary/30">
                 MST Exclusive
               </span>
               <span className="text-[11px] text-muted-foreground">Baroda University</span>
@@ -1028,7 +1028,7 @@ export default function MaterialsPage() {
           <div className="pt-4 flex items-center justify-between">
             <button
               onClick={() => navigate("/imp-questions")}
-              className="px-4 py-2 rounded-xl bg-primary hover:bg-primary text-primary-foreground font-bold text-xs shadow-md transition-all active:scale-95"
+              className="px-4 py-2 rounded-xl bg-primary hover:bg-primary text-primary-foreground font-bold text-xs shadow-md transition-all"
             >
               Open Solved Bank &gt;
             </button>
@@ -1045,7 +1045,7 @@ export default function MaterialsPage() {
               <h3 className="font-bold text-sm sm:text-base text-foreground font-display">
                 Official Examination & Viva Schedules
               </h3>
-              <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-primary/10 text-primary border border-primary/20 font-bold">
+              <span className="text-[11px] font-mono px-2 py-0.5 rounded-full bg-primary/10 text-primary border border-primary/20 font-bold">
                 Odd Sem 2026-27
               </span>
             </div>
@@ -1057,7 +1057,7 @@ export default function MaterialsPage() {
           <div className="flex items-center gap-2">
             <button
               onClick={() => openTimetable(timetableTab, vivaClassFilter)}
-              className="h-8 px-3 rounded-xl bg-primary text-[#FAFAFA] hover:bg-[#27272A] font-bold text-xs flex items-center gap-1.5 transition-all active:scale-95 cursor-pointer shadow-xs font-display"
+              className="h-8 px-3 rounded-xl bg-primary text-[#FAFAFA] hover:bg-[#27272A] font-bold text-xs flex items-center gap-1.5 transition-all cursor-pointer shadow-xs font-display"
             >
               <Calendar className="h-3.5 w-3.5" />
               <span>Open Timetable Hub</span>
@@ -1070,35 +1070,35 @@ export default function MaterialsPage() {
           <button
             onClick={() => setTimetableTab("viva")}
             className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all shrink-0 flex items-center gap-1.5 cursor-pointer ${
-              timetableTab === "viva"
-                ? "bg-primary text-[#FAFAFA] font-bold shadow-xs"
-                : "bg-secondary text-muted-foreground hover:text-foreground"
-            }`}
+ timetableTab === "viva"
+ ? "bg-primary text-[#FAFAFA] font-bold shadow-xs"
+ : "bg-secondary text-muted-foreground hover:text-foreground"
+ }`}
           >
             <CheckCircle2 className="h-3.5 w-3.5" />
             <span>Sem 3 Viva & Submissions</span>
-            <span className="px-1.5 py-0.2 rounded bg-card text-[10px]">Oct 26 - Nov 3</span>
+            <span className="px-1.5 py-0.2 rounded bg-card text-[11px]">Oct 26 - Nov 3</span>
           </button>
 
           <button
             onClick={() => setTimetableTab("remedial")}
             className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all shrink-0 flex items-center gap-1.5 cursor-pointer ${
-              timetableTab === "remedial"
-                ? "bg-primary text-[#FAFAFA] font-bold shadow-xs"
-                : "bg-secondary text-muted-foreground hover:text-foreground"
-            }`}
+ timetableTab === "remedial"
+ ? "bg-primary text-[#FAFAFA] font-bold shadow-xs"
+ : "bg-secondary text-muted-foreground hover:text-foreground"
+ }`}
           >
             <span>Remedial Papers (Sem 3 & 5)</span>
-            <span className="px-1.5 py-0.2 rounded bg-card text-[10px]">10:10 AM</span>
+            <span className="px-1.5 py-0.2 rounded bg-card text-[11px]">10:10 AM</span>
           </button>
 
           <button
             onClick={() => setTimetableTab("mst")}
             className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all shrink-0 flex items-center gap-1.5 cursor-pointer ${
-              timetableTab === "mst"
-                ? "bg-primary text-[#FAFAFA] font-bold shadow-xs"
-                : "bg-secondary text-muted-foreground hover:text-foreground"
-            }`}
+ timetableTab === "mst"
+ ? "bg-primary text-[#FAFAFA] font-bold shadow-xs"
+ : "bg-secondary text-muted-foreground hover:text-foreground"
+ }`}
           >
             <span>MST Regular Archive</span>
           </button>
@@ -1119,13 +1119,13 @@ export default function MaterialsPage() {
                       key={cls}
                       onClick={() => setVivaClassFilter(cls)}
                       className={`px-2.5 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer flex items-center gap-1.5 ${
-                        isSel
-                          ? "bg-primary text-[#FAFAFA] font-bold shadow-xs"
-                          : "bg-background border border-border text-muted-foreground hover:text-foreground"
-                      }`}
+ isSel
+ ? "bg-primary text-[#FAFAFA] font-bold shadow-xs"
+ : "bg-background border border-border text-muted-foreground hover:text-foreground"
+ }`}
                     >
                       <span>Class {cls}</span>
-                      <span className="text-[10px] font-mono opacity-80">({loc.room})</span>
+                      <span className="text-[11px] font-mono opacity-80">({loc.room})</span>
                     </button>
                   );
                 })}
@@ -1140,7 +1140,7 @@ export default function MaterialsPage() {
             {/* Table */}
             <div className="overflow-x-auto">
               <table className="w-full text-left text-xs">
-                <thead className="text-[10px] font-bold text-muted-foreground uppercase border-b border-border bg-secondary/20">
+                <thead className="text-[11px] font-bold text-muted-foreground uppercase border-b border-border bg-secondary/20">
                   <tr>
                     <th className="p-2.5">Date</th>
                     <th className="p-2.5">Subject</th>
@@ -1169,7 +1169,7 @@ export default function MaterialsPage() {
                         </span>
                       </td>
                       <td className="p-2.5 text-right">
-                        <span className="text-[10px] px-2 py-0.5 rounded bg-primary/10 text-primary dark:text-primary font-bold border border-primary/20">
+                        <span className="text-[11px] px-2 py-0.5 rounded bg-primary/10 text-primary dark:text-primary font-bold border border-primary/20">
                           Physical File Required
                         </span>
                       </td>
@@ -1196,10 +1196,10 @@ export default function MaterialsPage() {
                   key={b.id}
                   onClick={() => setRemedialBranchFilter(b.id)}
                   className={`px-2.5 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
-                    remedialBranchFilter === b.id
-                      ? "bg-primary text-[#FAFAFA] font-bold"
-                      : "bg-background border border-border text-muted-foreground hover:text-foreground"
-                  }`}
+ remedialBranchFilter === b.id
+ ? "bg-primary text-[#FAFAFA] font-bold"
+ : "bg-background border border-border text-muted-foreground hover:text-foreground"
+ }`}
                 >
                   {b.label}
                 </button>
@@ -1212,7 +1212,7 @@ export default function MaterialsPage() {
             {/* High-Yield OOPJ Remedial Question Bank Callout */}
             <div className="p-3.5 rounded-2xl bg-primary text-[#FAFAFA] flex flex-col sm:flex-row sm:items-center justify-between gap-3 border border-[#FAFAFA]/30 shadow-xs">
               <div>
-                <span className="text-[10px] font-bold font-mono px-2 py-0.5 rounded bg-[#FAFAFA] text-primary uppercase">
+                <span className="text-[11px] font-bold font-mono px-2 py-0.5 rounded bg-[#FAFAFA] text-primary uppercase">
                   Remedial Paper 1 · Oct 26
                 </span>
                 <h4 className="font-bold text-xs sm:text-sm text-foreground font-display mt-1">
@@ -1233,7 +1233,7 @@ export default function MaterialsPage() {
 
             <div className="overflow-x-auto">
               <table className="w-full text-left text-xs">
-                <thead className="text-[10px] font-bold text-muted-foreground uppercase border-b border-border bg-secondary/20">
+                <thead className="text-[11px] font-bold text-muted-foreground uppercase border-b border-border bg-secondary/20">
                   <tr>
                     <th className="p-2.5">Date</th>
                     <th className="p-2.5">Sem & Branch</th>
@@ -1252,10 +1252,10 @@ export default function MaterialsPage() {
                     <tr key={item.id} className="hover:bg-secondary/20 transition-colors">
                       <td className="p-2.5 font-mono font-semibold text-foreground">
                         {item.date}
-                        <span className="block text-[10px] text-muted-foreground">{item.dayOfWeek}</span>
+                        <span className="block text-[11px] text-muted-foreground">{item.dayOfWeek}</span>
                       </td>
                       <td className="p-2.5">
-                        <span className="px-1.5 py-0.5 rounded bg-secondary text-[10px] font-bold">
+                        <span className="px-1.5 py-0.5 rounded bg-secondary text-[11px] font-bold">
                           Sem {item.semester} · {item.branch}
                         </span>
                       </td>
@@ -1283,10 +1283,10 @@ export default function MaterialsPage() {
                   key={batch.id}
                   onClick={() => setSelectedBatchId(batch.id)}
                   className={`px-2.5 py-1 rounded-lg text-[11px] font-medium transition-all ${
-                    selectedBatchId === batch.id
-                      ? "bg-primary text-[#FAFAFA] font-bold"
-                      : "bg-secondary text-muted-foreground hover:text-foreground"
-                  }`}
+ selectedBatchId === batch.id
+ ? "bg-primary text-[#FAFAFA] font-bold"
+ : "bg-secondary text-muted-foreground hover:text-foreground"
+ }`}
                 >
                   {batch.id === "b.tech-sem3-cse"
                     ? "B.Tech Sem 3"
@@ -1303,7 +1303,7 @@ export default function MaterialsPage() {
 
             <div className="overflow-x-auto">
               <table className="w-full text-left text-xs">
-                <thead className="text-[10px] font-bold text-muted-foreground uppercase border-b border-border">
+                <thead className="text-[11px] font-bold text-muted-foreground uppercase border-b border-border">
                   <tr>
                     <th className="pb-2.5">Date</th>
                     <th className="pb-2.5">Course Code</th>
@@ -1356,7 +1356,7 @@ export default function MaterialsPage() {
             <div className="p-4 sm:p-5 border-b border-border bg-secondary/30 flex items-center justify-between gap-3">
               <div className="space-y-0.5">
                 <div className="flex items-center gap-2 flex-wrap">
-                  <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${activePreview.tagColor}`}>
+                  <span className={`text-[11px] font-bold px-2 py-0.5 rounded-full ${activePreview.tagColor}`}>
                     {activePreview.tag}
                   </span>
                   <span className="text-xs font-mono font-bold text-primary">{activePreview.code}</span>
@@ -1390,7 +1390,7 @@ export default function MaterialsPage() {
               {(
                 [
                   { key: "pdf", Icon: FileText, label: "PDF Preview" },
-                  { key: "summary", Icon: Sparkles, label: "Formulas & Summary" },
+                  { key: "summary", Icon: Lightbulb, label: "Formulas & Summary" },
                   { key: "questions", Icon: GraduationCap, label: "Solved Questions" },
                   { key: "download", Icon: Download, label: "Download" },
                 ] as const
@@ -1399,10 +1399,10 @@ export default function MaterialsPage() {
                   key={key}
                   onClick={() => setPreviewTab(key)}
                   className={`pb-2.5 px-3 border-b-2 flex items-center gap-1.5 transition-all whitespace-nowrap ${
-                    previewTab === key
-                      ? "border-primary text-primary font-bold"
-                      : "border-transparent text-muted-foreground hover:text-foreground"
-                  }`}
+ previewTab === key
+ ? "border-primary text-primary font-bold"
+ : "border-transparent text-muted-foreground hover:text-foreground"
+ }`}
                 >
                   <Icon className="h-3.5 w-3.5" />
                   <span>{label}</span>
@@ -1449,7 +1449,7 @@ export default function MaterialsPage() {
                     <p className="text-xs text-muted-foreground leading-relaxed">{activePreview.summary}</p>
                   </div>
                   <div className="space-y-3">
-                    <h4 className="font-bold text-xs uppercase tracking-wider text-muted-foreground flex items-center gap-2">
+                    <h4 className="font-bold text-xs text-muted-foreground flex items-center gap-2">
                       <Code2 className="h-4 w-4 text-primary" />
                       <span>Key Formulas & Algorithmic Complexities</span>
                     </h4>
@@ -1458,7 +1458,7 @@ export default function MaterialsPage() {
                         <div key={i} className="p-3.5 rounded-xl bg-card text-foreground border border-border space-y-1.5 font-mono text-xs">
                           <div className="flex items-center justify-between">
                             <span className="text-[11px] font-bold text-primary font-sans">{f.title}</span>
-                            <span className="text-[10px] text-muted-foreground font-sans">{f.note}</span>
+                            <span className="text-[11px] text-muted-foreground font-sans">{f.note}</span>
                           </div>
                           <p className="p-2 rounded bg-card border border-border text-primary select-all overflow-x-auto">
                             {f.formula}
@@ -1524,7 +1524,7 @@ export default function MaterialsPage() {
                   <div className="flex items-center justify-center gap-3 pt-2">
                     <button
                       onClick={() => handleDownloadRich(activePreview)}
-                      className="px-6 py-2.5 rounded-xl bg-primary text-primary-foreground font-bold text-xs shadow-md hover:opacity-90 flex items-center gap-2 active:scale-95 transition-all"
+                      className="px-6 py-2.5 rounded-xl bg-primary text-primary-foreground font-bold text-xs shadow-md hover:opacity-90 flex items-center gap-2 transition-all"
                     >
                       <Download className="h-4 w-4 text-[#FAFAFA]" />
                       <span>Download PDF Now</span>

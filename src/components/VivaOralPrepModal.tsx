@@ -1,17 +1,16 @@
 import { useState } from "react";
-import { 
-  X, 
-  BookOpen, 
-  Sparkles, 
-  HelpCircle, 
-  Volume2, 
-  AlertTriangle, 
-  ChevronRight, 
-  ChevronLeft, 
+import { X,
+  BookOpen,
+  Lightbulb,
+  HelpCircle,
+  Volume2,
+  AlertTriangle,
+  ChevronRight,
+  ChevronLeft,
   RotateCcw,
   CheckCircle2,
   Mic
-} from "lucide-react";
+} from 'lucide-react';
 import { aiVoice } from "@/utils/aiVoiceEngine";
 import { toast } from "sonner";
 
@@ -122,14 +121,14 @@ export function VivaOralPrepModal({ isOpen, onClose }: VivaOralPrepModalProps) {
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-fade-in">
       <div className="w-full max-w-2xl bg-card border border-border rounded-2xl shadow-lg overflow-hidden flex flex-col max-h-[90vh]">
         {/* Header */}
-        <div className="p-4 sm:p-5 bg-gradient-to-r from-foreground via-primary to-[#27272A] text-white flex items-center justify-between border-b border-[#FAFAFA]/30 shrink-0">
+        <div className="p-4 sm:p-5 bg-foreground text-white flex items-center justify-between border-b border-[#FAFAFA]/30 shrink-0">
           <div className="flex items-center gap-2">
             <div className="p-2 rounded-xl bg-[#FAFAFA] text-foreground">
               <Mic className="h-5 w-5" />
             </div>
             <div>
               <div className="flex items-center gap-1.5">
-                <span className="text-[10px] font-mono font-bold uppercase px-2 py-0.2 rounded bg-[#FAFAFA] text-foreground">
+                <span className="text-[11px] font-mono font-bold uppercase px-2 py-0.2 rounded bg-[#FAFAFA] text-foreground">
                   University Viva Prep
                 </span>
                 <span className="text-xs text-muted-foreground font-bold">
@@ -169,7 +168,7 @@ export function VivaOralPrepModal({ isOpen, onClose }: VivaOralPrepModalProps) {
             onClick={() => setIsFlipped(!isFlipped)}
             className="p-5 rounded-2xl border-2 border-primary/30 hover:border-primary/60 bg-secondary/20 hover:bg-secondary/30 transition-all cursor-pointer space-y-3 relative group"
           >
-            <span className="text-[10px] uppercase font-bold text-primary tracking-wider block">
+            <span className="text-[11px] uppercase font-bold text-primary tracking-wider block">
               {!isFlipped ? "🗣️ Viva Question (Click card to reveal Model Spoken Answer)" : "✅ Model Spoken Answer & Scoring Points"}
             </span>
 
@@ -188,7 +187,7 @@ export function VivaOralPrepModal({ isOpen, onClose }: VivaOralPrepModalProps) {
                   <span className="text-[11px] font-bold text-muted-foreground uppercase">Key Keywords to Say Aloud:</span>
                   <div className="flex flex-wrap gap-1.5">
                     {current.keyPoints.map((pt, i) => (
-                      <span key={i} className="px-2 py-0.5 rounded-md bg-primary/15 text-primary dark:text-primary font-bold font-mono text-[10px]">
+                      <span key={i} className="px-2 py-0.5 rounded-md bg-primary/15 text-primary dark:text-primary font-bold font-mono text-[11px]">
                         ✓ {pt}
                       </span>
                     ))}
@@ -199,14 +198,14 @@ export function VivaOralPrepModal({ isOpen, onClose }: VivaOralPrepModalProps) {
                 <div className="p-3 rounded-xl bg-primary/10 border border-primary/30 text-primary dark:text-primary text-xs flex items-start gap-2">
                   <AlertTriangle className="h-4 w-4 shrink-0 mt-0.5 text-primary dark:text-primary" />
                   <div>
-                    <strong className="block text-[11px] uppercase tracking-wider">Examiner Viva Trap:</strong>
+                    <strong className="block text-[11px] ">Examiner Viva Trap:</strong>
                     {current.examinerTrap}
                   </div>
                 </div>
 
                 {/* Follow up question */}
                 <div className="p-3 rounded-xl bg-primary/10 border border-primary/30 text-primary dark:text-primary text-xs">
-                  <strong className="block text-[11px] uppercase tracking-wider mb-1">Expected Follow-up Question:</strong>
+                  <strong className="block text-[11px] mb-1">Expected Follow-up Question:</strong>
                   {current.followUpQuestion}
                 </div>
               </div>
@@ -227,10 +226,10 @@ export function VivaOralPrepModal({ isOpen, onClose }: VivaOralPrepModalProps) {
             <button
               onClick={() => handleSpeak(isFlipped ? current.modelSpokenAnswer : current.question)}
               className={`h-9 px-3 rounded-xl border text-xs font-bold flex items-center gap-1.5 transition-all cursor-pointer ${
-                isSpeaking 
-                  ? "bg-destructive text-white border-destructive/30 animate-pulse" 
-                  : "bg-card text-foreground hover:bg-secondary border-border"
-              }`}
+ isSpeaking 
+ ? "bg-destructive text-white border-destructive/30 animate-pulse" 
+ : "bg-card text-foreground hover:bg-secondary border-border"
+ }`}
             >
               <Volume2 className="h-4 w-4" />
               <span>{isSpeaking ? "Stop Voice" : "🎙️ Listen AI Voice"}</span>

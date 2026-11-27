@@ -4,28 +4,27 @@ import { useAuth } from "@/contexts/AuthContext";
 import { useUniversity } from "@/contexts/UniversityContext";
 import { useGamification } from "@/hooks/useGamification";
 import { useProgress } from "@/hooks/useProgress";
-import { 
-  Calendar, 
-  Clock, 
-  CheckCircle2, 
-  Circle, 
-  Layers, 
-  BookOpen, 
-  Flame, 
-  Sparkles, 
-  ArrowRight, 
-  GraduationCap, 
-  Bell, 
-  BellOff, 
-  Check, 
-  RotateCcw, 
-  Zap, 
-  ShieldCheck, 
+import { Calendar,
+  Clock,
+  CheckCircle2,
+  Circle,
+  Layers,
+  BookOpen,
+  Flame,
+  Lightbulb,
+  ArrowRight,
+  GraduationCap,
+  Bell,
+  BellOff,
+  Check,
+  RotateCcw,
+  Zap,
+  ShieldCheck,
   ExternalLink,
   ChevronRight,
   MapPin,
   UserCheck
-} from "lucide-react";
+} from 'lucide-react';
 import { toast } from "sonner";
 import { getDueCards, getSrsStatistics } from "@/utils/srsEngine";
 import { getActiveStudyPlan, togglePlanTask, StudyPlan } from "@/utils/studyPlannerEngine";
@@ -191,13 +190,13 @@ export default function TodayPage() {
   return (
     <div className="p-4 sm:p-6 lg:p-8 max-w-5xl mx-auto w-full space-y-6 route-transition-enter pb-24 text-foreground">
       {/* ── HEADER: TODAY MISSION CONTROL ── */}
-      <div className="bg-gradient-to-r from-[#060709] via-primary to-[#12332C] text-white rounded-2xl p-6 sm:p-8 shadow-lg border border-primary/20 relative overflow-hidden">
+      <div className="bg-[#060709] text-white rounded-2xl p-6 sm:p-8 shadow-lg border border-primary/20 relative overflow-hidden">
         <div className="absolute top-0 right-0 -mt-10 -mr-10 w-56 h-56 bg-primary/10 rounded-full blur-3xl pointer-events-none" />
 
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 relative z-10">
           <div>
             <div className="flex items-center gap-2 mb-2">
-              <span className="px-3 py-1 rounded-full bg-primary text-[#060709] text-[10px] font-bold uppercase tracking-wider font-mono">
+              <span className="px-3 py-1 rounded-full bg-primary text-[#060709] text-[11px] font-bold font-mono">
                 {currentUniversity.shortName} Daily Focus
               </span>
               <span className="text-xs text-white/80 font-medium">
@@ -218,7 +217,7 @@ export default function TodayPage() {
                 <Flame className="h-4 w-4 fill-current flame-pulse-anim" />
                 <span className="text-lg font-bold font-mono">{streak}d</span>
               </div>
-              <span className="text-[10px] text-white/75 block uppercase font-bold">Streak</span>
+              <span className="text-[11px] text-white/75 block uppercase font-bold">Streak</span>
             </div>
 
             <div className="p-3 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 text-center min-w-20">
@@ -226,7 +225,7 @@ export default function TodayPage() {
                 <Zap className="h-4 w-4 fill-current" />
                 <span className="text-lg font-bold font-mono">{xp}</span>
               </div>
-              <span className="text-[10px] text-white/75 block uppercase font-bold">XP</span>
+              <span className="text-[11px] text-white/75 block uppercase font-bold">XP</span>
             </div>
           </div>
         </div>
@@ -255,7 +254,7 @@ export default function TodayPage() {
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-primary/20 text-primary dark:text-primary font-mono">
+              <span className="px-2 py-0.5 rounded text-[11px] font-bold bg-primary/20 text-primary dark:text-primary font-mono">
                 {examCountdown.milestoneText}
               </span>
               <span className="text-xs text-muted-foreground font-medium">
@@ -274,7 +273,7 @@ export default function TodayPage() {
         <div className="flex items-center gap-3 self-end sm:self-auto shrink-0">
           <div className="text-right">
             <span className="text-2xl font-bold font-mono text-foreground">{examCountdown.daysLeft}</span>
-            <span className="text-[10px] text-muted-foreground block uppercase font-bold">Days Left</span>
+            <span className="text-[11px] text-muted-foreground block uppercase font-bold">Days Left</span>
           </div>
           <Link
             to="/rapid-revision"
@@ -310,10 +309,10 @@ export default function TodayPage() {
                 key={divNum}
                 onClick={() => handleSelectDivision(divNum)}
                 className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-all ${
-                  selectedDivision === divNum
-                    ? "bg-primary text-primary-foreground shadow-xs"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
+ selectedDivision === divNum
+ ? "bg-primary text-primary-foreground shadow-xs"
+ : "text-muted-foreground hover:text-foreground"
+ }`}
               >
                 Div {String.fromCharCode(64 + divNum)}
               </button>
@@ -326,7 +325,7 @@ export default function TodayPage() {
           <div className="p-4 rounded-2xl bg-primary/5 border border-primary/20 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div className="space-y-1">
               <div className="flex items-center gap-2">
-                <span className="px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-primary text-primary-foreground">
+                <span className="px-2 py-0.5 rounded text-[11px] font-bold uppercase bg-primary text-primary-foreground">
                   Next Upcoming Class
                 </span>
                 <span className="font-mono text-xs font-bold text-foreground">
@@ -350,10 +349,10 @@ export default function TodayPage() {
             <button
               onClick={handleToggleClassReminder}
               className={`px-3 py-1.5 rounded-xl text-xs font-bold border transition-all self-start sm:self-auto flex items-center gap-1.5 cursor-pointer ${
-                classReminderEnabled 
-                  ? "bg-primary text-primary-foreground border-primary" 
-                  : "bg-secondary text-muted-foreground border-border"
-              }`}
+ classReminderEnabled 
+ ? "bg-primary text-primary-foreground border-primary" 
+ : "bg-secondary text-muted-foreground border-border"
+ }`}
             >
               {classReminderEnabled ? <Bell className="h-3.5 w-3.5" /> : <BellOff className="h-3.5 w-3.5" />}
               <span>{classReminderEnabled ? "Reminder Set" : "Notify Me"}</span>
@@ -369,17 +368,17 @@ export default function TodayPage() {
               className="p-3.5 rounded-2xl bg-secondary/30 border border-border/80 flex items-start justify-between gap-2 hover:bg-secondary/50 transition-colors"
             >
               <div className="space-y-0.5 min-w-0">
-                <span className="text-[10px] font-mono font-bold text-primary block">
+                <span className="text-[11px] font-mono font-bold text-primary block">
                   {item.timeSlot}
                 </span>
                 <p className="font-bold text-xs text-foreground truncate">
                   {item.subjectName}
                 </p>
-                <p className="text-[10px] text-muted-foreground">
+                <p className="text-[11px] text-muted-foreground">
                   {item.location} • {item.facultyName}
                 </p>
               </div>
-              <span className="px-2 py-0.5 rounded text-[9px] font-bold bg-secondary text-foreground shrink-0 border border-border">
+              <span className="px-2 py-0.5 rounded text-[11px] font-bold bg-secondary text-foreground shrink-0 border border-border">
                 {item.roomType}
               </span>
             </div>
@@ -413,7 +412,7 @@ export default function TodayPage() {
           <div className="p-4 rounded-2xl bg-primary/5 border border-primary/20 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div className="space-y-1">
               <h4 className="font-bold text-sm text-foreground flex items-center gap-1.5">
-                <Sparkles className="h-4 w-4 text-primary" />
+                <Lightbulb className="h-4 w-4 text-primary" />
                 <span>Optimal Memory Window Active</span>
               </h4>
               <p className="text-xs text-muted-foreground">
@@ -473,10 +472,10 @@ export default function TodayPage() {
                   key={task.id}
                   onClick={() => handleToggleTask(task.id)}
                   className={`p-3.5 rounded-2xl border transition-all cursor-pointer flex items-center justify-between gap-3 ${
-                    completed
-                      ? "bg-primary/10 border-primary/30 text-foreground"
-                      : "bg-secondary/30 border-border hover:border-primary/40 text-foreground"
-                  }`}
+ completed
+ ? "bg-primary/10 border-primary/30 text-foreground"
+ : "bg-secondary/30 border-border hover:border-primary/40 text-foreground"
+ }`}
                 >
                   <div className="flex items-center gap-3 min-w-0">
                     <button
@@ -486,10 +485,10 @@ export default function TodayPage() {
                         handleToggleTask(task.id);
                       }}
                       className={`w-6 h-6 rounded-lg flex items-center justify-center shrink-0 transition-colors ${
-                        completed
-                          ? "bg-primary text-white"
-                          : "border border-border hover:border-primary text-transparent"
-                      }`}
+ completed
+ ? "bg-primary text-white"
+ : "border border-border hover:border-primary text-transparent"
+ }`}
                     >
                       <Check className="h-4 w-4 stroke-[3]" />
                     </button>
@@ -497,7 +496,7 @@ export default function TodayPage() {
                       <p className={`font-bold text-xs sm:text-sm truncate ${completed ? "line-through text-muted-foreground" : "text-foreground"}`}>
                         {task.topicTitle || task.title}
                       </p>
-                      <p className="text-[10px] text-muted-foreground">
+                      <p className="text-[11px] text-muted-foreground">
                         {task.subjectName} • Unit {task.unitNumber} ({task.estimatedMinutes} mins)
                       </p>
                     </div>

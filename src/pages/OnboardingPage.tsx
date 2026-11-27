@@ -9,19 +9,18 @@ import {
   ALL_BTECH_BRANCHES, 
   UniversityData 
 } from "@/data/universitiesData";
-import { 
-  GraduationCap, 
-  BookOpen, 
-  Sparkles, 
-  CheckCircle2, 
-  ArrowRight, 
-  ArrowLeft, 
-  Flame, 
-  Code, 
-  Calculator, 
-  Upload, 
-  User, 
-  IdCard, 
+import { GraduationCap,
+  BookOpen,
+  Lightbulb,
+  CheckCircle2,
+  ArrowRight,
+  ArrowLeft,
+  Flame,
+  Code,
+  Calculator,
+  Upload,
+  User,
+  IdCard,
   Award,
   Loader2,
   Building2,
@@ -32,7 +31,7 @@ import {
   MapPin,
   Trophy,
   Users
-} from "lucide-react";
+} from 'lucide-react';
 import { toast } from "sonner";
 import { GRADIENT_AVATARS, renderAvatarBox } from "@/pages/ProfilePage";
 
@@ -237,11 +236,11 @@ export default function OnboardingPage() {
           <div>
             <h1 className="font-semibold text-sm text-foreground dark:text-white tracking-tight flex items-center gap-1.5">
               <span>CampusLoop</span>
-              <span className="text-[10px] px-2 py-0.5 rounded-full bg-primary/10 text-primary dark:bg-primary/15 dark:text-primary font-bold uppercase tracking-wider">
+              <span className="text-[11px] px-2 py-0.5 rounded-full bg-primary/10 text-primary dark:bg-primary/15 dark:text-primary font-bold ">
                 India Multi-University
               </span>
             </h1>
-            <p className="text-[10px] text-stone-500 font-mono">Student Onboarding · Academic Personalization</p>
+            <p className="text-[11px] text-stone-500 font-mono">Student Onboarding · Academic Personalization</p>
           </div>
         </div>
 
@@ -316,7 +315,7 @@ export default function OnboardingPage() {
                   <div className="min-w-0">
                     <div className="flex items-center gap-1.5">
                       <span className="text-xs font-bold text-foreground dark:text-white">Google Profile Auto-Scanned</span>
-                      <span className="text-[10px] px-1.5 py-0.2 rounded-full bg-success/20 text-success font-semibold">Verified</span>
+                      <span className="text-[11px] px-1.5 py-0.2 rounded-full bg-success/20 text-success font-semibold">Verified</span>
                     </div>
                     <p className="text-[11px] text-muted-foreground truncate">
                       Scanned profile photo and name from <span className="font-semibold text-foreground">{user?.email}</span>.
@@ -338,7 +337,7 @@ export default function OnboardingPage() {
 
             {/* Avatar Selector */}
             <div className="space-y-3 pt-2">
-              <label className="text-xs font-bold uppercase tracking-wider text-stone-600 dark:text-stone-400">
+              <label className="text-xs font-bold text-stone-600 dark:text-stone-400">
                 Choose Your Avatar or Upload Photo
               </label>
 
@@ -355,8 +354,8 @@ export default function OnboardingPage() {
                         type="button"
                         onClick={() => setAvatarUrl(grad.id)}
                         className={`h-8 w-8 rounded-full bg-linear-to-tr ${grad.bgClass} flex items-center justify-center transition-all ${
-                          avatarUrl === grad.id ? "ring-2 ring-offset-2 ring-primary scale-110" : "opacity-80 hover:opacity-100"
-                        }`}
+ avatarUrl === grad.id ? "ring-2 ring-offset-2 ring-primary" : "opacity-80 hover:opacity-100"
+ }`}
                       >
                         {avatarUrl === grad.id && <Check className="h-4 w-4 text-white stroke-[3]" />}
                       </button>
@@ -382,7 +381,7 @@ export default function OnboardingPage() {
 
             {/* Display Name Input */}
             <div className="space-y-1.5">
-              <label className="text-xs font-bold uppercase tracking-wider text-stone-600 dark:text-stone-400">
+              <label className="text-xs font-bold text-stone-600 dark:text-stone-400">
                 Full Name / Preferred Display Name
               </label>
               <input
@@ -448,15 +447,15 @@ export default function OnboardingPage() {
                     key={uni.id}
                     onClick={() => setSelectedUniversityId(uni.id)}
                     className={`p-3.5 rounded-2xl border transition-all cursor-pointer flex items-center justify-between gap-3 ${
-                      isSelected
-                        ? "border-primary bg-primary/10 dark:bg-primary/20 shadow-xs ring-1 ring-primary"
-                        : "border-border dark:border-stone-800 hover:border-stone-400 bg-white dark:bg-stone-900/60"
-                    }`}
+ isSelected
+ ? "border-primary bg-primary/10 dark:bg-primary/20 shadow-xs ring-1 ring-primary"
+ : "border-border dark:border-stone-800 hover:border-stone-400 bg-white dark:bg-stone-900/60"
+ }`}
                   >
                     <div className="flex items-center gap-3 min-w-0">
                       <div className={`h-10 w-10 rounded-xl flex items-center justify-center font-bold text-xs shrink-0 ${
-                        isSelected ? "bg-primary text-white" : "bg-background dark:bg-stone-800 text-stone-700 dark:text-stone-300"
-                      }`}>
+ isSelected ? "bg-primary text-white" : "bg-background dark:bg-stone-800 text-stone-700 dark:text-stone-300"
+ }`}>
                         {uni.code.slice(0, 4)}
                       </div>
 
@@ -465,7 +464,7 @@ export default function OnboardingPage() {
                           <span className="font-bold text-sm text-foreground dark:text-white truncate">
                             {uni.name}
                           </span>
-                          <span className="text-[10px] px-2 py-0.5 rounded-full font-bold bg-background dark:bg-stone-800 text-stone-600 dark:text-stone-400 shrink-0">
+                          <span className="text-[11px] px-2 py-0.5 rounded-full font-bold bg-background dark:bg-stone-800 text-stone-600 dark:text-stone-400 shrink-0">
                             {uni.affiliationType}
                           </span>
                         </div>
@@ -480,8 +479,8 @@ export default function OnboardingPage() {
 
                     <div className="shrink-0">
                       <div className={`h-5 w-5 rounded-full border flex items-center justify-center transition-all ${
-                        isSelected ? "border-primary bg-primary text-white" : "border-stone-300 dark:border-stone-700"
-                      }`}>
+ isSelected ? "border-primary bg-primary text-white" : "border-stone-300 dark:border-stone-700"
+ }`}>
                         {isSelected && <Check className="h-3 w-3 stroke-[3]" />}
                       </div>
                     </div>
@@ -533,7 +532,7 @@ export default function OnboardingPage() {
 
             {/* Program Pills */}
             <div className="space-y-1.5">
-              <label className="text-xs font-bold uppercase tracking-wider text-stone-600 dark:text-stone-400">
+              <label className="text-xs font-bold text-stone-600 dark:text-stone-400">
                 Degree Program
               </label>
               <div className="flex flex-wrap gap-2">
@@ -543,10 +542,10 @@ export default function OnboardingPage() {
                     type="button"
                     onClick={() => setProgram(prog)}
                     className={`px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
-                      program === prog
-                        ? "bg-primary text-white shadow-xs"
-                        : "bg-background dark:bg-stone-800 text-stone-700 dark:text-stone-300 hover:bg-primary/10"
-                    }`}
+ program === prog
+ ? "bg-primary text-white shadow-xs"
+ : "bg-background dark:bg-stone-800 text-stone-700 dark:text-stone-300 hover:bg-primary/10"
+ }`}
                   >
                     {prog}
                   </button>
@@ -556,7 +555,7 @@ export default function OnboardingPage() {
 
             {/* Branch Cards */}
             <div className="space-y-1.5">
-              <label className="text-xs font-bold uppercase tracking-wider text-stone-600 dark:text-stone-400">
+              <label className="text-xs font-bold text-stone-600 dark:text-stone-400">
                 Engineering Branch / Field
               </label>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 max-h-56 overflow-y-auto pr-1 scrollbar-thin">
@@ -567,20 +566,20 @@ export default function OnboardingPage() {
                       key={b.id}
                       onClick={() => setBranch(b.name)}
                       className={`p-3 rounded-xl border transition-all cursor-pointer flex flex-col justify-between gap-1.5 ${
-                        isSelected
-                          ? "border-primary bg-primary/10 dark:bg-primary/15 ring-1 ring-primary"
-                          : "border-border dark:border-stone-800 hover:border-stone-400 bg-white dark:bg-stone-900/60"
-                      }`}
+ isSelected
+ ? "border-primary bg-primary/10 dark:bg-primary/15 ring-1 ring-primary"
+ : "border-border dark:border-stone-800 hover:border-stone-400 bg-white dark:bg-stone-900/60"
+ }`}
                     >
                       <div className="flex items-center justify-between">
                         <span className="font-bold text-xs text-foreground dark:text-white truncate">
                           {b.name}
                         </span>
-                        <span className="text-[10px] px-2 py-0.5 rounded-full font-mono font-bold bg-primary/10 text-primary">
+                        <span className="text-[11px] px-2 py-0.5 rounded-full font-mono font-bold bg-primary/10 text-primary">
                           {b.shortCode}
                         </span>
                       </div>
-                      <p className="text-[10px] text-stone-500 line-clamp-1">
+                      <p className="text-[11px] text-stone-500 line-clamp-1">
                         {b.description}
                       </p>
                     </div>
@@ -593,7 +592,7 @@ export default function OnboardingPage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
               {/* Semester Selector */}
               <div className="space-y-1.5">
-                <label className="text-xs font-bold uppercase tracking-wider text-stone-600 dark:text-stone-400">
+                <label className="text-xs font-bold text-stone-600 dark:text-stone-400">
                   Current Semester
                 </label>
                 <div className="flex flex-wrap gap-1.5">
@@ -603,10 +602,10 @@ export default function OnboardingPage() {
                       type="button"
                       onClick={() => setSemester(sem)}
                       className={`h-9 w-9 rounded-xl text-xs font-bold transition-all cursor-pointer ${
-                        semester === sem
-                          ? "bg-primary text-white shadow-xs"
-                          : "bg-background dark:bg-stone-800 text-stone-700 dark:text-stone-300 hover:bg-primary/10"
-                      }`}
+ semester === sem
+ ? "bg-primary text-white shadow-xs"
+ : "bg-background dark:bg-stone-800 text-stone-700 dark:text-stone-300 hover:bg-primary/10"
+ }`}
                     >
                       S{sem}
                     </button>
@@ -616,7 +615,7 @@ export default function OnboardingPage() {
 
               {/* Division / Section */}
               <div className="space-y-1.5">
-                <label className="text-xs font-bold uppercase tracking-wider text-stone-600 dark:text-stone-400">
+                <label className="text-xs font-bold text-stone-600 dark:text-stone-400">
                   Section / Division
                 </label>
                 <select
@@ -635,7 +634,7 @@ export default function OnboardingPage() {
 
             {/* Optional Enrollment Number */}
             <div className="space-y-1.5">
-              <label className="text-xs font-bold uppercase tracking-wider text-stone-600 dark:text-stone-400">
+              <label className="text-xs font-bold text-stone-600 dark:text-stone-400">
                 Enrollment / Roll Number (Optional)
               </label>
               <input
@@ -690,7 +689,7 @@ export default function OnboardingPage() {
 
             {/* Academic Goal Input */}
             <div className="space-y-1.5">
-              <label className="text-xs font-bold uppercase tracking-wider text-stone-600 dark:text-stone-400">
+              <label className="text-xs font-bold text-stone-600 dark:text-stone-400">
                 Primary Target Goal for this Semester
               </label>
               <input
@@ -704,7 +703,7 @@ export default function OnboardingPage() {
 
             {/* Study Priorities Grid */}
             <div className="space-y-2">
-              <label className="text-xs font-bold uppercase tracking-wider text-stone-600 dark:text-stone-400">
+              <label className="text-xs font-bold text-stone-600 dark:text-stone-400">
                 Select Your CampusLoop Priorities (Pick all that apply)
               </label>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
@@ -715,10 +714,10 @@ export default function OnboardingPage() {
                       key={p.id}
                       onClick={() => togglePriority(p.id)}
                       className={`p-3 rounded-xl border transition-all cursor-pointer flex items-start gap-3 ${
-                        isChecked
-                          ? "border-primary bg-primary/10 dark:bg-primary/20 ring-1 ring-primary"
-                          : "border-border dark:border-stone-800 hover:border-stone-400 bg-white dark:bg-stone-900/60"
-                      }`}
+ isChecked
+ ? "border-primary bg-primary/10 dark:bg-primary/20 ring-1 ring-primary"
+ : "border-border dark:border-stone-800 hover:border-stone-400 bg-white dark:bg-stone-900/60"
+ }`}
                     >
                       <span className="text-xl shrink-0">{p.icon}</span>
                       <div className="flex-1 min-w-0">
@@ -728,7 +727,7 @@ export default function OnboardingPage() {
                           </span>
                           {isChecked && <Check className="h-3.5 w-3.5 text-primary stroke-[3]" />}
                         </div>
-                        <p className="text-[10px] text-stone-500 leading-tight mt-0.5">
+                        <p className="text-[11px] text-stone-500 leading-tight mt-0.5">
                           {p.desc}
                         </p>
                       </div>
@@ -776,7 +775,7 @@ export default function OnboardingPage() {
             {/* Summary Preview Box */}
             <div className="p-4 rounded-2xl bg-primary/10 dark:bg-primary/20 border border-primary/20 space-y-1">
               <div className="flex items-center gap-2 text-xs font-bold text-primary dark:text-primary">
-                <Sparkles className="h-4 w-4" />
+                <Lightbulb className="h-4 w-4" />
                 <span>Ready to Launch Your Experience</span>
               </div>
               <p className="text-xs text-stone-600 dark:text-stone-300">
@@ -809,7 +808,7 @@ export default function OnboardingPage() {
                 ) : (
                   <>
                     <span>Launch My Campus Hub</span>
-                    <Sparkles className="h-4 w-4" />
+                    <Lightbulb className="h-4 w-4" />
                   </>
                 )}
               </button>

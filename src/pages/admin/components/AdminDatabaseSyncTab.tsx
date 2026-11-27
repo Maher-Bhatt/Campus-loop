@@ -157,10 +157,10 @@ export function AdminDatabaseSyncTab() {
 
       {/* Database Status Banner */}
       <div className={`p-4 sm:p-5 rounded-2xl border flex flex-col sm:flex-row sm:items-center justify-between gap-4 ${
-        dbStatus === "healthy"
-          ? "bg-success/10 border-success/30 text-success dark:text-success"
-          : "bg-primary/10 border-primary/30 text-primary dark:text-primary"
-      }`}>
+ dbStatus === "healthy"
+ ? "bg-success/10 border-success/30 text-success dark:text-success"
+ : "bg-primary/10 border-primary/30 text-primary dark:text-primary"
+ }`}>
         <div className="flex items-center gap-3">
           <div className="h-10 w-10 rounded-xl bg-success/20 text-success dark:text-success flex items-center justify-center shrink-0">
             <Server className="h-5 w-5" />
@@ -180,12 +180,12 @@ export function AdminDatabaseSyncTab() {
 
         <div className="flex items-center gap-4 text-xs font-mono">
           <div>
-            <span className="text-muted-foreground block text-[10px] uppercase">Latency</span>
+            <span className="text-muted-foreground block text-[11px] uppercase">Latency</span>
             <span className="font-bold text-foreground">{pingLatency ? `${pingLatency} ms` : "Checking..."}</span>
           </div>
           <div className="h-6 w-px bg-border" />
           <div>
-            <span className="text-muted-foreground block text-[10px] uppercase">TLS Security</span>
+            <span className="text-muted-foreground block text-[11px] uppercase">TLS Security</span>
             <span className="font-bold text-success dark:text-success">TLS 1.3 Active</span>
           </div>
         </div>
@@ -194,7 +194,7 @@ export function AdminDatabaseSyncTab() {
       {/* Live Database Entity Counts */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
         <div className="p-4 rounded-2xl bg-card border border-border">
-          <span className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground block">
+          <span className="text-[11px] font-bold text-muted-foreground block">
             Practicals Dataset
           </span>
           <span className="text-2xl font-bold text-foreground mt-1 block">
@@ -206,7 +206,7 @@ export function AdminDatabaseSyncTab() {
         </div>
 
         <div className="p-4 rounded-2xl bg-card border border-border">
-          <span className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground block">
+          <span className="text-[11px] font-bold text-muted-foreground block">
             Universal MCQs
           </span>
           <span className="text-2xl font-bold text-foreground mt-1 block">
@@ -218,7 +218,7 @@ export function AdminDatabaseSyncTab() {
         </div>
 
         <div className="p-4 rounded-2xl bg-card border border-border">
-          <span className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground block">
+          <span className="text-[11px] font-bold text-muted-foreground block">
             Accredited Courses
           </span>
           <span className="text-2xl font-bold text-foreground mt-1 block">
@@ -230,7 +230,7 @@ export function AdminDatabaseSyncTab() {
         </div>
 
         <div className="p-4 rounded-2xl bg-card border border-border">
-          <span className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground block">
+          <span className="text-[11px] font-bold text-muted-foreground block">
             Departments Seeded
           </span>
           <span className="text-2xl font-bold text-primary mt-1 block">

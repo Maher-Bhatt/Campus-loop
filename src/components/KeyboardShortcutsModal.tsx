@@ -129,7 +129,7 @@ export function KeyboardShortcutsModal({
 
         <div className="mt-5 pt-3 border-t border-border/40 text-center">
           <p className="text-[11px] text-muted-foreground">
-            Press <kbd className="px-1.5 py-0.5 rounded bg-secondary text-[10px] font-mono border">?</kbd> at any time to open this cheat sheet.
+            Press <kbd className="px-1.5 py-0.5 rounded bg-secondary text-[11px] font-mono border">?</kbd> at any time to open this cheat sheet.
           </p>
         </div>
       </div>

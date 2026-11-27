@@ -65,7 +65,7 @@ export function HelpPanel({ onClose }: { onClose: () => void }) {
   const hasResults = results.docs.length > 0 || results.topics.length > 0;
 
   return (
-    <div className="surface-card absolute bottom-16 right-0 w-[min(92vw,24rem)] p-4 scale-in">
+    <div className="surface-card absolute bottom-0 right-0 w-[min(92vw,24rem)] p-4 shadow-xl scale-in">
       <div className="flex items-start justify-between gap-3 border-b border-border pb-3">
         <div>
           <h4 className="text-sm font-semibold text-foreground">Help</h4>
@@ -91,7 +91,7 @@ export function HelpPanel({ onClose }: { onClose: () => void }) {
         )}
         {results.docs.length > 0 && (
           <div>
-            <p className="mb-1 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">Library</p>
+            <p className="mb-1 text-[11px] font-semibold text-muted-foreground">Library</p>
             {results.docs.map(({ s, d }) => (
               <Link
                 key={`${s.slug}/${d.slug}`}
@@ -109,7 +109,7 @@ export function HelpPanel({ onClose }: { onClose: () => void }) {
         )}
         {results.topics.length > 0 && (
           <div>
-            <p className="mb-1 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">Topics</p>
+            <p className="mb-1 text-[11px] font-semibold text-muted-foreground">Topics</p>
             {results.topics.map(({ subject, topic }) => (
               <Link
                 key={`${subject.id}/${topic.id}`}

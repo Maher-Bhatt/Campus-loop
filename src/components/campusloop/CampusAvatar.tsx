@@ -54,7 +54,7 @@ export const CampusAvatar: React.FC<CampusAvatarProps> = ({
 
   // Sizing definitions
   const sizeMap: Record<CampusAvatarSize, { box: string; text: string; badge: string }> = {
-    24: { box: 'w-6 h-6', text: 'text-[10px] font-bold', badge: 'w-2 h-2' },
+    24: { box: 'w-6 h-6', text: 'text-[11px] font-bold', badge: 'w-2 h-2' },
     32: { box: 'w-8 h-8', text: 'text-xs font-bold', badge: 'w-2.5 h-2.5' },
     36: { box: 'w-9 h-9', text: 'text-xs font-bold', badge: 'w-3 h-3' },
     38: { box: 'w-[38px] h-[38px]', text: 'text-xs font-bold', badge: 'w-3 h-3' },
@@ -71,12 +71,12 @@ export const CampusAvatar: React.FC<CampusAvatarProps> = ({
     <div
       onClick={onClick}
       className={`relative inline-flex items-center justify-center shrink-0 select-none ${
-        onClick ? 'cursor-pointer hover:opacity-90 active:scale-95 transition-transform' : ''
-      } ${className}`}
+ onClick ? 'cursor-pointer hover:opacity-90 transition-transform' : ''
+ } ${className}`}
     >
       <div
         className={`${box} rounded-full overflow-hidden flex items-center justify-center ${
-          limeRing ? 'border-[3px] md:border-4 border-primary p-[2px] bg-white dark:bg-background' : ''
+          limeRing ? 'ring-1 ring-border' : ''
         } ${src && !imageError ? 'bg-stone-100' : `${pastel.bg} ${pastel.text}`}`}
       >
         {src && !imageError ? (

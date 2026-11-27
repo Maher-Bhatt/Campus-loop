@@ -59,10 +59,10 @@ export const CampusSearchField = React.forwardRef<HTMLInputElement, CampusSearch
             onClick={onFilterClick}
             title="Filters"
             className={`h-12 w-12 shrink-0 rounded-2xl flex items-center justify-center transition-all cursor-pointer ${
-              filterActive
-                ? 'bg-primary text-white shadow-sm'
-                : 'bg-primary/10 text-primary hover:bg-primary/10 dark:bg-stone-800 dark:text-stone-200'
-            }`}
+ filterActive
+ ? 'bg-primary text-white shadow-sm'
+ : 'bg-primary/10 text-primary hover:bg-primary/10 dark:bg-stone-800 dark:text-stone-200'
+ }`}
           >
             <SlidersHorizontal className="w-5 h-5" />
           </button>

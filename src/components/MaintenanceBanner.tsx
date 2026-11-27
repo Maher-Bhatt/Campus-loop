@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { 
-  Rocket, 
-  ArrowRight, 
-  Lock, 
-  Clock, 
-  Sparkles, 
-  Layers, 
-  Globe, 
-  Eye, 
+import { Rocket,
+  ArrowRight,
+  Lock,
+  Clock,
+  Lightbulb,
+  Layers,
+  Globe,
+  Eye,
   EyeOff,
   Cpu,
   ShieldCheck,
@@ -294,7 +293,7 @@ export function MaintenanceBanner() {
       <aside aria-label="System Maintenance Notification" className="fixed top-0 left-0 right-0 z-[100] bg-stone-900 text-stone-100 px-4 py-2.5 shadow-lg flex flex-wrap items-center justify-between gap-3 text-xs font-mono border-b border-stone-800">
         <div className="flex items-center gap-2.5">
           <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75" />
+            <span className=" absolute inline-flex h-full w-full rounded-full bg-primary opacity-75" />
             <span className="relative inline-flex rounded-full h-2 w-2 bg-primary" />
           </span>
           <span className="font-semibold text-stone-200">MAINTENANCE_LOCK: Active for Students</span>
@@ -338,7 +337,7 @@ export function MaintenanceBanner() {
             setVisitorAccessKey('');
             toast.info('Session ended. Locked back to maintenance screen.');
           }}
-          className="ml-2 text-[10px] font-bold px-2.5 py-1 rounded-lg bg-stone-100 text-stone-900 hover:bg-white transition-colors cursor-pointer"
+          className="ml-2 text-[11px] font-bold px-2.5 py-1 rounded-lg bg-stone-100 text-stone-900 hover:bg-white transition-colors cursor-pointer"
         >
           Relock Screen
         </button>
@@ -369,7 +368,7 @@ export function MaintenanceBanner() {
           <div>
             <div className="flex items-center gap-2">
               <span className="text-sm font-bold tracking-tight text-stone-100">CampusLoop Infrastructure</span>
-              <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-stone-900 text-stone-400 border border-stone-800">
+              <span className="text-[11px] font-mono px-2 py-0.5 rounded-full bg-stone-900 text-stone-400 border border-stone-800">
                 STATUS: UPGRADE_ACTIVE
               </span>
             </div>
@@ -388,7 +387,7 @@ export function MaintenanceBanner() {
           ) : (
             <div className="flex items-center gap-2 text-xs font-mono text-stone-400">
               <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75" />
+                <span className=" absolute inline-flex h-full w-full rounded-full bg-primary opacity-75" />
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-primary" />
               </span>
               <span>All Data Protected</span>
@@ -430,19 +429,19 @@ export function MaintenanceBanner() {
                     <span className="font-mono text-2xl font-bold text-stone-100">
                       {String(timeLeft.hours).padStart(2, '0')}
                     </span>
-                    <span className="text-[10px] text-stone-500 block uppercase font-bold mt-0.5">Hours</span>
+                    <span className="text-[11px] text-stone-500 block uppercase font-bold mt-0.5">Hours</span>
                   </div>
                   <div className="p-3 rounded-xl bg-stone-950 border border-stone-800">
                     <span className="font-mono text-2xl font-bold text-stone-100">
                       {String(timeLeft.minutes).padStart(2, '0')}
                     </span>
-                    <span className="text-[10px] text-stone-500 block uppercase font-bold mt-0.5">Minutes</span>
+                    <span className="text-[11px] text-stone-500 block uppercase font-bold mt-0.5">Minutes</span>
                   </div>
                   <div className="p-3 rounded-xl bg-stone-950 border border-stone-800">
                     <span className="font-mono text-2xl font-bold text-primary">
                       {String(timeLeft.seconds).padStart(2, '0')}
                     </span>
-                    <span className="text-[10px] text-stone-500 block uppercase font-bold mt-0.5">Seconds</span>
+                    <span className="text-[11px] text-stone-500 block uppercase font-bold mt-0.5">Seconds</span>
                   </div>
                 </div>
               </div>
@@ -492,8 +491,8 @@ export function MaintenanceBanner() {
                       }}
                       placeholder="e.g. ITM-XXXX-123"
                       className={`flex-1 h-9 px-3 rounded-lg bg-stone-950 border text-xs font-mono text-stone-100 placeholder:text-stone-600 focus:outline-none ${
-                        keyError ? "border-destructive/30 focus:border-destructive/30" : "border-stone-700 focus:border-stone-500"
-                      }`}
+ keyError ? "border-destructive/30 focus:border-destructive/30" : "border-stone-700 focus:border-stone-500"
+ }`}
                     />
                     <button
                       type="submit"
@@ -519,7 +518,7 @@ export function MaintenanceBanner() {
                 <span className="text-xs font-mono font-bold text-stone-300 flex items-center gap-2">
                   <Terminal className="h-4 w-4 text-stone-400" /> Subsystem Diagnostics
                 </span>
-                <span className="text-[10px] font-mono text-stone-400">All Nodes Secure</span>
+                <span className="text-[11px] font-mono text-stone-400">All Nodes Secure</span>
               </div>
 
               <div className="space-y-2 text-xs">
@@ -528,7 +527,7 @@ export function MaintenanceBanner() {
                     <Database className="h-4 w-4 text-stone-400" />
                     <span className="font-medium text-stone-200">PostgreSQL Shards</span>
                   </div>
-                  <span className="font-mono text-[10px] text-stone-400 font-semibold">100% HEALTHY</span>
+                  <span className="font-mono text-[11px] text-stone-400 font-semibold">100% HEALTHY</span>
                 </div>
 
                 <div className="p-3 rounded-xl bg-stone-950 border border-stone-800/60 flex items-center justify-between">
@@ -536,7 +535,7 @@ export function MaintenanceBanner() {
                     <Layers className="h-4 w-4 text-stone-400" />
                     <span className="font-medium text-stone-200">Multi-University Engine</span>
                   </div>
-                  <span className="font-mono text-[10px] text-primary font-semibold animate-pulse">DEPLOYING v2.4</span>
+                  <span className="font-mono text-[11px] text-primary font-semibold animate-pulse">DEPLOYING v2.4</span>
                 </div>
 
                 <div className="p-3 rounded-xl bg-stone-950 border border-stone-800/60 flex items-center justify-between">
@@ -544,7 +543,7 @@ export function MaintenanceBanner() {
                     <Cpu className="h-4 w-4 text-stone-400" />
                     <span className="font-medium text-stone-200">Coding Lab Sandboxes</span>
                   </div>
-                  <span className="font-mono text-[10px] text-stone-400 font-semibold">CALIBRATED</span>
+                  <span className="font-mono text-[11px] text-stone-400 font-semibold">CALIBRATED</span>
                 </div>
 
                 <div className="p-3 rounded-xl bg-stone-950 border border-stone-800/60 flex items-center justify-between">
@@ -552,7 +551,7 @@ export function MaintenanceBanner() {
                     <ShieldCheck className="h-4 w-4 text-stone-400" />
                     <span className="font-medium text-stone-200">Row Level Security</span>
                   </div>
-                  <span className="font-mono text-[10px] text-stone-400 font-semibold">ZERO-TRUST ACTIVE</span>
+                  <span className="font-mono text-[11px] text-stone-400 font-semibold">ZERO-TRUST ACTIVE</span>
                 </div>
               </div>
 

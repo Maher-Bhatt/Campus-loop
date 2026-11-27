@@ -2,14 +2,13 @@ import { useState, useMemo } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { getSubject } from '@/data/subjects';
 import { MarkdownRenderer } from '@/components/MarkdownRenderer';
-import { 
-  Zap, 
-  Printer, 
-  ChevronLeft, 
-  BookOpen, 
-  HelpCircle, 
+import { Zap,
+  Printer,
+  ChevronLeft,
+  BookOpen,
+  HelpCircle,
   Award,
-  Sparkles,
+  Lightbulb,
   Layers,
   ArrowRight
 } from 'lucide-react';
@@ -55,10 +54,10 @@ export default function SubjectCheatSheetPage() {
         </div>
 
         {/* Banner Section */}
-        <div className="bg-gradient-to-r from-primary/10 via-primary/10 to-background border border-primary/30 rounded-2xl p-6 sm:p-10 mb-8 shadow-sm">
+        <div className="bg-primary/10 border border-primary/30 rounded-2xl p-6 sm:p-10 mb-8 shadow-sm">
           <div className="flex flex-wrap items-center justify-between gap-4 mb-3">
             <div className="flex items-center gap-2">
-              <span className="text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-primary/20 text-primary dark:text-primary border border-primary/30">
+              <span className="text-xs font-bold px-3 py-1 rounded-full bg-primary/20 text-primary dark:text-primary border border-primary/30">
                 ⚡ Rapid Cramming Guide
               </span>
               <span className="text-xs font-semibold px-3 py-1 rounded-full bg-secondary text-foreground">
@@ -117,7 +116,7 @@ export default function SubjectCheatSheetPage() {
 
         {/* ── Unit Filter Pills ── */}
         <div className="print-hidden flex items-center gap-2 overflow-x-auto pb-4 mb-8 scrollbar-none">
-          <span className="text-xs font-bold text-muted-foreground uppercase tracking-wider shrink-0 mr-1">
+          <span className="text-xs font-bold text-muted-foreground shrink-0 mr-1">
             Filter Unit:
           </span>
           {units.map((u) => (
@@ -125,10 +124,10 @@ export default function SubjectCheatSheetPage() {
               key={u}
               onClick={() => setActiveUnit(u)}
               className={`px-3.5 py-1.5 text-xs font-semibold rounded-full whitespace-nowrap transition-all border ${
-                activeUnit === u
-                  ? 'bg-foreground text-background border-foreground font-bold shadow-sm'
-                  : 'bg-card text-muted-foreground border-border hover:text-foreground'
-              }`}
+ activeUnit === u
+ ? 'bg-foreground text-background border-foreground font-bold shadow-sm'
+ : 'bg-card text-muted-foreground border-border hover:text-foreground'
+ }`}
             >
               {u}
             </button>
@@ -177,7 +176,7 @@ export default function SubjectCheatSheetPage() {
 
                         {/* High-Yield Memorization Bullet Points */}
                         <div className="space-y-1.5 mb-4">
-                          <p className="text-[11px] font-bold uppercase tracking-wider text-primary dark:text-primary">
+                          <p className="text-[11px] font-bold text-primary dark:text-primary">
                             Must-Know Exam Points:
                           </p>
                           <ul className="space-y-1">

@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
-import { Download, X, Sparkles } from 'lucide-react';
+import { Download, X, Lightbulb } from 'lucide-react';
 
 export function PWAInstallPrompt() {
   const [showPrompt, setShowPrompt] = useState(false);
   const [deferredPrompt, setDeferredPrompt] = useState<Event | null>(null);
 
   useEffect(() => {
-    // Track visit count
+    // Ask only returning students (5th visit onwards), never on a first impression.
+    let eligible = false;
     try {
       const isDismissed = localStorage.getItem('itm_pwa_install_dismissed') === 'true';
       if (isDismissed) return;
@@ -14,9 +15,7 @@ export function PWAInstallPrompt() {
       const visits = Number(localStorage.getItem('itm_visit_count') || '0') + 1;
       localStorage.setItem('itm_visit_count', String(visits));
 
-      if (visits >= 3) {
-        setShowPrompt(true);
-      }
+      eligible = visits >= 5;
     } catch (e) {
       console.warn('Failed to read PWA install state from localStorage:', e);
     }
@@ -24,7 +23,7 @@ export function PWAInstallPrompt() {
     const handleBeforeInstallPrompt = (e: Event) => {
       e.preventDefault();
       setDeferredPrompt(e);
-      setShowPrompt(true);
+      if (eligible) setShowPrompt(true);
     };
 
     window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
@@ -85,8 +84,8 @@ export function PWAInstallPrompt() {
           <div>
             <div className="flex items-center gap-1.5">
               <h4 className="font-bold text-sm text-foreground">Install CampusLoop</h4>
-              <span className="text-[10px] font-bold px-1.5 py-0.2 rounded bg-primary/20 text-primary flex items-center gap-0.5">
-                <Sparkles className="h-2.5 w-2.5" /> PWA
+              <span className="text-[11px] font-bold px-1.5 py-0.2 rounded bg-primary/20 text-primary flex items-center gap-0.5">
+                <Lightbulb className="h-2.5 w-2.5" /> PWA
               </span>
             </div>
             <p className="text-xs text-muted-foreground mt-0.5">

@@ -21,8 +21,8 @@ export function PublicHeader() {
   useEffect(() => setOpen(false), [pathname]);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-border bg-background/90 backdrop-blur-md">
-      <div className="mx-auto flex h-16 max-w-6xl items-center gap-6 px-5 sm:px-8">
+    <header className="sticky top-0 z-40 border-b border-border bg-card">
+      <div className="mx-auto flex h-14 max-w-6xl items-center gap-6 px-5 sm:px-8">
         <Link to="/" aria-label="CampusLoop home" className="shrink-0">
           <CampusLoopLogo size="sm" />
         </Link>
@@ -32,8 +32,8 @@ export function PublicHeader() {
               key={n.to}
               to={n.to}
               className={({ isActive }) =>
-                `rounded-full px-3.5 py-1.5 text-sm transition-colors ${
-                  isActive ? "bg-foreground text-background font-medium" : "text-muted-foreground hover:text-foreground hover:bg-secondary"
+                `rounded-md px-3 py-1.5 text-sm transition-colors ${
+                  isActive ? "text-foreground font-medium bg-secondary" : "text-muted-foreground hover:text-foreground"
                 }`
               }
             >
@@ -44,15 +44,15 @@ export function PublicHeader() {
         <div className="ml-auto flex items-center gap-2">
           <ThemeToggle />
           {user ? (
-            <Link to="/dashboard" className="rounded-full bg-foreground px-4 py-2 text-sm font-medium text-background hover:bg-primary hover:text-primary-foreground transition-colors">
+            <Link to="/dashboard" className="inline-flex h-9 items-center rounded-md bg-foreground px-3.5 text-sm font-medium text-background hover:bg-foreground/90 transition-colors">
               Open dashboard
             </Link>
           ) : (
             <>
-              <Link to="/auth" className="hidden sm:inline-flex rounded-full px-4 py-2 text-sm font-medium text-foreground hover:bg-secondary transition-colors">
+              <Link to="/auth" className="hidden sm:inline-flex h-9 items-center rounded-md px-3 text-sm font-medium text-foreground hover:bg-secondary transition-colors">
                 Sign in
               </Link>
-              <Link to="/library" className="rounded-full bg-foreground px-4 py-2 text-sm font-medium text-background hover:bg-primary hover:text-primary-foreground transition-colors">
+              <Link to="/library" className="inline-flex h-9 items-center rounded-md bg-foreground px-3.5 text-sm font-medium text-background hover:bg-foreground/90 transition-colors">
                 Start reading
               </Link>
             </>
@@ -99,21 +99,21 @@ export function PublicFooter() {
     },
   ];
   return (
-    <footer className="sidebar-dark mt-24">
+    <footer className="mt-20 border-t border-border bg-card">
       <div className="mx-auto grid max-w-6xl gap-10 px-5 py-14 sm:px-8 md:grid-cols-[1.4fr_repeat(3,1fr)]">
         <div>
           <CampusLoopLogo size="sm" />
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted-foreground">
-            Free study material and exam tools for B.Tech students, built by students. Read your notes in one calm place.
+            Free study material and exam tools for B.Tech students, built by students. Notes, question banks and exam practice in one place.
           </p>
         </div>
         {cols.map((c) => (
           <div key={c.title}>
-            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">{c.title}</p>
+            <p className="text-sm font-medium text-foreground">{c.title}</p>
             <ul className="mt-4 space-y-2.5">
               {c.links.map((l) => (
                 <li key={l.to}>
-                  <Link to={l.to} className="text-sm text-foreground/85 hover:text-foreground hover:underline underline-offset-4">
+                  <Link to={l.to} className="text-sm text-muted-foreground hover:text-foreground">
                     {l.label}
                   </Link>
                 </li>
@@ -125,7 +125,7 @@ export function PublicFooter() {
       <div className="border-t border-border">
         <div className="mx-auto flex max-w-6xl flex-col gap-2 px-5 py-6 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between sm:px-8">
           <p>© {year} CampusLoop. Course material belongs to its respective authors.</p>
-          <p>Made in Vadodara for students everywhere.</p>
+          <p>Made in Vadodara by students.</p>
         </div>
       </div>
     </footer>

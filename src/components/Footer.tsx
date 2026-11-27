@@ -23,7 +23,7 @@ export function Footer() {
               <img src={logo} alt="CampusLoop" className="w-8 h-8 object-contain dark:invert" />
               <div>
                 <span className="font-semibold text-base text-foreground tracking-tight block">CampusLoop</span>
-                <span className="text-[10px] text-muted-foreground font-semibold">Engineering & Student Study Portal</span>
+                <span className="text-[11px] text-muted-foreground font-semibold">Engineering & Student Study Portal</span>
               </div>
             </Link>
 
@@ -71,7 +71,7 @@ export function Footer() {
 
           {/* Academic Modules */}
           <div>
-            <h4 className="font-bold text-xs uppercase tracking-wider text-foreground mb-3">
+            <h4 className="font-bold text-xs text-foreground mb-3">
               Academic Resources
             </h4>
             <ul className="space-y-2.5 text-xs text-muted-foreground">
@@ -114,7 +114,7 @@ export function Footer() {
 
           {/* Legal & DPDP Compliance */}
           <div>
-            <h4 className="font-bold text-xs uppercase tracking-wider text-foreground mb-3 flex items-center gap-1.5">
+            <h4 className="font-bold text-xs text-foreground mb-3 flex items-center gap-1.5">
               <ShieldCheck className="h-3.5 w-3.5 text-primary" />
               <span>Legal & DPDP 2023</span>
             </h4>
@@ -159,7 +159,7 @@ export function Footer() {
 
           {/* Official University Portals */}
           <div>
-            <h4 className="font-bold text-xs uppercase tracking-wider text-foreground mb-3">
+            <h4 className="font-bold text-xs text-foreground mb-3">
               Official University
             </h4>
             <ul className="space-y-2.5 text-xs text-muted-foreground">
@@ -197,7 +197,7 @@ export function Footer() {
 
           {/* Student Account */}
           <div>
-            <h4 className="font-bold text-xs uppercase tracking-wider text-foreground mb-3">
+            <h4 className="font-bold text-xs text-foreground mb-3">
               Student Account
             </h4>
             <ul className="space-y-2.5 text-xs text-muted-foreground">

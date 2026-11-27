@@ -1,4 +1,4 @@
-﻿const BASE_TITLE = "CampusLoop";
+const BASE_TITLE = "CampusLoop";
 export const DEFAULT_TITLE = "CampusLoop | Semester 3 notes, study guides & exam prep for B.Tech students";
 
 const ROUTE_TITLES: [RegExp, string][] = [
@@ -10,7 +10,8 @@ const ROUTE_TITLES: [RegExp, string][] = [
   [/^\/subjects/, "Subjects"],
   [/^\/subject\/[^/]+\/cheat-sheet/, "Cheat sheet"],
   [/^\/subject\//, "Subject"],
-  [/^\/imp-questions/, "Question banks"],
+  [/^\/practice/, "Practice"],
+  [/^\/imp-questions/, "Important questions"],
   [/^\/(papers|pyq-papers)/, "Past papers"],
   [/^\/mock-exam/, "Mock exams"],
   [/^\/rapid-revision/, "Rapid revision"],
@@ -21,8 +22,8 @@ const ROUTE_TITLES: [RegExp, string][] = [
   [/^\/(calculator|gpa-calculator)/, "Attendance & SGPA"],
   [/^\/materials/, "Study materials"],
   [/^\/bookmarks/, "Bookmarks"],
-  [/^\/analytics/, "Learning analytics"],
-  [/^\/(community|social)/, "Campus feed"],
+  [/^\/analytics/, "Progress"],
+  [/^\/(community|social)/, "Campus"],
   [/^\/explore/, "Explore"],
   [/^\/(inbox|messages)/, "Messages"],
   [/^\/profile/, "Profile"],

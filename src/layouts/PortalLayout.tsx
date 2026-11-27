@@ -2,7 +2,6 @@ import { useState, useEffect, lazy, Suspense } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { PortalSidebar } from "./PortalSidebar";
 import { PortalTopNav } from "./PortalTopNav";
-import { HelpCircle, X } from "lucide-react";
 import { toast } from "sonner";
 import { useFocusMode } from "@/contexts/FocusModeContext";
 import { useAuth } from "@/contexts/AuthContext";
@@ -44,7 +43,7 @@ export function PortalLayout() {
       } else if ((e.key === "f" || e.key === "F") && !e.ctrlKey && !e.metaKey && !isInput) {
         e.preventDefault();
         toggleFocusMode();
-        toast.info(!focusMode ? "🎯 Focus Mode Enabled" : "Focus Mode Disabled");
+        toast(!focusMode ? "Sidebar hidden. Press F to show it again." : "Sidebar shown");
       } else if (e.key === "Escape" && focusMode) {
         setFocusMode(false);
       }
@@ -55,18 +54,13 @@ export function PortalLayout() {
 
   const handleToggleFocusMode = () => {
     toggleFocusMode();
-    toast.info(!focusMode ? "🎯 Focus Mode Enabled" : "Focus Mode Disabled");
+    toast(!focusMode ? "Sidebar hidden. Press F to show it again." : "Sidebar shown");
   };
 
-  const isCodingLab = location.pathname.startsWith("/coding-lab");
 
   return (
-    <div className="h-screen w-full overflow-hidden bg-background text-foreground flex antialiased">
+    <div className="h-[calc(100dvh-var(--banner-h,0px))] w-full overflow-hidden bg-background text-foreground flex antialiased">
       <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-foreground focus:px-4 focus:py-2 focus:text-sm focus:text-background">Skip to content</a>
-      {/* Ambient Spotlight & Dot Pattern */}
-      <div className="ambient-spotlight" />
-      <div className="fixed inset-0 z-0 pointer-events-none pattern-dots opacity-35" />
-
       {/* 1. Persistent Left Dark Sidebar */}
       <PortalSidebar
         isOpen={sidebarOpen}
@@ -75,17 +69,18 @@ export function PortalLayout() {
       />
 
       {/* 2. Main Content Viewport */}
-      <div className="flex-1 flex flex-col min-w-0 h-screen overflow-hidden">
+      <div className="flex-1 flex flex-col min-w-0 h-full overflow-hidden">
         {/* Sticky Fixed Top Navbar */}
         <PortalTopNav
           onToggleSidebar={() => setSidebarOpen((prev) => !prev)}
           onOpenSearch={() => setSearchOpen(true)}
           isFocusMode={focusMode}
           onToggleFocusMode={handleToggleFocusMode}
+          onOpenHelp={() => setIsChatOpen(true)}
         />
 
         {/* Dynamic Page Content */}
-        <main id="main-content" tabIndex={-1} className="flex-1 overflow-y-auto overflow-x-hidden pb-16 md:pb-6 bg-transparent relative z-10 focus:outline-none">
+        <main id="main-content" tabIndex={-1} className="flex-1 overflow-y-auto overflow-x-hidden pb-16 md:pb-6 relative focus:outline-none">
           <Outlet />
         </main>
       </div>
@@ -97,27 +92,12 @@ export function PortalLayout() {
         </Suspense>
       )}
 
-      {/* 4. Global Floating Action Button (Campus Assistant) */}
-      {!isCodingLab && (
-        <div className="fixed bottom-[calc(5.25rem+env(safe-area-inset-bottom,0px))] md:bottom-8 right-4 sm:right-6 z-40">
-          <button
-            onClick={() => setIsChatOpen(!isChatOpen)}
-            className="w-12 h-12 rounded-full bg-foreground text-background shadow-lg flex items-center justify-center transition-transform hover:scale-105 active:scale-95 cursor-pointer"
-            title="Help: search notes or contact support"
-            aria-label="Help"
-          >
-            {isChatOpen ? (
-              <X className="h-5 w-5" />
-            ) : (
-              <HelpCircle className="h-5 w-5" />
-            )}
-          </button>
-
-          {isChatOpen && (
-            <Suspense fallback={null}>
-              <HelpPanel onClose={() => setIsChatOpen(false)} />
-            </Suspense>
-          )}
+      {/* 4. Help panel, opened from the account menu */}
+      {isChatOpen && (
+        <div className="fixed bottom-[calc(5.25rem+env(safe-area-inset-bottom,0px))] md:bottom-6 right-4 sm:right-6 z-40">
+          <Suspense fallback={null}>
+            <HelpPanel onClose={() => setIsChatOpen(false)} />
+          </Suspense>
         </div>
       )}
     </div>

@@ -1,12 +1,11 @@
 import React, { useState, useMemo } from 'react';
-import { 
-  BookOpen, 
-  Search, 
-  Copy, 
-  Check, 
-  Sparkles, 
-  HelpCircle, 
-  Printer, 
+import { BookOpen,
+  Search,
+  Copy,
+  Check,
+  Lightbulb,
+  HelpCircle,
+  Printer,
   Filter,
   CheckCircle2
 } from 'lucide-react';
@@ -54,7 +53,7 @@ export default function FormulaBankPage() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-border/80 pb-6">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="px-2.5 py-0.5 rounded-full bg-primary/10 text-primary font-bold text-xs uppercase tracking-wide">
+            <span className="px-2.5 py-0.5 rounded-full bg-primary/10 text-primary font-bold text-xs ">
               Official Mathematical Reference
             </span>
             <span className="px-2.5 py-0.5 rounded-full bg-primary/10 text-primary dark:text-primary font-semibold text-xs">
@@ -95,10 +94,10 @@ export default function FormulaBankPage() {
           <button
             onClick={() => setSelectedCategory('all')}
             className={`px-3 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all border ${
-              selectedCategory === 'all'
-                ? 'bg-primary text-primary-foreground border-primary shadow-sm'
-                : 'bg-secondary/40 border-border text-muted-foreground hover:text-foreground'
-            }`}
+ selectedCategory === 'all'
+ ? 'bg-primary text-primary-foreground border-primary shadow-sm'
+ : 'bg-secondary/40 border-border text-muted-foreground hover:text-foreground'
+ }`}
           >
             All Categories ({FORMULAS_DATA.length})
           </button>
@@ -107,10 +106,10 @@ export default function FormulaBankPage() {
               key={cat}
               onClick={() => setSelectedCategory(cat)}
               className={`px-3 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all border ${
-                selectedCategory === cat
-                  ? 'bg-primary text-primary-foreground border-primary shadow-sm'
-                  : 'bg-secondary/40 border-border text-muted-foreground hover:text-foreground'
-              }`}
+ selectedCategory === cat
+ ? 'bg-primary text-primary-foreground border-primary shadow-sm'
+ : 'bg-secondary/40 border-border text-muted-foreground hover:text-foreground'
+ }`}
             >
               {cat}
             </button>
@@ -132,7 +131,7 @@ export default function FormulaBankPage() {
               <div className="flex flex-wrap items-center justify-between gap-2 border-b border-border/60 pb-3">
                 <div className="space-y-0.5">
                   <div className="flex items-center gap-2">
-                    <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-primary/10 text-primary">
+                    <span className="text-[11px] font-mono font-bold px-2 py-0.5 rounded bg-primary/10 text-primary">
                       {f.subjectCode}
                     </span>
                     <span className="text-[11px] font-semibold text-muted-foreground">
@@ -178,7 +177,7 @@ export default function FormulaBankPage() {
               {/* Variables Meaning Breakdown */}
               {f.variables.length > 0 && (
                 <div className="pt-2 border-t border-border/60">
-                  <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider block mb-2">
+                  <span className="text-[11px] font-bold text-muted-foreground block mb-2">
                     Variable Definitions:
                   </span>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
@@ -202,7 +201,7 @@ export default function FormulaBankPage() {
               {/* Exam Tip */}
               {f.examSignificance && (
                 <div className="p-3 rounded-xl bg-primary/10 border border-primary/20 text-xs flex items-center gap-2 text-primary dark:text-primary font-medium">
-                  <Sparkles className="h-4 w-4 shrink-0 text-primary" />
+                  <Lightbulb className="h-4 w-4 shrink-0 text-primary" />
                   <span>Exam Tip: {f.examSignificance}</span>
                 </div>
               )}

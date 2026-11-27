@@ -1,16 +1,14 @@
 import React, { useState } from 'react';
-import { 
-  X, 
-  Sparkles, 
-  Send, 
-  BookOpen, 
-  ExternalLink, 
-  AlertCircle, 
-  CheckCircle2, 
-  Volume2, 
-  VolumeX, 
-  Bot,
-  Lightbulb
+import { X,
+  Lightbulb,
+  Send,
+  BookOpen,
+  ExternalLink,
+  AlertCircle,
+  CheckCircle2,
+  Volume2,
+  VolumeX,
+  Bot
 } from 'lucide-react';
 import { solveStudentDoubt, DoubtAnswer } from '@/services/aiDoubtSolver';
 import { toast } from 'sonner';
@@ -133,7 +131,7 @@ export const AiDoubtSolverModal: React.FC<AiDoubtSolverModalProps> = ({
                 <h3 className="font-bold text-base text-foreground">
                   Doubt Finder
                 </h3>
-                <span className="px-2 py-0.5 rounded-full bg-primary/15 text-primary dark:text-primary text-[10px] font-bold">
+                <span className="px-2 py-0.5 rounded-full bg-primary/15 text-primary dark:text-primary text-[11px] font-bold">
                   Searches your notes
                 </span>
               </div>
@@ -202,7 +200,7 @@ export const AiDoubtSolverModal: React.FC<AiDoubtSolverModalProps> = ({
               >
                 {isLoading ? (
                   <>
-                    <Sparkles className="h-3.5 w-3.5 animate-spin" /> Thinking...
+                    <Lightbulb className="h-3.5 w-3.5 animate-spin" /> Thinking...
                   </>
                 ) : (
                   <>
@@ -273,7 +271,7 @@ export const AiDoubtSolverModal: React.FC<AiDoubtSolverModalProps> = ({
                           <p className="text-xs font-bold text-foreground group-hover:text-primary transition-colors truncate">
                             {cite.topicTitle}
                           </p>
-                          <p className="text-[10px] text-muted-foreground">
+                          <p className="text-[11px] text-muted-foreground">
                             {cite.subjectName}{cite.unitNumber ? ` • Unit ${cite.unitNumber}` : ''}
                           </p>
                         </div>

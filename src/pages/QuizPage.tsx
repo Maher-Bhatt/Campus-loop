@@ -5,24 +5,23 @@ import { MASSIVE_QUESTION_BANK } from "@/data/massiveQuestionBank";
 import { useAuth } from "@/contexts/AuthContext";
 import { useGamification } from "@/hooks/useGamification";
 import type { MCQ } from "@/data/types";
-import { 
-  Trophy, 
-  HelpCircle, 
-  CheckCircle2, 
-  XCircle, 
-  Clock, 
-  RotateCcw, 
-  Sparkles, 
-  Search, 
-  ArrowRight, 
+import { Trophy,
+  HelpCircle,
+  CheckCircle2,
+  XCircle,
+  Clock,
+  RotateCcw,
+  Lightbulb,
+  Search,
+  ArrowRight,
   ArrowLeft,
-  Layers, 
-  FileText, 
-  ChevronRight, 
-  ChevronLeft, 
-  Download, 
-  BarChart3, 
-  Check, 
+  Layers,
+  FileText,
+  ChevronRight,
+  ChevronLeft,
+  Download,
+  BarChart3,
+  Check,
   X,
   Flag,
   BookOpen,
@@ -33,7 +32,7 @@ import {
   ExternalLink,
   Award,
   Eye
-} from "lucide-react";
+} from 'lucide-react';
 import { toast } from "sonner";
 import { CustomQuizBuilderModal, type CustomQuizConfig } from "@/components/CustomQuizBuilderModal";
 import { QuizAttemptReviewModal, type QuizAttemptReviewData } from "@/components/QuizAttemptReviewModal";
@@ -353,7 +352,7 @@ export default function QuizPage() {
         toast.info(`Question ${idx + 1} unflagged`);
       } else {
         next.add(idx);
-        toast.info(`Question ${idx + 1} flagged for review 🚩`);
+        toast.info(`Question ${idx + 1} flagged for review `);
       }
       return next;
     });
@@ -386,7 +385,7 @@ export default function QuizPage() {
       if (isCorrect) {
         setScore((prev) => prev + 1);
         addXp(15);
-        toast.success("Correct Answer! +15 XP earned 🎯");
+        toast.success("Correct Answer! +15 XP earned ");
       } else {
         toast.error("Incorrect. Check the university rationale!");
       }
@@ -421,7 +420,7 @@ export default function QuizPage() {
 
     if (isPerfect) {
       addXp(100);
-      toast.success("FLAWLESS EXAM! +150 Total XP & Achievement Unlocked! 🏆");
+      toast.success("FLAWLESS EXAM! +150 Total XP & Achievement Unlocked! ");
     }
 
     const newRecord = {
@@ -475,7 +474,7 @@ export default function QuizPage() {
             <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground flex items-center gap-2.5">
               <span>Subject Quiz</span>
             </h1>
-            <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-primary/10 text-primary border border-primary/30 shadow-xs">
+            <span className="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-primary/10 text-primary border border-primary/30 shadow-xs">
               Active
             </span>
             {quizStarted && !quizFinished && (
@@ -509,7 +508,7 @@ export default function QuizPage() {
                 toast.info("Answer questions first to generate diagnostic report.");
               }
             }}
-            className="h-9 px-4 rounded-xl bg-foreground hover:bg-[#27272A] text-white font-bold text-xs shadow-md shadow-foreground/30 border border-[#FAFAFA]/20 flex items-center gap-2 transition-all active:scale-95 shrink-0 cursor-pointer"
+            className="h-9 px-4 rounded-xl bg-foreground hover:bg-[#27272A] text-white font-bold text-xs shadow-md shadow-foreground/30 border border-[#FAFAFA]/20 flex items-center gap-2 transition-all shrink-0 cursor-pointer"
           >
             <BarChart3 className="h-3.5 w-3.5 text-[#FAFAFA]" />
             <span>Get Report</span>
@@ -539,7 +538,7 @@ export default function QuizPage() {
 
             {/* Degree Program Switcher */}
             <div className="space-y-2">
-              <label className="text-xs font-bold text-foreground uppercase tracking-wider block">
+              <label className="text-xs font-bold text-foreground block">
                 Degree Program
               </label>
               <div className="flex flex-wrap items-center gap-1.5 p-1 bg-card rounded-xl border border-border w-fit">
@@ -551,10 +550,10 @@ export default function QuizPage() {
                     setSelectedUnitFilter("all");
                   }}
                   className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                    selectedDegree === "btech"
-                      ? "bg-foreground text-background shadow-sm"
-                      : "text-muted-foreground hover:text-foreground hover:bg-secondary"
-                  }`}
+ selectedDegree === "btech"
+ ? "bg-foreground text-background shadow-sm"
+ : "text-muted-foreground hover:text-foreground hover:bg-secondary"
+ }`}
                 >
                   B.Tech Engineering
                 </button>
@@ -566,10 +565,10 @@ export default function QuizPage() {
                     setSelectedUnitFilter("all");
                   }}
                   className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                    selectedDegree === "bca"
-                      ? "bg-foreground text-background shadow-sm"
-                      : "text-muted-foreground hover:text-foreground hover:bg-secondary"
-                  }`}
+ selectedDegree === "bca"
+ ? "bg-foreground text-background shadow-sm"
+ : "text-muted-foreground hover:text-foreground hover:bg-secondary"
+ }`}
                 >
                   BCA Computer Applications
                 </button>
@@ -581,10 +580,10 @@ export default function QuizPage() {
                     setSelectedUnitFilter("all");
                   }}
                   className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                    selectedDegree === "all"
-                      ? "bg-foreground text-background shadow-sm"
-                      : "text-muted-foreground hover:text-foreground hover:bg-secondary"
-                  }`}
+ selectedDegree === "all"
+ ? "bg-foreground text-background shadow-sm"
+ : "text-muted-foreground hover:text-foreground hover:bg-secondary"
+ }`}
                 >
                   All Degrees
                 </button>
@@ -594,7 +593,7 @@ export default function QuizPage() {
             {/* Semester Filter Tabs & Subject Selector */}
             <div className="space-y-4">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-                <label className="text-xs font-bold text-foreground uppercase tracking-wider block">
+                <label className="text-xs font-bold text-foreground block">
                   1. Filter by Semester
                 </label>
                 <span className="text-[11px] font-mono text-success font-bold">
@@ -612,10 +611,10 @@ export default function QuizPage() {
                     setSelectedUnitFilter("all");
                   }}
                   className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                    selectedSemesterFilter === "all"
-                      ? "bg-white text-stone-950 shadow-sm font-bold"
-                      : "text-muted-foreground hover:text-foreground hover:bg-secondary"
-                  }`}
+ selectedSemesterFilter === "all"
+ ? "bg-white text-stone-950 shadow-sm font-bold"
+ : "text-muted-foreground hover:text-foreground hover:bg-secondary"
+ }`}
                 >
                   All Semesters ({allUniversalMcqs.length})
                 </button>
@@ -632,17 +631,17 @@ export default function QuizPage() {
                       }
                     }}
                     className={`px-2.5 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
-                      selectedSemesterFilter === sem
-                        ? "bg-white text-stone-950 shadow-sm font-bold"
-                        : "text-muted-foreground hover:text-foreground hover:bg-secondary"
-                    }`}
+ selectedSemesterFilter === sem
+ ? "bg-white text-stone-950 shadow-sm font-bold"
+ : "text-muted-foreground hover:text-foreground hover:bg-secondary"
+ }`}
                   >
                     Sem {sem}
                   </button>
                 ))}
               </div>
 
-              <label className="text-xs font-bold text-foreground uppercase tracking-wider block pt-1">
+              <label className="text-xs font-bold text-foreground block pt-1">
                 2. Select Course / Question Pool
               </label>
 
@@ -654,18 +653,18 @@ export default function QuizPage() {
                     setSelectedUnitFilter("all");
                   }}
                   className={`p-3.5 rounded-xl border text-left transition-all cursor-pointer ${
-                    selectedSubject === "all"
-                      ? "border-success bg-success/10 text-foreground font-bold shadow-md ring-2 ring-success/50"
-                      : "border-border bg-secondary text-foreground hover:bg-secondary hover:border-primary/40"
-                  }`}
+ selectedSubject === "all"
+ ? "border-success bg-success/10 text-foreground font-bold shadow-md ring-2 ring-success/50"
+ : "border-border bg-secondary text-foreground hover:bg-secondary hover:border-primary/40"
+ }`}
                 >
                   <div className="text-sm font-bold text-foreground flex items-center justify-between">
                     <span>Grand Universal Pool</span>
-                    <span className="px-1.5 py-0.5 text-[10px] rounded bg-success/20 text-success font-mono">ALL</span>
+                    <span className="px-1.5 py-0.5 text-[11px] rounded bg-success/20 text-success font-mono">ALL</span>
                   </div>
                   <div className={`text-[11px] mt-1 font-mono flex items-center gap-1.5 ${
-                    selectedSubject === "all" ? "text-success font-bold" : "text-foreground"
-                  }`}>
+ selectedSubject === "all" ? "text-success font-bold" : "text-foreground"
+ }`}>
                     <span className="w-2 h-2 rounded-full bg-success shrink-0" />
                     <span>{allUniversalMcqs.length} Total Curated MCQs</span>
                   </div>
@@ -684,18 +683,18 @@ export default function QuizPage() {
                           setSelectedUnitFilter("all");
                         }}
                         className={`p-3.5 rounded-xl border text-left transition-all cursor-pointer ${
-                          isSelected
-                            ? "border-primary/60 bg-primary/40 text-foreground font-bold shadow-md ring-2 ring-primary/50"
-                            : "border-border bg-secondary text-foreground hover:bg-secondary hover:border-primary/40"
-                        }`}
+ isSelected
+ ? "border-primary/60 bg-primary/40 text-foreground font-bold shadow-md ring-2 ring-primary/50"
+ : "border-border bg-secondary text-foreground hover:bg-secondary hover:border-primary/40"
+ }`}
                       >
                         <div className="text-sm font-bold text-foreground truncate flex items-center justify-between">
                           <span className="truncate">{s.name}</span>
-                          <span className="text-[10px] text-muted-foreground font-mono shrink-0 ml-1">Sem {s.semester}</span>
+                          <span className="text-[11px] text-muted-foreground font-mono shrink-0 ml-1">Sem {s.semester}</span>
                         </div>
                         <div className={`text-[11px] mt-1 font-mono flex items-center gap-1.5 ${
-                          isSelected ? "text-primary font-bold" : "text-foreground"
-                        }`}>
+ isSelected ? "text-primary font-bold" : "text-foreground"
+ }`}>
                           <span className="w-2 h-2 rounded-full bg-primary shrink-0" />
                           <span>{s.totalMcqs} Practice MCQs</span>
                         </div>
@@ -708,7 +707,7 @@ export default function QuizPage() {
               {selectedSubject !== "all" && selectedSubject !== "all-sem3" && (
                 <div className="space-y-2 pt-2 border-t border-border">
                   <div className="flex items-center justify-between">
-                    <label className="text-xs font-bold text-foreground uppercase tracking-wider block">
+                    <label className="text-xs font-bold text-foreground block">
                       3. Filter by Chapter / Unit
                     </label>
                     <span className="text-[11px] text-muted-foreground font-mono">Optional</span>
@@ -718,10 +717,10 @@ export default function QuizPage() {
                       type="button"
                       onClick={() => setSelectedUnitFilter("all")}
                       className={`px-3 py-1.5 rounded-lg text-xs font-semibold border transition-all cursor-pointer ${
-                        selectedUnitFilter === "all"
-                          ? "bg-white text-stone-950 border-white shadow-sm font-bold"
-                          : "bg-card text-foreground border-border hover:bg-secondary"
-                      }`}
+ selectedUnitFilter === "all"
+ ? "bg-white text-stone-950 border-white shadow-sm font-bold"
+ : "bg-card text-foreground border-border hover:bg-secondary"
+ }`}
                     >
                       All Chapters (Full Syllabus)
                     </button>
@@ -731,10 +730,10 @@ export default function QuizPage() {
                         type="button"
                         onClick={() => setSelectedUnitFilter(u.id)}
                         className={`px-3 py-1.5 rounded-lg text-xs font-semibold border transition-all cursor-pointer ${
-                          selectedUnitFilter === u.id
-                            ? "bg-white text-stone-950 border-white shadow-sm font-bold"
-                            : "bg-card text-foreground border-border hover:bg-secondary"
-                        }`}
+ selectedUnitFilter === u.id
+ ? "bg-white text-stone-950 border-white shadow-sm font-bold"
+ : "bg-card text-foreground border-border hover:bg-secondary"
+ }`}
                       >
                         Unit {uIdx + 1}
                       </button>
@@ -746,7 +745,7 @@ export default function QuizPage() {
 
             {/* Question Count Selector */}
             <div className="space-y-2.5">
-              <label className="text-xs font-bold text-foreground uppercase tracking-wider block">
+              <label className="text-xs font-bold text-foreground block">
                 Session Question Count
               </label>
               <div className="flex flex-wrap gap-2.5">
@@ -756,10 +755,10 @@ export default function QuizPage() {
                     type="button"
                     onClick={() => setQuestionCount(num)}
                     className={`px-4 py-2 rounded-xl text-xs font-semibold border transition-all cursor-pointer ${
-                      questionCount === num
-                        ? "bg-foreground text-white border-foreground font-bold shadow-sm ring-1 ring-[#FAFAFA]/40"
-                        : "bg-secondary text-foreground border-border hover:bg-secondary"
-                    }`}
+ questionCount === num
+ ? "bg-foreground text-white border-foreground font-bold shadow-sm ring-1 ring-[#FAFAFA]/40"
+ : "bg-secondary text-foreground border-border hover:bg-secondary"
+ }`}
                   >
                     {num} Questions
                   </button>
@@ -774,13 +773,13 @@ export default function QuizPage() {
                 onClick={() => setIsCustomBuilderOpen(true)}
                 className="px-4 py-2.5 rounded-xl border border-[#FAFAFA]/40 bg-foreground/20 hover:bg-foreground/40 text-[#FAFAFA] font-bold text-xs transition-all flex items-center gap-2 cursor-pointer"
               >
-                <Sparkles className="h-4 w-4" />
+                <Lightbulb className="h-4 w-4" />
                 <span>Custom Quiz Builder (Mixed Units)</span>
               </button>
               <button
                 type="button"
                 onClick={handleStartQuiz}
-                className="px-6 py-3 rounded-xl bg-foreground hover:bg-[#27272A] text-white font-bold text-xs shadow-lg shadow-foreground/30 border border-[#FAFAFA]/30 transition-all flex items-center gap-2 active:scale-95 cursor-pointer"
+                className="px-6 py-3 rounded-xl bg-foreground hover:bg-[#27272A] text-white font-bold text-xs shadow-lg shadow-foreground/30 border border-[#FAFAFA]/30 transition-all flex items-center gap-2 cursor-pointer"
               >
                 <span>Launch Quiz Session</span>
                 <ArrowRight className="h-4 w-4 text-[#FAFAFA]" />
@@ -800,14 +799,14 @@ export default function QuizPage() {
                   <div key={idx} className="py-2.5 flex items-center justify-between text-xs">
                     <div>
                       <p className="font-bold text-foreground">{attempt.subject}</p>
-                      <p className="text-[10px] text-muted-foreground font-mono">
+                      <p className="text-[11px] text-muted-foreground font-mono">
                         {new Date(attempt.timestamp).toLocaleDateString()} • Time: {attempt.timeSpent || "N/A"}
                       </p>
                     </div>
                     <div className="text-right">
                       <span className={`font-mono font-bold text-sm ${
-                        attempt.percentage >= 80 ? "text-primary" : attempt.percentage >= 50 ? "text-primary" : "text-destructive"
-                      }`}>
+ attempt.percentage >= 80 ? "text-primary" : attempt.percentage >= 50 ? "text-primary" : "text-destructive"
+ }`}>
                         {attempt.score}/{attempt.total} ({attempt.percentage}%)
                       </span>
                     </div>
@@ -826,7 +825,7 @@ export default function QuizPage() {
           <div className="lg:col-span-3 xl:col-span-2 space-y-4">
             <div className="bg-card border border-border rounded-2xl p-4 shadow-sm space-y-3">
               <div className="flex items-center justify-between border-b border-border pb-2">
-                <h3 className="text-xs font-bold text-foreground uppercase tracking-wider">Question List</h3>
+                <h3 className="text-xs font-bold text-foreground ">Question List</h3>
                 <span className="text-[11px] font-mono text-muted-foreground font-bold">
                   {answeredCount}/{activeQuizPool.length}
                 </span>
@@ -868,7 +867,7 @@ export default function QuizPage() {
                 })}
               </div>
 
-              <div className="pt-2 border-t border-border text-[10px] space-y-1 text-muted-foreground">
+              <div className="pt-2 border-t border-border text-[11px] space-y-1 text-muted-foreground">
                 <div className="flex items-center gap-1.5">
                   <span className="w-2 h-2 rounded-full bg-primary" />
                   <span>Answered</span>
@@ -892,10 +891,10 @@ export default function QuizPage() {
               <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 pb-4 border-b border-border">
                 <div className="space-y-1 max-w-md">
                   <div className="flex items-center gap-2">
-                    <span className="text-xs font-mono font-bold text-primary uppercase tracking-wider">
+                    <span className="text-xs font-mono font-bold text-primary ">
                       Question ({currentIdx + 1})
                     </span>
-                    <span className="text-[10px] font-semibold text-muted-foreground px-2 py-0.5 rounded-full bg-secondary border border-border">
+                    <span className="text-[11px] font-semibold text-muted-foreground px-2 py-0.5 rounded-full bg-secondary border border-border">
                       {currentQuestion.subjectName}
                     </span>
                   </div>
@@ -929,7 +928,7 @@ export default function QuizPage() {
                         {currentAccuracyPercent}%
                       </span>
                     </div>
-                    <span className="text-[9px] text-muted-foreground mt-1 uppercase font-bold tracking-tight">
+                    <span className="text-[11px] text-muted-foreground mt-1 uppercase font-bold tracking-tight">
                       Topic Acc
                     </span>
                   </div>
@@ -957,7 +956,7 @@ export default function QuizPage() {
                         {timePercent}%
                       </span>
                     </div>
-                    <span className="text-[9px] text-muted-foreground mt-1 uppercase font-bold tracking-tight">
+                    <span className="text-[11px] text-muted-foreground mt-1 uppercase font-bold tracking-tight">
                       Est Time
                     </span>
                   </div>
@@ -1011,7 +1010,7 @@ export default function QuizPage() {
               {isAnswerSubmitted && (
                 <div className="p-4 rounded-xl bg-card border border-border text-xs space-y-1.5 animate-fade-in">
                   <div className="flex items-center gap-2 text-primary font-bold">
-                    <Sparkles className="w-3.5 h-3.5" />
+                    <Lightbulb className="w-3.5 h-3.5" />
                     <span>Syllabus Rationale & University Concept:</span>
                   </div>
                   <p className="text-foreground leading-relaxed font-sans">
@@ -1035,10 +1034,10 @@ export default function QuizPage() {
                     type="button"
                     onClick={() => toggleFlagQuestion(currentIdx)}
                     className={`px-3 py-2.5 rounded-xl border text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer ${
-                      flaggedIndices.has(currentIdx)
-                        ? "border-primary/50 bg-primary/20 text-primary"
-                        : "border-border bg-card hover:bg-secondary text-foreground"
-                    }`}
+ flaggedIndices.has(currentIdx)
+ ? "border-primary/50 bg-primary/20 text-primary"
+ : "border-border bg-card hover:bg-secondary text-foreground"
+ }`}
                   >
                     <Flag className="h-3.5 w-3.5" />
                     <span>{flaggedIndices.has(currentIdx) ? "Flagged" : "Flag"}</span>
@@ -1047,7 +1046,7 @@ export default function QuizPage() {
                   <button
                     type="button"
                     onClick={handleSubmitChoice}
-                    className="px-6 py-2.5 rounded-xl bg-foreground hover:bg-[#27272A] text-white font-bold text-xs shadow-md shadow-foreground/30 border border-[#FAFAFA]/30 transition-all flex items-center gap-2 active:scale-95 cursor-pointer"
+                    className="px-6 py-2.5 rounded-xl bg-foreground hover:bg-[#27272A] text-white font-bold text-xs shadow-md shadow-foreground/30 border border-[#FAFAFA]/30 transition-all flex items-center gap-2 cursor-pointer"
                   >
                     <span>
                       {isAnswerSubmitted
@@ -1069,7 +1068,7 @@ export default function QuizPage() {
             <div className="bg-card border border-border rounded-2xl p-5 shadow-sm space-y-4">
               <div className="flex items-center justify-between">
                 <h3 className="font-bold text-sm text-foreground">Subject Questions</h3>
-                <div className="flex rounded-lg bg-secondary p-0.5 border border-border text-[10px] font-semibold">
+                <div className="flex rounded-lg bg-secondary p-0.5 border border-border text-[11px] font-semibold">
                   <button
                     onClick={() => jumpToQuestion(currentIdx)}
                     className="px-2 py-0.5 rounded bg-foreground text-[#FAFAFA] font-bold shadow-xs cursor-pointer hover:bg-[#1f4e43] transition-colors"
@@ -1112,7 +1111,7 @@ export default function QuizPage() {
                     <span className="text-3xl font-bold text-foreground font-mono">
                       {completionPercent}%
                     </span>
-                    <span className="text-[10px] text-muted-foreground block font-semibold uppercase tracking-wider">
+                    <span className="text-[11px] text-muted-foreground block font-semibold ">
                       Completed
                     </span>
                   </div>
@@ -1230,17 +1229,17 @@ export default function QuizPage() {
             <div className="grid grid-cols-3 gap-3 max-w-md mx-auto py-2">
               <div className="p-3.5 rounded-2xl bg-secondary border border-border">
                 <span className="text-2xl font-bold font-mono text-foreground">{score}/{activeQuizPool.length}</span>
-                <span className="text-[10px] text-muted-foreground block uppercase font-bold mt-0.5">Score</span>
+                <span className="text-[11px] text-muted-foreground block uppercase font-bold mt-0.5">Score</span>
               </div>
               <div className="p-3.5 rounded-2xl bg-secondary border border-border">
                 <span className="text-2xl font-bold font-mono text-primary">
                   {Math.round((score / Math.max(1, activeQuizPool.length)) * 100)}%
                 </span>
-                <span className="text-[10px] text-muted-foreground block uppercase font-bold mt-0.5">Accuracy</span>
+                <span className="text-[11px] text-muted-foreground block uppercase font-bold mt-0.5">Accuracy</span>
               </div>
               <div className="p-3.5 rounded-2xl bg-secondary border border-border">
                 <span className="text-2xl font-bold font-mono text-primary">{formatTime(totalTimerSeconds)}</span>
-                <span className="text-[10px] text-muted-foreground block uppercase font-bold mt-0.5">Time Taken</span>
+                <span className="text-[11px] text-muted-foreground block uppercase font-bold mt-0.5">Time Taken</span>
               </div>
             </div>
 
@@ -1288,21 +1287,21 @@ export default function QuizPage() {
                   <div
                     key={idx}
                     className={`p-5 rounded-2xl border text-xs space-y-3 ${
-                      rec.isCorrect
-                        ? "bg-card border-primary/30"
-                        : "bg-card border-destructive/30"
-                    }`}
+ rec.isCorrect
+ ? "bg-card border-primary/30"
+ : "bg-card border-destructive/30"
+ }`}
                   >
                     <div className="flex items-start justify-between gap-3">
                       <div className="space-y-1">
-                        <span className="text-[10px] font-mono font-bold text-muted-foreground">
+                        <span className="text-[11px] font-mono font-bold text-muted-foreground">
                           Question {idx + 1} · {rec.question.subjectName}
                         </span>
                         <p className="text-sm font-bold text-foreground">{rec.question.question}</p>
                       </div>
-                      <span className={`px-2 py-0.5 rounded-md text-[10px] font-bold ${
-                        rec.isCorrect ? "bg-primary/10 text-primary" : "bg-destructive/10 text-destructive"
-                      }`}>
+                      <span className={`px-2 py-0.5 rounded-md text-[11px] font-bold ${
+ rec.isCorrect ? "bg-primary/10 text-primary" : "bg-destructive/10 text-destructive"
+ }`}>
                         {rec.isCorrect ? "Correct ✓" : "Missed ✗"}
                       </span>
                     </div>

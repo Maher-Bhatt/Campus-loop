@@ -97,10 +97,10 @@ export function TestMe({ mcqs, topicId, topicTitle }: TestMeProps) {
                     <div className="space-y-1.5">
                       {q.options.map((opt, oi) => (
                         <div key={oi} className={`text-[13px] px-3 py-2 rounded flex items-center gap-2 ${
-                          oi === q.correctIndex ? "bg-success/8 text-success" :
-                          oi === answers[qi] ? "bg-destructive/8 text-destructive" :
-                          "text-muted-foreground"
-                        }`}>
+ oi === q.correctIndex ? "bg-success/8 text-success" :
+ oi === answers[qi] ? "bg-destructive/8 text-destructive" :
+ "text-muted-foreground"
+ }`}>
                           {oi === q.correctIndex && <CheckCircle className="h-3.5 w-3.5 shrink-0" />}
                           {oi === answers[qi] && oi !== q.correctIndex && <XCircle className="h-3.5 w-3.5 shrink-0" />}
                           {opt}
@@ -132,10 +132,10 @@ export function TestMe({ mcqs, topicId, topicTitle }: TestMeProps) {
                           setAnswers(next);
                         }}
                         className={`apple-press w-full text-left text-[13px] px-4 py-2.5 rounded border transition-colors ${
-                          answers[qi] === oi
-                            ? "border-primary bg-primary/8 text-foreground"
-                            : "border hover:bg-secondary"
-                        }`}
+ answers[qi] === oi
+ ? "border-primary bg-primary/8 text-foreground"
+ : "border hover:bg-secondary"
+ }`}
                       >
                         <span className="font-medium mr-2">{String.fromCharCode(65 + oi)}.</span> {opt}
                       </button>

@@ -52,14 +52,14 @@ export function PomodoroFloatingWidget() {
               className="flex items-center gap-2 text-foreground font-bold hover:text-primary transition-colors press"
             >
               <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                <span className=" absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
               </span>
               <Clock className="h-3.5 w-3.5 text-primary" />
               <span className="font-mono text-sm tracking-tight font-semibold">
                 {String(minutes).padStart(2, '0')}:{String(seconds).padStart(2, '0')}
               </span>
-              <span className="text-[10px] text-muted-foreground uppercase font-semibold hidden sm:inline">
+              <span className="text-[11px] text-muted-foreground uppercase font-semibold hidden sm:inline">
                 {mode === 'study' ? 'Focus' : 'Break'}
               </span>
             </button>
@@ -97,7 +97,7 @@ export function PomodoroFloatingWidget() {
 
             {/* Header info */}
             <div className="text-center mb-6">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider mb-2 border border-primary/20">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold mb-2 border border-primary/20">
                 <Clock className="h-3.5 w-3.5" />
                 {mode === 'study' ? 'Deep Study Session' : 'Rest & Recharge'}
               </div>
@@ -116,20 +116,20 @@ export function PomodoroFloatingWidget() {
               <button
                 onClick={() => setMode('study')}
                 className={`flex-1 py-1.5 text-xs font-bold rounded-md transition-all flex items-center justify-center gap-1.5 ${
-                  mode === 'study'
-                    ? 'bg-gradient-electric text-white shadow-lg shadow-primary/40'
-                    : 'text-muted-foreground hover:text-white'
-                }`}
+ mode === 'study'
+ ? 'bg-gradient-electric text-white shadow-lg shadow-primary/40'
+ : 'text-muted-foreground hover:text-white'
+ }`}
               >
                 <Flame className="h-3.5 w-3.5" /> Study (25m)
               </button>
               <button
                 onClick={() => setMode('break')}
                 className={`flex-1 py-1.5 text-xs font-bold rounded-md transition-all flex items-center justify-center gap-1.5 ${
-                  mode === 'break'
-                    ? 'bg-accent/20 text-primary shadow-lg shadow-accent/30'
-                    : 'text-muted-foreground hover:text-white'
-                }`}
+ mode === 'break'
+ ? 'bg-accent/20 text-primary shadow-lg shadow-accent/30'
+ : 'text-muted-foreground hover:text-white'
+ }`}
               >
                 <Coffee className="h-3.5 w-3.5" /> Break (5m)
               </button>
@@ -145,8 +145,8 @@ export function PomodoroFloatingWidget() {
               <div className="w-full h-2.5 rounded-full bg-white/10 overflow-hidden mb-2">
                 <div
                   className={`h-full transition-all duration-1000 ${
-                    mode === 'study' ? 'bg-gradient-electric' : 'bg-gradient-pink-purple'
-                  }`}
+ mode === 'study' ? 'bg-gradient-electric' : 'bg-gradient-pink-purple'
+ }`}
                   style={{ width: `${progressPercent}%` }}
                 />
               </div>
@@ -191,10 +191,10 @@ export function PomodoroFloatingWidget() {
               <button
                 onClick={toggleTimer}
                 className={`flex-1 py-3.5 rounded-lg font-bold text-base inline-flex items-center justify-center gap-2 shadow-lg transition-all press ${
-                  isRunning
-                    ? 'bg-gradient-pink-purple text-white hover:bg-primary/90 shadow-lg shadow-accent/30'
-                    : 'bg-gradient-electric text-white shadow-lg shadow-primary/30'
-                }`}
+ isRunning
+ ? 'bg-gradient-pink-purple text-white hover:bg-primary/90 shadow-lg shadow-accent/30'
+ : 'bg-gradient-electric text-white shadow-lg shadow-primary/30'
+ }`}
               >
                 {isRunning ? (
                   <>

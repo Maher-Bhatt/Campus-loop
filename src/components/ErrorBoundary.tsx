@@ -91,7 +91,7 @@ export class ErrorBoundary extends Component<Props, State> {
                   {this.state.error.name}: {this.state.error.message}
                 </p>
                 {this.state.error.stack && (
-                  <pre className="text-[10px] font-mono text-muted-foreground mt-2 whitespace-pre-wrap break-all">
+                  <pre className="text-[11px] font-mono text-muted-foreground mt-2 whitespace-pre-wrap break-all">
                     {this.state.error.stack.slice(0, 500)}
                   </pre>
                 )}
@@ -126,10 +126,10 @@ export class ErrorBoundary extends Component<Props, State> {
                 onClick={this.handleManualReport}
                 disabled={this.state.reported || this.state.isReporting}
                 className={`pill-button apple-press h-10 px-4 text-xs font-bold inline-flex items-center border transition-all cursor-pointer ${
-                  this.state.reported
-                    ? "bg-primary/10 text-primary border-primary/30"
-                    : "bg-secondary text-foreground border-border hover:bg-secondary/80"
-                }`}
+ this.state.reported
+ ? "bg-primary/10 text-primary border-primary/30"
+ : "bg-secondary text-foreground border-border hover:bg-secondary/80"
+ }`}
               >
                 {this.state.isReporting
                   ? "Reporting..."

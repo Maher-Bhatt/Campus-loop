@@ -1,12 +1,40 @@
 import { useState, useEffect, useMemo, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
-import { 
-  Code, Play, CheckCircle2, XCircle, RotateCcw, 
-  Lightbulb, Sparkles, BookOpen, Terminal, ChevronRight, ChevronLeft,
-  Layers, Check, Copy, Flame, Award, HelpCircle, FileText, Search, Filter,
-  Maximize2, Minimize2, Trash2, Send, Bot, GraduationCap, ArrowLeft, ArrowRight,
-  X, ExternalLink, Cpu, Printer, Timer, Clock, ArrowUpRight
+import { Code,
+  Play,
+  CheckCircle2,
+  XCircle,
+  RotateCcw,
+  Lightbulb,
+  BookOpen,
+  Terminal,
+  ChevronRight,
+  ChevronLeft,
+  Layers,
+  Check,
+  Copy,
+  Flame,
+  Award,
+  HelpCircle,
+  FileText,
+  Search,
+  Filter,
+  Maximize2,
+  Minimize2,
+  Trash2,
+  Send,
+  Bot,
+  GraduationCap,
+  ArrowLeft,
+  ArrowRight,
+  X,
+  ExternalLink,
+  Cpu,
+  Printer,
+  Timer,
+  Clock,
+  ArrowUpRight
 } from 'lucide-react';
 import { useGamification } from '@/hooks/useGamification';
 import { useAcademic } from '@/contexts/AcademicContext';
@@ -1199,7 +1227,7 @@ export default function CodingLabPage() {
               localStorage.setItem('itm_coding_lab_solved', JSON.stringify(next));
             } catch {}
             addXp(75, 'Completed Coding Lab Practical');
-            toast.success(`🎉 Accepted! Earned +75 XP. (${next.length}/${CODING_PROBLEMS.length} Solved)`);
+            toast.success(`Accepted! Earned +75 XP. (${next.length}/${CODING_PROBLEMS.length} Solved)`);
           } else {
             toast.success('Accepted! All test cases passed.');
           }
@@ -1351,10 +1379,10 @@ export default function CodingLabPage() {
               #{currentIndex + 1}
             </span>
             <span className="truncate">{currentProblem?.title}</span>
-            <span className={`text-[10px] px-1.5 py-0.5 rounded-full font-bold uppercase shrink-0 ${
-              currentProblem?.difficulty === 'Easy' ? 'bg-success/15 text-success dark:text-success' :
-              currentProblem?.difficulty === 'Medium' ? 'bg-primary/15 text-primary dark:text-primary' : 'bg-destructive/15 text-destructive dark:text-destructive'
-            }`}>
+            <span className={`text-[11px] px-1.5 py-0.5 rounded-full font-bold uppercase shrink-0 ${
+ currentProblem?.difficulty === 'Easy' ? 'bg-success/15 text-success dark:text-success' :
+ currentProblem?.difficulty === 'Medium' ? 'bg-primary/15 text-primary dark:text-primary' : 'bg-destructive/15 text-destructive dark:text-destructive'
+ }`}>
               {currentProblem?.difficulty}
             </span>
           </button>
@@ -1414,10 +1442,10 @@ export default function CodingLabPage() {
           <button
             onClick={() => setIsTimerRunning(!isTimerRunning)}
             className={`h-8 px-2.5 rounded-full text-xs font-mono font-semibold flex items-center gap-1.5 transition-all cursor-pointer ${
-              isTimerRunning 
-                ? 'bg-primary/10 text-primary dark:text-primary border border-primary/30' 
-                : 'text-stone-500 hover:bg-stone-100 dark:hover:bg-stone-800'
-            }`}
+ isTimerRunning 
+ ? 'bg-primary/10 text-primary dark:text-primary border border-primary/30' 
+ : 'text-stone-500 hover:bg-stone-100 dark:hover:bg-stone-800'
+ }`}
             title="Practice Stopwatch Timer"
           >
             <Timer className="h-3.5 w-3.5" />
@@ -1456,8 +1484,8 @@ export default function CodingLabPage() {
           <button
             onClick={toggleFocusMode}
             className={`h-8 w-8 rounded-lg flex items-center justify-center transition-all cursor-pointer ${
-              focusMode ? 'bg-primary text-white' : 'text-stone-500 hover:bg-stone-100 dark:hover:bg-stone-800'
-            }`}
+ focusMode ? 'bg-primary text-white' : 'text-stone-500 hover:bg-stone-100 dark:hover:bg-stone-800'
+ }`}
             title="Toggle Focus Mode (Full Screen)"
           >
             {focusMode ? <Minimize2 className="h-3.5 w-3.5" /> : <Maximize2 className="h-3.5 w-3.5" />}
@@ -1475,24 +1503,24 @@ export default function CodingLabPage() {
           <button
             onClick={() => setMobileView('specs')}
             className={`flex-1 py-2 text-xs font-bold border-b-2 transition-all ${
-              mobileView === 'specs' ? 'border-primary text-primary bg-primary/5' : 'border-transparent text-stone-500'
-            }`}
+ mobileView === 'specs' ? 'border-primary text-primary bg-primary/5' : 'border-transparent text-stone-500'
+ }`}
           >
             Problem Specs
           </button>
           <button
             onClick={() => setMobileView('editor')}
             className={`flex-1 py-2 text-xs font-bold border-b-2 transition-all ${
-              mobileView === 'editor' ? 'border-primary text-primary bg-primary/5' : 'border-transparent text-stone-500'
-            }`}
+ mobileView === 'editor' ? 'border-primary text-primary bg-primary/5' : 'border-transparent text-stone-500'
+ }`}
           >
             Code Editor
           </button>
           <button
             onClick={() => setMobileView('console')}
             className={`flex-1 py-2 text-xs font-bold border-b-2 transition-all ${
-              mobileView === 'console' ? 'border-primary text-primary bg-primary/5' : 'border-transparent text-stone-500'
-            }`}
+ mobileView === 'console' ? 'border-primary text-primary bg-primary/5' : 'border-transparent text-stone-500'
+ }`}
           >
             Test Harness
           </button>
@@ -1502,8 +1530,8 @@ export default function CodingLabPage() {
             LEFT PANE: PROBLEM STATEMENT & SUPPORTING TABS (45% Width)
         ------------------------------------------------------------------------- */}
         <div className={`w-full lg:w-[46%] xl:w-[44%] flex flex-col border-r border-border dark:border-stone-800 bg-white dark:bg-card overflow-hidden ${
-          mobileView === 'specs' ? 'flex' : 'hidden lg:flex'
-        }`}>
+ mobileView === 'specs' ? 'flex' : 'hidden lg:flex'
+ }`}>
           
           {/* Sub-Tabs Navigation */}
           <div className="flex items-center overflow-x-auto border-b border-border dark:border-stone-800 bg-background/80 dark:bg-stone-900/80 px-3 scrollbar-none shrink-0">
@@ -1512,16 +1540,16 @@ export default function CodingLabPage() {
               { id: 'hints', icon: Lightbulb, label: 'Hints' },
               { id: 'agent', icon: Bot, label: 'Faculty AI Tutor' },
               { id: 'history', icon: RotateCcw, label: 'Submissions' },
-              { id: 'solution', icon: Sparkles, label: 'Solution' },
+              { id: 'solution', icon: Lightbulb, label: 'Solution' },
             ].map(tab => (
               <button
                 key={tab.id}
                 onClick={() => setLeftTab(tab.id as any)}
                 className={`flex items-center gap-1.5 px-3.5 py-2.5 text-xs font-semibold whitespace-nowrap border-b-2 transition-all cursor-pointer ${
-                  leftTab === tab.id 
-                    ? 'border-primary text-primary font-bold bg-white dark:bg-card' 
-                    : 'border-transparent text-stone-500 hover:text-stone-800 dark:hover:text-stone-200'
-                }`}
+ leftTab === tab.id 
+ ? 'border-primary text-primary font-bold bg-white dark:bg-card' 
+ : 'border-transparent text-stone-500 hover:text-stone-800 dark:hover:text-stone-200'
+ }`}
               >
                 <tab.icon className={`h-3.5 w-3.5 ${tab.id === 'agent' ? 'text-primary' : ''}`} /> 
                 <span>{tab.label}</span>
@@ -1538,20 +1566,20 @@ export default function CodingLabPage() {
                 {/* Problem Header Info */}
                 <div className="space-y-2">
                   <div className="flex items-center gap-2 flex-wrap">
-                    <span className={`text-[10px] font-bold px-2.5 py-0.5 rounded-full ${
-                      currentProblem.difficulty === 'Easy' ? 'bg-success/15 text-success dark:text-success' :
-                      currentProblem.difficulty === 'Medium' ? 'bg-primary/15 text-primary dark:text-primary' : 'bg-destructive/15 text-destructive dark:text-destructive'
-                    }`}>
+                    <span className={`text-[11px] font-bold px-2.5 py-0.5 rounded-full ${
+ currentProblem.difficulty === 'Easy' ? 'bg-success/15 text-success dark:text-success' :
+ currentProblem.difficulty === 'Medium' ? 'bg-primary/15 text-primary dark:text-primary' : 'bg-destructive/15 text-destructive dark:text-destructive'
+ }`}>
                       {currentProblem.difficulty}
                     </span>
-                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-300 font-mono">
+                    <span className="text-[11px] font-bold px-2 py-0.5 rounded-full bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-300 font-mono">
                       {currentProblem.marks}
                     </span>
-                    <span className="text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-primary/10 text-primary dark:bg-primary/15 dark:text-primary">
+                    <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-primary/10 text-primary dark:bg-primary/15 dark:text-primary">
                       {currentProblem.subjectName}
                     </span>
                     {solvedProblems.includes(currentProblem.id) && (
-                      <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-success/15 text-success flex items-center gap-1">
+                      <span className="text-[11px] font-bold px-2 py-0.5 rounded-full bg-success/15 text-success flex items-center gap-1">
                         <Check className="h-3 w-3 stroke-[3]" /> Solved
                       </span>
                     )}
@@ -1564,7 +1592,7 @@ export default function CodingLabPage() {
 
                 {/* Problem Description */}
                 <div className="space-y-2">
-                  <h3 className="text-xs font-bold uppercase tracking-wider text-stone-500">
+                  <h3 className="text-xs font-bold text-stone-500">
                     Objective & Requirements
                   </h3>
                   <div className="text-sm text-stone-700 dark:text-stone-300 leading-relaxed whitespace-pre-line bg-background dark:bg-stone-800/40 p-4 rounded-2xl border border-border dark:border-stone-800">
@@ -1575,7 +1603,7 @@ export default function CodingLabPage() {
                 {/* Constraints */}
                 {currentProblem.constraints && currentProblem.constraints.length > 0 && (
                   <div className="space-y-2">
-                    <h3 className="text-xs font-bold uppercase tracking-wider text-stone-500">
+                    <h3 className="text-xs font-bold text-stone-500">
                       Constraints & Bounds
                     </h3>
                     <div className="grid grid-cols-1 gap-2">
@@ -1591,7 +1619,7 @@ export default function CodingLabPage() {
 
                 {/* Expected Output Demonstration */}
                 <div className="space-y-2">
-                  <h3 className="text-xs font-bold uppercase tracking-wider text-stone-500">
+                  <h3 className="text-xs font-bold text-stone-500">
                     Target Output Specification
                   </h3>
                   <pre className="p-4 rounded-2xl bg-stone-900 text-stone-100 font-mono text-xs overflow-x-auto leading-relaxed border border-stone-800">
@@ -1637,7 +1665,7 @@ export default function CodingLabPage() {
                 </div>
 
                 <div className="space-y-2">
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-stone-500">
+                  <h4 className="text-xs font-bold text-stone-500">
                     Implementation Blueprint
                   </h4>
                   <div className="space-y-1.5">
@@ -1651,7 +1679,7 @@ export default function CodingLabPage() {
 
                 {currentFacultyAI.vivaQuestions && currentFacultyAI.vivaQuestions.length > 0 && (
                   <div className="space-y-2 pt-2">
-                    <h4 className="text-xs font-bold uppercase tracking-wider text-primary dark:text-primary">
+                    <h4 className="text-xs font-bold text-primary dark:text-primary">
                       College Viva Exam Questions
                     </h4>
                     <div className="space-y-2">
@@ -1674,7 +1702,7 @@ export default function CodingLabPage() {
             {/* TAB 4: SUBMISSIONS HISTORY */}
             {leftTab === 'history' && (
               <div className="space-y-4 animate-fade-in">
-                <h3 className="text-xs font-bold uppercase tracking-wider text-stone-500">
+                <h3 className="text-xs font-bold text-stone-500">
                   Your Past Practical Submissions
                 </h3>
                 {submissionHistory.filter(s => s.problemId === currentProblem.id).length > 0 ? (
@@ -1688,7 +1716,7 @@ export default function CodingLabPage() {
                             <span className="text-xs font-bold text-success dark:text-success">
                               Accepted
                             </span>
-                            <span className="text-[10px] text-stone-400 block font-mono">
+                            <span className="text-[11px] text-stone-400 block font-mono">
                               {new Date(sub.timestamp).toLocaleDateString()} · {new Date(sub.timestamp).toLocaleTimeString()}
                             </span>
                           </div>
@@ -1712,7 +1740,7 @@ export default function CodingLabPage() {
             {leftTab === 'solution' && (
               <div className="space-y-4 animate-fade-in">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold text-stone-500 uppercase tracking-wider">
+                  <span className="text-xs font-bold text-stone-500 ">
                     Official Reference Solution
                   </span>
                   <button
@@ -1739,8 +1767,8 @@ export default function CodingLabPage() {
             RIGHT PANE: MONOSPACE IDE & TEST RUNNER CONSOLE (55% Width)
         ------------------------------------------------------------------------- */}
         <div className={`flex-1 flex flex-col bg-foreground overflow-hidden ${
-          mobileView === 'editor' || mobileView === 'console' ? 'flex' : 'hidden lg:flex'
-        }`}>
+ mobileView === 'editor' || mobileView === 'console' ? 'flex' : 'hidden lg:flex'
+ }`}>
           
           {/* Editor Header Bar */}
           <div className="h-10 bg-[#27272A] border-b border-stone-800 px-4 flex items-center justify-between shrink-0 select-none">
@@ -1750,14 +1778,14 @@ export default function CodingLabPage() {
               </span>
 
               {/* Font Size Pills */}
-              <div className="hidden sm:flex items-center bg-stone-800 rounded p-0.5 text-[10px] font-mono text-stone-400">
+              <div className="hidden sm:flex items-center bg-stone-800 rounded p-0.5 text-[11px] font-mono text-stone-400">
                 {(['12px', '13px', '14px', '16px'] as const).map(sz => (
                   <button
                     key={sz}
                     onClick={() => setEditorFontSize(sz)}
                     className={`px-1.5 py-0.5 rounded cursor-pointer ${
-                      editorFontSize === sz ? 'bg-stone-700 text-white font-bold' : 'hover:text-stone-200'
-                    }`}
+ editorFontSize === sz ? 'bg-stone-700 text-white font-bold' : 'hover:text-stone-200'
+ }`}
                   >
                     {sz.replace('px', '')}
                   </button>
@@ -1817,8 +1845,8 @@ export default function CodingLabPage() {
                 <button
                   onClick={() => setActiveConsoleTab('result')}
                   className={`px-3 py-1 text-xs font-mono rounded-lg transition-all cursor-pointer flex items-center gap-1.5 ${
-                    activeConsoleTab === 'result' ? 'bg-[#27272A] text-white font-bold' : 'text-stone-400 hover:text-stone-200'
-                  }`}
+ activeConsoleTab === 'result' ? 'bg-[#27272A] text-white font-bold' : 'text-stone-400 hover:text-stone-200'
+ }`}
                 >
                   <Award className="h-3.5 w-3.5" />
                   <span>Test Result</span>
@@ -1827,8 +1855,8 @@ export default function CodingLabPage() {
                 <button
                   onClick={() => setActiveConsoleTab('testcase')}
                   className={`px-3 py-1 text-xs font-mono rounded-lg transition-all cursor-pointer flex items-center gap-1.5 ${
-                    activeConsoleTab === 'testcase' ? 'bg-[#27272A] text-white font-bold' : 'text-stone-400 hover:text-stone-200'
-                  }`}
+ activeConsoleTab === 'testcase' ? 'bg-[#27272A] text-white font-bold' : 'text-stone-400 hover:text-stone-200'
+ }`}
                 >
                   <CheckCircle2 className="h-3.5 w-3.5" />
                   <span>Testcases</span>
@@ -1837,8 +1865,8 @@ export default function CodingLabPage() {
                 <button
                   onClick={() => setActiveConsoleTab('terminal')}
                   className={`px-3 py-1 text-xs font-mono rounded-lg transition-all cursor-pointer flex items-center gap-1.5 ${
-                    activeConsoleTab === 'terminal' ? 'bg-[#27272A] text-white font-bold' : 'text-stone-400 hover:text-stone-200'
-                  }`}
+ activeConsoleTab === 'terminal' ? 'bg-[#27272A] text-white font-bold' : 'text-stone-400 hover:text-stone-200'
+ }`}
                 >
                   <Terminal className="h-3.5 w-3.5" />
                   <span>Terminal</span>
@@ -1879,7 +1907,7 @@ export default function CodingLabPage() {
                           <div className="flex items-center gap-4 text-xs font-mono text-stone-300 pt-1">
                             <div>
                               Runtime: <strong className="text-white">{lastSubmissionStats.runtimeMs} ms</strong>
-                              <span className="text-success text-[10px] ml-1">({lastSubmissionStats.runtimePercentile}% faster)</span>
+                              <span className="text-success text-[11px] ml-1">({lastSubmissionStats.runtimePercentile}% faster)</span>
                             </div>
                             <div>
                               Memory: <strong className="text-white">{lastSubmissionStats.memoryMb} MB</strong>
@@ -1900,7 +1928,7 @@ export default function CodingLabPage() {
 
                       {/* Output Details */}
                       <div className="space-y-1">
-                        <span className="text-[10px] text-stone-400 uppercase tracking-wider block">
+                        <span className="text-[11px] text-stone-400 block">
                           Standard Sandbox Output
                         </span>
                         <pre className="p-3 rounded-lg bg-stone-900 border border-stone-800 text-stone-200 overflow-x-auto whitespace-pre-wrap">
@@ -1926,10 +1954,10 @@ export default function CodingLabPage() {
                         key={tc}
                         onClick={() => setActiveTestcaseIndex(idx === 2 ? 'custom' : idx)}
                         className={`px-3 py-1 rounded-lg text-xs font-mono transition-all cursor-pointer ${
-                          activeTestcaseIndex === (idx === 2 ? 'custom' : idx)
-                            ? 'bg-stone-800 text-white font-bold'
-                            : 'text-stone-500 hover:text-stone-300'
-                        }`}
+ activeTestcaseIndex === (idx === 2 ? 'custom' : idx)
+ ? 'bg-stone-800 text-white font-bold'
+ : 'text-stone-500 hover:text-stone-300'
+ }`}
                       >
                         {tc}
                       </button>
@@ -1938,7 +1966,7 @@ export default function CodingLabPage() {
 
                   {activeTestcaseIndex === 'custom' ? (
                     <div className="space-y-2">
-                      <label className="text-[10px] text-stone-400 uppercase tracking-wider">
+                      <label className="text-[11px] text-stone-400 ">
                         Custom Stdin Input Harness
                       </label>
                       <textarea
@@ -1951,13 +1979,13 @@ export default function CodingLabPage() {
                   ) : (
                     <div className="p-3 rounded-lg bg-stone-900 border border-stone-800 space-y-2 text-xs">
                       <div>
-                        <span className="text-stone-500 block text-[10px] uppercase">Input:</span>
+                        <span className="text-stone-500 block text-[11px] uppercase">Input:</span>
                         <span className="text-stone-200 font-mono">
                           {activeTestcaseIndex === 0 ? 'arr = [1, 2, 3, 4, 5], n = 5' : 'arr = [10, 20, 30, 40], n = 4'}
                         </span>
                       </div>
                       <div>
-                        <span className="text-stone-500 block text-[10px] uppercase">Expected:</span>
+                        <span className="text-stone-500 block text-[11px] uppercase">Expected:</span>
                         <span className="text-success font-mono">
                           {activeTestcaseIndex === 0 ? '[5, 4, 3, 2, 1]' : '[40, 30, 20, 10]'}
                         </span>
@@ -2039,7 +2067,7 @@ export default function CodingLabPage() {
 
               {/* Row 0: Degree Program Switcher */}
               <div className="flex items-center gap-1.5 overflow-x-auto scrollbar-none pb-0.5">
-                <span className="text-[10px] font-bold uppercase text-stone-400 shrink-0 mr-1">Degree:</span>
+                <span className="text-[11px] font-bold uppercase text-stone-400 shrink-0 mr-1">Degree:</span>
                 {[
                   { id: 'btech', label: 'B.Tech Engineering' },
                   { id: 'bca', label: 'BCA' },
@@ -2052,10 +2080,10 @@ export default function CodingLabPage() {
                       setSelectedSubject('all');
                     }}
                     className={`px-2.5 py-1 rounded-full text-xs font-bold transition-all cursor-pointer whitespace-nowrap ${
-                      selectedDegree === deg.id
-                        ? 'bg-primary text-white shadow-xs'
-                        : 'bg-white dark:bg-stone-800 text-stone-600 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-700'
-                    }`}
+ selectedDegree === deg.id
+ ? 'bg-primary text-white shadow-xs'
+ : 'bg-white dark:bg-stone-800 text-stone-600 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-700'
+ }`}
                   >
                     {deg.label}
                   </button>
@@ -2064,7 +2092,7 @@ export default function CodingLabPage() {
 
               {/* Row 1: Department Filter Pills */}
               <div className="flex items-center gap-1.5 overflow-x-auto scrollbar-none pb-0.5">
-                <span className="text-[10px] font-bold uppercase text-stone-400 shrink-0 mr-1">Dept:</span>
+                <span className="text-[11px] font-bold uppercase text-stone-400 shrink-0 mr-1">Dept:</span>
                 {['all', 'CSE', 'AI&DS', 'ECE', 'BCA', 'MCA', 'MECH', 'CIVIL', 'MBA'].map(dep => (
                   <button
                     key={dep}
@@ -2073,10 +2101,10 @@ export default function CodingLabPage() {
                       setSelectedSubject('all');
                     }}
                     className={`px-2.5 py-1 rounded-full text-xs font-bold transition-all cursor-pointer whitespace-nowrap ${
-                      selectedDepartment.toLowerCase() === dep.toLowerCase()
-                        ? 'bg-primary text-white shadow-xs'
-                        : 'bg-white dark:bg-stone-800 text-stone-600 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-700'
-                    }`}
+ selectedDepartment.toLowerCase() === dep.toLowerCase()
+ ? 'bg-primary text-white shadow-xs'
+ : 'bg-white dark:bg-stone-800 text-stone-600 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-700'
+ }`}
                   >
                     {dep === 'all' ? 'All Depts' : dep}
                   </button>
@@ -2085,7 +2113,7 @@ export default function CodingLabPage() {
 
               {/* Row 2: Semester Filter Pills */}
               <div className="flex items-center gap-1.5 overflow-x-auto scrollbar-none pb-0.5">
-                <span className="text-[10px] font-bold uppercase text-stone-400 shrink-0 mr-1">Sem:</span>
+                <span className="text-[11px] font-bold uppercase text-stone-400 shrink-0 mr-1">Sem:</span>
                 {(['all', 1, 2, 3, 4, 5, 6, 7, 8] as const).map(sem => (
                   <button
                     key={String(sem)}
@@ -2094,10 +2122,10 @@ export default function CodingLabPage() {
                       setSelectedSubject('all');
                     }}
                     className={`px-2.5 py-1 rounded-full text-xs font-bold transition-all cursor-pointer whitespace-nowrap ${
-                      selectedSemester === sem
-                        ? 'bg-success text-white shadow-xs'
-                        : 'bg-white dark:bg-stone-800 text-stone-600 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-700'
-                    }`}
+ selectedSemester === sem
+ ? 'bg-success text-white shadow-xs'
+ : 'bg-white dark:bg-stone-800 text-stone-600 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-700'
+ }`}
                   >
                     {sem === 'all' ? 'All Sems' : `Sem ${sem}`}
                   </button>
@@ -2106,12 +2134,12 @@ export default function CodingLabPage() {
 
               {/* Row 3: Subject Category Pills */}
               <div className="flex items-center gap-1.5 overflow-x-auto scrollbar-none pb-1">
-                <span className="text-[10px] font-bold uppercase text-stone-400 shrink-0 mr-1">Subject:</span>
+                <span className="text-[11px] font-bold uppercase text-stone-400 shrink-0 mr-1">Subject:</span>
                 <button
                   onClick={() => setSelectedSubject('all')}
                   className={`px-3 py-1 rounded-full text-xs font-bold transition-all cursor-pointer whitespace-nowrap ${
-                    selectedSubject === 'all' ? 'bg-primary text-white' : 'bg-white dark:bg-stone-800 text-stone-600 dark:text-stone-300'
-                  }`}
+ selectedSubject === 'all' ? 'bg-primary text-white' : 'bg-white dark:bg-stone-800 text-stone-600 dark:text-stone-300'
+ }`}
                 >
                   All Subjects
                 </button>
@@ -2131,8 +2159,8 @@ export default function CodingLabPage() {
                     key={meta.name}
                     onClick={() => setSelectedSubject(meta.name)}
                     className={`px-3 py-1 rounded-full text-xs font-bold transition-all cursor-pointer whitespace-nowrap ${
-                      selectedSubject === meta.name ? 'bg-primary text-white' : 'bg-white dark:bg-stone-800 text-stone-600 dark:text-stone-300'
-                    }`}
+ selectedSubject === meta.name ? 'bg-primary text-white' : 'bg-white dark:bg-stone-800 text-stone-600 dark:text-stone-300'
+ }`}
                   >
                     {meta.shortName}
                   </button>
@@ -2151,15 +2179,15 @@ export default function CodingLabPage() {
                     key={prob.id}
                     onClick={() => handleSelectProblem(prob)}
                     className={`p-3.5 rounded-xl border transition-all cursor-pointer flex items-center justify-between gap-3 ${
-                      isSelected 
-                        ? 'border-primary bg-primary/10 dark:bg-primary/15 ring-1 ring-primary'
-                        : 'border-border dark:border-stone-800 hover:border-stone-400 bg-white dark:bg-stone-900/60'
-                    }`}
+ isSelected 
+ ? 'border-primary bg-primary/10 dark:bg-primary/15 ring-1 ring-primary'
+ : 'border-border dark:border-stone-800 hover:border-stone-400 bg-white dark:bg-stone-900/60'
+ }`}
                   >
                     <div className="flex items-center gap-3 min-w-0">
                       <div className={`h-8 w-8 rounded-lg flex items-center justify-center font-mono font-bold text-xs shrink-0 ${
-                        isSolved ? 'bg-success/15 text-success' : 'bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-400'
-                      }`}>
+ isSolved ? 'bg-success/15 text-success' : 'bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-400'
+ }`}>
                         {isSolved ? <Check className="h-4 w-4 stroke-[3]" /> : idx + 1}
                       </div>
 
@@ -2176,10 +2204,10 @@ export default function CodingLabPage() {
                     </div>
 
                     <div className="flex items-center gap-2 shrink-0">
-                      <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${
-                        prob.difficulty === 'Easy' ? 'bg-success/15 text-success' :
-                        prob.difficulty === 'Medium' ? 'bg-primary/15 text-primary' : 'bg-destructive/15 text-destructive'
-                      }`}>
+                      <span className={`text-[11px] font-bold px-2 py-0.5 rounded-full ${
+ prob.difficulty === 'Easy' ? 'bg-success/15 text-success' :
+ prob.difficulty === 'Medium' ? 'bg-primary/15 text-primary' : 'bg-destructive/15 text-destructive'
+ }`}>
                         {prob.difficulty}
                       </span>
                     </div>

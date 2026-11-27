@@ -12,7 +12,7 @@ import {
   HelpCircle,
   Printer,
   Search,
-  Sparkles,
+  Lightbulb,
   ChevronRight,
   ChevronDown,
   AlertTriangle,
@@ -32,8 +32,8 @@ import {
   Cpu,
   Database,
   Terminal,
-  Calculator,
-} from "lucide-react";
+  Calculator
+} from 'lucide-react';
 import { toast } from "sonner";
 import { getMasterSubjectBank, MasterSubjectBank } from "@/data/masterBanksRegistry";
 import { SUBJECT_IMP_DATA } from "@/data/impQuestionsData";
@@ -221,7 +221,7 @@ export default function SubjectImpQuestionsPage() {
               <span>Semester {masterBank.semester}</span>
               <span>·</span>
               <span className="font-mono font-bold text-foreground">{masterBank.code}</span>
-              <span className="px-2 py-0.5 rounded-full bg-primary/10 text-primary dark:text-primary font-bold text-[10px] border border-primary/20">
+              <span className="px-2 py-0.5 rounded-full bg-primary/10 text-primary dark:text-primary font-bold text-[11px] border border-primary/20">
                 Master Solved Bank
               </span>
             </div>
@@ -260,7 +260,7 @@ export default function SubjectImpQuestionsPage() {
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 relative z-10">
             <div className="space-y-2 max-w-3xl">
               <div className="flex items-center gap-2 flex-wrap">
-                <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-white/20 text-white backdrop-blur-md flex items-center gap-1.5">
+                <span className="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-white/20 text-white backdrop-blur-md flex items-center gap-1.5">
                   <Flame className="h-3 w-3 fill-primary text-primary" />
                   {masterBank.badge}
                 </span>
@@ -300,25 +300,25 @@ export default function SubjectImpQuestionsPage() {
                 <span className="text-2xl font-bold font-mono text-white">
                   {masterBank.predictOutput.length}
                 </span>
-                <p className="text-[10px] text-white/70 uppercase font-bold tracking-wider">Predict Output</p>
+                <p className="text-[11px] text-white/70 uppercase font-bold tracking-wider">Predict Output</p>
               </div>
               <div className="p-3 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 text-center">
                 <span className="text-2xl font-bold font-mono text-primary">
                   {masterBank.longAnswers.length}
                 </span>
-                <p className="text-[10px] text-white/70 uppercase font-bold tracking-wider">5-Mark Programs</p>
+                <p className="text-[11px] text-white/70 uppercase font-bold tracking-wider">5-Mark Programs</p>
               </div>
               <div className="p-3 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 text-center">
                 <span className="text-2xl font-bold font-mono text-primary">
                   {masterBank.theoryQuestions.length}
                 </span>
-                <p className="text-[10px] text-white/70 uppercase font-bold tracking-wider">3-Mark Theory</p>
+                <p className="text-[11px] text-white/70 uppercase font-bold tracking-wider">3-Mark Theory</p>
               </div>
               <div className="p-3 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 text-center">
                 <span className="text-2xl font-bold font-mono text-primary">
                   {masterBank.quickMcqs.length}
                 </span>
-                <p className="text-[10px] text-white/70 uppercase font-bold tracking-wider">Quick MCQs</p>
+                <p className="text-[11px] text-white/70 uppercase font-bold tracking-wider">Quick MCQs</p>
               </div>
             </div>
           </div>
@@ -345,10 +345,10 @@ export default function SubjectImpQuestionsPage() {
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id as any)}
                 className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all shrink-0 cursor-pointer ${
-                  activeTab === tab.id
-                    ? "bg-primary text-primary-foreground shadow-sm font-bold"
-                    : "bg-secondary/60 text-muted-foreground hover:text-foreground hover:bg-secondary"
-                }`}
+ activeTab === tab.id
+ ? "bg-primary text-primary-foreground shadow-sm font-bold"
+ : "bg-secondary/60 text-muted-foreground hover:text-foreground hover:bg-secondary"
+ }`}
               >
                 {tab.label}
               </button>
@@ -403,8 +403,8 @@ export default function SubjectImpQuestionsPage() {
                   <div
                     key={prog.id}
                     className={`p-5 sm:p-6 rounded-2xl bg-card border transition-all ${
-                      isMastered ? "border-primary/50 bg-primary/[0.02]" : "border-border hover:border-primary/50"
-                    }`}
+ isMastered ? "border-primary/50 bg-primary/[0.02]" : "border-border hover:border-primary/50"
+ }`}
                   >
                     {/* Header */}
                     <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-border/60">
@@ -427,10 +427,10 @@ export default function SubjectImpQuestionsPage() {
                         <button
                           onClick={() => speakQuestion(prog.id, `${prog.title}. Concept: ${prog.concept}. Rule: ${prog.rule}. Output: ${prog.output}`)}
                           className={`p-1.5 rounded-lg text-xs font-bold flex items-center gap-1 transition-all ${
-                            isSpeaking
-                              ? "bg-primary text-white animate-pulse"
-                              : "bg-secondary text-muted-foreground hover:text-foreground"
-                          }`}
+ isSpeaking
+ ? "bg-primary text-white animate-pulse"
+ : "bg-secondary text-muted-foreground hover:text-foreground"
+ }`}
                           title="Listen to this problem"
                         >
                           <Volume2 className="h-3.5 w-3.5" />
@@ -441,10 +441,10 @@ export default function SubjectImpQuestionsPage() {
                         <button
                           onClick={() => toggleMastered(prog.id)}
                           className={`px-2.5 py-1 rounded-lg text-xs font-bold flex items-center gap-1 transition-all cursor-pointer ${
-                            isMastered
-                              ? "bg-primary text-white"
-                              : "bg-secondary text-muted-foreground hover:text-foreground"
-                          }`}
+ isMastered
+ ? "bg-primary text-white"
+ : "bg-secondary text-muted-foreground hover:text-foreground"
+ }`}
                         >
                           <Check className="h-3.5 w-3.5" />
                           <span>{isMastered ? "Mastered" : "Mark Mastered"}</span>
@@ -488,7 +488,7 @@ export default function SubjectImpQuestionsPage() {
                         <div className="space-y-3 animate-fade-in">
                           {/* Output Box */}
                           <div className="p-3.5 rounded-xl bg-secondary/60 border border-border">
-                            <span className="text-[10px] font-mono uppercase font-bold tracking-wider text-muted-foreground block mb-1">
+                            <span className="text-[11px] font-mono uppercase font-bold tracking-wider text-muted-foreground block mb-1">
                               Exact Console Output
                             </span>
                             <pre className="text-xs font-mono font-bold text-foreground whitespace-pre-wrap">
@@ -502,7 +502,7 @@ export default function SubjectImpQuestionsPage() {
                             <div className="space-y-1">
                               {prog.steps.map((st) => (
                                 <div key={st.step} className="flex items-start gap-2 text-xs text-muted-foreground">
-                                  <span className="px-1.5 py-0.2 rounded bg-primary/10 text-primary font-mono font-bold text-[10px] shrink-0">
+                                  <span className="px-1.5 py-0.2 rounded bg-primary/10 text-primary font-mono font-bold text-[11px] shrink-0">
                                     Step {st.step}
                                   </span>
                                   <span>{st.action}</span>
@@ -513,7 +513,7 @@ export default function SubjectImpQuestionsPage() {
 
                           {/* Golden Rule */}
                           <div className="p-3 rounded-xl bg-primary/10 border border-primary/20 text-primary dark:text-primary text-xs flex items-start gap-2">
-                            <Sparkles className="h-4 w-4 shrink-0 mt-0.5" />
+                            <Lightbulb className="h-4 w-4 shrink-0 mt-0.5" />
                             <div>
                               <strong className="font-bold">Golden Rule: </strong>
                               <span>{prog.rule}</span>
@@ -556,8 +556,8 @@ export default function SubjectImpQuestionsPage() {
                   <div
                     key={item.id}
                     className={`p-5 sm:p-6 rounded-2xl bg-card border transition-all ${
-                      isMastered ? "border-primary/50 bg-primary/[0.02]" : "border-border hover:border-primary/50"
-                    }`}
+ isMastered ? "border-primary/50 bg-primary/[0.02]" : "border-border hover:border-primary/50"
+ }`}
                   >
                     {/* Header */}
                     <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-border/60">
@@ -575,10 +575,10 @@ export default function SubjectImpQuestionsPage() {
                         <button
                           onClick={() => speakQuestion(item.id, `${item.title}. Concept: ${item.concept}. Exam Tip: ${item.examNote}. Examiner Viva Trap: ${item.vivaTrap || ''}`)}
                           className={`p-1.5 rounded-lg text-xs font-bold flex items-center gap-1 transition-all ${
-                            isSpeaking
-                              ? "bg-primary text-white animate-pulse"
-                              : "bg-secondary text-muted-foreground hover:text-foreground"
-                          }`}
+ isSpeaking
+ ? "bg-primary text-white animate-pulse"
+ : "bg-secondary text-muted-foreground hover:text-foreground"
+ }`}
                           title="Listen to this question"
                         >
                           <Volume2 className="h-3.5 w-3.5" />
@@ -588,10 +588,10 @@ export default function SubjectImpQuestionsPage() {
                         <button
                           onClick={() => toggleMastered(item.id)}
                           className={`px-2.5 py-1 rounded-lg text-xs font-bold flex items-center gap-1 transition-all cursor-pointer ${
-                            isMastered
-                              ? "bg-primary text-white"
-                              : "bg-secondary text-muted-foreground hover:text-foreground"
-                          }`}
+ isMastered
+ ? "bg-primary text-white"
+ : "bg-secondary text-muted-foreground hover:text-foreground"
+ }`}
                         >
                           <Check className="h-3.5 w-3.5" />
                           <span>{isMastered ? "Mastered" : "Mark Mastered"}</span>
@@ -603,7 +603,7 @@ export default function SubjectImpQuestionsPage() {
                     {item.requirements && item.requirements.length > 0 && (
                       <div className="flex flex-wrap items-center gap-1.5 pt-3">
                         {item.requirements.map((req, rIdx) => (
-                          <span key={rIdx} className="text-[10px] font-medium px-2 py-0.5 rounded-md bg-secondary text-muted-foreground flex items-center gap-1">
+                          <span key={rIdx} className="text-[11px] font-medium px-2 py-0.5 rounded-md bg-secondary text-muted-foreground flex items-center gap-1">
                             <CheckCircle2 className="h-2.5 w-2.5 text-primary" />
                             {req}
                           </span>
@@ -651,7 +651,7 @@ export default function SubjectImpQuestionsPage() {
                         <div className="space-y-3 animate-fade-in">
                           {/* Exact Output (1 Mark) */}
                           <div className="p-3.5 rounded-xl bg-secondary/60 border border-border">
-                            <span className="text-[10px] font-mono uppercase font-bold tracking-wider text-muted-foreground block mb-1">
+                            <span className="text-[11px] font-mono uppercase font-bold tracking-wider text-muted-foreground block mb-1">
                               3. Exact Execution Output (1 Mark)
                             </span>
                             <pre className="text-xs font-mono font-bold text-foreground whitespace-pre-wrap">
@@ -745,8 +745,8 @@ export default function SubjectImpQuestionsPage() {
                   <div
                     key={th.id}
                     className={`p-5 sm:p-6 rounded-2xl bg-card border transition-all ${
-                      isMastered ? "border-primary/50 bg-primary/[0.02]" : "border-border hover:border-primary/50"
-                    }`}
+ isMastered ? "border-primary/50 bg-primary/[0.02]" : "border-border hover:border-primary/50"
+ }`}
                   >
                     {/* Header */}
                     <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-border/60">
@@ -764,10 +764,10 @@ export default function SubjectImpQuestionsPage() {
                         <button
                           onClick={() => speakQuestion(th.id, `${th.title}. Definition: ${th.definition}. Exam Tip: ${th.examTip}`)}
                           className={`p-1.5 rounded-lg text-xs font-bold flex items-center gap-1 transition-all ${
-                            isSpeaking
-                              ? "bg-primary text-white animate-pulse"
-                              : "bg-secondary text-muted-foreground hover:text-foreground"
-                          }`}
+ isSpeaking
+ ? "bg-primary text-white animate-pulse"
+ : "bg-secondary text-muted-foreground hover:text-foreground"
+ }`}
                           title="Listen to this answer"
                         >
                           <Volume2 className="h-3.5 w-3.5" />
@@ -777,10 +777,10 @@ export default function SubjectImpQuestionsPage() {
                         <button
                           onClick={() => toggleMastered(th.id)}
                           className={`px-2.5 py-1 rounded-lg text-xs font-bold flex items-center gap-1 transition-all cursor-pointer ${
-                            isMastered
-                              ? "bg-primary text-white"
-                              : "bg-secondary text-muted-foreground hover:text-foreground"
-                          }`}
+ isMastered
+ ? "bg-primary text-white"
+ : "bg-secondary text-muted-foreground hover:text-foreground"
+ }`}
                         >
                           <Check className="h-3.5 w-3.5" />
                           <span>{isMastered ? "Mastered" : "Mark Mastered"}</span>
@@ -826,7 +826,7 @@ export default function SubjectImpQuestionsPage() {
 
                     {/* Exam Tip */}
                     <div className="mt-3 p-2.5 rounded-xl bg-primary/10 border border-primary/20 text-xs text-foreground flex items-center gap-2">
-                      <Sparkles className="h-3.5 w-3.5 text-primary shrink-0" />
+                      <Lightbulb className="h-3.5 w-3.5 text-primary shrink-0" />
                       <div>
                         <strong className="text-primary font-bold">Exam Formula: </strong>
                         <span>{th.examTip}</span>
@@ -854,7 +854,7 @@ export default function SubjectImpQuestionsPage() {
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                 {masterBank.examStrategy.map((strat, sIdx) => (
                   <div key={sIdx} className="p-4 rounded-2xl bg-card border border-border space-y-2">
-                    <span className="px-2 py-0.5 rounded-full bg-primary/10 text-primary dark:text-primary font-mono font-bold text-[10px]">
+                    <span className="px-2 py-0.5 rounded-full bg-primary/10 text-primary dark:text-primary font-mono font-bold text-[11px]">
                       {strat.marks} · {strat.timeAllocation}
                     </span>
                     <h3 className="font-bold text-sm text-foreground">{strat.part}</h3>
@@ -875,7 +875,7 @@ export default function SubjectImpQuestionsPage() {
                 {masterBank.fatalMistakes.map((mis, mIdx) => (
                   <div key={mIdx} className="p-4 rounded-2xl bg-destructive/[0.04] border border-destructive/20 space-y-1.5 text-xs">
                     <div className="font-bold text-destructive dark:text-destructive flex items-center gap-1.5">
-                      <span className="w-5 h-5 rounded-full bg-destructive/20 text-destructive dark:text-destructive flex items-center justify-center text-[10px] font-mono">
+                      <span className="w-5 h-5 rounded-full bg-destructive/20 text-destructive dark:text-destructive flex items-center justify-center text-[11px] font-mono">
                         {mIdx + 1}
                       </span>
                       <span>{mis.mistake}</span>
@@ -982,7 +982,7 @@ export default function SubjectImpQuestionsPage() {
         <span className="text-foreground font-medium">{legacyData?.subjectName}</span>
       </div>
 
-      <div className="bg-gradient-to-br from-primary/10 via-secondary/40 to-background border border-border/80 rounded-2xl p-6 sm:p-8 mb-8 shadow-sm">
+      <div className="bg-primary/10 border border-border/80 rounded-2xl p-6 sm:p-8 mb-8 shadow-sm">
         <h1 className="text-2xl sm:text-3xl font-semibold text-foreground mb-2">
           {legacyData?.subjectName}
         </h1>

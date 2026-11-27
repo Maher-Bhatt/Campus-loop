@@ -309,14 +309,14 @@ export default function BookmarksPage() {
                 key={f}
                 onClick={() => setSelectedFolder(f)}
                 className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all border flex items-center gap-1.5 apple-press ${
-                  isSelected
-                    ? 'bg-primary text-primary-foreground border-primary shadow-sm'
-                    : 'bg-card border-border/80 text-muted-foreground hover:text-foreground hover:bg-secondary'
-                }`}
+ isSelected
+ ? 'bg-primary text-primary-foreground border-primary shadow-sm'
+ : 'bg-card border-border/80 text-muted-foreground hover:text-foreground hover:bg-secondary'
+ }`}
               >
                 <Folder className="h-3.5 w-3.5" />
                 <span>{f}</span>
-                <span className={`text-[10px] px-1.5 py-0.2 rounded-full ${isSelected ? 'bg-primary-foreground/20' : 'bg-secondary'}`}>
+                <span className={`text-[11px] px-1.5 py-0.2 rounded-full ${isSelected ? 'bg-primary-foreground/20' : 'bg-secondary'}`}>
                   {countInFolder}
                 </span>
               </button>
@@ -347,13 +347,13 @@ export default function BookmarksPage() {
               />
               <button
                 onClick={handleCreateFolder}
-                className="px-2 py-1 rounded-lg bg-primary text-primary-foreground text-[10px] font-bold"
+                className="px-2 py-1 rounded-lg bg-primary text-primary-foreground text-[11px] font-bold"
               >
                 Create
               </button>
               <button
                 onClick={() => setShowAddFolder(false)}
-                className="p-1 text-muted-foreground hover:text-foreground text-[10px]"
+                className="p-1 text-muted-foreground hover:text-foreground text-[11px]"
               >
                 ✕
               </button>
@@ -396,10 +396,10 @@ export default function BookmarksPage() {
                 <button
                   onClick={() => setViewMode('grouped')}
                   className={`px-3 py-1 rounded-lg text-xs font-bold transition-all ${
-                    viewMode === 'grouped'
-                      ? 'bg-primary text-primary-foreground shadow-xs'
-                      : 'text-muted-foreground hover:text-foreground'
-                  }`}
+ viewMode === 'grouped'
+ ? 'bg-primary text-primary-foreground shadow-xs'
+ : 'text-muted-foreground hover:text-foreground'
+ }`}
                   title="Group topics by Subject"
                 >
                   Accordion
@@ -407,10 +407,10 @@ export default function BookmarksPage() {
                 <button
                   onClick={() => setViewMode('list')}
                   className={`px-3 py-1 rounded-lg text-xs font-bold transition-all ${
-                    viewMode === 'list'
-                      ? 'bg-primary text-primary-foreground shadow-xs'
-                      : 'text-muted-foreground hover:text-foreground'
-                  }`}
+ viewMode === 'list'
+ ? 'bg-primary text-primary-foreground shadow-xs'
+ : 'text-muted-foreground hover:text-foreground'
+ }`}
                   title="View flat topic list"
                 >
                   Flat List
@@ -502,7 +502,7 @@ export default function BookmarksPage() {
                                 {item.topicTitle}
                               </h3>
                               {itemFolders[item.topicId] && (
-                                <span className="text-[10px] px-2 py-0.2 rounded-md bg-secondary text-primary font-medium">
+                                <span className="text-[11px] px-2 py-0.2 rounded-md bg-secondary text-primary font-medium">
                                   {itemFolders[item.topicId]}
                                 </span>
                               )}
@@ -517,7 +517,7 @@ export default function BookmarksPage() {
                             <select
                               value={itemFolders[item.topicId] || ""}
                               onChange={(e) => handleAssignFolder(item.topicId, e.target.value)}
-                              className="text-[10px] h-7 px-2 rounded-lg bg-secondary border border-border text-foreground font-medium"
+                              className="text-[11px] h-7 px-2 rounded-lg bg-secondary border border-border text-foreground font-medium"
                             >
                               <option value="">Move to Folder...</option>
                               {folders.filter(f => f !== "All").map(f => (
@@ -556,7 +556,7 @@ export default function BookmarksPage() {
                       {item.topicTitle}
                     </h3>
                     {itemFolders[item.topicId] && (
-                      <span className="text-[10px] px-2 py-0.2 rounded-md bg-secondary text-primary font-medium">
+                      <span className="text-[11px] px-2 py-0.2 rounded-md bg-secondary text-primary font-medium">
                         {itemFolders[item.topicId]}
                       </span>
                     )}
@@ -570,7 +570,7 @@ export default function BookmarksPage() {
                   <select
                     value={itemFolders[item.topicId] || ""}
                     onChange={(e) => handleAssignFolder(item.topicId, e.target.value)}
-                    className="text-[10px] h-7 px-2 rounded-lg bg-secondary border border-border text-foreground font-medium"
+                    className="text-[11px] h-7 px-2 rounded-lg bg-secondary border border-border text-foreground font-medium"
                   >
                     <option value="">Move to Folder...</option>
                     {folders.filter(f => f !== "All").map(f => (
