@@ -1,15 +1,14 @@
 import { useState, useMemo } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { 
-  BookOpen, 
-  ChevronRight, 
-  HelpCircle, 
-  Sparkles, 
-  Cpu, 
-  Database, 
-  Server, 
-  Coffee, 
-  Terminal, 
+import { BookOpen,
+  ChevronRight,
+  HelpCircle,
+  Lightbulb,
+  Cpu,
+  Database,
+  Server,
+  Coffee,
+  Terminal,
   Code2,
   CheckCircle,
   FileText,
@@ -28,7 +27,7 @@ import {
   Calendar,
   Calculator,
   Check
-} from "lucide-react";
+} from 'lucide-react';
 import { 
   ResponsiveContainer, 
   LineChart, 
@@ -218,7 +217,7 @@ export default function ImpQuestionsSubjectsPage() {
         <div>
           <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground font-display flex items-center gap-2">
             <span>Important Exam Questions & Solved Banks</span>
-            <Sparkles className="h-5 w-5 text-primary" />
+            <Lightbulb className="h-5 w-5 text-primary" />
           </h1>
           <div className="flex items-center gap-2 text-xs text-muted-foreground mt-0.5 font-medium flex-wrap">
             <span>Academic Resources</span>
@@ -239,16 +238,16 @@ export default function ImpQuestionsSubjectsPage() {
             <button
               onClick={() => setActiveTab("all")}
               className={`px-3 py-1 rounded-lg transition-all cursor-pointer ${
-                activeTab === "all" ? "bg-background text-foreground shadow-xs font-bold" : "text-muted-foreground"
-              }`}
+ activeTab === "all" ? "bg-background text-foreground shadow-xs font-bold" : "text-muted-foreground"
+ }`}
             >
               All Subjects
             </button>
             <button
               onClick={() => setActiveTab("exam")}
               className={`px-3 py-1 rounded-lg transition-all flex items-center gap-1 cursor-pointer ${
-                activeTab === "exam" ? "bg-background text-foreground shadow-xs font-bold" : "text-muted-foreground"
-              }`}
+ activeTab === "exam" ? "bg-background text-foreground shadow-xs font-bold" : "text-muted-foreground"
+ }`}
             >
               <Flame className="h-3.5 w-3.5 text-primary" />
               <span>Remedial Banks</span>
@@ -256,8 +255,8 @@ export default function ImpQuestionsSubjectsPage() {
             <button
               onClick={() => setActiveTab("subject")}
               className={`px-3 py-1 rounded-lg transition-all flex items-center gap-1 cursor-pointer ${
-                activeTab === "subject" ? "bg-background text-foreground shadow-xs font-bold" : "text-muted-foreground"
-              }`}
+ activeTab === "subject" ? "bg-background text-foreground shadow-xs font-bold" : "text-muted-foreground"
+ }`}
             >
               <Folder className="h-3.5 w-3.5" />
               <span>Core Modules</span>
@@ -267,7 +266,7 @@ export default function ImpQuestionsSubjectsPage() {
           {/* Timetable Trigger */}
           <button
             onClick={() => openTimetable("remedial")}
-            className="h-9 px-3.5 rounded-xl bg-secondary hover:bg-secondary/80 text-foreground font-bold text-xs border border-border flex items-center gap-1.5 transition-all active:scale-95 shrink-0 cursor-pointer"
+            className="h-9 px-3.5 rounded-xl bg-secondary hover:bg-secondary/80 text-foreground font-bold text-xs border border-border flex items-center gap-1.5 transition-all shrink-0 cursor-pointer"
           >
             <Calendar className="h-3.5 w-3.5 text-primary" />
             <span>Timetables</span>
@@ -279,7 +278,7 @@ export default function ImpQuestionsSubjectsPage() {
               navigate("/quiz");
               toast.info("Navigating to Active Recall Quiz");
             }}
-            className="h-9 px-4 rounded-xl bg-primary hover:bg-primary text-white font-bold text-xs shadow-md shadow-primary/20 flex items-center gap-1.5 transition-all active:scale-95 shrink-0 cursor-pointer"
+            className="h-9 px-4 rounded-xl bg-primary hover:bg-primary text-white font-bold text-xs shadow-md shadow-primary/20 flex items-center gap-1.5 transition-all shrink-0 cursor-pointer"
           >
             <Plus className="h-3.5 w-3.5" />
             <span>Practice Quiz</span>
@@ -288,20 +287,20 @@ export default function ImpQuestionsSubjectsPage() {
       </div>
 
       {/* ── FEATURED HERO: 5-SUBJECT MASTER UNIVERSITY SOLVED BANKS ── */}
-      <div className="p-5 sm:p-7 rounded-2xl bg-gradient-to-r from-foreground via-primary to-[#27272A] text-white shadow-lg border border-[#FAFAFA]/40 relative overflow-hidden">
+      <div className="p-5 sm:p-7 rounded-2xl bg-foreground text-white shadow-lg border border-[#FAFAFA]/40 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-96 h-full bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-[#FAFAFA]/20 via-transparent to-transparent pointer-events-none" />
 
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 relative z-10">
           <div className="space-y-3 max-w-3xl">
             <div className="flex items-center gap-2 flex-wrap">
-              <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-[#FAFAFA] text-foreground shadow-xs flex items-center gap-1.5 font-display">
+              <span className="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-[#FAFAFA] text-foreground shadow-xs flex items-center gap-1.5 font-display">
                 <Flame className="h-3 w-3 fill-foreground" />
                 University Model Solved Banks
               </span>
               <span className="text-xs font-mono font-bold text-[#FAFAFA]">
                 190 Master Questions · 38 Solved Per Subject
               </span>
-              <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-white/10 text-white border border-white/20 flex items-center gap-1">
+              <span className="px-2 py-0.5 rounded-full text-[11px] font-bold bg-white/10 text-white border border-white/20 flex items-center gap-1">
                 <Mic className="h-3 w-3 text-[#FAFAFA]" />
                 Single Read aloud Narrator
               </span>
@@ -321,7 +320,7 @@ export default function ImpQuestionsSubjectsPage() {
                 className="px-3 py-1 rounded-xl bg-white/15 hover:bg-[#FAFAFA] hover:text-foreground text-white font-bold transition-all flex items-center gap-1.5 cursor-pointer"
               >
                 <span>Java (OOPJ)</span>
-                <span className="text-[10px] px-1.5 py-0.2 rounded bg-primary/30 text-primary">Oct 26</span>
+                <span className="text-[11px] px-1.5 py-0.2 rounded bg-primary/30 text-primary">Oct 26</span>
               </button>
               <button
                 onClick={() => navigate("/imp-questions/dsa")}
@@ -353,7 +352,7 @@ export default function ImpQuestionsSubjectsPage() {
           <div className="flex flex-col sm:flex-row lg:flex-col items-start lg:items-end gap-3 shrink-0">
             <button
               onClick={() => navigate("/imp-questions/oopj")}
-              className="h-11 px-5 rounded-2xl bg-[#FAFAFA] hover:bg-muted text-foreground font-bold text-xs shadow-lg shadow-[#FAFAFA]/20 flex items-center gap-2 transition-all active:scale-95 cursor-pointer font-display"
+              className="h-11 px-5 rounded-2xl bg-[#FAFAFA] hover:bg-muted text-foreground font-bold text-xs shadow-lg shadow-[#FAFAFA]/20 flex items-center gap-2 transition-all cursor-pointer font-display"
             >
               <BookOpen className="h-4 w-4" />
               <span>Open Remedial Bank (OOPJ)</span>
@@ -398,7 +397,7 @@ export default function ImpQuestionsSubjectsPage() {
                   <div className={`p-2.5 rounded-xl ${sub.colorScheme.iconBg}`}>
                     <IconComponent className="h-5 w-5" />
                   </div>
-                  <span className={`px-2 py-0.5 rounded-md text-[10px] font-bold font-mono border ${sub.badgeColor}`}>
+                  <span className={`px-2 py-0.5 rounded-md text-[11px] font-bold font-mono border ${sub.badgeColor}`}>
                     {sub.code}
                   </span>
                 </div>
@@ -407,9 +406,9 @@ export default function ImpQuestionsSubjectsPage() {
                 <div>
                   <h3 className="font-bold text-sm text-foreground group-hover:text-primary transition-colors flex items-center justify-between">
                     <span>{sub.shortName}</span>
-                    <Sparkles className="h-3 w-3 text-primary opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <Lightbulb className="h-3 w-3 text-primary opacity-0 group-hover:opacity-100 transition-opacity" />
                   </h3>
-                  <span className="text-[10px] text-muted-foreground font-mono block mt-0.5">
+                  <span className="text-[11px] text-muted-foreground font-mono block mt-0.5">
                     38 Solved Questions · All 6 Units
                   </span>
                   <p className="text-[11px] text-muted-foreground leading-relaxed mt-2 line-clamp-3">
@@ -424,7 +423,7 @@ export default function ImpQuestionsSubjectsPage() {
                     className="p-2 rounded-xl border border-border/70 bg-secondary/20 hover:bg-secondary/60 flex items-center justify-between transition-colors cursor-pointer"
                   >
                     <span className="font-medium text-foreground text-[11px]">{sub.parts.partA}</span>
-                    <span className="text-[9px] px-1.5 py-0.2 rounded bg-primary/20 text-primary dark:text-primary font-bold font-mono">
+                    <span className="text-[11px] px-1.5 py-0.2 rounded bg-primary/20 text-primary dark:text-primary font-bold font-mono">
                       Traces
                     </span>
                   </Link>
@@ -434,7 +433,7 @@ export default function ImpQuestionsSubjectsPage() {
                     className="p-2 rounded-xl border border-border/70 bg-secondary/20 hover:bg-secondary/60 flex items-center justify-between transition-colors cursor-pointer"
                   >
                     <span className="font-medium text-foreground text-[11px]">{sub.parts.partB}</span>
-                    <span className="text-[9px] px-1.5 py-0.2 rounded bg-primary/20 text-primary dark:text-primary font-bold font-mono">
+                    <span className="text-[11px] px-1.5 py-0.2 rounded bg-primary/20 text-primary dark:text-primary font-bold font-mono">
                       5 Marks
                     </span>
                   </Link>
@@ -444,7 +443,7 @@ export default function ImpQuestionsSubjectsPage() {
                     className="p-2 rounded-xl border border-border/70 bg-secondary/20 hover:bg-secondary/60 flex items-center justify-between transition-colors cursor-pointer"
                   >
                     <span className="font-medium text-foreground text-[11px]">{sub.parts.partC}</span>
-                    <span className="text-[9px] px-1.5 py-0.2 rounded bg-primary/20 text-primary dark:text-primary font-bold font-mono">
+                    <span className="text-[11px] px-1.5 py-0.2 rounded bg-primary/20 text-primary dark:text-primary font-bold font-mono">
                       3 Marks
                     </span>
                   </Link>
@@ -455,7 +454,7 @@ export default function ImpQuestionsSubjectsPage() {
               <div className="pt-2 border-t border-border/60">
                 <button
                   onClick={() => navigate(sub.path)}
-                  className="w-full h-9 rounded-xl bg-secondary hover:bg-primary hover:text-primary-foreground text-foreground font-bold text-xs flex items-center justify-center gap-1.5 transition-all active:scale-98 cursor-pointer"
+                  className="w-full h-9 rounded-xl bg-secondary hover:bg-primary hover:text-primary-foreground text-foreground font-bold text-xs flex items-center justify-center gap-1.5 transition-all cursor-pointer"
                 >
                   <BookOpen className="h-3.5 w-3.5" />
                   <span>Open 38 Solved Qs</span>
@@ -473,7 +472,7 @@ export default function ImpQuestionsSubjectsPage() {
         <div className="lg:col-span-3 bg-card border border-border rounded-2xl p-5 shadow-xs space-y-4">
           <div className="flex items-center justify-between pb-1 border-b border-border/60">
             <h3 className="font-bold text-sm text-foreground">Examination Materials</h3>
-            <span className="text-[10px] text-muted-foreground font-mono">Schedules & Notes</span>
+            <span className="text-[11px] text-muted-foreground font-mono">Schedules & Notes</span>
           </div>
 
           <div className="space-y-1.5 text-xs font-semibold">
@@ -593,7 +592,7 @@ export default function ImpQuestionsSubjectsPage() {
           <div>
             <div className="flex items-center justify-between mb-1">
               <h3 className="font-bold text-sm text-foreground">University Solved Pack</h3>
-              <span className="px-2 py-0.5 rounded bg-primary/10 text-primary dark:text-primary font-bold text-[10px] font-mono">
+              <span className="px-2 py-0.5 rounded bg-primary/10 text-primary dark:text-primary font-bold text-[11px] font-mono">
                 Sem 3 Verified
               </span>
             </div>
@@ -605,45 +604,45 @@ export default function ImpQuestionsSubjectsPage() {
             <div className="grid grid-cols-5 gap-2 text-center p-3 rounded-xl bg-secondary/30 border border-border/60 mb-4">
               <div>
                 <span className="text-base font-bold font-mono text-foreground block">190</span>
-                <span className="text-[10px] text-muted-foreground uppercase font-semibold">Total Qs</span>
+                <span className="text-[11px] text-muted-foreground uppercase font-semibold">Total Qs</span>
               </div>
               <div>
                 <span className="text-base font-bold font-mono text-foreground dark:text-[#FAFAFA] block">25</span>
-                <span className="text-[10px] text-muted-foreground uppercase font-semibold">Traces</span>
+                <span className="text-[11px] text-muted-foreground uppercase font-semibold">Traces</span>
               </div>
               <div>
                 <span className="text-base font-bold font-mono text-foreground block">75</span>
-                <span className="text-[10px] text-muted-foreground uppercase font-semibold">5-Mark</span>
+                <span className="text-[11px] text-muted-foreground uppercase font-semibold">5-Mark</span>
               </div>
               <div>
                 <span className="text-base font-bold font-mono text-foreground dark:text-[#FAFAFA] block">90</span>
-                <span className="text-[10px] text-muted-foreground uppercase font-semibold">Theory</span>
+                <span className="text-[11px] text-muted-foreground uppercase font-semibold">Theory</span>
               </div>
               <div>
                 <span className="text-base font-bold font-mono text-primary dark:text-primary block">100%</span>
-                <span className="text-[10px] text-muted-foreground uppercase font-semibold">Solved</span>
+                <span className="text-[11px] text-muted-foreground uppercase font-semibold">Solved</span>
               </div>
 
               {/* Row 2 */}
               <div className="pt-2 border-t border-border/60">
                 <span className="text-xs font-bold font-mono text-foreground block">5</span>
-                <span className="text-[9px] text-muted-foreground">Subjects</span>
+                <span className="text-[11px] text-muted-foreground">Subjects</span>
               </div>
               <div className="pt-2 border-t border-border/60">
                 <span className="text-xs font-bold font-mono text-foreground block">30</span>
-                <span className="text-[9px] text-muted-foreground">Units</span>
+                <span className="text-[11px] text-muted-foreground">Units</span>
               </div>
               <div className="pt-2 border-t border-border/60">
                 <span className="text-xs font-bold font-mono text-foreground block">50</span>
-                <span className="text-[9px] text-muted-foreground">MCQs</span>
+                <span className="text-[11px] text-muted-foreground">MCQs</span>
               </div>
               <div className="pt-2 border-t border-border/60">
                 <span className="text-xs font-bold font-mono text-foreground block">5</span>
-                <span className="text-[9px] text-muted-foreground">Blueprints</span>
+                <span className="text-[11px] text-muted-foreground">Blueprints</span>
               </div>
               <div className="pt-2 border-t border-border/60">
                 <span className="text-xs font-bold font-mono text-foreground block">1</span>
-                <span className="text-[9px] text-muted-foreground">AI Voice</span>
+                <span className="text-[11px] text-muted-foreground">AI Voice</span>
               </div>
             </div>
           </div>
@@ -653,7 +652,7 @@ export default function ImpQuestionsSubjectsPage() {
               navigate("/rapid-revision");
               toast.success("Opening Rapid Revision & Exam Blueprint Hub!");
             }}
-            className="w-full h-10 rounded-xl bg-foreground hover:bg-[#27272A] text-white font-bold text-xs flex items-center justify-center gap-2 transition-all active:scale-95 shadow-md shadow-foreground/20 cursor-pointer font-display"
+            className="w-full h-10 rounded-xl bg-foreground hover:bg-[#27272A] text-white font-bold text-xs flex items-center justify-center gap-2 transition-all shadow-md shadow-foreground/20 cursor-pointer font-display"
             title="Launch High-Yield Rapid Revision with 190 Master Exam Questions"
           >
             <FolderDown className="h-4 w-4 text-[#FAFAFA]" />

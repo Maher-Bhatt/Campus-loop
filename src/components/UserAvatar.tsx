@@ -108,7 +108,7 @@ export function UserAvatar({
 
   return (
     <div
-      className={`${className} rounded-full bg-gradient-to-tr from-primary to-primary text-white font-bold flex items-center justify-center shrink-0 border border-stone-700/60 shadow-xs`}
+      className={`${className} rounded-full bg-primary text-white font-bold flex items-center justify-center shrink-0 border border-stone-700/60 shadow-xs`}
     >
       {initial}
     </div>

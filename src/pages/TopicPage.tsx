@@ -139,18 +139,18 @@ const ContentTOC = memo(function ContentTOC({ markdown }: { markdown: string }) 
 
   return (
     <div className="space-y-0.5">
-      <p className="text-[10px] font-semibold text-muted-foreground dark:text-stone-400 uppercase tracking-wider mb-2 px-2">On This Page</p>
+      <p className="text-[11px] font-semibold text-muted-foreground dark:text-stone-400 mb-2 px-2">On This Page</p>
       {toc.map((item) => (
         <a
           key={item.id}
           href={`#${item.id}`}
           className={`block text-[12px] py-1.5 transition-colors rounded-lg ${
-            item.level === 3 ? "pl-6" : "pl-2"
-          } ${
-            activeId === item.id
-              ? "text-primary font-medium bg-primary/10"
-              : "text-white/60 hover:text-white hover:bg-white/10"
-          } press`}
+ item.level === 3 ? "pl-6" : "pl-2"
+ } ${
+ activeId === item.id
+ ? "text-primary font-medium bg-primary/10"
+ : "text-white/60 hover:text-white hover:bg-white/10"
+ } press`}
         >
           {item.text}
         </a>
@@ -417,10 +417,10 @@ export default function TopicPage() {
             <button
               onClick={handleComplete}
               className={`h-8 sm:h-9 px-2.5 sm:px-4 rounded-full text-[12px] sm:text-[13px] font-semibold inline-flex items-center gap-1.5 sm:gap-2 transition-all press cursor-pointer ${
-                completed
-                  ? "bg-accent text-foreground font-bold shadow-2xs"
-                  : "bg-foreground dark:bg-white text-white dark:text-foreground hover:bg-[#222222] dark:hover:bg-stone-200"
-              }`}
+ completed
+ ? "bg-accent text-foreground font-bold shadow-2xs"
+ : "bg-foreground dark:bg-white text-white dark:text-foreground hover:bg-[#222222] dark:hover:bg-stone-200"
+ }`}
             >
               <CheckCircle className="h-4 w-4" />
               <span className="hidden sm:inline">{completed ? "Completed" : "Mark Complete"}</span>
@@ -437,10 +437,10 @@ export default function TopicPage() {
               }}
               title={isPomodoroRunning ? `Focus session active: ${Math.floor(pomodoroTimeLeft / 60)}m left` : "Start 25m Focus Sprint directly"}
               className={`hidden sm:inline-flex h-8 sm:h-9 px-2.5 sm:px-3 rounded-full text-[12px] sm:text-[13px] font-semibold items-center gap-1.5 transition-all press cursor-pointer border border-border dark:border-stone-800 ${
-                isPomodoroRunning
-                  ? "bg-primary/10 text-primary dark:bg-primary/15 dark:text-primary font-bold animate-pulse"
-                  : "bg-white dark:bg-background text-foreground dark:text-white hover:bg-background dark:hover:bg-stone-800"
-              }`}
+ isPomodoroRunning
+ ? "bg-primary/10 text-primary dark:bg-primary/15 dark:text-primary font-bold animate-pulse"
+ : "bg-white dark:bg-background text-foreground dark:text-white hover:bg-background dark:hover:bg-stone-800"
+ }`}
             >
               <Clock className={`h-4 w-4 ${isPomodoroRunning ? "text-primary" : "text-muted-foreground"}`} />
               <span className="hidden md:inline font-mono">
@@ -474,7 +474,7 @@ export default function TopicPage() {
             >
               <Highlighter className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
               {annotations.length > 0 && (
-                <span className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-primary text-white font-bold text-[9px] flex items-center justify-center">
+                <span className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-primary text-white font-bold text-[11px] flex items-center justify-center">
                   {annotations.length}
                 </span>
               )}
@@ -547,7 +547,7 @@ export default function TopicPage() {
             </div>
             {allUnits.map((unit, uIdx) => (
               <div key={unit.id} className="mb-4">
-                <p className="text-[11px] font-bold text-muted-foreground dark:text-stone-400 uppercase tracking-wider mb-1.5 px-2">
+                <p className="text-[11px] font-bold text-muted-foreground dark:text-stone-400 mb-1.5 px-2">
                   Unit {uIdx + 1}: {unit.title}
                 </p>
                 <div className="space-y-0.5">
@@ -560,10 +560,10 @@ export default function TopicPage() {
                         to={`/subject/${subjectId}/topic/${t.id}`}
                         onClick={() => setSidebarOpen(false)}
                         className={`flex items-center justify-between text-xs py-1.5 px-2.5 rounded-lg transition-colors press ${
-                          isActive
-                            ? "bg-primary/10 text-primary dark:bg-primary/15 dark:text-primary font-bold shadow-2xs"
-                            : "text-muted-foreground dark:text-stone-400 hover:text-foreground dark:hover:text-white hover:bg-background dark:hover:bg-stone-800"
-                        }`}
+ isActive
+ ? "bg-primary/10 text-primary dark:bg-primary/15 dark:text-primary font-bold shadow-2xs"
+ : "text-muted-foreground dark:text-stone-400 hover:text-foreground dark:hover:text-white hover:bg-background dark:hover:bg-stone-800"
+ }`}
                       >
                         <span className="truncate pr-2">{t.title}</span>
                         {isDone && <CheckCircle className={`h-3.5 w-3.5 shrink-0 ${isActive ? "text-white" : "text-accent-foreground"}`} />}
@@ -594,7 +594,7 @@ export default function TopicPage() {
           <div className="flex gap-0">
             <div className={`${focusMode ? "max-w-4xl mx-auto" : "flex-1 min-w-0"} px-4 sm:px-6 md:px-12 py-6 sm:py-10 transition-all duration-300`}>
               <div className="flex items-center justify-between gap-2 mb-3">
-                <p className="text-[11px] sm:text-[13px] text-primary font-bold uppercase tracking-widest">{unitTitle}</p>
+                <p className="text-[11px] sm:text-[13px] text-primary font-bold ">{unitTitle}</p>
 
                 <div className="flex items-center gap-1.5">
                   <button
@@ -664,7 +664,7 @@ export default function TopicPage() {
                       )}
                     </div>
                     <div className="mb-6 sm:mb-10 bg-primary/10 dark:bg-stone-800/60 rounded-2xl p-5 sm:p-6 border border-primary/20 shadow-2xs">
-                      <p className="text-[11px] sm:text-[12px] font-bold text-primary dark:text-primary uppercase tracking-widest mb-2 sm:mb-3 flex items-center gap-2">
+                      <p className="text-[11px] sm:text-[12px] font-bold text-primary dark:text-primary mb-2 sm:mb-3 flex items-center gap-2">
                         <BookOpen className="h-4 w-4" /> Quick Summary
                       </p>
                       <p className="font-reading text-[16px] sm:text-[18px] leading-[1.75] text-foreground">{topic.simpleExplanation}</p>
@@ -852,7 +852,7 @@ export default function TopicPage() {
               ) : (
                 annotations.map((ann) => (
                   <div key={ann.id} className="p-3 rounded-xl bg-white/5 border border-white/10 space-y-2 relative group press">
-                    <div className="flex items-center justify-between text-[10px] text-white/60">
+                    <div className="flex items-center justify-between text-[11px] text-white/60">
                       <span className="font-mono font-bold uppercase">
                         {ann.type === 'sticky_note' ? '📝 Personal Note' : '🟨 Text Highlight'}
                       </span>
@@ -877,7 +877,7 @@ export default function TopicPage() {
                       </p>
                     )}
 
-                    <span className="text-[9px] text-white/40 block text-right">
+                    <span className="text-[11px] text-white/40 block text-right">
                       {new Date(ann.createdAt).toLocaleDateString()}
                     </span>
                   </div>

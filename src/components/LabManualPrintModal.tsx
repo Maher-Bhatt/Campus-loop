@@ -72,10 +72,10 @@ export function LabManualPrintModal({
         <div className="p-6 sm:p-10 overflow-y-auto space-y-6 text-foreground print:p-0 print:text-black">
           {/* University Header */}
           <div className="text-center pb-4 border-b-2 border-black/80 space-y-1">
-            <h1 className="text-xl sm:text-2xl font-bold uppercase tracking-wider font-display">
+            <h1 className="text-xl sm:text-2xl font-bold font-display">
               ITM (SLS) Baroda University
             </h1>
-            <h2 className="text-sm font-bold text-muted-foreground print:text-black uppercase tracking-wide">
+            <h2 className="text-sm font-bold text-muted-foreground print:text-black ">
               School of Computer Science & Engineering · Department of Information Technology
             </h2>
             <div className="inline-block mt-1 px-3 py-0.5 rounded-full bg-secondary text-[11px] font-mono font-bold uppercase print:border print:border-black">
@@ -86,26 +86,26 @@ export function LabManualPrintModal({
           {/* Student Info Box */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 p-3.5 rounded-xl border border-border bg-secondary/20 text-xs font-mono print:border-black print:bg-white">
             <div>
-              <span className="text-[10px] text-muted-foreground print:text-black uppercase block">Student Name:</span>
+              <span className="text-[11px] text-muted-foreground print:text-black uppercase block">Student Name:</span>
               <strong className="text-foreground print:text-black">{studentName}</strong>
             </div>
             <div>
-              <span className="text-[10px] text-muted-foreground print:text-black uppercase block">Enrollment No:</span>
+              <span className="text-[11px] text-muted-foreground print:text-black uppercase block">Enrollment No:</span>
               <strong className="text-foreground print:text-black">{enrollmentNo}</strong>
             </div>
             <div>
-              <span className="text-[10px] text-muted-foreground print:text-black uppercase block">Subject Code:</span>
+              <span className="text-[11px] text-muted-foreground print:text-black uppercase block">Subject Code:</span>
               <strong className="text-foreground print:text-black">{data.subjectCode}</strong>
             </div>
             <div>
-              <span className="text-[10px] text-muted-foreground print:text-black uppercase block">Practical No:</span>
+              <span className="text-[11px] text-muted-foreground print:text-black uppercase block">Practical No:</span>
               <strong className="text-primary print:text-black font-bold">Practical {data.practicalNumber}</strong>
             </div>
           </div>
 
           {/* 1. AIM */}
           <div className="space-y-1.5">
-            <h3 className="font-bold text-sm uppercase tracking-wide border-b border-border/80 pb-1 text-primary print:text-black">
+            <h3 className="font-bold text-sm border-b border-border/80 pb-1 text-primary print:text-black">
               1. Aim / Objective
             </h3>
             <p className="text-xs leading-relaxed font-medium">
@@ -115,7 +115,7 @@ export function LabManualPrintModal({
 
           {/* 2. THEORY */}
           <div className="space-y-1.5">
-            <h3 className="font-bold text-sm uppercase tracking-wide border-b border-border/80 pb-1 text-primary print:text-black">
+            <h3 className="font-bold text-sm border-b border-border/80 pb-1 text-primary print:text-black">
               2. Theoretical Background & Invariants
             </h3>
             <p className="text-xs leading-relaxed text-muted-foreground print:text-black">
@@ -125,7 +125,7 @@ export function LabManualPrintModal({
 
           {/* 3. ALGORITHM */}
           <div className="space-y-2">
-            <h3 className="font-bold text-sm uppercase tracking-wide border-b border-border/80 pb-1 text-primary print:text-black">
+            <h3 className="font-bold text-sm border-b border-border/80 pb-1 text-primary print:text-black">
               3. Algorithm / Step-by-Step Procedure
             </h3>
             <ol className="list-decimal list-inside space-y-1 text-xs text-muted-foreground print:text-black font-mono">
@@ -139,7 +139,7 @@ export function LabManualPrintModal({
 
           {/* 4. SOURCE CODE */}
           <div className="space-y-2">
-            <h3 className="font-bold text-sm uppercase tracking-wide border-b border-border/80 pb-1 text-primary print:text-black">
+            <h3 className="font-bold text-sm border-b border-border/80 pb-1 text-primary print:text-black">
               4. Verified Source Code Implementation
             </h3>
             <pre className="p-4 rounded-xl bg-stone-950 text-stone-100 font-mono text-[11px] leading-relaxed overflow-x-auto border border-stone-800 print:bg-white print:text-black print:border-black">
@@ -149,7 +149,7 @@ export function LabManualPrintModal({
 
           {/* 5. EXECUTION OUTPUT */}
           <div className="space-y-2">
-            <h3 className="font-bold text-sm uppercase tracking-wide border-b border-border/80 pb-1 text-primary print:text-black">
+            <h3 className="font-bold text-sm border-b border-border/80 pb-1 text-primary print:text-black">
               5. Standard Console Execution Output
             </h3>
             <pre className="p-3.5 rounded-xl bg-stone-900 text-primary font-mono text-[11px] leading-relaxed border border-stone-800 print:bg-white print:text-black print:border-black">
@@ -160,7 +160,7 @@ export function LabManualPrintModal({
           {/* 6. VIVA QUESTIONS */}
           {data.vivaQuestions && data.vivaQuestions.length > 0 && (
             <div className="space-y-2">
-              <h3 className="font-bold text-sm uppercase tracking-wide border-b border-border/80 pb-1 text-primary print:text-black">
+              <h3 className="font-bold text-sm border-b border-border/80 pb-1 text-primary print:text-black">
                 6. Viva Voce Questions & Answers
               </h3>
               <div className="space-y-2 text-xs">
@@ -177,15 +177,15 @@ export function LabManualPrintModal({
           {/* Faculty Signature & Grading Box */}
           <div className="grid grid-cols-3 gap-4 pt-8 border-t-2 border-black/80 text-xs font-mono">
             <div>
-              <p className="text-[10px] uppercase text-muted-foreground print:text-black">Date of Submission:</p>
+              <p className="text-[11px] uppercase text-muted-foreground print:text-black">Date of Submission:</p>
               <p className="font-bold pt-1">___ / ___ / 2026</p>
             </div>
             <div className="text-center">
-              <p className="text-[10px] uppercase text-muted-foreground print:text-black">Marks / Grade Awarded:</p>
+              <p className="text-[11px] uppercase text-muted-foreground print:text-black">Marks / Grade Awarded:</p>
               <p className="font-bold pt-1">[ ____ / 10 ]</p>
             </div>
             <div className="text-right">
-              <p className="text-[10px] uppercase text-muted-foreground print:text-black">Faculty Signature:</p>
+              <p className="text-[11px] uppercase text-muted-foreground print:text-black">Faculty Signature:</p>
               <div className="h-6 border-b border-dotted border-black/60 mt-1 inline-block w-32" />
             </div>
           </div>

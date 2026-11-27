@@ -8,8 +8,8 @@ import {
   FileText,
   Check,
   X,
-  Sparkles,
-} from "lucide-react";
+  Lightbulb
+} from 'lucide-react';
 import { subjects } from "@/data/subjects";
 import {
   parseAndValidateQuestionsCsv,
@@ -141,7 +141,7 @@ export function AdminBulkToolsTab() {
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
           <div>
-            <label className="text-[11px] font-bold uppercase tracking-wider text-stone-400 block mb-1">
+            <label className="text-[11px] font-bold text-stone-400 block mb-1">
               Semester
             </label>
             <select
@@ -157,7 +157,7 @@ export function AdminBulkToolsTab() {
           </div>
 
           <div>
-            <label className="text-[11px] font-bold uppercase tracking-wider text-stone-400 block mb-1">
+            <label className="text-[11px] font-bold text-stone-400 block mb-1">
               Subject
             </label>
             <select
@@ -174,7 +174,7 @@ export function AdminBulkToolsTab() {
           </div>
 
           <div>
-            <label className="text-[11px] font-bold uppercase tracking-wider text-stone-400 block mb-1">
+            <label className="text-[11px] font-bold text-stone-400 block mb-1">
               Category
             </label>
             <select
@@ -261,7 +261,7 @@ export function AdminBulkToolsTab() {
         </div>
 
         <div>
-          <label className="text-[11px] font-bold uppercase tracking-wider text-stone-400 block mb-1">
+          <label className="text-[11px] font-bold text-stone-400 block mb-1">
             CSV Content (Header: question, option_a, option_b, option_c, option_d, correct_answer, explanation)
           </label>
           <textarea
@@ -323,7 +323,7 @@ export function AdminBulkToolsTab() {
                 <div key={r.rowNumber} className="bg-stone-900/60 border border-stone-700/60 rounded-xl p-3 text-xs space-y-1">
                   <div className="flex items-center justify-between">
                     <span className="text-white font-medium truncate max-w-md">{r.question}</span>
-                    <span className="px-2 py-0.5 rounded bg-primary/10 text-primary font-mono font-bold text-[10px]">
+                    <span className="px-2 py-0.5 rounded bg-primary/10 text-primary font-mono font-bold text-[11px]">
                       Correct: {r.correctAnswer}
                     </span>
                   </div>

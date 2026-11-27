@@ -98,7 +98,7 @@ export function ReportErrataModal({
         <form onSubmit={handleSubmit} className="p-5 space-y-3.5 text-xs">
           {topicTitle && (
             <div className="p-2.5 rounded-xl bg-secondary/40 border border-border">
-              <span className="text-[10px] text-muted-foreground uppercase font-bold block">Topic:</span>
+              <span className="text-[11px] text-muted-foreground uppercase font-bold block">Topic:</span>
               <span className="font-bold text-foreground">{topicTitle}</span>
             </div>
           )}

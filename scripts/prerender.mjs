@@ -54,7 +54,7 @@ function withBody(html, body) {
 }
 
 const shell = (inner) =>
-  `<main style="max-width:46rem;margin:0 auto;padding:2.5rem 1.25rem;font-family:Georgia,serif;line-height:1.7;color:#201B16">${inner}</main>`;
+  `<main style="max-width:46rem;margin:0 auto;padding:2.5rem 1.25rem;font-family:system-ui,-apple-system,sans-serif;line-height:1.7;color:#18181B">${inner}</main>`;
 
 const crumbs = (items) =>
   `<nav aria-label="Breadcrumb" style="font-family:system-ui,sans-serif;font-size:14px">${items
@@ -71,7 +71,9 @@ function ogImageFor(subject, doc) {
   return fs.existsSync(path.join(DIST, rel)) ? `${SITE}/${rel}` : `${SITE}/og-image.png`;
 }
 
-function write(route, html) {
+const indexable = [];
+function write(route, html, { index = true } = {}) {
+  if (index) indexable.push(route);
   const file = path.join(DIST, `${route.replace(/^\//, "")}.html`);
   fs.mkdirSync(path.dirname(file), { recursive: true });
   fs.writeFileSync(file, html);
@@ -243,14 +245,15 @@ for (const [slug, page] of Object.entries(infoPages)) {
 // Aliases for policy routes
 if (infoPages.refund) {
   const route = `/refund-policy`;
-  const html = setMeta(template, { title: `${infoPages.refund.title} | CampusLoop`, description: infoPages.refund.description, url: `${SITE}${route}`, image: ogImageFor() });
-  write(route, withBody(html, shell(`<h1>${esc(infoPages.refund.title)}</h1>${renderMarkdown(infoPages.refund.body)}`)));
+  // Alias: canonical points at /refund so search engines don't see duplicate pages
+  const html = setMeta(template, { title: `${infoPages.refund.title} | CampusLoop`, description: infoPages.refund.description, url: `${SITE}/refund`, image: ogImageFor() });
+  write(route, withBody(html, shell(`<h1>${esc(infoPages.refund.title)}</h1>${renderMarkdown(infoPages.refund.body)}`)), { index: false });
   count++;
 }
 if (infoPages.cookies) {
   const route = `/cookie-policy`;
-  const html = setMeta(template, { title: `${infoPages.cookies.title} | CampusLoop`, description: infoPages.cookies.description, url: `${SITE}${route}`, image: ogImageFor() });
-  write(route, withBody(html, shell(`<h1>${esc(infoPages.cookies.title)}</h1>${renderMarkdown(infoPages.cookies.body)}`)));
+  const html = setMeta(template, { title: `${infoPages.cookies.title} | CampusLoop`, description: infoPages.cookies.description, url: `${SITE}/cookies`, image: ogImageFor() });
+  write(route, withBody(html, shell(`<h1>${esc(infoPages.cookies.title)}</h1>${renderMarkdown(infoPages.cookies.body)}`)), { index: false });
   count++;
 }
 // ── Exam-technique guides ────────────────────────────────────────────────────
@@ -281,6 +284,14 @@ for (const [slug, page] of Object.entries(guides)) {
 // ── App SPA Routes (Ensures direct URLs and refreshes never 404 with cleanUrls) ──
 const SPA_ROUTES = [
   "dashboard",
+  "practice",
+  "imp-questions",
+  "rapid-revision",
+  "formulas",
+  "study-planner",
+  "calculator",
+  "bookmarks",
+  "inbox",
   "auth",
   "coding-lab",
   "subjects",
@@ -312,5 +323,28 @@ for (const r of SPA_ROUTES) {
 
 // Universal fallback for any dynamic path (e.g. /subject/:id, /user/:id)
 fs.writeFileSync(path.join(DIST, "404.html"), template);
+
+// ── Sitemap: generated from what was actually prerendered, so it never drifts ──
+{
+  const today = new Date().toISOString().slice(0, 10);
+  const priority = (r) => (r === "/" ? "1.0" : r === "/library" || r === "/exam-plan" || r === "/papers" ? "0.9" : /^\/library\/[^/]+$/.test(r) ? "0.8" : r.startsWith("/library/") ? "0.7" : "0.4");
+  const freq = (r) => (r === "/" || r.startsWith("/library") || r === "/exam-plan" || r === "/papers" ? "weekly" : "monthly");
+  const urls = ["/", ...indexable.filter((r) => r !== "/")];
+  const xml =
+    `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+` +
+    urls.map((r) => `  <url>
+    <loc>${SITE}${r === "/" ? "/" : r}</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>${freq(r)}</changefreq>
+    <priority>${priority(r)}</priority>
+  </url>`).join("\n") +
+    `
+</urlset>
+`;
+  fs.writeFileSync(path.join(DIST, "sitemap.xml"), xml);
+  console.log(`sitemap: ${urls.length} URLs`);
+}
 
 console.log(`prerendered ${count} public pages`);

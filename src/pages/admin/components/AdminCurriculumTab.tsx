@@ -1,9 +1,22 @@
 import { useState, useMemo } from "react";
-import { 
-  BookOpen, Search, Plus, Filter, CheckCircle2, XCircle, 
-  Layers, ChevronRight, Eye, Edit3, Trash2, Download, 
-  Sparkles, RefreshCw, GraduationCap, Building2, Check
-} from "lucide-react";
+import { BookOpen,
+  Search,
+  Plus,
+  Filter,
+  CheckCircle2,
+  XCircle,
+  Layers,
+  ChevronRight,
+  Eye,
+  Edit3,
+  Trash2,
+  Download,
+  Lightbulb,
+  RefreshCw,
+  GraduationCap,
+  Building2,
+  Check
+} from 'lucide-react';
 import { ALL_SUBJECTS_METADATA, SubjectMeta } from "@/pages/CodingLabPage";
 import { subjects } from "@/data/subjects";
 import type { Subject } from "@/data/types";
@@ -141,7 +154,7 @@ export function AdminCurriculumTab() {
       {/* KPI Cards */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
         <div className="p-4 rounded-2xl bg-card border border-border">
-          <span className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground block">
+          <span className="text-[11px] font-bold text-muted-foreground block">
             Accredited Courses
           </span>
           <span className="text-2xl font-bold text-foreground mt-1 block">
@@ -153,7 +166,7 @@ export function AdminCurriculumTab() {
         </div>
 
         <div className="p-4 rounded-2xl bg-card border border-border">
-          <span className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground block">
+          <span className="text-[11px] font-bold text-muted-foreground block">
             Academic Semesters
           </span>
           <span className="text-2xl font-bold text-foreground mt-1 block">
@@ -165,7 +178,7 @@ export function AdminCurriculumTab() {
         </div>
 
         <div className="p-4 rounded-2xl bg-card border border-border">
-          <span className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground block">
+          <span className="text-[11px] font-bold text-muted-foreground block">
             Curriculum Units
           </span>
           <span className="text-2xl font-bold text-foreground mt-1 block">
@@ -177,7 +190,7 @@ export function AdminCurriculumTab() {
         </div>
 
         <div className="p-4 rounded-2xl bg-card border border-border">
-          <span className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground block">
+          <span className="text-[11px] font-bold text-muted-foreground block">
             Departments
           </span>
           <span className="text-2xl font-bold text-foreground mt-1 block">
@@ -205,16 +218,16 @@ export function AdminCurriculumTab() {
 
         {/* Department Filter Bar */}
         <div className="flex items-center gap-1.5 overflow-x-auto scrollbar-none pb-1">
-          <span className="text-[10px] font-bold uppercase text-muted-foreground shrink-0 mr-1">Dept:</span>
+          <span className="text-[11px] font-bold uppercase text-muted-foreground shrink-0 mr-1">Dept:</span>
           {departments.map((dept) => (
             <button
               key={dept.id}
               onClick={() => setSelectedDepartment(dept.id)}
               className={`px-3 py-1 rounded-full text-xs font-bold transition-all cursor-pointer whitespace-nowrap ${
-                selectedDepartment === dept.id
-                  ? "bg-primary text-primary-foreground shadow-xs"
-                  : "bg-muted text-muted-foreground hover:bg-accent"
-              }`}
+ selectedDepartment === dept.id
+ ? "bg-primary text-primary-foreground shadow-xs"
+ : "bg-muted text-muted-foreground hover:bg-accent"
+ }`}
             >
               {dept.name}
             </button>
@@ -223,16 +236,16 @@ export function AdminCurriculumTab() {
 
         {/* Semester Filter Bar */}
         <div className="flex items-center gap-1.5 overflow-x-auto scrollbar-none pb-1">
-          <span className="text-[10px] font-bold uppercase text-muted-foreground shrink-0 mr-1">Semester:</span>
+          <span className="text-[11px] font-bold uppercase text-muted-foreground shrink-0 mr-1">Semester:</span>
           {(["all", 1, 2, 3, 4, 5, 6, 7, 8] as const).map((sem) => (
             <button
               key={String(sem)}
               onClick={() => setSelectedSemester(sem)}
               className={`px-3 py-1 rounded-full text-xs font-bold transition-all cursor-pointer whitespace-nowrap ${
-                selectedSemester === sem
-                  ? "bg-success text-white shadow-xs"
-                  : "bg-muted text-muted-foreground hover:bg-accent"
-              }`}
+ selectedSemester === sem
+ ? "bg-success text-white shadow-xs"
+ : "bg-muted text-muted-foreground hover:bg-accent"
+ }`}
             >
               {sem === "all" ? "All Semesters" : `Semester ${sem}`}
             </button>
@@ -249,7 +262,7 @@ export function AdminCurriculumTab() {
           >
             <div>
               <div className="flex items-center justify-between gap-2">
-                <span className={`text-[10px] font-bold px-2.5 py-0.5 rounded-full border ${subject.badgeClass}`}>
+                <span className={`text-[11px] font-bold px-2.5 py-0.5 rounded-full border ${subject.badgeClass}`}>
                   Semester {subject.semester} · {subject.code}
                 </span>
                 <span className="text-xl shrink-0">{subject.icon}</span>
@@ -302,7 +315,7 @@ export function AdminCurriculumTab() {
             </div>
 
             <div className="space-y-3">
-              <h5 className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
+              <h5 className="text-xs font-bold text-muted-foreground">
                 Accredited 5-Unit Syllabus Architecture
               </h5>
 

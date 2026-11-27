@@ -1,35 +1,32 @@
-import React, { useState } from 'react';
-import { useLocation, Link, useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useLocation, Link } from 'react-router-dom';
 import {
   Library,
-  LayoutDashboard,
-  Target,
   Home,
-  Compass,
-  PlusCircle,
-  MessageSquare,
-  User,
+  Users,
   BookOpen,
   Code2,
-  HelpCircle,
   Calculator,
-  Calendar,
+  CalendarDays,
+  ListChecks,
+  Target,
   FileText,
-  Zap,
   Bookmark,
   Shield,
-  Sparkles,
   ChevronDown,
-  ChevronRight,
   LogOut,
+  MessageSquare,
+  BarChart3,
   X,
+  type LucideIcon,
 } from 'lucide-react';
 import { CampusLoopLogo } from './CampusLoopLogo';
 import { CampusAvatar } from './CampusAvatar';
 import { CampusCountBadge } from './CampusCountBadge';
 import { useAuth } from '@/contexts/AuthContext';
-import { openCampusCreateModal } from './CampusBottomNav';
 import { UniversityDropdown } from './UniversityDropdown';
+import { PRACTICE_PATHS } from '@/lib/navigation';
+import { resolveAvatarUrl } from '@/components/UserAvatar';
 
 export interface CampusSidebarProps {
   isOpen?: boolean;
@@ -37,247 +34,138 @@ export interface CampusSidebarProps {
   unreadMessagesCount?: number;
 }
 
-export const CampusSidebar: React.FC<CampusSidebarProps> = ({
-  isOpen = false,
-  onClose,
-  unreadMessagesCount = 0,
-}) => {
-  const location = useLocation();
-  const navigate = useNavigate();
+interface NavItem {
+  name: string;
+  path: string;
+  icon: LucideIcon;
+  /** Other path prefixes that should highlight this item */
+  match?: string[];
+  badge?: number;
+}
+
+
+const PRIMARY: NavItem[] = [
+  { name: 'Home', path: '/dashboard', icon: Home },
+  { name: 'Library', path: '/library', icon: Library },
+  { name: 'Subjects', path: '/subjects', icon: BookOpen, match: ['/subject/'] },
+  { name: 'Practice', path: '/practice', icon: ListChecks, match: PRACTICE_PATHS },
+  { name: 'Exam plan', path: '/exam-plan', icon: Target, match: ['/today'] },
+  { name: 'Coding lab', path: '/coding-lab', icon: Code2 },
+  { name: 'Campus', path: '/community', icon: Users, match: ['/social', '/explore'] },
+];
+
+const isActive = (pathname: string, item: NavItem) => {
+  if (item.path === '/dashboard') return pathname === '/dashboard';
+  return [item.path, ...(item.match ?? [])].some((p) => pathname === p || pathname.startsWith(p.endsWith('/') ? p : `${p}/`));
+};
+
+function NavRow({ item, active, onClick }: { item: NavItem; active: boolean; onClick?: () => void }) {
+  const Icon = item.icon;
+  return (
+    <Link
+      to={item.path}
+      onClick={onClick}
+      aria-current={active ? 'page' : undefined}
+      className={`flex items-center gap-3 h-9 px-2.5 rounded-md text-sm transition-colors ${
+ active
+ ? 'bg-secondary text-foreground font-medium'
+ : 'text-muted-foreground hover:text-foreground hover:bg-secondary/60'
+ }`}
+    >
+      <Icon className={`w-[18px] h-[18px] shrink-0 ${active ? 'text-primary' : ''}`} strokeWidth={1.8} />
+      <span className="truncate flex-1">{item.name}</span>
+      {item.badge ? <CampusCountBadge count={item.badge} /> : null}
+    </Link>
+  );
+}
+
+export const CampusSidebar: React.FC<CampusSidebarProps> = ({ isOpen = false, onClose, unreadMessagesCount = 0 }) => {
+  const { pathname } = useLocation();
   const { user, profile, role, signOut } = useAuth();
-  const [academicToolsOpen, setAcademicToolsOpen] = useState(false);
+  const isAdmin = role === 'admin' || user?.email?.toLowerCase() === 'maherbhatt01@gmail.com';
 
-  const currentPath = location.pathname;
-
-  const isHomeActive =
-    currentPath === '/community' ||
-    currentPath === '/social';
-  const isExploreActive = currentPath.startsWith('/explore');
-  const isInboxActive = currentPath.startsWith('/inbox') || currentPath.startsWith('/messages');
-  const isProfileActive = currentPath.startsWith('/profile') || currentPath === '/auth';
-
-  // 5 Core Campus Destinations (Matches mobile nav exactly)
-  const coreDestinations = [
-    {
-      name: 'Campus Feed',
-      path: '/community',
-      icon: Home,
-      isActive: isHomeActive,
-    },
-    {
-      name: 'Explore',
-      path: '/explore',
-      icon: Compass,
-      isActive: isExploreActive,
-    },
-    {
-      name: 'Create Post',
-      path: '#create',
-      icon: PlusCircle,
-      isActive: false,
-      isAction: true,
-      onClick: () => {
-        openCampusCreateModal();
-        onClose?.();
-      },
-    },
-    {
-      name: 'Messages',
-      path: '/inbox',
-      icon: MessageSquare,
-      isActive: isInboxActive,
-      badge: unreadMessagesCount > 0 ? unreadMessagesCount : undefined,
-    },
-    {
-      name: 'Profile',
-      path: '/profile',
-      icon: User,
-      isActive: isProfileActive,
-    },
-  ];
-
-  const isVerifiedAdmin = role === 'admin' || user?.email?.toLowerCase() === 'maherbhatt01@gmail.com';
-
-  // Study-first navigation (exam season)
-  const studyTools = [
-    { name: 'Dashboard', path: '/dashboard', icon: LayoutDashboard },
-    { name: 'Library', path: '/library', icon: Library },
-    { name: 'Exam plan', path: '/exam-plan', icon: Target },
-    { name: 'Today', path: '/today', icon: Calendar },
-    { name: 'Subjects & Topics', path: '/subjects', icon: BookOpen },
-    { name: 'Question Banks', path: '/imp-questions', icon: HelpCircle },
-    { name: 'Past Papers', path: '/papers', icon: FileText },
-    { name: 'Mock Exams', path: '/mock-exam', icon: Sparkles },
-    { name: 'Rapid Revision', path: '/rapid-revision', icon: Zap },
-    { name: 'Formula Bank', path: '/formulas', icon: BookOpen },
-    { name: 'Coding Lab', path: '/coding-lab', icon: Code2 },
-  ];
-
-  const academicTools = [
-    { name: 'Study Planner', path: '/study-planner', icon: Calendar },
-    { name: 'Attendance & SGPA', path: '/calculator', icon: Calculator },
-    { name: 'Study Materials', path: '/materials', icon: FileText },
+  const more: NavItem[] = [
+    { name: 'Study planner', path: '/study-planner', icon: CalendarDays },
+    { name: 'Attendance & SGPA', path: '/calculator', icon: Calculator, match: ['/gpa-calculator'] },
+    { name: 'Study materials', path: '/materials', icon: FileText },
+    { name: 'Progress', path: '/analytics', icon: BarChart3 },
+    { name: 'Messages', path: '/inbox', icon: MessageSquare, match: ['/messages'], badge: unreadMessagesCount || undefined },
     { name: 'Bookmarks', path: '/bookmarks', icon: Bookmark },
-    ...(isVerifiedAdmin ? [{ name: 'Admin', path: '/admin', icon: Shield }] : []),
+    ...(isAdmin ? [{ name: 'Admin', path: '/admin', icon: Shield }] : []),
   ];
 
-  const sidebarContent = (
-    <div className="flex flex-col h-full sidebar-dark border-r border-sidebar-border select-none">
-      {/* Top Brand Lockup */}
-      <div className="p-5 flex items-center justify-between border-b border-border dark:border-stone-800/80 shrink-0">
-        <Link to="/dashboard" onClick={onClose} className="hover:opacity-95 transition-opacity">
-          <CampusLoopLogo size="md" showSubtitle />
+  const moreHasActive = more.some((m) => isActive(pathname, m));
+  const [moreOpen, setMoreOpen] = useState(moreHasActive);
+  useEffect(() => {
+    if (moreHasActive) setMoreOpen(true);
+  }, [moreHasActive]);
+
+  const content = (
+    <div className="flex flex-col h-full bg-sidebar border-r border-sidebar-border select-none">
+      <div className="h-14 px-4 flex items-center justify-between shrink-0">
+        <Link to="/dashboard" onClick={onClose} aria-label="CampusLoop home">
+          <CampusLoopLogo size="sm" />
         </Link>
         {onClose && (
           <button
             type="button"
             onClick={onClose}
-            className="md:hidden p-1.5 rounded-full hover:bg-stone-100 dark:hover:bg-stone-800 text-stone-500"
+            aria-label="Close menu"
+            className="md:hidden p-1.5 rounded-md text-muted-foreground hover:bg-secondary"
           >
             <X className="w-5 h-5" />
           </button>
         )}
       </div>
 
-      {/* Gujarat Campus Selector Bar */}
-      <div className="px-4 py-2.5 border-b border-border dark:border-stone-800/60 bg-background/50 dark:bg-stone-900/40 shrink-0">
-        <UniversityDropdown variant="full" className="w-full justify-between" />
-      </div>
-
-      {/* Nav Content Scrollable */}
-      <div className="flex-1 overflow-y-auto px-3 py-4 space-y-6">
-        <div>
-          <div className="text-[11px] font-semibold uppercase tracking-[0.08em] text-muted-foreground px-3 mb-1.5">
-            Study
-          </div>
-          <div className="space-y-0.5">
-            {studyTools.map((tool) => {
-              const Icon = tool.icon;
-              const isActive = tool.path === '/dashboard' ? currentPath === '/dashboard' : currentPath.startsWith(tool.path);
-              return (
-                <Link
-                  key={tool.name}
-                  to={tool.path}
-                  onClick={onClose}
-                  className={`flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition-colors ${
-                    isActive
-                      ? 'bg-sidebar-accent text-sidebar-accent-foreground font-semibold shadow-sm'
-                      : 'text-muted-foreground hover:text-foreground hover:bg-secondary/60 font-medium'
-                  }`}
-                >
-                  <Icon className={`w-4 h-4 shrink-0 ${isActive ? 'text-primary' : ''}`} />
-                  <span className="truncate">{tool.name}</span>
-                </Link>
-              );
-            })}
-          </div>
+      <nav aria-label="Main" className="flex-1 overflow-y-auto px-3 pt-2 pb-4">
+        <div className="space-y-0.5">
+          {PRIMARY.map((item) => (
+            <NavRow key={item.path} item={item} active={isActive(pathname, item)} onClick={onClose} />
+          ))}
         </div>
 
-        <div>
-          <div className="text-[11px] font-semibold uppercase tracking-[0.08em] text-muted-foreground px-3 mb-1.5">
-            Campus
-          </div>
-          <div className="space-y-0.5">
-            {coreDestinations.map((item) => {
-              const Icon = item.icon;
-              if (item.isAction) {
-                return (
-                  <button
-                    key={item.name}
-                    type="button"
-                    onClick={item.onClick}
-                    className="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-secondary/60 transition-colors cursor-pointer"
-                  >
-                    <Icon className="w-4 h-4 shrink-0" />
-                    <span>{item.name}</span>
-                  </button>
-                );
-              }
-              return (
-                <Link
-                  key={item.name}
-                  to={item.path}
-                  onClick={onClose}
-                  className={`flex items-center justify-between px-3 py-2 rounded-lg text-sm transition-colors ${
-                    item.isActive
-                      ? 'bg-sidebar-accent text-sidebar-accent-foreground font-semibold shadow-sm'
-                      : 'text-muted-foreground hover:text-foreground hover:bg-secondary/60 font-medium'
-                  }`}
-                >
-                  <div className="flex items-center gap-3">
-                    <Icon className={`w-4 h-4 shrink-0 ${item.isActive ? 'text-primary' : ''}`} />
-                    <span>{item.name}</span>
-                  </div>
-                  {item.badge && <CampusCountBadge count={item.badge} variant="blue" />}
-                </Link>
-              );
-            })}
-          </div>
-        </div>
-
-        <div>
+        <div className="mt-6">
           <button
             type="button"
-            onClick={() => setAcademicToolsOpen((prev) => !prev)}
-            className="w-full flex items-center justify-between px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.08em] text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
+            onClick={() => setMoreOpen((v) => !v)}
+            aria-expanded={moreOpen}
+            className="w-full flex items-center justify-between h-8 px-2.5 rounded-md text-xs font-medium text-muted-foreground hover:text-foreground cursor-pointer"
           >
-            <span>More tools</span>
-            {academicToolsOpen ? <ChevronDown className="w-3.5 h-3.5" /> : <ChevronRight className="w-3.5 h-3.5" />}
+            <span>More</span>
+            <ChevronDown className={`w-3.5 h-3.5 transition-transform ${moreOpen ? '' : '-rotate-90'}`} />
           </button>
-          {academicToolsOpen && (
-            <div className="mt-1 space-y-0.5">
-              {academicTools.map((tool) => {
-                const Icon = tool.icon;
-                const isActive = currentPath.startsWith(tool.path);
-                return (
-                  <Link
-                    key={tool.name}
-                    to={tool.path}
-                    onClick={onClose}
-                    className={`flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition-colors ${
-                      isActive
-                        ? 'bg-sidebar-accent text-sidebar-accent-foreground font-semibold shadow-sm'
-                        : 'text-muted-foreground hover:text-foreground hover:bg-secondary/60 font-medium'
-                    }`}
-                  >
-                    <Icon className={`w-4 h-4 shrink-0 ${isActive ? 'text-primary' : ''}`} />
-                    <span className="truncate">{tool.name}</span>
-                  </Link>
-                );
-              })}
+          {moreOpen && (
+            <div className="mt-0.5 space-y-0.5">
+              {more.map((item) => (
+                <NavRow key={item.path} item={item} active={isActive(pathname, item)} onClick={onClose} />
+              ))}
             </div>
           )}
         </div>
-      </div>
+      </nav>
 
-      {/* User Quick Profile Footer */}
-      <div className="p-3.5 border-t border-border dark:border-stone-800/80 shrink-0">
+      <div className="p-3 border-t border-sidebar-border shrink-0 space-y-2">
+        <UniversityDropdown variant="compact" className="w-full" />
         {user ? (
-          <div className="flex items-center justify-between gap-2 p-2 rounded-2xl hover:bg-background dark:hover:bg-stone-800/60 transition-colors">
+          <div className="flex items-center gap-1">
             <Link
               to="/profile"
               onClick={onClose}
-              className="flex items-center gap-2.5 min-w-0 flex-1"
+              className="flex items-center gap-2.5 min-w-0 flex-1 p-1.5 rounded-md hover:bg-secondary transition-colors"
             >
-              <CampusAvatar
-                name={profile?.display_name || user.email || 'Student'}
-                size={36}
-                limeRing
-              />
+              <CampusAvatar src={resolveAvatarUrl(profile, user)} name={profile?.display_name || user.email || 'Student'} size={32} />
               <div className="min-w-0">
-                <p className="text-sm font-bold text-foreground dark:text-white truncate">
-                  {profile?.display_name || 'Campus Student'}
-                </p>
-                <p className="text-xs text-muted-foreground dark:text-stone-400 truncate">
-                  {profile?.branch || 'Student'}
-                </p>
+                <p className="text-sm font-medium text-foreground truncate">{profile?.display_name || 'Student'}</p>
+                <p className="text-xs text-muted-foreground truncate">{profile?.branch || 'View profile'}</p>
               </div>
             </Link>
             <button
               type="button"
               onClick={() => signOut()}
-              title="Sign Out"
-              className="p-1.5 rounded-full text-stone-400 hover:text-destructive transition-colors"
+              title="Sign out"
+              aria-label="Sign out"
+              className="p-2 rounded-md text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors"
             >
               <LogOut className="w-4 h-4" />
             </button>
@@ -286,9 +174,9 @@ export const CampusSidebar: React.FC<CampusSidebarProps> = ({
           <Link
             to="/auth"
             onClick={onClose}
-            className="w-full flex items-center justify-center h-10 px-4 rounded-full bg-primary text-white font-bold text-sm hover:bg-primary transition-all"
+            className="flex items-center justify-center h-9 rounded-md bg-foreground text-background text-sm font-medium hover:bg-foreground/90"
           >
-            Sign In to Campus
+            Sign in
           </Link>
         )}
       </div>
@@ -297,20 +185,13 @@ export const CampusSidebar: React.FC<CampusSidebarProps> = ({
 
   return (
     <>
-      {/* Desktop Persistent Left Sidebar */}
-      <aside className="hidden md:flex flex-col w-64 lg:w-72 shrink-0 h-screen sticky top-0 z-30">
-        {sidebarContent}
-      </aside>
+      <aside className="hidden md:flex flex-col w-60 shrink-0 h-full z-30">{content}</aside>
 
-      {/* Mobile Slide-in Drawer */}
       {isOpen && (
         <div className="md:hidden fixed inset-0 z-50 flex">
-          <div
-            className="fixed inset-0 bg-black/50 backdrop-blur-xs transition-opacity"
-            onClick={onClose}
-          />
-          <div className="relative w-72 max-w-[85vw] h-full shadow-lg z-10 animate-in slide-in-from-left duration-200">
-            {sidebarContent}
+          <div className="fixed inset-0 bg-black/40" onClick={onClose} />
+          <div className="relative w-72 max-w-[85vw] h-full shadow-xl z-10 animate-in slide-in-from-left duration-200">
+            {content}
           </div>
         </div>
       )}

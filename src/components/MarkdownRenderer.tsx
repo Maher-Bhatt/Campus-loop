@@ -4,7 +4,7 @@ import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import remarkGfm from "remark-gfm";
 import "katex/dist/katex.min.css";
-import { Copy, Check, Info, Sparkles, AlertTriangle, AlertCircle } from "lucide-react";
+import { Copy, Check, Info, Lightbulb, AlertTriangle, AlertCircle } from 'lucide-react';
 import { MermaidDiagram } from "./MermaidDiagram";
 import { NormalDistributionChart, ScatterPlot, FrequencyBarChart } from "./ChartComponents";
 
@@ -177,7 +177,7 @@ const markdownComponents: import("react-markdown").Components = {
       let textCol = "text-primary dark:text-primary";
 
       if (type === "TIP") {
-        icon = <Sparkles className="h-4 w-4 text-success dark:text-success shrink-0 mt-0.5" />;
+        icon = <Lightbulb className="h-4 w-4 text-success dark:text-success shrink-0 mt-0.5" />;
         border = "border-success/30";
         bg = "bg-success/10 dark:bg-success/10";
         title = "Exam Tip";
@@ -200,7 +200,7 @@ const markdownComponents: import("react-markdown").Components = {
         <div className={`my-4 p-4 rounded-2xl border ${border} ${bg} flex items-start gap-3 text-xs leading-relaxed`}>
           {icon}
           <div className="flex-1">
-            <span className={`font-bold uppercase tracking-wider text-[10px] block mb-1 ${textCol}`}>
+            <span className={`font-bold text-[11px] block mb-1 ${textCol}`}>
               {title}
             </span>
             <p className="text-foreground/90 font-medium">{cleanText}</p>

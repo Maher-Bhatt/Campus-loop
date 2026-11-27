@@ -1,15 +1,14 @@
 import React, { useState, useMemo, useEffect } from 'react';
-import { 
-  Calendar as CalendarIcon, 
-  Clock, 
-  CheckCircle2, 
-  Sparkles, 
-  BookOpen, 
-  AlertCircle, 
-  Printer, 
-  Sliders, 
-  Award, 
-  CheckSquare, 
+import { Calendar as CalendarIcon,
+  Clock,
+  CheckCircle2,
+  Lightbulb,
+  BookOpen,
+  AlertCircle,
+  Printer,
+  Sliders,
+  Award,
+  CheckSquare,
   Square,
   ArrowRight,
   ChevronRight
@@ -62,7 +61,7 @@ export default function StudyPlannerPage() {
 
     addXp(30, 'Generated Exam Study Roadmap');
     unlockAchievement('speed-demon');
-    toast.success('🎉 Smart Study Plan Generated!', {
+    toast.success('Smart Study Plan Generated!', {
       description: `${newPlan.days.length} days scheduled dynamically by syllabus weightage.`,
     });
   };
@@ -93,7 +92,7 @@ export default function StudyPlannerPage() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-border/80 pb-6">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="px-2.5 py-0.5 rounded-full bg-primary/10 text-primary font-bold text-xs uppercase tracking-wide">
+            <span className="px-2.5 py-0.5 rounded-full bg-primary/10 text-primary font-bold text-xs ">
               Automated Academic Planner
             </span>
             <span className="px-2.5 py-0.5 rounded-full bg-primary/10 text-primary dark:text-primary font-semibold text-xs">
@@ -129,7 +128,7 @@ export default function StudyPlannerPage() {
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           {/* Exam Date */}
           <div>
-            <label className="text-xs font-bold text-muted-foreground uppercase tracking-wider block mb-1.5">
+            <label className="text-xs font-bold text-muted-foreground block mb-1.5">
               Exam Start Date:
             </label>
             <div className="relative">
@@ -148,7 +147,7 @@ export default function StudyPlannerPage() {
 
           {/* Daily Study Hours */}
           <div>
-            <label className="text-xs font-bold text-muted-foreground uppercase tracking-wider block mb-1.5">
+            <label className="text-xs font-bold text-muted-foreground block mb-1.5">
               Daily Study Hours ({dailyHours} hrs/day):
             </label>
             <div className="flex items-center gap-3 h-11 px-3 bg-secondary/50 border border-border rounded-2xl">
@@ -175,14 +174,14 @@ export default function StudyPlannerPage() {
               onClick={handleGenerate}
               className="w-full h-11 rounded-2xl bg-primary text-primary-foreground font-bold text-xs flex items-center justify-center gap-2 shadow-md hover:opacity-90 transition-all apple-press"
             >
-              <Sparkles className="h-4 w-4" /> {plan ? 'Regenerate Study Plan' : 'Generate Smart Plan'}
+              <Lightbulb className="h-4 w-4" /> {plan ? 'Regenerate Study Plan' : 'Generate Smart Plan'}
             </button>
           </div>
         </div>
 
         {/* Subjects Selection */}
         <div>
-          <label className="text-xs font-bold text-muted-foreground uppercase tracking-wider block mb-2">
+          <label className="text-xs font-bold text-muted-foreground block mb-2">
             Target Subjects for this Exam:
           </label>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
@@ -198,10 +197,10 @@ export default function StudyPlannerPage() {
                     );
                   }}
                   className={`p-2.5 rounded-xl border text-xs font-semibold flex items-center gap-2 text-left transition-all apple-press ${
-                    isChecked
-                      ? 'bg-primary/10 border-primary text-primary'
-                      : 'bg-secondary/40 border-border text-muted-foreground hover:text-foreground'
-                  }`}
+ isChecked
+ ? 'bg-primary/10 border-primary text-primary'
+ : 'bg-secondary/40 border-border text-muted-foreground hover:text-foreground'
+ }`}
                 >
                   {isChecked ? (
                     <CheckSquare className="h-4 w-4 shrink-0 text-primary" />
@@ -222,7 +221,7 @@ export default function StudyPlannerPage() {
           {/* Progress Overview */}
           <div className="bg-card border border-border/80 rounded-2xl p-6 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div className="space-y-1">
-              <span className="text-xs font-bold text-muted-foreground uppercase tracking-wider">
+              <span className="text-xs font-bold text-muted-foreground ">
                 Overall Study Plan Progress
               </span>
               <div className="flex items-baseline gap-2">
@@ -242,7 +241,7 @@ export default function StudyPlannerPage() {
                   style={{ width: `${progress.percent}%` }}
                 />
               </div>
-              <span className="text-[10px] text-muted-foreground text-right block">
+              <span className="text-[11px] text-muted-foreground text-right block">
                 Target completion date: {new Date(plan.examDate).toLocaleDateString()}
               </span>
             </div>
@@ -263,28 +262,28 @@ export default function StudyPlannerPage() {
                   <div
                     key={day.dayNumber}
                     className={`rounded-2xl border transition-all p-5 space-y-3 ${
-                      isToday
-                        ? 'bg-primary/5 border-primary shadow-md ring-1 ring-primary/40'
-                        : dayDone
-                        ? 'bg-primary/5 border-primary/30'
-                        : 'bg-card border-border/80'
-                    }`}
+ isToday
+ ? 'bg-primary/5 border-primary shadow-md ring-1 ring-primary/40'
+ : dayDone
+ ? 'bg-primary/5 border-primary/30'
+ : 'bg-card border-border/80'
+ }`}
                   >
                     {/* Day Header */}
                     <div className="flex items-center justify-between gap-2 border-b border-border/60 pb-3">
                       <div className="flex items-center gap-2">
                         <span className={`px-2.5 py-0.5 rounded-lg text-xs font-bold ${
-                          isToday
-                            ? 'bg-primary text-primary-foreground'
-                            : 'bg-secondary text-foreground'
-                        }`}>
+ isToday
+ ? 'bg-primary text-primary-foreground'
+ : 'bg-secondary text-foreground'
+ }`}>
                           Day {day.dayNumber}
                         </span>
                         <span className="text-xs font-bold text-foreground">
                           {new Date(day.date).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })}
                         </span>
                         {isToday && (
-                          <span className="px-2 py-0.5 rounded-full bg-primary/20 text-primary dark:text-primary font-bold text-[10px] animate-pulse">
+                          <span className="px-2 py-0.5 rounded-full bg-primary/20 text-primary dark:text-primary font-bold text-[11px] animate-pulse">
                             TODAY'S TARGET
                           </span>
                         )}
@@ -302,10 +301,10 @@ export default function StudyPlannerPage() {
                         <div
                           key={task.id}
                           className={`p-3 rounded-2xl border transition-all flex items-center justify-between gap-3 ${
-                            task.completed
-                              ? 'bg-primary/10 border-primary/30 line-through opacity-75'
-                              : 'bg-secondary/30 border-border/70 hover:bg-secondary/60'
-                          }`}
+ task.completed
+ ? 'bg-primary/10 border-primary/30 line-through opacity-75'
+ : 'bg-secondary/30 border-border/70 hover:bg-secondary/60'
+ }`}
                         >
                           <div 
                             onClick={() => handleToggle(task.id)}
@@ -321,7 +320,7 @@ export default function StudyPlannerPage() {
                               <p className="text-xs font-bold text-foreground truncate">
                                 {task.topicTitle}
                               </p>
-                              <p className="text-[10px] text-muted-foreground">
+                              <p className="text-[11px] text-muted-foreground">
                                 {task.subjectName} • ~{task.estimatedMinutes} mins • Weight: {task.weightage}
                               </p>
                             </div>

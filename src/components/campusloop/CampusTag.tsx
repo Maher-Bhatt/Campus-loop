@@ -15,21 +15,21 @@ export const CampusTag: React.FC<CampusTagProps> = ({
   ...props
 }) => {
   const variantClasses: Record<CampusTagVariant, string> = {
-    blue: 'bg-primary/10 text-primary dark:bg-primary/15 dark:text-primary',
-    lime: 'bg-accent text-[#283800] dark:bg-accent/20 dark:text-primary',
-    pink: 'bg-accent text-[#991B1B] dark:bg-destructive/10 dark:text-destructive',
-    slate: 'bg-[#F3F4F6] text-[#374151] dark:bg-stone-800 dark:text-stone-300',
-    live: 'bg-accent text-foreground font-bold tracking-wider uppercase shadow-xs',
-    dark: 'bg-foreground text-white dark:bg-white dark:text-foreground',
+    blue: 'bg-accent text-accent-foreground',
+    lime: 'bg-secondary text-foreground',
+    pink: 'bg-destructive/10 text-destructive',
+    slate: 'bg-secondary text-muted-foreground',
+    live: 'bg-success/10 text-success',
+    dark: 'bg-foreground text-background',
   };
 
   return (
     <span
-      className={`h-6 px-2.5 rounded-full text-xs font-semibold inline-flex items-center gap-1.5 select-none shrink-0 ${variantClasses[variant]} ${className}`}
+      className={`h-6 px-2 rounded-md text-xs font-medium inline-flex items-center gap-1.5 select-none shrink-0 ${variantClasses[variant]} ${className}`}
       {...props}
     >
       {variant === 'live' && !icon && (
-        <span className="w-1.5 h-1.5 rounded-full bg-success animate-pulse" />
+        <span className="w-1.5 h-1.5 rounded-full bg-success" />
       )}
       {icon && <span className="shrink-0">{icon}</span>}
       <span>{children}</span>

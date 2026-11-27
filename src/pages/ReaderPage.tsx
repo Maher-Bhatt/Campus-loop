@@ -436,7 +436,7 @@ export default function ReaderPage() {
 
   const Toc = (
     <nav aria-label="Contents" className="text-[13px] leading-snug">
-      <p className="px-3 pb-2 text-[11px] font-semibold uppercase tracking-[0.1em] text-muted-foreground">Contents</p>
+      <p className="px-3 pb-2 text-[11px] font-semibold text-muted-foreground">Contents</p>
       <ul className="space-y-px">
         {tocHeadings.map((h) => {
           const isActive = h.id === activeTocId;
@@ -446,8 +446,8 @@ export default function ReaderPage() {
                 type="button"
                 onClick={() => jumpTo(h.id)}
                 className={`w-full text-left rounded-md px-3 py-1.5 transition-colors cursor-pointer ${
-                  h.level === topLevel ? "font-medium" : "pl-6"
-                } ${isActive ? "bg-accent text-accent-foreground" : "text-muted-foreground hover:text-foreground hover:bg-secondary/60"}`}
+ h.level === topLevel ? "font-medium" : "pl-6"
+ } ${isActive ? "bg-accent text-accent-foreground" : "text-muted-foreground hover:text-foreground hover:bg-secondary/60"}`}
               >
                 {h.text}
               </button>
@@ -469,8 +469,8 @@ export default function ReaderPage() {
       {!focus && (
         <header
           className={`fixed inset-x-0 top-0 z-40 border-b border-border bg-background/90 backdrop-blur-md transition-transform duration-300 ${
-            barHidden && !tocOpen && !settingsOpen ? "-translate-y-full" : "translate-y-0"
-          }`}
+ barHidden && !tocOpen && !settingsOpen ? "-translate-y-full" : "translate-y-0"
+ }`}
         >
           <div className="mx-auto flex h-14 max-w-6xl items-center gap-2 px-3 sm:px-5">
             <button
@@ -587,8 +587,8 @@ export default function ReaderPage() {
                       type="button"
                       onClick={() => setPrefs((p) => ({ ...p, serif: o.v }))}
                       className={`rounded-md px-3 py-1 text-sm transition-colors cursor-pointer ${
-                        prefs.serif === o.v ? "bg-secondary text-foreground font-medium" : "text-muted-foreground hover:text-foreground"
-                      } ${o.v ? "font-reading" : ""}`}
+ prefs.serif === o.v ? "bg-secondary text-foreground font-medium" : "text-muted-foreground hover:text-foreground"
+ } ${o.v ? "font-reading" : ""}`}
                     >
                       {o.l}
                     </button>
@@ -638,11 +638,11 @@ export default function ReaderPage() {
 
           <main className="min-w-0">
             <div className="mx-auto max-w-[68ch]">
-              <p className="text-xs font-medium uppercase tracking-[0.12em] text-muted-foreground">
+              <p className="text-xs font-medium text-muted-foreground">
                 {subject.short} · {doc.kind}
                 {doc.unit != null && ` · Unit ${doc.unit}`}
               </p>
-              <h1 className="mt-3 text-[2rem] sm:text-5xl font-medium leading-[1.08] text-foreground">{doc.title}</h1>
+              <h1 className="mt-3 text-[2rem] sm:text-3xl font-semibold tracking-tight text-foreground">{doc.title}</h1>
               <p className="mt-3 text-sm text-muted-foreground">
                 {doc.scanned
                   ? `${doc.pages} handwritten / scanned pages, shown as images`
@@ -749,8 +749,8 @@ export default function ReaderPage() {
                     type="button"
                     onClick={() => setPanel(t)}
                     className={`relative px-3 py-2 capitalize transition-colors cursor-pointer ${
-                      panel === t ? "text-foreground font-medium" : "text-muted-foreground hover:text-foreground"
-                    }`}
+ panel === t ? "text-foreground font-medium" : "text-muted-foreground hover:text-foreground"
+ }`}
                   >
                     {t === "notes" ? "My notes" : "Related"}
                     {panel === t && <span className="absolute inset-x-2 -bottom-px h-0.5 rounded-full bg-primary" />}
@@ -859,8 +859,8 @@ function IconBtn({
       aria-label={label}
       aria-pressed={active}
       className={`inline-flex h-9 w-9 items-center justify-center rounded-md transition-colors cursor-pointer ${
-        active ? "bg-secondary text-foreground" : "text-muted-foreground hover:text-foreground hover:bg-secondary"
-      } ${className}`}
+ active ? "bg-secondary text-foreground" : "text-muted-foreground hover:text-foreground hover:bg-secondary"
+ } ${className}`}
     >
       {children}
     </button>

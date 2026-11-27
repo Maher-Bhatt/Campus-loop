@@ -41,7 +41,7 @@ function StatCard({ icon: Icon, label, value, accent }: StatCardProps) {
         <Icon className="h-5 w-5" style={{ color: accent ?? "#FAFAFA" }} />
       </div>
       <div>
-        <p className="text-xs text-stone-400 font-medium uppercase tracking-wide">{label}</p>
+        <p className="text-xs text-stone-400 font-medium ">{label}</p>
         <p className="text-xl sm:text-2xl font-semibold text-white leading-tight">{value}</p>
       </div>
     </div>

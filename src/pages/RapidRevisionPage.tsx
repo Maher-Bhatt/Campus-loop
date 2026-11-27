@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import { 
-  Zap, 
-  Sparkles, 
-  CheckCircle2, 
-  AlertTriangle, 
-  Clock, 
-  Printer, 
-  BookOpen, 
+import { Zap,
+  Lightbulb,
+  CheckCircle2,
+  AlertTriangle,
+  Clock,
+  Printer,
+  BookOpen,
   ExternalLink,
   Code,
   Award
@@ -256,7 +255,7 @@ export default function RapidRevisionPage() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-border/80 pb-6">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="px-2.5 py-0.5 rounded-full bg-primary/10 text-primary dark:text-primary font-bold text-xs uppercase tracking-wide flex items-center gap-1">
+            <span className="px-2.5 py-0.5 rounded-full bg-primary/10 text-primary dark:text-primary font-bold text-xs flex items-center gap-1">
               <Zap className="h-3.5 w-3.5" /> High-Yield Revision
             </span>
             <span className="px-2.5 py-0.5 rounded-full bg-primary/10 text-primary font-semibold text-xs">
@@ -288,10 +287,10 @@ export default function RapidRevisionPage() {
               key={pack.id}
               onClick={() => setActiveSubjectId(pack.id)}
               className={`px-4 py-2.5 rounded-2xl text-xs font-bold whitespace-nowrap transition-all apple-press border ${
-                isActive
-                  ? 'bg-primary text-primary-foreground border-primary shadow-sm'
-                  : 'bg-card border-border/80 text-muted-foreground hover:text-foreground hover:bg-secondary'
-              }`}
+ isActive
+ ? 'bg-primary text-primary-foreground border-primary shadow-sm'
+ : 'bg-card border-border/80 text-muted-foreground hover:text-foreground hover:bg-secondary'
+ }`}
             >
               <span>{pack.code}: {pack.name.split(' ')[0]}</span>
             </button>
@@ -327,7 +326,7 @@ export default function RapidRevisionPage() {
         {/* Section 1: 5 Golden Concepts */}
         <div className="bg-card border border-border/80 rounded-2xl p-6 shadow-sm space-y-4">
           <h3 className="font-semibold text-sm sm:text-base text-foreground flex items-center gap-2">
-            <Sparkles className="h-4 w-4 text-primary" />
+            <Lightbulb className="h-4 w-4 text-primary" />
             5 Golden Exam Concepts (100% Asked in End-Sem / MST):
           </h3>
 
@@ -339,7 +338,7 @@ export default function RapidRevisionPage() {
               >
                 <div className="flex items-center justify-between">
                   <h4 className="font-bold text-xs sm:text-sm text-foreground flex items-center gap-2">
-                    <span className="w-5 h-5 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-[10px]">
+                    <span className="w-5 h-5 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-[11px]">
                       {idx + 1}
                     </span>
                     {item.title}

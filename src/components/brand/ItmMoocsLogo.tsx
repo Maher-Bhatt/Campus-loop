@@ -85,24 +85,24 @@ export function ItmMoocsLogo({
           <div className="flex items-baseline gap-1">
             <span
               className={`font-semibold tracking-tight ${textSizeClasses[size]} ${
-                inverted ? "text-secondary" : "text-foreground"
-              }`}
+ inverted ? "text-secondary" : "text-foreground"
+ }`}
             >
               Campus
             </span>
             <span
               className={`font-bold tracking-tight ${textSizeClasses[size]} ${
-                inverted ? "text-primary" : "text-primary"
-              }`}
+ inverted ? "text-primary" : "text-primary"
+ }`}
             >
               Loop
             </span>
           </div>
           {showTagline && (
             <span
-              className={`text-[9px] font-bold tracking-[0.18em] uppercase mt-0.5 ${
-                inverted ? "text-primary/80" : "text-[#68716B] dark:text-primary/80"
-              }`}
+              className={`text-[11px] font-bold mt-0.5 ${
+ inverted ? "text-primary/80" : "text-[#68716B] dark:text-primary/80"
+ }`}
             >
               Your Academic Companion
             </span>

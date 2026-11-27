@@ -128,7 +128,7 @@ export function AdminDraftsTab() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
           <div>
-            <label className="text-[11px] font-bold uppercase tracking-wider text-stone-400 block mb-1">
+            <label className="text-[11px] font-bold text-stone-400 block mb-1">
               Select Curriculum Subject
             </label>
             <select
@@ -148,7 +148,7 @@ export function AdminDraftsTab() {
           </div>
 
           <div>
-            <label className="text-[11px] font-bold uppercase tracking-wider text-stone-400 block mb-1">
+            <label className="text-[11px] font-bold text-stone-400 block mb-1">
               Select Topic
             </label>
             <select
@@ -180,7 +180,7 @@ export function AdminDraftsTab() {
           </div>
 
           <div>
-            <label className="text-[11px] font-bold uppercase tracking-wider text-stone-400 block mb-1">
+            <label className="text-[11px] font-bold text-stone-400 block mb-1">
               Revision Title
             </label>
             <input
@@ -193,7 +193,7 @@ export function AdminDraftsTab() {
           </div>
 
           <div>
-            <label className="text-[11px] font-bold uppercase tracking-wider text-stone-400 block mb-1">
+            <label className="text-[11px] font-bold text-stone-400 block mb-1">
               Markdown / KaTeX Note Content
             </label>
             <textarea
@@ -208,7 +208,7 @@ export function AdminDraftsTab() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
             <div>
-              <label className="text-[11px] font-bold uppercase tracking-wider text-stone-400 block mb-1">
+              <label className="text-[11px] font-bold text-stone-400 block mb-1">
                 Release Status
               </label>
               <select
@@ -224,7 +224,7 @@ export function AdminDraftsTab() {
 
             {status === "scheduled" && (
               <div>
-                <label className="text-[11px] font-bold uppercase tracking-wider text-stone-400 block mb-1">
+                <label className="text-[11px] font-bold text-stone-400 block mb-1">
                   Scheduled Publish Timestamp
                 </label>
                 <input
@@ -276,19 +276,19 @@ export function AdminDraftsTab() {
                         v{ver.version_number}
                       </span>
                       {idx === 0 && (
-                        <span className="px-1.5 py-0.2 rounded text-[9px] font-bold bg-primary/10 text-primary border border-primary/30 uppercase">
+                        <span className="px-1.5 py-0.2 rounded text-[11px] font-bold bg-primary/10 text-primary border border-primary/30 uppercase">
                           Latest
                         </span>
                       )}
                     </div>
 
-                    <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold uppercase ${
-                      ver.status === "published"
-                        ? "bg-primary/10 text-primary"
-                        : ver.status === "scheduled"
-                        ? "bg-primary/10 text-primary"
-                        : "bg-stone-700 text-stone-300"
-                    }`}>
+                    <span className={`px-2 py-0.5 rounded-full text-[11px] font-bold uppercase ${
+ ver.status === "published"
+ ? "bg-primary/10 text-primary"
+ : ver.status === "scheduled"
+ ? "bg-primary/10 text-primary"
+ : "bg-stone-700 text-stone-300"
+ }`}>
                       {ver.status}
                     </span>
                   </div>

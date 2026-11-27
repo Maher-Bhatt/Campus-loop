@@ -1,22 +1,21 @@
 import { useState, useMemo, useEffect } from 'react';
 import { useAuth } from '@/contexts/AuthContext';
 import { TIMETABLE_DATA } from '@/data/timetableData';
-import { 
-  Calculator, 
-  Sparkles, 
-  Award, 
-  Plus, 
-  Trash2, 
-  RotateCcw, 
-  TrendingUp, 
-  CheckCircle2, 
-  AlertTriangle, 
-  HelpCircle, 
-  BookOpen, 
-  Calendar, 
-  Clock, 
-  ShieldCheck, 
-  ShieldAlert, 
+import { Calculator,
+  Lightbulb,
+  Award,
+  Plus,
+  Trash2,
+  RotateCcw,
+  TrendingUp,
+  CheckCircle2,
+  AlertTriangle,
+  HelpCircle,
+  BookOpen,
+  Calendar,
+  Clock,
+  ShieldCheck,
+  ShieldAlert,
   Search,
   X,
   RefreshCw,
@@ -590,7 +589,7 @@ export default function GpaCalculatorPage() {
       {/* Banner Section */}
       <div className="bg-card border border-border rounded-2xl p-6 sm:p-8 shadow-sm">
         <div className="flex flex-wrap items-center gap-2 mb-3">
-          <span className="text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/20">
+          <span className="text-xs font-bold px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/20">
             CampusLoop Academic Portal
           </span>
           <span className="text-xs font-semibold px-3 py-1 rounded-full bg-primary/10 text-primary dark:text-primary border border-primary/20">
@@ -611,40 +610,40 @@ export default function GpaCalculatorPage() {
           <button
             onClick={() => setActiveTab('sgpa')}
             className={`px-4 py-2 text-xs sm:text-sm font-bold rounded-lg transition-all ${
-              activeTab === 'sgpa'
-                ? 'bg-primary text-primary-foreground shadow-sm'
-                : 'text-muted-foreground hover:bg-secondary hover:text-foreground'
-            }`}
+ activeTab === 'sgpa'
+ ? 'bg-primary text-primary-foreground shadow-sm'
+ : 'text-muted-foreground hover:bg-secondary hover:text-foreground'
+ }`}
           >
             Semester SGPA Predictor ({subjects.length} Courses)
           </button>
           <button
             onClick={() => setActiveTab('attendance')}
             className={`px-4 py-2 text-xs sm:text-sm font-bold rounded-lg transition-all flex items-center gap-1.5 ${
-              activeTab === 'attendance'
-                ? 'bg-primary text-primary-foreground shadow-sm'
-                : 'text-muted-foreground hover:bg-secondary hover:text-foreground'
-            }`}
+ activeTab === 'attendance'
+ ? 'bg-primary text-primary-foreground shadow-sm'
+ : 'text-muted-foreground hover:bg-secondary hover:text-foreground'
+ }`}
           >
             <Clock className="h-4 w-4" /> 75% Attendance Guard
           </button>
           <button
             onClick={() => setActiveTab('cgpa')}
             className={`px-4 py-2 text-xs sm:text-sm font-bold rounded-lg transition-all ${
-              activeTab === 'cgpa'
-                ? 'bg-primary text-primary-foreground shadow-sm'
-                : 'text-muted-foreground hover:bg-secondary hover:text-foreground'
-            }`}
+ activeTab === 'cgpa'
+ ? 'bg-primary text-primary-foreground shadow-sm'
+ : 'text-muted-foreground hover:bg-secondary hover:text-foreground'
+ }`}
           >
             Cumulative CGPA History
           </button>
           <button
             onClick={() => setActiveTab('milestones')}
             className={`px-4 py-2 text-xs sm:text-sm font-bold rounded-lg transition-all flex items-center gap-1.5 ${
-              activeTab === 'milestones'
-                ? 'bg-primary text-primary-foreground shadow-sm'
-                : 'text-muted-foreground hover:bg-secondary hover:text-foreground'
-            }`}
+ activeTab === 'milestones'
+ ? 'bg-primary text-primary-foreground shadow-sm'
+ : 'text-muted-foreground hover:bg-secondary hover:text-foreground'
+ }`}
           >
             <Calendar className="h-4 w-4" /> Exam Milestones & Reminders
           </button>
@@ -655,15 +654,15 @@ export default function GpaCalculatorPage() {
         {activeTab === 'attendance' ? (
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-5 mb-8">
             <div className={`bg-card border rounded-2xl p-5 sm:p-6 shadow-sm flex items-center justify-between ${
-              attendanceStats.isSafe ? 'border-primary/40' : 'border-destructive/40'
-            }`}>
+ attendanceStats.isSafe ? 'border-primary/40' : 'border-destructive/40'
+ }`}>
               <div>
-                <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-1">
+                <p className="text-xs font-bold text-muted-foreground mb-1">
                   Overall Attendance
                 </p>
                 <div className={`text-3xl sm:text-5xl font-bold font-mono ${
-                  attendanceStats.isSafe ? 'text-primary' : 'text-destructive'
-                }`}>
+ attendanceStats.isSafe ? 'text-primary' : 'text-destructive'
+ }`}>
                   {attendanceStats.currentPercent}%
                 </div>
                 <p className="text-[11px] text-muted-foreground mt-1">
@@ -671,15 +670,15 @@ export default function GpaCalculatorPage() {
                 </p>
               </div>
               <div className={`w-12 h-12 sm:w-14 sm:h-14 rounded-2xl flex items-center justify-center ${
-                attendanceStats.isSafe ? 'bg-primary/10 text-primary' : 'bg-destructive/10 text-destructive'
-              }`}>
+ attendanceStats.isSafe ? 'bg-primary/10 text-primary' : 'bg-destructive/10 text-destructive'
+ }`}>
                 {attendanceStats.isSafe ? <ShieldCheck className="h-6 w-6 sm:h-7 sm:w-7" /> : <ShieldAlert className="h-6 w-6 sm:h-7 sm:w-7" />}
               </div>
             </div>
 
             <div className="bg-card border border-border/80 rounded-2xl p-5 sm:p-6 shadow-sm flex items-center justify-between">
               <div>
-                <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-1">
+                <p className="text-xs font-bold text-muted-foreground mb-1">
                   {attendanceStats.isSafe ? 'Safe Bunk Margin' : 'Consecutive Needed'}
                 </p>
                 <div className="text-3xl sm:text-5xl font-bold text-foreground font-mono">
@@ -697,15 +696,15 @@ export default function GpaCalculatorPage() {
             </div>
 
             <div className={`bg-card border rounded-2xl p-5 sm:p-6 shadow-sm flex items-center justify-between ${
-              attendanceStats.isSafe ? 'border-primary/30' : 'border-destructive/30'
-            }`}>
+ attendanceStats.isSafe ? 'border-primary/30' : 'border-destructive/30'
+ }`}>
               <div>
-                <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-1">
+                <p className="text-xs font-bold text-muted-foreground mb-1">
                   Hall Ticket Eligibility
                 </p>
                 <div className={`text-xl sm:text-2xl font-bold tracking-tight ${
-                  attendanceStats.isSafe ? 'text-primary' : 'text-destructive'
-                }`}>
+ attendanceStats.isSafe ? 'text-primary' : 'text-destructive'
+ }`}>
                   {attendanceStats.isSafe ? 'EXAM ELIGIBLE' : 'DEBARRED RISK'}
                 </div>
                 <p className="text-[11px] text-muted-foreground mt-1">
@@ -713,8 +712,8 @@ export default function GpaCalculatorPage() {
                 </p>
               </div>
               <div className={`w-12 h-12 sm:w-14 sm:h-14 rounded-2xl flex items-center justify-center ${
-                attendanceStats.isSafe ? 'bg-primary/10 text-primary' : 'bg-destructive/10 text-destructive'
-              }`}>
+ attendanceStats.isSafe ? 'bg-primary/10 text-primary' : 'bg-destructive/10 text-destructive'
+ }`}>
                 {attendanceStats.isSafe ? <CheckCircle2 className="h-6 w-6 sm:h-7 sm:w-7" /> : <AlertTriangle className="h-6 w-6 sm:h-7 sm:w-7" />}
               </div>
             </div>
@@ -723,7 +722,7 @@ export default function GpaCalculatorPage() {
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-5 mb-8">
             <div className="bg-card border border-primary/30 rounded-2xl p-5 sm:p-6 shadow-sm flex items-center justify-between">
               <div>
-                <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-1">
+                <p className="text-xs font-bold text-muted-foreground mb-1">
                   Predicted Semester SGPA
                 </p>
                 <div className="text-3xl sm:text-5xl font-bold text-primary font-mono">
@@ -740,7 +739,7 @@ export default function GpaCalculatorPage() {
 
             <div className="bg-card border border-border/80 rounded-2xl p-5 sm:p-6 shadow-sm flex items-center justify-between">
               <div>
-                <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-1">
+                <p className="text-xs font-bold text-muted-foreground mb-1">
                   Equivalent Percentage
                 </p>
                 <div className="text-3xl sm:text-5xl font-bold text-foreground font-mono">
@@ -757,7 +756,7 @@ export default function GpaCalculatorPage() {
 
             <div className="bg-card border border-border/80 rounded-2xl p-5 sm:p-6 shadow-sm flex items-center justify-between">
               <div>
-                <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-1">
+                <p className="text-xs font-bold text-muted-foreground mb-1">
                   Cumulative CGPA (Overall)
                 </p>
                 <div className="text-3xl sm:text-5xl font-bold text-primary font-mono">
@@ -768,7 +767,7 @@ export default function GpaCalculatorPage() {
                 </p>
               </div>
               <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-primary/10 text-primary dark:text-primary flex items-center justify-center">
-                <Sparkles className="h-6 w-6 sm:h-7 sm:w-7" />
+                <Lightbulb className="h-6 w-6 sm:h-7 sm:w-7" />
               </div>
             </div>
           </div>
@@ -799,10 +798,10 @@ export default function GpaCalculatorPage() {
                       type="button"
                       onClick={() => handleSemesterSwitch(sem)}
                       className={`px-3 py-1 rounded-lg text-xs font-bold transition-all ${
-                        selectedSemester === sem
-                          ? 'bg-primary text-primary-foreground shadow-sm'
-                          : 'text-muted-foreground hover:text-foreground'
-                      }`}
+ selectedSemester === sem
+ ? 'bg-primary text-primary-foreground shadow-sm'
+ : 'text-muted-foreground hover:text-foreground'
+ }`}
                     >
                       Sem {sem}
                     </button>
@@ -885,10 +884,10 @@ export default function GpaCalculatorPage() {
                       key={t}
                       onClick={() => handleUpdateTarget(t)}
                       className={`px-2 py-1 rounded-lg text-xs font-bold transition-all ${
-                        targetSgpa === t
-                          ? 'bg-primary text-primary-foreground shadow-sm'
-                          : 'bg-secondary text-muted-foreground hover:text-foreground'
-                      }`}
+ targetSgpa === t
+ ? 'bg-primary text-primary-foreground shadow-sm'
+ : 'bg-secondary text-muted-foreground hover:text-foreground'
+ }`}
                     >
                       {t.toFixed(1)}
                     </button>
@@ -938,7 +937,7 @@ export default function GpaCalculatorPage() {
                         <div>
                           <div className="flex items-center justify-between gap-2 mb-1">
                             <span className="font-bold text-xs text-foreground truncate">{sub.name}</span>
-                            <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-secondary text-muted-foreground shrink-0">{sub.code}</span>
+                            <span className="text-[11px] font-mono px-1.5 py-0.5 rounded bg-secondary text-muted-foreground shrink-0">{sub.code}</span>
                           </div>
                           <p className="text-[11px] text-muted-foreground mb-2">
                             Internal: <strong className="text-foreground">{internal}/50</strong> · {sub.credits} Credits
@@ -952,7 +951,7 @@ export default function GpaCalculatorPage() {
                               {needForTarget > 50 ? 'Requires >50 (Exceeds 50 Max)' : `≥ ${needForTarget}/50`}
                             </span>
                           </div>
-                          <div className="flex justify-between items-center text-[10px] text-muted-foreground">
+                          <div className="flex justify-between items-center text-[11px] text-muted-foreground">
                             <span>AB (9 pts): {needAB > 50 ? '>50' : `${needAB}/50`}</span>
                             <span>BB (8 pts): {needBB > 50 ? '>50' : `${needBB}/50`}</span>
                             <span>Pass: {needPass}/50</span>
@@ -1013,7 +1012,7 @@ export default function GpaCalculatorPage() {
                               <div className="flex items-center gap-1.5 mt-0.5">
                                 <span className="text-[11px] font-mono text-muted-foreground">{sub.code}</span>
                                 {sub.type && (
-                                  <span className="text-[10px] px-1.5 py-0.2 rounded bg-secondary text-muted-foreground font-medium">
+                                  <span className="text-[11px] px-1.5 py-0.2 rounded bg-secondary text-muted-foreground font-medium">
                                     {sub.type}
                                   </span>
                                 )}
@@ -1064,14 +1063,14 @@ export default function GpaCalculatorPage() {
 
                             <td className="py-3.5 px-3">
                               <span className={`inline-block px-2.5 py-0.5 rounded-full font-bold text-xs ${
-                                sub.grade === 'AA'
-                                  ? 'bg-primary/10 text-primary dark:text-primary border border-primary/20'
-                                  : sub.grade === 'AB' || sub.grade === 'BB'
-                                  ? 'bg-primary/10 text-primary dark:text-primary border border-primary/20'
-                                  : sub.grade === 'BC' || sub.grade === 'CC'
-                                  ? 'bg-primary/10 text-primary dark:text-primary border border-primary/20'
-                                  : 'bg-destructive/10 text-destructive dark:text-destructive border border-destructive/20'
-                              }`}>
+ sub.grade === 'AA'
+ ? 'bg-primary/10 text-primary dark:text-primary border border-primary/20'
+ : sub.grade === 'AB' || sub.grade === 'BB'
+ ? 'bg-primary/10 text-primary dark:text-primary border border-primary/20'
+ : sub.grade === 'BC' || sub.grade === 'CC'
+ ? 'bg-primary/10 text-primary dark:text-primary border border-primary/20'
+ : 'bg-destructive/10 text-destructive dark:text-destructive border border-destructive/20'
+ }`}>
                                 {sub.grade} ({sub.points} pts)
                               </span>
                             </td>
@@ -1101,7 +1100,7 @@ export default function GpaCalculatorPage() {
                           <h4 className="font-bold text-sm text-foreground">{sub.name}</h4>
                           <div className="flex items-center gap-1.5 mt-0.5">
                             <span className="text-[11px] font-mono text-muted-foreground">{sub.code}</span>
-                            <span className="text-[10px] px-1.5 py-0.2 rounded bg-secondary text-muted-foreground font-semibold">
+                            <span className="text-[11px] px-1.5 py-0.2 rounded bg-secondary text-muted-foreground font-semibold">
                               {sub.credits} Credits
                             </span>
                           </div>
@@ -1117,7 +1116,7 @@ export default function GpaCalculatorPage() {
 
                       <div className="grid grid-cols-2 gap-3 pt-1">
                         <div>
-                          <label className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground block mb-1">
+                          <label className="text-[11px] font-bold text-muted-foreground block mb-1">
                             Internal (CIE / 50)
                           </label>
                           <input
@@ -1132,7 +1131,7 @@ export default function GpaCalculatorPage() {
                         </div>
 
                         <div>
-                          <label className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground block mb-1">
+                          <label className="text-[11px] font-bold text-muted-foreground block mb-1">
                             External (ESE / 50)
                           </label>
                           <input
@@ -1152,12 +1151,12 @@ export default function GpaCalculatorPage() {
                           Score: <span className="font-mono">{sub.totalMarks} / 100</span>
                         </div>
                         <span className={`px-2.5 py-0.5 rounded-full font-bold text-xs ${
-                          sub.grade === 'AA'
-                            ? 'bg-primary/10 text-primary dark:text-primary border border-primary/20'
-                            : sub.grade === 'AB' || sub.grade === 'BB'
-                            ? 'bg-primary/10 text-primary dark:text-primary border border-primary/20'
-                            : 'bg-primary/10 text-primary dark:text-primary border border-primary/20'
-                        }`}>
+ sub.grade === 'AA'
+ ? 'bg-primary/10 text-primary dark:text-primary border border-primary/20'
+ : sub.grade === 'AB' || sub.grade === 'BB'
+ ? 'bg-primary/10 text-primary dark:text-primary border border-primary/20'
+ : 'bg-primary/10 text-primary dark:text-primary border border-primary/20'
+ }`}>
                           {sub.grade} ({sub.points} pts)
                         </span>
                       </div>
@@ -1250,10 +1249,10 @@ export default function GpaCalculatorPage() {
                       key={pct}
                       onClick={() => setTargetAttendancePercent(pct)}
                       className={`px-3 py-1 rounded-lg text-xs font-bold transition-all ${
-                        targetAttendancePercent === pct
-                          ? 'bg-primary text-primary-foreground shadow-sm'
-                          : 'bg-secondary text-muted-foreground hover:text-foreground'
-                      }`}
+ targetAttendancePercent === pct
+ ? 'bg-primary text-primary-foreground shadow-sm'
+ : 'bg-secondary text-muted-foreground hover:text-foreground'
+ }`}
                     >
                       {pct}%
                     </button>
@@ -1302,8 +1301,8 @@ export default function GpaCalculatorPage() {
                 <div className="relative w-full h-4 rounded-full bg-secondary overflow-hidden">
                   <div
                     className={`h-full transition-all duration-500 rounded-full ${
-                      attendanceStats.isSafe ? 'bg-primary' : 'bg-destructive'
-                    }`}
+ attendanceStats.isSafe ? 'bg-primary' : 'bg-destructive'
+ }`}
                     style={{ width: `${Math.min(100, attendanceStats.currentPercent)}%` }}
                   />
                   {/* threshold indicator line */}
@@ -1317,10 +1316,10 @@ export default function GpaCalculatorPage() {
 
               {/* Actionable Advice Box */}
               <div className={`p-4 rounded-xl border flex items-start gap-3.5 ${
-                attendanceStats.isSafe
-                  ? 'bg-primary/10 border-primary/30 text-primary dark:text-primary'
-                  : 'bg-destructive/10 border-destructive/30 text-destructive dark:text-destructive'
-              }`}>
+ attendanceStats.isSafe
+ ? 'bg-primary/10 border-primary/30 text-primary dark:text-primary'
+ : 'bg-destructive/10 border-destructive/30 text-destructive dark:text-destructive'
+ }`}>
                 {attendanceStats.isSafe ? (
                   <CheckCircle2 className="h-5 w-5 text-primary dark:text-primary shrink-0 mt-0.5" />
                 ) : (
@@ -1453,7 +1452,7 @@ export default function GpaCalculatorPage() {
 
                           {/* Total Conducted */}
                           <td className="py-3.5 px-2 text-center font-mono font-semibold text-muted-foreground">
-                            {conducted} <span className="text-[10px] text-muted-foreground/60">({scheduled} sch.)</span>
+                            {conducted} <span className="text-[11px] text-muted-foreground/60">({scheduled} sch.)</span>
                           </td>
 
                           {/* Percentage */}
@@ -1468,21 +1467,21 @@ export default function GpaCalculatorPage() {
                             <div className="flex items-center gap-1">
                               <button
                                 onClick={() => quickAttendanceStep(sub.id, 'present')}
-                                className="px-2 py-1 rounded bg-primary/10 text-primary dark:text-primary hover:bg-primary/20 text-[10px] font-bold transition-colors"
+                                className="px-2 py-1 rounded bg-primary/10 text-primary dark:text-primary hover:bg-primary/20 text-[11px] font-bold transition-colors"
                                 title="Attended lecture (+1 Present)"
                               >
                                 +1 P
                               </button>
                               <button
                                 onClick={() => quickAttendanceStep(sub.id, 'absent')}
-                                className="px-2 py-1 rounded bg-destructive/10 text-destructive dark:text-destructive hover:bg-destructive/20 text-[10px] font-bold transition-colors"
+                                className="px-2 py-1 rounded bg-destructive/10 text-destructive dark:text-destructive hover:bg-destructive/20 text-[11px] font-bold transition-colors"
                                 title="Missed lecture (+1 Absent)"
                               >
                                 +1 A
                               </button>
                               <button
                                 onClick={() => quickAttendanceStep(sub.id, 'noAttendance')}
-                                className="px-2 py-1 rounded bg-primary/10 text-primary dark:text-primary hover:bg-primary/20 text-[10px] font-bold transition-colors"
+                                className="px-2 py-1 rounded bg-primary/10 text-primary dark:text-primary hover:bg-primary/20 text-[11px] font-bold transition-colors"
                                 title="Class cancelled or faculty on leave (+1 No Attendance)"
                               >
                                 +1 NA
@@ -1508,12 +1507,12 @@ export default function GpaCalculatorPage() {
                           {/* Status Badge */}
                           <td className="py-3.5 px-3">
                             <span className={`inline-block px-2.5 py-0.5 rounded-full font-bold text-xs ${
-                              conducted === 0
-                                ? 'bg-secondary text-muted-foreground border border-border'
-                                : isSafe
-                                ? 'bg-primary/10 text-primary dark:text-primary border border-primary/20'
-                                : 'bg-destructive/10 text-destructive dark:text-destructive border border-destructive/20'
-                            }`}>
+ conducted === 0
+ ? 'bg-secondary text-muted-foreground border border-border'
+ : isSafe
+ ? 'bg-primary/10 text-primary dark:text-primary border border-primary/20'
+ : 'bg-destructive/10 text-destructive dark:text-destructive border border-destructive/20'
+ }`}>
                               {conducted === 0 ? 'Pending' : isSafe ? 'Eligible' : 'Debarred Risk'}
                             </span>
                           </td>
@@ -1555,12 +1554,12 @@ export default function GpaCalculatorPage() {
                           <span className="text-[11px] font-mono text-muted-foreground">{sub.code}</span>
                         </div>
                         <span className={`px-2 py-0.5 rounded-full font-bold text-xs ${
-                          conducted === 0
-                            ? 'bg-secondary text-muted-foreground'
-                            : isSafe
-                            ? 'bg-primary/10 text-primary dark:text-primary'
-                            : 'bg-destructive/10 text-destructive dark:text-destructive'
-                        }`}>
+ conducted === 0
+ ? 'bg-secondary text-muted-foreground'
+ : isSafe
+ ? 'bg-primary/10 text-primary dark:text-primary'
+ : 'bg-destructive/10 text-destructive dark:text-destructive'
+ }`}>
                           {pct}%
                         </span>
                       </div>
@@ -1568,15 +1567,15 @@ export default function GpaCalculatorPage() {
                       {/* Present / Absent / No Attendance counts */}
                       <div className="grid grid-cols-3 gap-2 text-center text-xs">
                         <div className="p-2 rounded-lg bg-primary/10 border border-primary/20">
-                          <p className="text-[10px] text-muted-foreground uppercase font-bold">Present</p>
+                          <p className="text-[11px] text-muted-foreground uppercase font-bold">Present</p>
                           <p className="text-base font-mono font-bold text-primary dark:text-primary">{present}</p>
                         </div>
                         <div className="p-2 rounded-lg bg-destructive/10 border border-destructive/20">
-                          <p className="text-[10px] text-muted-foreground uppercase font-bold">Absent</p>
+                          <p className="text-[11px] text-muted-foreground uppercase font-bold">Absent</p>
                           <p className="text-base font-mono font-bold text-destructive dark:text-destructive">{absent}</p>
                         </div>
                         <div className="p-2 rounded-lg bg-primary/10 border border-primary/20">
-                          <p className="text-[10px] text-muted-foreground uppercase font-bold">No Att.</p>
+                          <p className="text-[11px] text-muted-foreground uppercase font-bold">No Att.</p>
                           <p className="text-base font-mono font-bold text-primary dark:text-primary">{noAtt}</p>
                         </div>
                       </div>
@@ -1768,7 +1767,7 @@ export default function GpaCalculatorPage() {
         {activeTab === 'milestones' && (
           <div className="space-y-6 animate-fade-in">
             {/* Top Countdown Banner */}
-            <div className="bg-gradient-to-r from-stone-900 via-stone-900 to-stone-950 border border-stone-800 rounded-2xl p-6 text-white shadow-lg flex flex-col md:flex-row items-center justify-between gap-4">
+            <div className="bg-stone-900 border border-stone-800 rounded-2xl p-6 text-white shadow-lg flex flex-col md:flex-row items-center justify-between gap-4">
               <div className="space-y-1 text-center md:text-left">
                 <div className="flex items-center justify-center md:justify-start gap-2">
                   <span className="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-primary/20 text-primary border border-primary/30">
@@ -1784,13 +1783,13 @@ export default function GpaCalculatorPage() {
 
               <div className="flex items-center gap-3">
                 <div className={`p-4 rounded-xl border text-center ${
-                  attendanceStats.isSafe ? 'bg-primary/60 border-primary/40 text-primary' : 'bg-destructive/10 border-destructive/40 text-destructive'
-                }`}>
-                  <span className="text-[10px] font-bold uppercase tracking-wider block">Hall Ticket Status</span>
+ attendanceStats.isSafe ? 'bg-primary/60 border-primary/40 text-primary' : 'bg-destructive/10 border-destructive/40 text-destructive'
+ }`}>
+                  <span className="text-[11px] font-bold block">Hall Ticket Status</span>
                   <span className="text-base font-bold font-mono">
                     {attendanceStats.isSafe ? 'CLEARANCE GRANTED' : 'SHORTAGE ALERT'}
                   </span>
-                  <span className="text-[10px] block mt-0.5 opacity-80">
+                  <span className="text-[11px] block mt-0.5 opacity-80">
                     {attendanceStats.currentPercent}% Current Attendance
                   </span>
                 </div>
@@ -1809,7 +1808,7 @@ export default function GpaCalculatorPage() {
 
               <div className="overflow-x-auto">
                 <table className="w-full text-left text-xs">
-                  <thead className="text-[10px] font-bold text-muted-foreground uppercase border-b border-border">
+                  <thead className="text-[11px] font-bold text-muted-foreground uppercase border-b border-border">
                     <tr>
                       <th className="pb-2.5">Date</th>
                       <th className="pb-2.5">Course Code</th>
@@ -1826,9 +1825,9 @@ export default function GpaCalculatorPage() {
                         <td className="py-3 font-medium text-foreground">{exam.courseName}</td>
                         <td className="py-3 text-muted-foreground font-mono">{exam.time}</td>
                         <td className="py-3 text-right">
-                          <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${
-                            attendanceStats.isSafe ? 'bg-primary/10 text-primary border border-primary/20' : 'bg-destructive/10 text-destructive border border-destructive/20'
-                          }`}>
+                          <span className={`text-[11px] font-bold px-2 py-0.5 rounded-full ${
+ attendanceStats.isSafe ? 'bg-primary/10 text-primary border border-primary/20' : 'bg-destructive/10 text-destructive border border-destructive/20'
+ }`}>
                             {attendanceStats.isSafe ? 'Eligible' : 'At Risk'}
                           </span>
                         </td>
@@ -1861,7 +1860,7 @@ export default function GpaCalculatorPage() {
               <div key={scale.g} className="p-3 rounded-xl bg-secondary/40 border border-border/60">
                 <span className="font-bold text-sm text-foreground block">{scale.g}</span>
                 <span className="text-primary font-bold block">{scale.pts} Points</span>
-                <span className="text-[10px] text-muted-foreground">{scale.marks}</span>
+                <span className="text-[11px] text-muted-foreground">{scale.marks}</span>
               </div>
             ))}
           </div>
@@ -1898,10 +1897,10 @@ export default function GpaCalculatorPage() {
                     type="button"
                     onClick={() => setCatalogSemester(sem)}
                     className={`px-3 py-1 rounded-lg text-xs font-bold transition-all ${
-                      catalogSemester === sem
-                        ? 'bg-primary text-primary-foreground shadow-sm'
-                        : 'bg-secondary text-muted-foreground hover:text-foreground'
-                    }`}
+ catalogSemester === sem
+ ? 'bg-primary text-primary-foreground shadow-sm'
+ : 'bg-secondary text-muted-foreground hover:text-foreground'
+ }`}
                   >
                     Sem {sem}
                   </button>
@@ -1925,10 +1924,10 @@ export default function GpaCalculatorPage() {
                     key={tab}
                     onClick={() => setCatalogFilter(tab)}
                     className={`px-3 py-1 rounded-lg text-xs font-bold transition-all ${
-                      catalogFilter === tab
-                        ? 'bg-primary text-primary-foreground shadow-sm'
-                        : 'bg-secondary text-muted-foreground hover:text-foreground'
-                    }`}
+ catalogFilter === tab
+ ? 'bg-primary text-primary-foreground shadow-sm'
+ : 'bg-secondary text-muted-foreground hover:text-foreground'
+ }`}
                   >
                     {tab}
                   </button>
@@ -1944,15 +1943,15 @@ export default function GpaCalculatorPage() {
                   <div
                     key={course.code}
                     className={`p-3.5 rounded-2xl border transition-all flex items-center justify-between gap-3 ${
-                      isAdded
-                        ? 'bg-secondary/20 border-border/50 opacity-75'
-                        : 'bg-secondary/40 border-border hover:border-primary/50 hover:bg-secondary/60'
-                    }`}
+ isAdded
+ ? 'bg-secondary/20 border-border/50 opacity-75'
+ : 'bg-secondary/40 border-border hover:border-primary/50 hover:bg-secondary/60'
+ }`}
                   >
                     <div className="min-w-0">
                       <div className="flex items-center gap-2">
                         <span className="font-bold text-sm text-foreground truncate">{course.name}</span>
-                        <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-primary/10 text-primary font-bold">
+                        <span className="text-[11px] font-mono px-1.5 py-0.2 rounded bg-primary/10 text-primary font-bold">
                           {course.code}
                         </span>
                       </div>
@@ -1969,10 +1968,10 @@ export default function GpaCalculatorPage() {
                       disabled={isAdded}
                       onClick={() => handleSelectCatalogCourse(course)}
                       className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all shrink-0 ${
-                        isAdded
-                          ? 'bg-secondary text-muted-foreground cursor-not-allowed'
-                          : 'bg-primary text-primary-foreground hover:opacity-90 apple-press shadow-sm'
-                      }`}
+ isAdded
+ ? 'bg-secondary text-muted-foreground cursor-not-allowed'
+ : 'bg-primary text-primary-foreground hover:opacity-90 apple-press shadow-sm'
+ }`}
                     >
                       {isAdded ? '✓ Added' : '+ Add'}
                     </button>

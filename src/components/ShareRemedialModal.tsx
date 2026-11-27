@@ -7,10 +7,10 @@ import {
   Send,
   ExternalLink,
   QrCode,
-  Sparkles,
+  Lightbulb,
   Flame,
-  MessageCircle,
-} from "lucide-react";
+  MessageCircle
+} from 'lucide-react';
 import { toast } from "sonner";
 
 interface ShareRemedialModalProps {
@@ -122,7 +122,7 @@ ${targetUrl}`;
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <span className="px-2 py-0.5 rounded-full bg-primary/10 text-primary dark:text-primary font-bold text-[10px] uppercase">
+              <span className="px-2 py-0.5 rounded-full bg-primary/10 text-primary dark:text-primary font-bold text-[11px] uppercase">
                 Viral Study Hub
               </span>
               <span className="text-[11px] font-mono text-muted-foreground">Share & Help Friends</span>
@@ -142,7 +142,7 @@ ${targetUrl}`;
         <div className="grid grid-cols-2 gap-3 mb-5">
           <button
             onClick={handleWhatsAppShare}
-            className="w-full py-3 px-4 rounded-2xl bg-primary hover:bg-primary text-white font-bold text-xs flex items-center justify-center gap-2 transition-all shadow-md active:scale-95 cursor-pointer"
+            className="w-full py-3 px-4 rounded-2xl bg-primary hover:bg-primary text-white font-bold text-xs flex items-center justify-center gap-2 transition-all shadow-md cursor-pointer"
           >
             <MessageCircle className="h-4 w-4" />
             <span>Share on WhatsApp</span>
@@ -150,7 +150,7 @@ ${targetUrl}`;
 
           <button
             onClick={handleTelegramShare}
-            className="w-full py-3 px-4 rounded-2xl bg-primary hover:bg-primary text-white font-bold text-xs flex items-center justify-center gap-2 transition-all shadow-md active:scale-95 cursor-pointer"
+            className="w-full py-3 px-4 rounded-2xl bg-primary hover:bg-primary text-white font-bold text-xs flex items-center justify-center gap-2 transition-all shadow-md cursor-pointer"
           >
             <Send className="h-4 w-4" />
             <span>Share on Telegram</span>
@@ -165,10 +165,10 @@ ${targetUrl}`;
           <button
             onClick={handleCopyLink}
             className={`px-3.5 py-1.5 rounded-xl font-bold text-xs flex items-center gap-1.5 transition-all cursor-pointer ${
-              copied
-                ? "bg-primary text-white"
-                : "bg-primary text-primary-foreground hover:opacity-90"
-            }`}
+ copied
+ ? "bg-primary text-white"
+ : "bg-primary text-primary-foreground hover:opacity-90"
+ }`}
           >
             {copied ? <Check className="h-3.5 w-3.5" /> : <Copy className="h-3.5 w-3.5" />}
             <span>{copied ? "Copied!" : "Copy Link"}</span>
@@ -181,7 +181,7 @@ ${targetUrl}`;
             onClick={handleCopyFormattedText}
             className="text-xs font-semibold text-primary hover:underline flex items-center gap-1.5 cursor-pointer"
           >
-            <Sparkles className="h-3.5 w-3.5" />
+            <Lightbulb className="h-3.5 w-3.5" />
             <span>Copy Full WhatsApp Message</span>
           </button>
 
@@ -210,7 +210,7 @@ ${targetUrl}`;
         {/* QR Code Reveal Panel */}
         {showQr && (
           <div className="mt-5 p-4 rounded-2xl bg-foreground text-center space-y-2 animate-fade-in border border-[#FAFAFA]/30">
-            <p className="text-[11px] font-bold text-[#FAFAFA] uppercase tracking-wider">
+            <p className="text-[11px] font-bold text-[#FAFAFA] ">
               Scan with phone to open instantly
             </p>
             <div className="inline-block p-2 rounded-xl bg-white shadow-lg">
@@ -221,7 +221,7 @@ ${targetUrl}`;
                 loading="lazy"
               />
             </div>
-            <p className="text-[10px] text-muted-foreground">
+            <p className="text-[11px] text-muted-foreground">
               Perfect for sharing in the classroom, lab, or exam hall!
             </p>
           </div>

@@ -147,9 +147,9 @@ export const MermaidDiagram = memo(function MermaidDiagram({ chart }: { chart: s
         <div className="flex items-center justify-between mb-2.5 pb-2 border-b border-border/40">
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-primary/60"></span>
-            <span className="text-xs font-bold text-foreground/80 uppercase tracking-wider">Concept Flowchart Architecture</span>
+            <span className="text-xs font-bold text-foreground/80 ">Concept Flowchart Architecture</span>
           </div>
-          <span className="text-[10px] font-mono font-medium px-2 py-0.5 rounded bg-secondary text-muted-foreground">
+          <span className="text-[11px] font-mono font-medium px-2 py-0.5 rounded bg-secondary text-muted-foreground">
             Structured Diagram
           </span>
         </div>
@@ -167,7 +167,7 @@ export const MermaidDiagram = memo(function MermaidDiagram({ chart }: { chart: s
         className="flex justify-center min-w-[280px] max-w-full [&>svg]:max-w-full [&>svg]:h-auto"
         dangerouslySetInnerHTML={{ __html: svg }}
       />
-      <p className="text-center text-[10px] font-mono text-muted-foreground/60 mt-3 uppercase tracking-wider">
+      <p className="text-center text-[11px] font-mono text-muted-foreground/60 mt-3 ">
         Architecture & Flow Diagram
       </p>
     </div>

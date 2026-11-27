@@ -116,7 +116,7 @@ export default function LearningAnalyticsPage() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-border/80 pb-6">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="px-2.5 py-0.5 rounded-full bg-primary/10 text-primary font-bold text-xs uppercase tracking-wide">
+            <span className="px-2.5 py-0.5 rounded-full bg-primary/10 text-primary font-bold text-xs ">
               Personal Performance Intelligence
             </span>
             <span className="px-2.5 py-0.5 rounded-full bg-primary/10 text-primary dark:text-primary font-semibold text-xs">
@@ -144,7 +144,7 @@ export default function LearningAnalyticsPage() {
         {/* Streak */}
         <div className="bg-card border border-border/80 rounded-2xl p-5 shadow-sm space-y-2">
           <div className="flex items-center justify-between text-muted-foreground">
-            <span className="text-xs font-bold uppercase tracking-wider">Study Streak</span>
+            <span className="text-xs font-bold ">Study Streak</span>
             <Flame className="h-4 w-4 text-primary" />
           </div>
           <div className="text-2xl sm:text-3xl font-bold text-foreground">
@@ -158,7 +158,7 @@ export default function LearningAnalyticsPage() {
         {/* Focus Hours */}
         <div className="bg-card border border-border/80 rounded-2xl p-5 shadow-sm space-y-2">
           <div className="flex items-center justify-between text-muted-foreground">
-            <span className="text-xs font-bold uppercase tracking-wider">Total Focus</span>
+            <span className="text-xs font-bold ">Total Focus</span>
             <Clock className="h-4 w-4 text-primary" />
           </div>
           <div className="text-2xl sm:text-3xl font-bold text-foreground">
@@ -172,7 +172,7 @@ export default function LearningAnalyticsPage() {
         {/* Quiz Accuracy */}
         <div className="bg-card border border-border/80 rounded-2xl p-5 shadow-sm space-y-2">
           <div className="flex items-center justify-between text-muted-foreground">
-            <span className="text-xs font-bold uppercase tracking-wider">Quiz Accuracy</span>
+            <span className="text-xs font-bold ">Quiz Accuracy</span>
             <Award className="h-4 w-4 text-primary" />
           </div>
           <div className="text-2xl sm:text-3xl font-bold text-primary dark:text-primary">
@@ -186,7 +186,7 @@ export default function LearningAnalyticsPage() {
         {/* SuperMemo SRS Memory */}
         <div className="bg-card border border-border/80 rounded-2xl p-5 shadow-sm space-y-2">
           <div className="flex items-center justify-between text-muted-foreground">
-            <span className="text-xs font-bold uppercase tracking-wider">SRS Retention</span>
+            <span className="text-xs font-bold ">SRS Retention</span>
             <Brain className="h-4 w-4 text-primary" />
           </div>
           <div className="text-2xl sm:text-3xl font-bold text-primary dark:text-primary">
@@ -284,7 +284,7 @@ export default function LearningAnalyticsPage() {
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
           <div className="p-4 rounded-2xl bg-secondary/40 border border-border/80 space-y-2">
-            <span className="text-[10px] font-bold text-destructive uppercase tracking-wider block">
+            <span className="text-[11px] font-bold text-destructive block">
               Urgent Revision Area
             </span>
             <h4 className="font-bold text-xs text-foreground">
@@ -303,7 +303,7 @@ export default function LearningAnalyticsPage() {
           </div>
 
           <div className="p-4 rounded-2xl bg-secondary/40 border border-border/80 space-y-2">
-            <span className="text-[10px] font-bold text-primary uppercase tracking-wider block">
+            <span className="text-[11px] font-bold text-primary block">
               Spaced Repetition Due
             </span>
             <h4 className="font-bold text-xs text-foreground">
@@ -322,7 +322,7 @@ export default function LearningAnalyticsPage() {
           </div>
 
           <div className="p-4 rounded-2xl bg-secondary/40 border border-border/80 space-y-2">
-            <span className="text-[10px] font-bold text-primary uppercase tracking-wider block">
+            <span className="text-[11px] font-bold text-primary block">
               Exam Drill Ready
             </span>
             <h4 className="font-bold text-xs text-foreground">

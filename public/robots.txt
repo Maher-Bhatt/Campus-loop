@@ -33,5 +33,7 @@ Disallow: /messages
 Disallow: /bookmarks
 Disallow: /admin
 Disallow: /auth
+Disallow: /practice
+Disallow: /today
 
 Sitemap: https://itm-notes-new.vercel.app/sitemap.xml

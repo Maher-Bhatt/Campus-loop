@@ -144,18 +144,18 @@ export function AdminFlagsTab() {
                 <div
                   key={flag.id || flag.key}
                   className={`bg-stone-900/70 border rounded-2xl p-4 sm:p-5 flex items-start justify-between gap-4 transition-all ${
-                    flag.enabled
-                      ? "border-stone-700/80 shadow-xs"
-                      : "border-stone-800 opacity-60 bg-stone-950/40"
-                  }`}
+ flag.enabled
+ ? "border-stone-700/80 shadow-xs"
+ : "border-stone-800 opacity-60 bg-stone-950/40"
+ }`}
                 >
                   <div className="flex items-start gap-3 min-w-0">
                     <div
                       className={`h-10 w-10 rounded-xl flex items-center justify-center shrink-0 ${
-                        flag.enabled
-                          ? "bg-[#FAFAFA]/15 text-[#FAFAFA]"
-                          : "bg-stone-800 text-stone-500"
-                      }`}
+ flag.enabled
+ ? "bg-[#FAFAFA]/15 text-[#FAFAFA]"
+ : "bg-stone-800 text-stone-500"
+ }`}
                     >
                       <Icon className="h-5 w-5" />
                     </div>
@@ -174,16 +174,16 @@ export function AdminFlagsTab() {
                   <button
                     onClick={() => handleToggle(flag.key, flag.enabled)}
                     className={`relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none ${
-                      flag.enabled ? "bg-[#FAFAFA]" : "bg-stone-700"
-                    }`}
+ flag.enabled ? "bg-[#FAFAFA]" : "bg-stone-700"
+ }`}
                     role="switch"
                     aria-checked={flag.enabled}
                   >
                     <span
                       aria-hidden="true"
                       className={`pointer-events-none inline-block h-5 w-5 transform rounded-full bg-foreground shadow-sm ring-0 transition duration-200 ease-in-out ${
-                        flag.enabled ? "translate-x-5 bg-foreground" : "translate-x-0 bg-stone-400"
-                      }`}
+ flag.enabled ? "translate-x-5 bg-foreground" : "translate-x-0 bg-stone-400"
+ }`}
                     />
                   </button>
                 </div>

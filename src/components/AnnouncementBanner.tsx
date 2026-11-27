@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef, type ReactNode } from 'react';
 import { AlertCircle, AlertTriangle, Info, X, Calendar } from 'lucide-react';
 import { useLocation } from 'react-router-dom';
 import { openTimetable } from './GlobalTimetableModal';
@@ -97,23 +97,25 @@ export function AnnouncementBanner() {
   const isReader = /^\/library\/[^/]+\/[^/]+/.test(pathname) || pathname.includes('/topic/');
   if (isReader || isMaintenanceActive || !announcement || !announcement.active) return null;
 
-  return (
-    <div className="relative z-40 border-b border-border bg-accent/70 text-foreground px-4 py-2 transition-all text-xs">
+  return <BannerFrame>{renderBody()}</BannerFrame>;
+
+  function renderBody() {
+    return (
+    <div className="relative z-40 border-b border-border bg-accent text-foreground px-4 py-1.5 text-xs">
       <div className="max-w-7xl mx-auto flex items-center justify-between gap-3">
         <div className="flex items-center gap-2.5 min-w-0">
-          <span className="w-2 h-2 rounded-full bg-primary shrink-0" />
-          <div className="flex flex-wrap items-center gap-2 min-w-0">
-            <span className="font-bold uppercase tracking-wider text-[10px] px-2.5 py-0.5 rounded-full bg-primary text-primary-foreground">
+                    <div className="flex flex-wrap items-center gap-2 min-w-0">
+            <span className="font-medium text-[11px] px-1.5 py-0.5 rounded bg-primary text-primary-foreground">
               {announcement.severity === 'critical' ? 'Alert' : 'Exams'}
             </span>
-            <span className="font-bold text-foreground text-[11px] sm:text-xs">{announcement.title}:</span>
-            <span className="text-muted-foreground font-normal text-[11px] sm:text-xs line-clamp-2 sm:line-clamp-1">
+            <span className="font-medium text-foreground text-xs">{announcement.title}:</span>
+            <span className="hidden sm:inline text-muted-foreground text-xs line-clamp-1">
               {announcement.body}
             </span>
             <button
               type="button"
               onClick={() => openTimetable('exams')}
-              className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-card border border-border hover:border-primary/40 text-foreground font-bold text-[10px] cursor-pointer transition-all ml-1 shadow-2xs"
+              className="inline-btn inline-flex items-center gap-1 text-primary font-medium text-xs hover:underline underline-offset-4 cursor-pointer"
             >
               <Calendar className="h-3 w-3" />
               <span>View schedule</span>
@@ -124,7 +126,7 @@ export function AnnouncementBanner() {
         <button
           type="button"
           onClick={handleDismiss}
-          className="p-1.5 -mr-1 rounded-full hover:bg-secondary text-muted-foreground hover:text-foreground transition-colors shrink-0 flex items-center justify-center cursor-pointer"
+          className="p-1.5 -mr-1 rounded-md hover:bg-card text-muted-foreground hover:text-foreground transition-colors shrink-0 flex items-center justify-center cursor-pointer"
           title="Dismiss announcement"
           aria-label="Dismiss announcement"
         >
@@ -132,5 +134,25 @@ export function AnnouncementBanner() {
         </button>
       </div>
     </div>
-  );
+    );
+  }
+}
+
+/** Publishes the banner's height as --banner-h so the full-height app shell can make room for it. */
+function BannerFrame({ children }: { children: ReactNode }) {
+  const ref = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const el = ref.current;
+    const root = document.documentElement;
+    if (!el) return;
+    const update = () => root.style.setProperty('--banner-h', `${el.offsetHeight}px`);
+    update();
+    const ro = new ResizeObserver(update);
+    ro.observe(el);
+    return () => {
+      ro.disconnect();
+      root.style.setProperty('--banner-h', '0px');
+    };
+  }, []);
+  return <div ref={ref}>{children}</div>;
 }

@@ -99,9 +99,9 @@ export default function ExamPlanPage() {
 
   return (
     <div className="mx-auto max-w-4xl px-5 pb-10 pt-12 sm:px-8">
-      <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">Semester 3 · Finals</p>
-      <h1 className="mt-3 text-4xl font-medium leading-[1.05] text-foreground sm:text-5xl">
-        Your revision plan, <em className="text-primary">weighted by marks.</em>
+      <p className="text-[11px] font-semibold text-muted-foreground">Semester 3 · Finals</p>
+      <h1 className="mt-3 text-2xl font-semibold leading-[1.05] text-foreground sm:text-5xl">
+        Your revision plan, weighted by marks.
       </h1>
       <p className="mt-4 max-w-2xl text-[17px] leading-relaxed text-muted-foreground">
         {days > 0
@@ -151,7 +151,7 @@ export default function ExamPlanPage() {
             <div className="flex items-baseline justify-between gap-3">
               <h2 className="text-xl font-medium text-foreground">
                 Day {d.day}
-                {i === todayIndex && days > 0 && <span className="ml-2 align-middle text-xs font-semibold uppercase tracking-wider text-primary">Today</span>}
+                {i === todayIndex && days > 0 && <span className="ml-2 align-middle text-xs font-semibold text-primary">Today</span>}
               </h2>
               <span className="text-sm text-muted-foreground">{d.date.toLocaleDateString("en-IN", { weekday: "short", day: "numeric", month: "short" })}</span>
             </div>
@@ -166,8 +166,8 @@ export default function ExamPlanPage() {
                       aria-pressed={isDone}
                       aria-label={`Mark ${t.s.short} unit ${t.u.unit} as revised`}
                       className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-md border transition-colors cursor-pointer ${
-                        isDone ? "border-primary bg-primary text-primary-foreground" : "border-border hover:border-primary"
-                      }`}
+ isDone ? "border-primary bg-primary text-primary-foreground" : "border-border hover:border-primary"
+ }`}
                     >
                       {isDone && <Check className="h-3.5 w-3.5" strokeWidth={3} />}
                     </button>

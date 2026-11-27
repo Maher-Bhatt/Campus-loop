@@ -1,12 +1,11 @@
 import React, { useMemo } from 'react';
-import { 
-  CheckCircle2, 
-  Circle, 
-  BookOpen, 
-  Award, 
-  TrendingUp, 
+import { CheckCircle2,
+  Circle,
+  BookOpen,
+  Award,
+  TrendingUp,
   ChevronRight,
-  Sparkles
+  Lightbulb
 } from 'lucide-react';
 import { Subject, Unit } from '@/data/types';
 import { useProgress } from '@/hooks/useProgress';
@@ -101,10 +100,10 @@ export const SyllabusTracker: React.FC<SyllabusTrackerProps> = ({ subject }) => 
             <div 
               key={unit.id}
               className={`p-4 rounded-2xl border transition-all ${
-                isFinished 
-                  ? 'bg-primary/5 border-primary/30' 
-                  : 'bg-secondary/30 border-border/70'
-              }`}
+ isFinished 
+ ? 'bg-primary/5 border-primary/30' 
+ : 'bg-secondary/30 border-border/70'
+ }`}
             >
               <div className="flex items-start justify-between gap-2 mb-2">
                 <div>
@@ -125,7 +124,7 @@ export const SyllabusTracker: React.FC<SyllabusTrackerProps> = ({ subject }) => 
                   <span className="text-xs font-bold text-primary dark:text-primary block">
                     ~{expectedMarks} Marks
                   </span>
-                  <span className="text-[10px] text-muted-foreground font-mono">
+                  <span className="text-[11px] text-muted-foreground font-mono">
                     {percent}% done
                   </span>
                 </div>
@@ -148,10 +147,10 @@ export const SyllabusTracker: React.FC<SyllabusTrackerProps> = ({ subject }) => 
                       key={t.id}
                       to={`/subject/${subject.id}/topic/${t.id}`}
                       className={`text-[11px] px-2.5 py-1 rounded-xl border transition-all flex items-center gap-1.5 apple-press ${
-                        done
-                          ? 'bg-primary/10 border-primary/30 text-primary dark:text-primary font-semibold'
-                          : 'bg-card border-border/80 text-muted-foreground hover:text-foreground hover:border-primary/40'
-                      }`}
+ done
+ ? 'bg-primary/10 border-primary/30 text-primary dark:text-primary font-semibold'
+ : 'bg-card border-border/80 text-muted-foreground hover:text-foreground hover:border-primary/40'
+ }`}
                     >
                       {done ? (
                         <CheckCircle2 className="h-3 w-3 text-primary shrink-0" />

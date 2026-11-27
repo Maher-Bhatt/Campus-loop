@@ -156,7 +156,7 @@ export function DataExportDeleteModal({ isOpen, onClose }: DataExportDeleteModal
             </p>
 
             <div>
-              <label className="text-[10px] text-muted-foreground uppercase font-bold block mb-1">
+              <label className="text-[11px] text-muted-foreground uppercase font-bold block mb-1">
                 Type <strong className="text-destructive">DELETE</strong> to confirm:
               </label>
               <input
@@ -172,10 +172,10 @@ export function DataExportDeleteModal({ isOpen, onClose }: DataExportDeleteModal
               onClick={handleDeleteAccount}
               disabled={confirmDeleteText !== "DELETE" || isDeleting}
               className={`w-full h-9 rounded-xl font-bold flex items-center justify-center gap-1.5 transition-all cursor-pointer ${
-                confirmDeleteText === "DELETE" && !isDeleting
-                  ? "bg-destructive hover:bg-destructive text-white shadow-md shadow-rose-600/20"
-                  : "bg-secondary text-muted-foreground opacity-50 cursor-not-allowed"
-              }`}
+ confirmDeleteText === "DELETE" && !isDeleting
+ ? "bg-destructive hover:bg-destructive text-white shadow-md shadow-rose-600/20"
+ : "bg-secondary text-muted-foreground opacity-50 cursor-not-allowed"
+ }`}
             >
               <Trash2 className="h-3.5 w-3.5" />
               <span>{isDeleting ? "Deleting..." : "Permanently Delete Account"}</span>

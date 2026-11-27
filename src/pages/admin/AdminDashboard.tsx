@@ -122,7 +122,7 @@ function StatCard({
         <Icon className="h-5 w-5" style={{ color: accent ?? "hsl(var(--itm-chartreuse))" }} />
       </div>
       <div>
-        <p className="text-xs text-muted-foreground font-medium uppercase tracking-wide">{label}</p>
+        <p className="text-xs text-muted-foreground font-medium ">{label}</p>
         <p className="text-xl sm:text-2xl font-semibold text-foreground leading-tight">{value}</p>
       </div>
     </div>
@@ -501,15 +501,15 @@ export default function AdminDashboard() {
           <div className="flex items-center gap-2 shrink-0">
             <span
               className={`hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-bold border ${
-                maintenanceOn
-                  ? "bg-accent/20 text-accent-foreground border-accent/30"
-                  : "bg-secondary/10 text-muted-foreground border-border/80"
-              }`}
+ maintenanceOn
+ ? "bg-accent/20 text-accent-foreground border-accent/30"
+ : "bg-secondary/10 text-muted-foreground border-border/80"
+ }`}
             >
               <span
                 className={`w-1.5 h-1.5 rounded-full ${
-                  maintenanceOn ? "bg-accent animate-pulse" : "bg-muted-foreground/30"
-                }`}
+ maintenanceOn ? "bg-accent animate-pulse" : "bg-muted-foreground/30"
+ }`}
               />
               {maintenanceOn ? "Maintenance ON" : "Site Live"}
             </span>
@@ -536,10 +536,10 @@ export default function AdminDashboard() {
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
                 className={`flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-bold rounded-full transition-all whitespace-nowrap cursor-pointer shrink-0 ${
-                  active
-                    ? "bg-primary text-white shadow-xs"
-                    : "bg-secondary/60 text-muted-foreground hover:text-foreground hover:bg-secondary border border-border/50"
-                }`}
+ active
+ ? "bg-primary text-white shadow-xs"
+ : "bg-secondary/60 text-muted-foreground hover:text-foreground hover:bg-secondary border border-border/50"
+ }`}
               >
                 <Icon className="h-3.5 w-3.5" />
                 <span>{tab.label}</span>
@@ -601,7 +601,7 @@ export default function AdminDashboard() {
                   onClick={() => setActiveTab("curriculum")}
                   className="p-3 rounded-xl border border-border hover:border-primary/40 bg-background hover:bg-accent text-left transition-all cursor-pointer group shadow-2xs"
                 >
-                  <BookOpen className="h-4 w-4 text-primary group-hover:scale-110 transition-transform" />
+                  <BookOpen className="h-4 w-4 text-primary transition-transform" />
                   <span className="font-bold text-xs text-foreground block mt-1.5">Manage Curriculum</span>
                   <span className="text-[11px] text-muted-foreground block truncate">43 Courses & 8 Semesters</span>
                 </button>
@@ -610,7 +610,7 @@ export default function AdminDashboard() {
                   onClick={() => setActiveTab("questions")}
                   className="p-3 rounded-xl border border-border hover:border-primary/40 bg-background hover:bg-accent text-left transition-all cursor-pointer group shadow-2xs"
                 >
-                  <HelpCircle className="h-4 w-4 text-destructive group-hover:scale-110 transition-transform" />
+                  <HelpCircle className="h-4 w-4 text-destructive transition-transform" />
                   <span className="font-bold text-xs text-foreground block mt-1.5">Universal MCQs</span>
                   <span className="text-[11px] text-muted-foreground block truncate">3,027+ Exam Questions</span>
                 </button>
@@ -619,7 +619,7 @@ export default function AdminDashboard() {
                   onClick={() => setActiveTab("practicals")}
                   className="p-3 rounded-xl border border-border hover:border-primary/40 bg-background hover:bg-accent text-left transition-all cursor-pointer group shadow-2xs"
                 >
-                  <Code className="h-4 w-4 text-success group-hover:scale-110 transition-transform" />
+                  <Code className="h-4 w-4 text-success transition-transform" />
                   <span className="font-bold text-xs text-foreground block mt-1.5">Practicals Laboratory</span>
                   <span className="text-[11px] text-muted-foreground block truncate">1,180+ Experiments & Viva</span>
                 </button>
@@ -628,7 +628,7 @@ export default function AdminDashboard() {
                   onClick={() => setActiveTab("database_sync")}
                   className="p-3 rounded-xl border border-border hover:border-primary/40 bg-background hover:bg-accent text-left transition-all cursor-pointer group shadow-2xs"
                 >
-                  <Database className="h-4 w-4 text-primary group-hover:scale-110 transition-transform" />
+                  <Database className="h-4 w-4 text-primary transition-transform" />
                   <span className="font-bold text-xs text-foreground block mt-1.5">Database & Sync</span>
                   <span className="text-[11px] text-muted-foreground block truncate">PostgreSQL Health & Sync</span>
                 </button>
@@ -676,13 +676,13 @@ export default function AdminDashboard() {
                     <span className="text-muted-foreground font-medium">Site Maintenance Status</span>
                     <span
                       className={`flex items-center gap-1.5 font-bold ${
-                        maintenanceOn ? "text-accent" : "text-primary"
-                      }`}
+ maintenanceOn ? "text-accent" : "text-primary"
+ }`}
                     >
                       <span
                         className={`w-2 h-2 rounded-full ${
-                          maintenanceOn ? "text-accent animate-pulse" : "text-primary"
-                        }`}
+ maintenanceOn ? "text-accent animate-pulse" : "text-primary"
+ }`}
                       />
                       {maintenanceOn ? "Active Lock" : "Site Live"}
                     </span>

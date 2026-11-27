@@ -17,7 +17,7 @@ import {
   Trophy,
   Flame,
   Shield,
-  Sparkles,
+  Lightbulb,
   Award,
   GraduationCap,
   CheckCircle2,
@@ -28,7 +28,7 @@ import {
   Search,
   Check,
   Image as ImageIcon
-} from "lucide-react";
+} from 'lucide-react';
 import { useState, useMemo, useEffect } from "react";
 import { SearchDialog } from "@/components/SearchDialog";
 import { BackToTop } from "@/components/BackToTop";
@@ -129,7 +129,7 @@ export default function Index() {
       <SearchDialog open={searchOpen} onOpenChange={setSearchOpen} />
 
       {/* ── 1. Hero Section ── */}
-      <section className="relative overflow-hidden pt-8 pb-14 sm:pt-14 sm:pb-20 px-4 sm:px-6 border-b border-border bg-gradient-to-b from-card/80 via-background to-background">
+      <section className="relative overflow-hidden pt-8 pb-14 sm:pt-14 sm:pb-20 px-4 sm:px-6 border-b border-border bg-card/80">
         <div className="max-w-5xl mx-auto text-center relative z-10 animate-slide-up">
           
           {/* Institutional Badge */}
@@ -155,7 +155,7 @@ export default function Index() {
               {/* Progress Summary Card */}
               <div className="w-full max-w-lg mx-auto p-5 sm:p-6 rounded-2xl bg-card border border-border shadow-sm text-left mb-8">
                 <div className="flex items-center justify-between mb-3">
-                  <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground flex items-center gap-1.5">
+                  <span className="text-xs font-bold text-muted-foreground flex items-center gap-1.5">
                     <TrendingUp className="h-3.5 w-3.5 text-primary" /> Syllabus Progress
                   </span>
                   <span className="text-xs font-bold text-foreground">
@@ -292,7 +292,7 @@ export default function Index() {
         <div className="max-w-5xl mx-auto">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
             <div>
-              <div className="inline-flex items-center gap-1.5 text-xs font-bold text-primary uppercase tracking-wider mb-1">
+              <div className="inline-flex items-center gap-1.5 text-xs font-bold text-primary mb-1">
                 <Flame className="h-3.5 w-3.5" /> High-Yield Exam Resources
               </div>
               <h2 className="text-xl sm:text-2xl font-bold text-foreground">
@@ -319,10 +319,10 @@ export default function Index() {
               >
                 <div>
                   <div className="flex items-center justify-between gap-2 mb-2">
-                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-secondary text-muted-foreground uppercase">
+                    <span className="text-[11px] font-bold px-2 py-0.5 rounded-full bg-secondary text-muted-foreground uppercase">
                       {mat.category}
                     </span>
-                    <span className="text-[10px] text-muted-foreground font-mono">{mat.fileSize}</span>
+                    <span className="text-[11px] text-muted-foreground font-mono">{mat.fileSize}</span>
                   </div>
                   <h4 className="font-bold text-xs text-foreground group-hover:text-primary transition-colors line-clamp-2">
                     {mat.title}
@@ -366,7 +366,7 @@ export default function Index() {
       <section className="py-14 sm:py-20 px-4 sm:px-6 border-b border-border bg-background">
         <div className="max-w-5xl mx-auto">
           <div className="text-center max-w-xl mx-auto mb-12">
-            <span className="text-xs font-bold text-primary uppercase tracking-wider block mb-2">
+            <span className="text-xs font-bold text-primary block mb-2">
               Designed For Academic Success
             </span>
             <h2 className="text-2xl sm:text-3xl font-semibold text-foreground">
@@ -436,30 +436,30 @@ export default function Index() {
               <button
                 onClick={() => setProgramFilter('btech')}
                 className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
-                  programFilter === 'btech'
-                    ? 'bg-card text-foreground shadow-xs'
-                    : 'text-muted-foreground hover:text-foreground'
-                }`}
+ programFilter === 'btech'
+ ? 'bg-card text-foreground shadow-xs'
+ : 'text-muted-foreground hover:text-foreground'
+ }`}
               >
                 B.Tech
               </button>
               <button
                 onClick={() => setProgramFilter('bca')}
                 className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
-                  programFilter === 'bca'
-                    ? 'bg-card text-foreground shadow-xs'
-                    : 'text-muted-foreground hover:text-foreground'
-                }`}
+ programFilter === 'bca'
+ ? 'bg-card text-foreground shadow-xs'
+ : 'text-muted-foreground hover:text-foreground'
+ }`}
               >
                 BCA
               </button>
               <button
                 onClick={() => setProgramFilter('all')}
                 className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
-                  programFilter === 'all'
-                    ? 'bg-card text-foreground shadow-xs'
-                    : 'text-muted-foreground hover:text-foreground'
-                }`}
+ programFilter === 'all'
+ ? 'bg-card text-foreground shadow-xs'
+ : 'text-muted-foreground hover:text-foreground'
+ }`}
               >
                 All
               </button>
@@ -469,10 +469,10 @@ export default function Index() {
               <button
                 onClick={() => setSemesterFilter('all')}
                 className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
-                  semesterFilter === 'all'
-                    ? 'bg-card text-foreground shadow-xs'
-                    : 'text-muted-foreground hover:text-foreground'
-                }`}
+ semesterFilter === 'all'
+ ? 'bg-card text-foreground shadow-xs'
+ : 'text-muted-foreground hover:text-foreground'
+ }`}
               >
                 All Sem
               </button>
@@ -481,10 +481,10 @@ export default function Index() {
                   key={sem}
                   onClick={() => setSemesterFilter(sem)}
                   className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
-                    semesterFilter === sem
-                      ? 'bg-card text-foreground shadow-xs'
-                      : 'text-muted-foreground hover:text-foreground'
-                  }`}
+ semesterFilter === sem
+ ? 'bg-card text-foreground shadow-xs'
+ : 'text-muted-foreground hover:text-foreground'
+ }`}
                 >
                   Sem {sem}
                 </button>
@@ -509,10 +509,10 @@ export default function Index() {
                 >
                   <div>
                     <div className="flex items-center justify-between gap-2 mb-3">
-                      <span className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-secondary text-muted-foreground font-mono">
+                      <span className="text-[11px] font-bold px-2 py-0.5 rounded-md bg-secondary text-muted-foreground font-mono">
                         {subject.code}
                       </span>
-                      <span className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-primary/10 text-primary">
+                      <span className="text-[11px] font-bold px-2 py-0.5 rounded-md bg-primary/10 text-primary">
                         Semester {subject.semester}
                       </span>
                     </div>

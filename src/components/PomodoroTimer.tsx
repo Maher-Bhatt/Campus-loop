@@ -1,5 +1,5 @@
 import { usePomodoro } from '@/contexts/PomodoroContext';
-import { Play, Pause, RotateCcw, Sparkles, Clock, Coffee, Flame } from 'lucide-react';
+import { Play, Pause, RotateCcw, Lightbulb, Clock, Coffee, Flame } from 'lucide-react';
 
 export function PomodoroTimer() {
   const {
@@ -30,21 +30,21 @@ export function PomodoroTimer() {
         <div className="flex items-center gap-1.5">
           <button
             onClick={() => setMode('study')}
-            className={`text-[10px] font-bold px-2 py-0.5 rounded-full transition-all ${
-              mode === 'study'
-                ? 'bg-primary text-primary-foreground'
-                : 'bg-secondary text-muted-foreground hover:text-foreground'
-            }`}
+            className={`text-[11px] font-bold px-2 py-0.5 rounded-full transition-all ${
+ mode === 'study'
+ ? 'bg-primary text-primary-foreground'
+ : 'bg-secondary text-muted-foreground hover:text-foreground'
+ }`}
           >
             Study (25m)
           </button>
           <button
             onClick={() => setMode('break')}
-            className={`text-[10px] font-bold px-2 py-0.5 rounded-full transition-all ${
-              mode === 'break'
-                ? 'bg-primary text-white'
-                : 'bg-secondary text-muted-foreground hover:text-foreground'
-            }`}
+            className={`text-[11px] font-bold px-2 py-0.5 rounded-full transition-all ${
+ mode === 'break'
+ ? 'bg-primary text-white'
+ : 'bg-secondary text-muted-foreground hover:text-foreground'
+ }`}
           >
             Break (5m)
           </button>
@@ -60,8 +60,8 @@ export function PomodoroTimer() {
         <div className="w-full h-2 rounded-full bg-secondary overflow-hidden mb-5">
           <div
             className={`h-full transition-all duration-1000 ${
-              mode === 'study' ? 'bg-primary' : 'bg-primary'
-            }`}
+ mode === 'study' ? 'bg-primary' : 'bg-primary'
+ }`}
             style={{ width: `${progressPercent}%` }}
           />
         </div>
@@ -71,10 +71,10 @@ export function PomodoroTimer() {
           <button
             onClick={toggleTimer}
             className={`px-5 py-2.5 rounded-xl font-bold text-sm inline-flex items-center gap-2 shadow-sm transition-all apple-press ${
-              isRunning
-                ? 'bg-primary hover:bg-primary text-white'
-                : 'bg-primary hover:opacity-90 text-primary-foreground'
-            }`}
+ isRunning
+ ? 'bg-primary hover:bg-primary text-white'
+ : 'bg-primary hover:opacity-90 text-primary-foreground'
+ }`}
           >
             {isRunning ? (
               <>
@@ -98,7 +98,7 @@ export function PomodoroTimer() {
 
       <div className="pt-3 border-t border-border/60 flex items-center justify-between text-xs text-muted-foreground">
         <span className="flex items-center gap-1 text-primary dark:text-primary font-medium">
-          <Sparkles className="h-3.5 w-3.5" /> +50 XP reward upon completion
+          <Lightbulb className="h-3.5 w-3.5" /> +50 XP reward upon completion
         </span>
         <span>
           {isRunning ? 'Timer active' : 'Paused'} · {sessionCount} completed

@@ -24,8 +24,8 @@ function Chip({ active, onClick, children }: { active: boolean; onClick: () => v
       onClick={onClick}
       aria-pressed={active}
       className={`rounded-full px-3.5 py-1.5 text-sm transition-colors cursor-pointer ${
-        active ? "bg-foreground text-background font-medium" : "text-muted-foreground hover:text-foreground hover:bg-secondary"
-      }`}
+ active ? "bg-foreground text-background font-medium" : "text-muted-foreground hover:text-foreground hover:bg-secondary"
+ }`}
     >
       {children}
     </button>
@@ -62,9 +62,9 @@ export default function PapersPage() {
 
   return (
     <div className="mx-auto max-w-5xl px-5 pb-10 pt-12 sm:px-8">
-      <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">Semester 3 · Question papers</p>
-      <h1 className="mt-3 text-4xl font-medium leading-[1.05] text-foreground sm:text-5xl">
-        Previous-year papers, <em className="text-primary">solved.</em>
+      <p className="text-[11px] font-semibold text-muted-foreground">Semester 3 · Question papers</p>
+      <h1 className="mt-3 text-2xl font-semibold leading-[1.05] text-foreground sm:text-5xl">
+        Previous-year papers, solved.
       </h1>
       <p className="mt-4 max-w-2xl text-[17px] leading-relaxed text-muted-foreground">
         {ALL.length} real papers from ITM SLS Baroda, typed out from the original question papers, each with worked solutions: MCQ answers,
@@ -73,7 +73,7 @@ export default function PapersPage() {
 
       <div className="mt-8 space-y-3">
         <div className="flex flex-wrap items-center gap-1.5">
-          <span className="mr-2 w-16 text-xs font-medium uppercase tracking-wider text-muted-foreground">Subject</span>
+          <span className="mr-2 w-16 text-xs font-medium text-muted-foreground">Subject</span>
           <Chip active={subject === "all"} onClick={() => set("subject", "all")}>All</Chip>
           {LIBRARY.map((s) => (
             <Chip key={s.slug} active={subject === s.slug} onClick={() => set("subject", s.slug)}>
@@ -82,7 +82,7 @@ export default function PapersPage() {
           ))}
         </div>
         <div className="flex flex-wrap items-center gap-1.5">
-          <span className="mr-2 w-16 text-xs font-medium uppercase tracking-wider text-muted-foreground">Exam</span>
+          <span className="mr-2 w-16 text-xs font-medium text-muted-foreground">Exam</span>
           <Chip active={exam === "all"} onClick={() => set("exam", "all")}>All</Chip>
           {EXAMS.map((e) => (
             <Chip key={e} active={exam === e} onClick={() => set("exam", e)}>
@@ -91,7 +91,7 @@ export default function PapersPage() {
           ))}
         </div>
         <div className="flex flex-wrap items-center gap-1.5">
-          <span className="mr-2 w-16 text-xs font-medium uppercase tracking-wider text-muted-foreground">Year</span>
+          <span className="mr-2 w-16 text-xs font-medium text-muted-foreground">Year</span>
           <Chip active={year === "all"} onClick={() => set("year", "all")}>All</Chip>
           {YEARS.map((y) => (
             <Chip key={y} active={year === y} onClick={() => set("year", y)}>

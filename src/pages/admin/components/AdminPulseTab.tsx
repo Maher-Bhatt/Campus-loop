@@ -5,11 +5,11 @@ import {
   Trash2,
   Calendar,
   Clock,
-  Sparkles,
+  Lightbulb,
   Edit2,
   Check,
   X,
-  RefreshCw,
+  RefreshCw
 } from 'lucide-react';
 import { toast } from 'sonner';
 import {
@@ -141,7 +141,7 @@ export function AdminPulseTab() {
           <form onSubmit={handleSave} className="space-y-3.5">
             {/* Tone Selector */}
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-stone-500 mb-1.5">
+              <label className="block text-xs font-bold text-stone-500 mb-1.5">
                 Tile Tone
               </label>
               <div className="grid grid-cols-4 gap-2">
@@ -151,18 +151,18 @@ export function AdminPulseTab() {
                     type="button"
                     onClick={() => setTone(t)}
                     className={`h-9 rounded-xl text-xs font-bold capitalize border transition-all cursor-pointer ${
-                      tone === t
-                        ? 'border-primary ring-2 ring-primary/20 font-bold'
-                        : 'border-border'
-                    } ${
-                      t === 'black'
-                        ? 'bg-foreground text-white'
-                        : t === 'lime'
-                        ? 'bg-accent text-foreground'
-                        : t === 'blue'
-                        ? 'bg-primary text-white'
-                        : 'bg-white text-foreground'
-                    }`}
+ tone === t
+ ? 'border-primary ring-2 ring-primary/20 font-bold'
+ : 'border-border'
+ } ${
+ t === 'black'
+ ? 'bg-foreground text-white'
+ : t === 'lime'
+ ? 'bg-accent text-foreground'
+ : t === 'blue'
+ ? 'bg-primary text-white'
+ : 'bg-white text-foreground'
+ }`}
                   >
                     {t}
                   </button>
@@ -173,7 +173,7 @@ export function AdminPulseTab() {
             {/* Tag & Icon */}
             <div className="grid grid-cols-2 gap-3">
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-stone-500 mb-1">
+                <label className="block text-xs font-bold text-stone-500 mb-1">
                   Tag Text
                 </label>
                 <input
@@ -186,7 +186,7 @@ export function AdminPulseTab() {
               </div>
 
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-stone-500 mb-1">
+                <label className="block text-xs font-bold text-stone-500 mb-1">
                   Icon
                 </label>
                 <select
@@ -197,14 +197,14 @@ export function AdminPulseTab() {
                   <option value="zap">⚡ Lightning (Zap)</option>
                   <option value="calendar">📅 Calendar</option>
                   <option value="clock">⏰ Clock</option>
-                  <option value="sparkles">✨ Sparkles</option>
+                  <option value="sparkles">✨ Lightbulb</option>
                 </select>
               </div>
             </div>
 
             {/* Title */}
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-stone-500 mb-1">
+              <label className="block text-xs font-bold text-stone-500 mb-1">
                 Headline / Status
               </label>
               <input
@@ -219,7 +219,7 @@ export function AdminPulseTab() {
 
             {/* Subtitle */}
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-stone-500 mb-1">
+              <label className="block text-xs font-bold text-stone-500 mb-1">
                 Subtext / Details (Optional)
               </label>
               <input
@@ -273,10 +273,10 @@ export function AdminPulseTab() {
             >
               <div className="min-w-0">
                 <div className="flex items-center gap-2 mb-1">
-                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-stone-200 dark:bg-stone-800">
+                  <span className="text-[11px] font-bold px-2 py-0.5 rounded-full bg-stone-200 dark:bg-stone-800">
                     {tile.tag}
                   </span>
-                  <span className="text-[10px] font-bold uppercase text-stone-400">
+                  <span className="text-[11px] font-bold uppercase text-stone-400">
                     Tone: {tile.tone}
                   </span>
                 </div>

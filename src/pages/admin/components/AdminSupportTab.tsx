@@ -158,24 +158,24 @@ export function AdminSupportTab() {
               <div
                 key={t.id}
                 className={`bg-stone-800 border rounded-2xl p-4 sm:p-5 space-y-3 transition-all ${
-                  isOpen
-                    ? "border-primary/30 bg-stone-800"
-                    : isInProgress
-                    ? "border-primary/30 bg-stone-800"
-                    : "border-stone-700/60 opacity-80"
-                }`}
+ isOpen
+ ? "border-primary/30 bg-stone-800"
+ : isInProgress
+ ? "border-primary/30 bg-stone-800"
+ : "border-stone-700/60 opacity-80"
+ }`}
               >
                 <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-2 border-b border-stone-700/60 pb-3">
                   <div className="space-y-1 min-w-0">
                     <div className="flex items-center gap-2 flex-wrap">
                       <span
-                        className={`px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider ${
-                          isOpen
-                            ? "bg-primary/15 text-primary border border-primary/30"
-                            : isInProgress
-                            ? "bg-primary/15 text-primary border border-primary/30"
-                            : "bg-primary/15 text-primary border border-primary/30"
-                        }`}
+                        className={`px-2 py-0.5 rounded-full text-[11px] font-bold ${
+ isOpen
+ ? "bg-primary/15 text-primary border border-primary/30"
+ : isInProgress
+ ? "bg-primary/15 text-primary border border-primary/30"
+ : "bg-primary/15 text-primary border border-primary/30"
+ }`}
                       >
                         {t.status.replace("_", " ")}
                       </span>
@@ -217,7 +217,7 @@ export function AdminSupportTab() {
 
                   {t.admin_reply && (
                     <div className="mt-2.5 pt-2 border-t border-stone-800">
-                      <span className="text-[10px] font-bold uppercase tracking-wider text-[#FAFAFA] block mb-0.5">
+                      <span className="text-[11px] font-bold text-[#FAFAFA] block mb-0.5">
                         Admin Resolution:
                       </span>
                       <p className="text-stone-300 text-xs italic">{t.admin_reply}</p>
@@ -246,7 +246,7 @@ export function AdminSupportTab() {
             </button>
 
             <div>
-              <span className="text-[10px] uppercase font-bold text-stone-400">
+              <span className="text-[11px] uppercase font-bold text-stone-400">
                 Support Ticket Resolution
               </span>
               <h3 className="text-base font-bold text-white mt-0.5">
@@ -262,7 +262,7 @@ export function AdminSupportTab() {
             </div>
 
             <div>
-              <label className="text-[11px] font-bold uppercase tracking-wider text-stone-400 block mb-1">
+              <label className="text-[11px] font-bold text-stone-400 block mb-1">
                 Official Admin Response
               </label>
               <textarea

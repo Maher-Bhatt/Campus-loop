@@ -593,7 +593,7 @@ export function GamificationProvider({ children }: { children: React.ReactNode }
 
       if (newLevel > prev.level) {
         const title = LEVEL_TITLES.find((l) => l.level === newLevel)?.title || 'Scholar';
-        toast.success(`🎉 Level Up! You are now Level ${newLevel}: ${title}!`, {
+        toast.success(`Level Up! You are now Level ${newLevel}: ${title}!`, {
           description: `Great job on your academic consistency. Keep climbing the ranks!`,
         });
         if (newLevel >= 5) {
@@ -654,7 +654,7 @@ export function GamificationProvider({ children }: { children: React.ReactNode }
         lastFreezeClaimedWeek: curWeek,
       };
     });
-    toast.success("❄️ Free Weekly Streak Freeze Claimed!", {
+    toast.success("Free Weekly Streak Freeze Claimed!", {
       description: "One missed study day will automatically be protected this week."
     });
     return true;
@@ -674,7 +674,7 @@ export function GamificationProvider({ children }: { children: React.ReactNode }
         weeklyGoalDays: clamped,
       };
     });
-    toast.success(`🎯 Weekly Goal Updated: ${clamped} Study Days / Week`);
+    toast.success(`Weekly Goal Updated: ${clamped} Study Days / Week`);
   }, [user?.id]);
 
   const weeklyGoalPercent = Math.min(100, Math.round(((state.weeklyStudyDaysCount || 1) / Math.max(1, state.weeklyGoalDays || 5)) * 100));
@@ -691,7 +691,7 @@ export function GamificationProvider({ children }: { children: React.ReactNode }
       xp: prev.xp - 100,
       streakFreezeCount: (prev.streakFreezeCount || 0) + 1,
     }));
-    toast.success('❄️ Streak Freeze Purchased! (-100 XP)', {
+    toast.success('Streak Freeze Purchased! (-100 XP)', {
       description: 'Your streak will be automatically saved if you miss a study day.',
     });
     return true;
@@ -785,13 +785,13 @@ export function GamificationProvider({ children }: { children: React.ReactNode }
 
       if (prev.lastActiveDate === yesterdayStr) {
         newStreak += 1;
-        toast.success(`🔥 Streak Maintained!`, {
+        toast.success(`Streak Maintained!`, {
           description: `You are on a ${newStreak}-day learning streak! +20 XP awarded.`,
         });
       } else if (newFreezes > 0) {
         // Protect streak using Freeze
         newFreezes -= 1;
-        toast.info(`❄️ Streak Freeze Protected Your Streak!`, {
+        toast.info(`Streak Freeze Protected Your Streak!`, {
           description: `Your ${newStreak}-day streak was saved from resetting. (${newFreezes} freezes remaining)`,
         });
       } else {

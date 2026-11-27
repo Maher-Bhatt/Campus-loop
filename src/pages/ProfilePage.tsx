@@ -14,7 +14,7 @@ import {
   Trophy,
   Flame,
   Clock,
-  Sparkles,
+  Lightbulb,
   Sliders,
   Shield,
   Bell,
@@ -36,7 +36,7 @@ import {
   CheckCircle2,
   Layers,
   Upload,
-  BookOpen,
+  BookOpen
 } from 'lucide-react';
 import { toast } from 'sonner';
 import { useUniversity } from '@/contexts/UniversityContext';
@@ -468,7 +468,7 @@ export default function ProfilePage() {
                 <Trophy className="w-4 h-4 mr-2 text-primary" /> Manage Badges & Honors
               </DropdownMenuItem>
               <DropdownMenuItem onClick={() => setIsInterestsModalOpen(true)} className="cursor-pointer rounded-xl font-medium">
-                <Sparkles className="w-4 h-4 mr-2 text-primary" /> Clubs & Interests
+                <Lightbulb className="w-4 h-4 mr-2 text-primary" /> Clubs & Interests
               </DropdownMenuItem>
               <DropdownMenuItem onClick={() => setActiveTab('settings')} className="cursor-pointer rounded-xl font-medium">
                 <Sliders className="w-4 h-4 mr-2" /> Study & App Settings
@@ -501,7 +501,7 @@ export default function ProfilePage() {
             <button
               onClick={openEditModal}
               title="Change Profile Photo & Info"
-              className="absolute bottom-0 right-0 w-8 h-8 rounded-full bg-foreground dark:bg-white text-white dark:text-foreground border-2 border-white dark:border-foreground flex items-center justify-center shadow-md hover:scale-110 active:scale-95 transition-all cursor-pointer"
+              className="absolute bottom-0 right-0 w-8 h-8 rounded-full bg-foreground dark:bg-white text-white dark:text-foreground border-2 border-white dark:border-foreground flex items-center justify-center shadow-md transition-all cursor-pointer"
             >
               <Camera className="w-4 h-4" />
             </button>
@@ -620,7 +620,7 @@ export default function ProfilePage() {
           <button
             type="button"
             onClick={() => setIsBadgesModalOpen(true)}
-            className="h-12 px-4 rounded-2xl bg-white dark:bg-card border border-border dark:border-stone-800 flex items-center gap-1.5 text-xs font-bold text-foreground dark:text-white hover:bg-background active:scale-95 transition-all cursor-pointer shadow-2xs"
+            className="h-12 px-4 rounded-2xl bg-white dark:bg-card border border-border dark:border-stone-800 flex items-center gap-1.5 text-xs font-bold text-foreground dark:text-white hover:bg-background transition-all cursor-pointer shadow-2xs"
           >
             <Trophy className="w-4 h-4 text-primary" />
             <span>Badges</span>
@@ -630,7 +630,7 @@ export default function ProfilePage() {
             type="button"
             onClick={handleShareProfile}
             title="Share Profile"
-            className="h-12 w-12 rounded-2xl bg-white dark:bg-card border border-border dark:border-stone-800 flex items-center justify-center text-foreground dark:text-white hover:bg-background active:scale-95 transition-all cursor-pointer shrink-0 shadow-2xs"
+            className="h-12 w-12 rounded-2xl bg-white dark:bg-card border border-border dark:border-stone-800 flex items-center justify-center text-foreground dark:text-white hover:bg-background transition-all cursor-pointer shrink-0 shadow-2xs"
           >
             <Share2 className="w-5 h-5" />
           </button>
@@ -640,7 +640,7 @@ export default function ProfilePage() {
         <div className="space-y-2.5">
           <div className="flex items-center justify-between">
             <h3 className="text-base font-bold text-foreground dark:text-white flex items-center gap-2">
-              <Sparkles className="w-4 h-4 text-primary" />
+              <Lightbulb className="w-4 h-4 text-primary" />
               <span>Clubs & Interests</span>
             </h3>
             <button
@@ -714,7 +714,7 @@ export default function ProfilePage() {
           </div>
 
           {/* Gamification Level & XP Banner */}
-          <div className="p-3.5 rounded-2xl bg-gradient-to-r from-primary/10 via-primary/10 to-primary/10 border border-primary/20 flex items-center justify-between gap-3">
+          <div className="p-3.5 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-between gap-3">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-2xl bg-primary text-white flex items-center justify-center font-bold text-sm shadow-xs">
                 L{game.level}
@@ -770,7 +770,7 @@ export default function ProfilePage() {
                       <h4 className="font-bold text-xs sm:text-sm text-foreground dark:text-white leading-tight truncate">
                         {badge.title}
                       </h4>
-                      <p className="text-[10px] text-muted-foreground dark:text-stone-400 font-medium truncate">
+                      <p className="text-[11px] text-muted-foreground dark:text-stone-400 font-medium truncate">
                         {badge.tier.toUpperCase()} · +{badge.xpReward} XP
                       </p>
                     </div>
@@ -795,10 +795,10 @@ export default function ProfilePage() {
             type="button"
             onClick={() => setActiveTab('posts')}
             className={`pb-2.5 text-sm sm:text-base font-bold transition-all relative cursor-pointer ${
-              activeTab === 'posts'
-                ? 'text-primary dark:text-primary'
-                : 'text-muted-foreground dark:text-stone-400 hover:text-foreground'
-            }`}
+ activeTab === 'posts'
+ ? 'text-primary dark:text-primary'
+ : 'text-muted-foreground dark:text-stone-400 hover:text-foreground'
+ }`}
           >
             Posts ({userPosts.length})
             {activeTab === 'posts' && (
@@ -810,10 +810,10 @@ export default function ProfilePage() {
             type="button"
             onClick={() => setActiveTab('events')}
             className={`pb-2.5 text-sm sm:text-base font-bold transition-all relative cursor-pointer ${
-              activeTab === 'events'
-                ? 'text-primary dark:text-primary'
-                : 'text-muted-foreground dark:text-stone-400 hover:text-foreground'
-            }`}
+ activeTab === 'events'
+ ? 'text-primary dark:text-primary'
+ : 'text-muted-foreground dark:text-stone-400 hover:text-foreground'
+ }`}
           >
             Events ({userEvents.length})
             {activeTab === 'events' && (
@@ -825,10 +825,10 @@ export default function ProfilePage() {
             type="button"
             onClick={() => setActiveTab('saved')}
             className={`pb-2.5 text-sm sm:text-base font-bold transition-all relative cursor-pointer ${
-              activeTab === 'saved'
-                ? 'text-primary dark:text-primary'
-                : 'text-muted-foreground dark:text-stone-400 hover:text-foreground'
-            }`}
+ activeTab === 'saved'
+ ? 'text-primary dark:text-primary'
+ : 'text-muted-foreground dark:text-stone-400 hover:text-foreground'
+ }`}
           >
             Saved ({savedPosts.length})
             {activeTab === 'saved' && (
@@ -840,10 +840,10 @@ export default function ProfilePage() {
             type="button"
             onClick={() => setActiveTab('settings')}
             className={`pb-2.5 text-sm sm:text-base font-bold transition-all relative cursor-pointer ${
-              activeTab === 'settings'
-                ? 'text-primary dark:text-primary'
-                : 'text-muted-foreground dark:text-stone-400 hover:text-foreground'
-            }`}
+ activeTab === 'settings'
+ ? 'text-primary dark:text-primary'
+ : 'text-muted-foreground dark:text-stone-400 hover:text-foreground'
+ }`}
           >
             Settings
             {activeTab === 'settings' && (
@@ -959,10 +959,10 @@ export default function ProfilePage() {
                   disabled={isPushLoading}
                   onClick={() => handleTogglePush(!pushEnabled)}
                   className={`h-9 px-4 rounded-full text-xs font-bold transition-all cursor-pointer ${
-                    pushEnabled
-                      ? 'bg-foreground text-white dark:bg-white dark:text-foreground'
-                      : 'bg-primary/10 text-primary'
-                  }`}
+ pushEnabled
+ ? 'bg-foreground text-white dark:bg-white dark:text-foreground'
+ : 'bg-primary/10 text-primary'
+ }`}
                 >
                   {pushEnabled ? 'Enabled' : 'Enable'}
                 </button>
@@ -1047,10 +1047,10 @@ export default function ProfilePage() {
                 type="button"
                 onClick={() => setEditTab('academic')}
                 className={`flex-1 py-1.5 rounded-lg transition-all ${
-                  editTab === 'academic'
-                    ? 'bg-white dark:bg-stone-900 text-primary shadow-xs'
-                    : 'text-stone-500 hover:text-foreground'
-                }`}
+ editTab === 'academic'
+ ? 'bg-white dark:bg-stone-900 text-primary shadow-xs'
+ : 'text-stone-500 hover:text-foreground'
+ }`}
               >
                 1. Academic
               </button>
@@ -1058,10 +1058,10 @@ export default function ProfilePage() {
                 type="button"
                 onClick={() => setEditTab('personal')}
                 className={`flex-1 py-1.5 rounded-lg transition-all ${
-                  editTab === 'personal'
-                    ? 'bg-white dark:bg-stone-900 text-primary shadow-xs'
-                    : 'text-stone-500 hover:text-foreground'
-                }`}
+ editTab === 'personal'
+ ? 'bg-white dark:bg-stone-900 text-primary shadow-xs'
+ : 'text-stone-500 hover:text-foreground'
+ }`}
               >
                 2. Personal
               </button>
@@ -1069,10 +1069,10 @@ export default function ProfilePage() {
                 type="button"
                 onClick={() => setEditTab('avatar')}
                 className={`flex-1 py-1.5 rounded-lg transition-all ${
-                  editTab === 'avatar'
-                    ? 'bg-white dark:bg-stone-900 text-primary shadow-xs'
-                    : 'text-stone-500 hover:text-foreground'
-                }`}
+ editTab === 'avatar'
+ ? 'bg-white dark:bg-stone-900 text-primary shadow-xs'
+ : 'text-stone-500 hover:text-foreground'
+ }`}
               >
                 3. Avatar
               </button>
@@ -1084,7 +1084,7 @@ export default function ProfilePage() {
                 <div className="space-y-3.5">
                   {/* University Selection */}
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-stone-500 mb-1">
+                    <label className="block text-xs font-bold text-stone-500 mb-1">
                       University / College
                     </label>
                     <select
@@ -1102,7 +1102,7 @@ export default function ProfilePage() {
 
                   {/* Degree / Program */}
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-stone-500 mb-1">
+                    <label className="block text-xs font-bold text-stone-500 mb-1">
                       Degree Program
                     </label>
                     <select
@@ -1120,7 +1120,7 @@ export default function ProfilePage() {
 
                   {/* Branch / Specialization */}
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-stone-500 mb-1">
+                    <label className="block text-xs font-bold text-stone-500 mb-1">
                       Branch / Specialization
                     </label>
                     <input
@@ -1148,7 +1148,7 @@ export default function ProfilePage() {
                               setEditBranch('Computer Applications');
                             }
                           }}
-                          className="px-2 py-0.5 rounded-lg bg-stone-100 dark:bg-stone-800 text-[10px] font-bold text-stone-600 dark:text-stone-300 hover:bg-primary/10 hover:text-primary"
+                          className="px-2 py-0.5 rounded-lg bg-stone-100 dark:bg-stone-800 text-[11px] font-bold text-stone-600 dark:text-stone-300 hover:bg-primary/10 hover:text-primary"
                         >
                           {quick}
                         </button>
@@ -1159,7 +1159,7 @@ export default function ProfilePage() {
                   {/* Semester and Division */}
                   <div className="grid grid-cols-2 gap-3">
                     <div>
-                      <label className="block text-xs font-bold uppercase tracking-wider text-stone-500 mb-1">
+                      <label className="block text-xs font-bold text-stone-500 mb-1">
                         Current Semester
                       </label>
                       <select
@@ -1176,7 +1176,7 @@ export default function ProfilePage() {
                     </div>
 
                     <div>
-                      <label className="block text-xs font-bold uppercase tracking-wider text-stone-500 mb-1">
+                      <label className="block text-xs font-bold text-stone-500 mb-1">
                         Division / Batch
                       </label>
                       <input
@@ -1191,7 +1191,7 @@ export default function ProfilePage() {
 
                   {/* Enrollment Number */}
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-stone-500 mb-1">
+                    <label className="block text-xs font-bold text-stone-500 mb-1">
                       University Enrollment No.
                     </label>
                     <input
@@ -1209,7 +1209,7 @@ export default function ProfilePage() {
               {editTab === 'personal' && (
                 <div className="space-y-3.5">
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-stone-500 mb-1">
+                    <label className="block text-xs font-bold text-stone-500 mb-1">
                       Full Display Name
                     </label>
                     <input
@@ -1222,7 +1222,7 @@ export default function ProfilePage() {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-stone-500 mb-1">
+                    <label className="block text-xs font-bold text-stone-500 mb-1">
                       Bio / Status
                     </label>
                     <textarea
@@ -1235,7 +1235,7 @@ export default function ProfilePage() {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-stone-500 mb-1">
+                    <label className="block text-xs font-bold text-stone-500 mb-1">
                       Academic Goal & Vision
                     </label>
                     <input
@@ -1248,7 +1248,7 @@ export default function ProfilePage() {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-stone-500 mb-1">
+                    <label className="block text-xs font-bold text-stone-500 mb-1">
                       Target Semester CGPA / SGPA
                     </label>
                     <input
@@ -1282,7 +1282,7 @@ export default function ProfilePage() {
 
                   {/* Device Photo Upload */}
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-stone-500 mb-1.5">
+                    <label className="block text-xs font-bold text-stone-500 mb-1.5">
                       Upload Custom Photo
                     </label>
                     <label className="flex items-center justify-center gap-2 w-full h-12 rounded-xl border border-dashed border-primary text-primary bg-primary/10 font-bold text-xs cursor-pointer hover:bg-primary/10 transition-all">
@@ -1300,7 +1300,7 @@ export default function ProfilePage() {
 
                   {/* Signature Gradient Avatars */}
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-stone-500 mb-2">
+                    <label className="block text-xs font-bold text-stone-500 mb-2">
                       Or Choose Signature Gradient
                     </label>
                     <div className="grid grid-cols-6 gap-2">
@@ -1312,8 +1312,8 @@ export default function ProfilePage() {
                             type="button"
                             onClick={() => setEditAvatarUrl(grad.id)}
                             className={`h-12 rounded-2xl bg-gradient-to-tr ${grad.bgClass} flex items-center justify-center text-white font-bold text-sm transition-all cursor-pointer ${
-                              isSelected ? 'ring-4 ring-primary scale-105 shadow-md' : 'opacity-80 hover:opacity-100'
-                            }`}
+ isSelected ? 'ring-4 ring-primary shadow-md' : 'opacity-80 hover:opacity-100'
+ }`}
                           >
                             {(editName || displayName).charAt(0).toUpperCase()}
                           </button>
@@ -1361,7 +1361,7 @@ export default function ProfilePage() {
             <div className="flex items-center justify-between pb-3 border-b border-border">
               <div>
                 <h3 className="font-bold text-lg text-foreground dark:text-white flex items-center gap-2">
-                  <Sparkles className="w-5 h-5 text-primary" />
+                  <Lightbulb className="w-5 h-5 text-primary" />
                   <span>Choose Clubs & Interests</span>
                 </h3>
                 <p className="text-xs text-stone-500">
@@ -1397,7 +1397,7 @@ export default function ProfilePage() {
 
             {/* Popular Catalog Grid */}
             <div className="space-y-2">
-              <span className="text-[11px] font-bold uppercase tracking-wider text-stone-500 block">
+              <span className="text-[11px] font-bold text-stone-500 block">
                 Popular Campus Clubs & Passions
               </span>
               <div className="flex flex-wrap gap-2 max-h-60 overflow-y-auto pr-1 custom-scrollbar">
@@ -1409,10 +1409,10 @@ export default function ProfilePage() {
                       type="button"
                       onClick={() => toggleInterest(item.name)}
                       className={`h-9 px-3.5 rounded-full text-xs font-semibold inline-flex items-center gap-1.5 transition-all cursor-pointer ${
-                        isSelected
-                          ? 'bg-primary text-white shadow-xs ring-2 ring-primary/30'
-                          : 'bg-background dark:bg-stone-800 text-stone-700 dark:text-stone-300 hover:bg-primary/10'
-                      }`}
+ isSelected
+ ? 'bg-primary text-white shadow-xs ring-2 ring-primary/30'
+ : 'bg-background dark:bg-stone-800 text-stone-700 dark:text-stone-300 hover:bg-primary/10'
+ }`}
                     >
                       <span>{item.icon}</span>
                       <span>{item.name}</span>
@@ -1473,10 +1473,10 @@ export default function ProfilePage() {
                 type="button"
                 onClick={() => setBadgesFilter('all')}
                 className={`flex-1 py-1.5 rounded-lg transition-all ${
-                  badgesFilter === 'all'
-                    ? 'bg-white dark:bg-stone-900 text-primary shadow-xs'
-                    : 'text-stone-500'
-                }`}
+ badgesFilter === 'all'
+ ? 'bg-white dark:bg-stone-900 text-primary shadow-xs'
+ : 'text-stone-500'
+ }`}
               >
                 All ({game.achievements.length})
               </button>
@@ -1484,10 +1484,10 @@ export default function ProfilePage() {
                 type="button"
                 onClick={() => setBadgesFilter('unlocked')}
                 className={`flex-1 py-1.5 rounded-lg transition-all ${
-                  badgesFilter === 'unlocked'
-                    ? 'bg-white dark:bg-stone-900 text-success shadow-xs'
-                    : 'text-stone-500'
-                }`}
+ badgesFilter === 'unlocked'
+ ? 'bg-white dark:bg-stone-900 text-success shadow-xs'
+ : 'text-stone-500'
+ }`}
               >
                 Unlocked ({unlockedBadges.length})
               </button>
@@ -1495,10 +1495,10 @@ export default function ProfilePage() {
                 type="button"
                 onClick={() => setBadgesFilter('locked')}
                 className={`flex-1 py-1.5 rounded-lg transition-all ${
-                  badgesFilter === 'locked'
-                    ? 'bg-white dark:bg-stone-900 text-primary shadow-xs'
-                    : 'text-stone-500'
-                }`}
+ badgesFilter === 'locked'
+ ? 'bg-white dark:bg-stone-900 text-primary shadow-xs'
+ : 'text-stone-500'
+ }`}
               >
                 In Progress ({lockedBadges.length})
               </button>
@@ -1519,10 +1519,10 @@ export default function ProfilePage() {
                   <div
                     key={ach.id}
                     className={`p-3.5 rounded-2xl border transition-all flex items-center justify-between gap-3 ${
-                      isUnlocked
-                        ? 'border-border bg-white dark:bg-stone-900 shadow-2xs'
-                        : 'border-border/60 bg-stone-50 dark:bg-stone-900/40 opacity-75'
-                    }`}
+ isUnlocked
+ ? 'border-border bg-white dark:bg-stone-900 shadow-2xs'
+ : 'border-border/60 bg-stone-50 dark:bg-stone-900/40 opacity-75'
+ }`}
                   >
                     <div className="flex items-center gap-3 min-w-0">
                       <div className="w-10 h-10 rounded-2xl bg-background dark:bg-stone-800 flex items-center justify-center text-xl shrink-0">
@@ -1533,7 +1533,7 @@ export default function ProfilePage() {
                           <h4 className="font-bold text-xs sm:text-sm text-foreground dark:text-white truncate">
                             {ach.title}
                           </h4>
-                          <span className="text-[10px] font-bold uppercase px-2 py-0.5 rounded-full bg-primary/10 text-primary border border-primary/20">
+                          <span className="text-[11px] font-bold uppercase px-2 py-0.5 rounded-full bg-primary/10 text-primary border border-primary/20">
                             {ach.tier}
                           </span>
                         </div>
@@ -1549,10 +1549,10 @@ export default function ProfilePage() {
                           type="button"
                           onClick={() => toggleShowcaseBadge(ach.id)}
                           className={`px-3 py-1.5 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-all cursor-pointer ${
-                            isShowcased
-                              ? 'bg-success text-white shadow-xs'
-                              : 'bg-background dark:bg-stone-800 text-stone-600 dark:text-stone-300 hover:bg-primary/10'
-                          }`}
+ isShowcased
+ ? 'bg-success text-white shadow-xs'
+ : 'bg-background dark:bg-stone-800 text-stone-600 dark:text-stone-300 hover:bg-primary/10'
+ }`}
                         >
                           {isShowcased ? (
                             <>
@@ -1567,7 +1567,7 @@ export default function ProfilePage() {
                           )}
                         </button>
                       ) : (
-                        <span className="text-[10px] font-bold text-stone-400 uppercase tracking-wider px-2.5 py-1 rounded-lg bg-stone-200/50 dark:bg-stone-800">
+                        <span className="text-[11px] font-bold text-stone-400 px-2.5 py-1 rounded-lg bg-stone-200/50 dark:bg-stone-800">
                           +{ach.xpReward} XP
                         </span>
                       )}

@@ -1,8 +1,19 @@
 import { useState, useMemo } from "react";
-import { 
-  Code, Search, Filter, Download, CheckCircle2, XCircle, 
-  Play, Terminal, Copy, Eye, FileCode, Check, Sparkles, HelpCircle
-} from "lucide-react";
+import { Code,
+  Search,
+  Filter,
+  Download,
+  CheckCircle2,
+  XCircle,
+  Play,
+  Terminal,
+  Copy,
+  Eye,
+  FileCode,
+  Check,
+  Lightbulb,
+  HelpCircle
+} from 'lucide-react';
 import { ALL_CODING_PROBLEMS, CodingProblem } from "@/data/codingLabData";
 import { toast } from "sonner";
 
@@ -114,7 +125,7 @@ export function AdminPracticalsTab() {
       {/* KPI Cards */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
         <div className="p-4 rounded-2xl bg-card border border-border">
-          <span className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground block">
+          <span className="text-[11px] font-bold text-muted-foreground block">
             Total Laboratory Experiments
           </span>
           <span className="text-2xl font-bold text-foreground mt-1 block">
@@ -126,7 +137,7 @@ export function AdminPracticalsTab() {
         </div>
 
         <div className="p-4 rounded-2xl bg-card border border-border">
-          <span className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground block">
+          <span className="text-[11px] font-bold text-muted-foreground block">
             Lab Courses
           </span>
           <span className="text-2xl font-bold text-foreground mt-1 block">
@@ -138,7 +149,7 @@ export function AdminPracticalsTab() {
         </div>
 
         <div className="p-4 rounded-2xl bg-card border border-border">
-          <span className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground block">
+          <span className="text-[11px] font-bold text-muted-foreground block">
             Oral Viva Voce Questions
           </span>
           <span className="text-2xl font-bold text-foreground mt-1 block">
@@ -150,7 +161,7 @@ export function AdminPracticalsTab() {
         </div>
 
         <div className="p-4 rounded-2xl bg-card border border-border">
-          <span className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground block">
+          <span className="text-[11px] font-bold text-muted-foreground block">
             Filter Matches
           </span>
           <span className="text-2xl font-bold text-primary mt-1 block">
@@ -178,16 +189,16 @@ export function AdminPracticalsTab() {
 
         {/* Department Pills */}
         <div className="flex items-center gap-1.5 overflow-x-auto scrollbar-none pb-1">
-          <span className="text-[10px] font-bold uppercase text-muted-foreground shrink-0 mr-1">Dept:</span>
+          <span className="text-[11px] font-bold uppercase text-muted-foreground shrink-0 mr-1">Dept:</span>
           {departments.map((dep) => (
             <button
               key={dep.id}
               onClick={() => setSelectedDepartment(dep.id)}
               className={`px-3 py-1 rounded-full text-xs font-bold transition-all cursor-pointer whitespace-nowrap ${
-                selectedDepartment.toLowerCase() === dep.id.toLowerCase()
-                  ? "bg-primary text-primary-foreground shadow-xs"
-                  : "bg-muted text-muted-foreground hover:bg-accent"
-              }`}
+ selectedDepartment.toLowerCase() === dep.id.toLowerCase()
+ ? "bg-primary text-primary-foreground shadow-xs"
+ : "bg-muted text-muted-foreground hover:bg-accent"
+ }`}
             >
               {dep.name}
             </button>
@@ -196,16 +207,16 @@ export function AdminPracticalsTab() {
 
         {/* Language Filter */}
         <div className="flex items-center gap-1.5 overflow-x-auto scrollbar-none pb-1">
-          <span className="text-[10px] font-bold uppercase text-muted-foreground shrink-0 mr-1">Lang:</span>
+          <span className="text-[11px] font-bold uppercase text-muted-foreground shrink-0 mr-1">Lang:</span>
           {languages.map((lng) => (
             <button
               key={lng}
               onClick={() => setSelectedLanguage(lng)}
               className={`px-2.5 py-1 rounded-full text-xs font-mono font-bold uppercase transition-all cursor-pointer whitespace-nowrap ${
-                selectedLanguage === lng
-                  ? "bg-success text-white shadow-xs"
-                  : "bg-muted text-muted-foreground hover:bg-accent"
-              }`}
+ selectedLanguage === lng
+ ? "bg-success text-white shadow-xs"
+ : "bg-muted text-muted-foreground hover:bg-accent"
+ }`}
             >
               {lng}
             </button>
@@ -222,10 +233,10 @@ export function AdminPracticalsTab() {
           >
             <div>
               <div className="flex items-center justify-between gap-2">
-                <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-primary/10 text-primary border border-primary/20 truncate">
+                <span className="text-[11px] font-bold px-2 py-0.5 rounded-full bg-primary/10 text-primary border border-primary/20 truncate">
                   {prob.subjectName}
                 </span>
-                <span className="text-[10px] font-mono uppercase font-bold px-2 py-0.5 rounded bg-muted text-muted-foreground shrink-0">
+                <span className="text-[11px] font-mono uppercase font-bold px-2 py-0.5 rounded bg-muted text-muted-foreground shrink-0">
                   {prob.language}
                 </span>
               </div>
@@ -239,10 +250,10 @@ export function AdminPracticalsTab() {
             </div>
 
             <div className="pt-3 mt-3 border-t border-border flex items-center justify-between">
-              <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${
-                prob.difficulty === "Easy" ? "bg-success/15 text-success" :
-                prob.difficulty === "Medium" ? "bg-primary/15 text-primary" : "bg-destructive/15 text-destructive"
-              }`}>
+              <span className={`text-[11px] font-bold px-2 py-0.5 rounded-full ${
+ prob.difficulty === "Easy" ? "bg-success/15 text-success" :
+ prob.difficulty === "Medium" ? "bg-primary/15 text-primary" : "bg-destructive/15 text-destructive"
+ }`}>
                 {prob.difficulty}
               </span>
 
@@ -277,7 +288,7 @@ export function AdminPracticalsTab() {
             <div className="flex items-center justify-between pb-3 border-b border-border">
               <div>
                 <div className="flex items-center gap-2">
-                  <span className="text-[10px] font-bold uppercase px-2 py-0.5 rounded bg-primary text-primary-foreground">
+                  <span className="text-[11px] font-bold uppercase px-2 py-0.5 rounded bg-primary text-primary-foreground">
                     {inspectingPractical.language}
                   </span>
                   <span className="text-xs font-mono text-muted-foreground">
@@ -310,10 +321,10 @@ export function AdminPracticalsTab() {
                   key={t.id}
                   onClick={() => setActiveInspectorTab(t.id as any)}
                   className={`px-3 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                    activeInspectorTab === t.id
-                      ? "bg-primary text-primary-foreground shadow-xs"
-                      : "text-muted-foreground hover:bg-muted"
-                  }`}
+ activeInspectorTab === t.id
+ ? "bg-primary text-primary-foreground shadow-xs"
+ : "text-muted-foreground hover:bg-muted"
+ }`}
                 >
                   {t.label}
                 </button>
@@ -325,7 +336,7 @@ export function AdminPracticalsTab() {
               {activeInspectorTab === "aim" && (
                 <div className="space-y-3">
                   <div className="p-3.5 rounded-xl bg-muted/40 border border-border space-y-2">
-                    <span className="font-bold text-foreground uppercase tracking-wider text-[11px] block">
+                    <span className="font-bold text-foreground text-[11px] block">
                       Problem Statement & Apparatus
                     </span>
                     <p className="text-muted-foreground leading-relaxed whitespace-pre-wrap">
@@ -334,7 +345,7 @@ export function AdminPracticalsTab() {
                   </div>
 
                   <div className="p-3.5 rounded-xl bg-muted/40 border border-border space-y-2">
-                    <span className="font-bold text-foreground uppercase tracking-wider text-[11px] block">
+                    <span className="font-bold text-foreground text-[11px] block">
                       Expected Output Verification
                     </span>
                     <pre className="p-3 rounded-lg bg-stone-900 text-stone-100 font-mono text-[11px] overflow-x-auto whitespace-pre-wrap border border-stone-800">
@@ -414,10 +425,10 @@ export function AdminPracticalsTab() {
 
                   {testResult && (
                     <div className={`p-4 rounded-xl border space-y-2 animate-fade-in ${
-                      testResult.passed
-                        ? "bg-success/10 border-success/40 text-success dark:text-success"
-                        : "bg-destructive/10 border-destructive/40 text-destructive dark:text-destructive"
-                    }`}>
+ testResult.passed
+ ? "bg-success/10 border-success/40 text-success dark:text-success"
+ : "bg-destructive/10 border-destructive/40 text-destructive dark:text-destructive"
+ }`}>
                       <div className="flex items-center gap-2 font-bold text-xs">
                         {testResult.passed ? <CheckCircle2 className="h-4 w-4" /> : <XCircle className="h-4 w-4" />}
                         <span>Status: {testResult.passed ? "PASSED (Model Solution Verified)" : "FAILED"}</span>

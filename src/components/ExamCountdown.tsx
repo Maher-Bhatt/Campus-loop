@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from "react";
-import { Clock, CalendarDays, AlertTriangle, ChevronDown, Sparkles } from "lucide-react";
+import { Clock, CalendarDays, AlertTriangle, ChevronDown, Lightbulb } from 'lucide-react';
 import { TIMETABLE_DATA, TimetableBatch } from "@/data/timetableData";
 
 export const ExamCountdown = () => {
@@ -80,7 +80,7 @@ export const ExamCountdown = () => {
   }, [targetExamDate]);
 
   return (
-    <div className="w-full relative overflow-hidden rounded-2xl bg-gradient-to-r from-destructive via-primary to-primary shadow-lg text-white mb-6 md:mb-8 border border-destructive/30">
+    <div className="w-full relative overflow-hidden rounded-2xl bg-destructive shadow-lg text-white mb-6 md:mb-8 border border-destructive/30">
       {/* Decorative background circles */}
       <div className="absolute -right-10 -top-10 w-44 h-44 bg-white/10 rounded-full blur-2xl pointer-events-none" />
       <div className="absolute -left-10 -bottom-10 w-36 h-36 bg-primary/20 rounded-full blur-2xl pointer-events-none" />
@@ -92,7 +92,7 @@ export const ExamCountdown = () => {
           </div>
           <div>
             <div className="flex flex-wrap items-center justify-center md:justify-start gap-2 mb-1">
-              <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-black/20 text-white/90 border border-white/20">
+              <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-black/20 text-white/90 border border-white/20">
                 Official Exam Schedule
               </span>
               {/* Batch Switcher */}
@@ -130,22 +130,22 @@ export const ExamCountdown = () => {
             <div className="flex items-baseline gap-2">
               <div className="text-center min-w-[36px]">
                 <span className="text-2xl md:text-3xl font-bold font-mono tracking-tight">{String(timeLeft.days).padStart(2, "0")}</span>
-                <span className="text-[9px] uppercase font-bold text-destructive block -mt-1 tracking-wider">Days</span>
+                <span className="text-[11px] uppercase font-bold text-destructive block -mt-1 tracking-wider">Days</span>
               </div>
               <span className="text-xl font-bold opacity-50 -mt-2">:</span>
               <div className="text-center min-w-[36px]">
                 <span className="text-2xl md:text-3xl font-bold font-mono tracking-tight">{String(timeLeft.hours).padStart(2, "0")}</span>
-                <span className="text-[9px] uppercase font-bold text-destructive block -mt-1 tracking-wider">Hrs</span>
+                <span className="text-[11px] uppercase font-bold text-destructive block -mt-1 tracking-wider">Hrs</span>
               </div>
               <span className="text-xl font-bold opacity-50 -mt-2">:</span>
               <div className="text-center min-w-[36px]">
                 <span className="text-2xl md:text-3xl font-bold font-mono tracking-tight">{String(timeLeft.minutes).padStart(2, "0")}</span>
-                <span className="text-[9px] uppercase font-bold text-destructive block -mt-1 tracking-wider">Min</span>
+                <span className="text-[11px] uppercase font-bold text-destructive block -mt-1 tracking-wider">Min</span>
               </div>
               <span className="text-xl font-bold opacity-50 -mt-2">:</span>
               <div className="text-center min-w-[36px]">
                 <span className="text-2xl md:text-3xl font-bold font-mono tracking-tight">{String(timeLeft.seconds).padStart(2, "0")}</span>
-                <span className="text-[9px] uppercase font-bold text-destructive block -mt-1 tracking-wider">Sec</span>
+                <span className="text-[11px] uppercase font-bold text-destructive block -mt-1 tracking-wider">Sec</span>
               </div>
             </div>
           </div>

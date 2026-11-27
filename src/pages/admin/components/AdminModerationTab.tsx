@@ -9,12 +9,12 @@ import {
   RefreshCw,
   Filter,
   Search,
-  Sparkles,
+  Lightbulb,
   Clock,
   User,
   X,
-  AlertCircle,
-} from "lucide-react";
+  AlertCircle
+} from 'lucide-react';
 import {
   ModerationItem,
   fetchModerationQueue,
@@ -224,25 +224,25 @@ export function AdminModerationTab() {
               <div
                 key={item.id}
                 className={`bg-stone-800 border rounded-2xl p-4 sm:p-5 space-y-3 transition-all ${
-                  isPending ? "border-primary/30 shadow-sm" : "border-stone-700/60 opacity-80"
-                }`}
+ isPending ? "border-primary/30 shadow-sm" : "border-stone-700/60 opacity-80"
+ }`}
               >
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-stone-700/60 pb-3">
                   <div className="flex items-center gap-2 flex-wrap">
                     {item.type === "errata" && (
-                      <span className="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-destructive/15 text-destructive border border-destructive/30 flex items-center gap-1">
+                      <span className="px-2 py-0.5 rounded-full text-[11px] font-bold bg-destructive/15 text-destructive border border-destructive/30 flex items-center gap-1">
                         <Flag className="h-3 w-3" />
                         Errata Report
                       </span>
                     )}
                     {item.type === "student_contribution" && (
-                      <span className="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-primary/15 text-primary border border-primary/30 flex items-center gap-1">
-                        <Sparkles className="h-3 w-3" />
+                      <span className="px-2 py-0.5 rounded-full text-[11px] font-bold bg-primary/15 text-primary border border-primary/30 flex items-center gap-1">
+                        <Lightbulb className="h-3 w-3" />
                         Student Contribution
                       </span>
                     )}
                     {item.type === "community_post" && (
-                      <span className="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-primary/15 text-primary border border-primary/30 flex items-center gap-1">
+                      <span className="px-2 py-0.5 rounded-full text-[11px] font-bold bg-primary/15 text-primary border border-primary/30 flex items-center gap-1">
                         <MessageSquare className="h-3 w-3" />
                         Post Report
                       </span>
@@ -271,7 +271,7 @@ export function AdminModerationTab() {
 
                   {item.suggested_fix && (
                     <div className="pt-2 border-t border-stone-800">
-                      <span className="text-[10px] uppercase font-bold text-primary block mb-0.5">
+                      <span className="text-[11px] uppercase font-bold text-primary block mb-0.5">
                         Suggested Correction:
                       </span>
                       <p className="text-primary/90 font-mono text-[11px]">
@@ -282,7 +282,7 @@ export function AdminModerationTab() {
 
                   {item.rejection_reason && (
                     <div className="pt-2 border-t border-stone-800">
-                      <span className="text-[10px] uppercase font-bold text-destructive block mb-0.5">
+                      <span className="text-[11px] uppercase font-bold text-destructive block mb-0.5">
                         Rejection Reason:
                       </span>
                       <p className="text-destructive text-[11px]">{item.rejection_reason}</p>
@@ -292,13 +292,13 @@ export function AdminModerationTab() {
 
                 {/* Actions */}
                 <div className="flex items-center justify-between pt-1">
-                  <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider ${
-                    item.status === "approved"
-                      ? "bg-primary/10 text-primary border border-primary/30"
-                      : item.status === "rejected"
-                      ? "bg-destructive/10 text-destructive border border-destructive/30"
-                      : "bg-primary/10 text-primary border border-primary/30"
-                  }`}>
+                  <span className={`px-2 py-0.5 rounded-full text-[11px] font-bold ${
+ item.status === "approved"
+ ? "bg-primary/10 text-primary border border-primary/30"
+ : item.status === "rejected"
+ ? "bg-destructive/10 text-destructive border border-destructive/30"
+ : "bg-primary/10 text-primary border border-primary/30"
+ }`}>
                     {item.status}
                   </span>
 

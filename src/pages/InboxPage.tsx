@@ -10,13 +10,13 @@ import {
   UserX,
   UserPlus,
   ArrowLeft,
-  Sparkles,
+  Lightbulb,
   Users,
   MessageSquare,
   Clock,
   MapPin,
   GraduationCap,
-  ShieldAlert,
+  ShieldAlert
 } from 'lucide-react';
 import { toast } from 'sonner';
 import { useAuth } from '@/contexts/AuthContext';
@@ -241,7 +241,7 @@ export default function InboxPage() {
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div>
             <div className="flex items-center gap-2">
-              <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-primary/10 text-primary dark:bg-primary/15 dark:text-primary">
+              <span className="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-primary/10 text-primary dark:bg-primary/15 dark:text-primary">
                 {currentUniversity.shortName} Network
               </span>
             </div>
@@ -255,15 +255,15 @@ export default function InboxPage() {
             <button
               onClick={() => setActiveTab('messages')}
               className={`px-3.5 py-1.5 rounded-full text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer ${
-                activeTab === 'messages'
-                  ? 'bg-foreground text-white dark:bg-white dark:text-foreground shadow-2xs'
-                  : 'text-muted-foreground dark:text-stone-400 hover:text-foreground dark:hover:text-white'
-              }`}
+ activeTab === 'messages'
+ ? 'bg-foreground text-white dark:bg-white dark:text-foreground shadow-2xs'
+ : 'text-muted-foreground dark:text-stone-400 hover:text-foreground dark:hover:text-white'
+ }`}
             >
               <MessageSquare className="h-3.5 w-3.5" />
               <span>Chats</span>
               {friends.length > 0 && (
-                <span className="px-1.5 py-0.2 rounded-full text-[10px] font-mono bg-white/20">
+                <span className="px-1.5 py-0.2 rounded-full text-[11px] font-mono bg-white/20">
                   {friends.length}
                 </span>
               )}
@@ -272,15 +272,15 @@ export default function InboxPage() {
             <button
               onClick={() => setActiveTab('requests')}
               className={`px-3.5 py-1.5 rounded-full text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer relative ${
-                activeTab === 'requests'
-                  ? 'bg-foreground text-white dark:bg-white dark:text-foreground shadow-2xs'
-                  : 'text-muted-foreground dark:text-stone-400 hover:text-foreground dark:hover:text-white'
-              }`}
+ activeTab === 'requests'
+ ? 'bg-foreground text-white dark:bg-white dark:text-foreground shadow-2xs'
+ : 'text-muted-foreground dark:text-stone-400 hover:text-foreground dark:hover:text-white'
+ }`}
             >
               <UserCheck className="h-3.5 w-3.5" />
               <span>Requests</span>
               {receivedRequests.length > 0 && (
-                <span className="px-1.5 py-0.2 rounded-full text-[10px] font-mono bg-destructive text-white font-bold animate-pulse">
+                <span className="px-1.5 py-0.2 rounded-full text-[11px] font-mono bg-destructive text-white font-bold animate-pulse">
                   {receivedRequests.length}
                 </span>
               )}
@@ -289,10 +289,10 @@ export default function InboxPage() {
             <button
               onClick={() => setActiveTab('find')}
               className={`px-3.5 py-1.5 rounded-full text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer ${
-                activeTab === 'find'
-                  ? 'bg-primary text-white shadow-2xs'
-                  : 'text-muted-foreground dark:text-stone-400 hover:text-foreground dark:hover:text-white'
-              }`}
+ activeTab === 'find'
+ ? 'bg-primary text-white shadow-2xs'
+ : 'text-muted-foreground dark:text-stone-400 hover:text-foreground dark:hover:text-white'
+ }`}
             >
               <UserPlus className="h-3.5 w-3.5" />
               <span>Find Classmates</span>
@@ -364,7 +364,7 @@ export default function InboxPage() {
             {/* Received Requests */}
             <div className="space-y-3">
               <div className="flex items-center justify-between">
-                <h3 className="text-xs font-bold uppercase tracking-wider text-muted-foreground dark:text-stone-400">
+                <h3 className="text-xs font-bold text-muted-foreground dark:text-stone-400">
                   Received Requests ({receivedRequests.length})
                 </h3>
               </div>
@@ -426,7 +426,7 @@ export default function InboxPage() {
 
             {/* Sent Requests */}
             <div className="space-y-3 pt-2">
-              <h3 className="text-xs font-bold uppercase tracking-wider text-muted-foreground dark:text-stone-400">
+              <h3 className="text-xs font-bold text-muted-foreground dark:text-stone-400">
                 Pending Sent Requests ({sentRequests.length})
               </h3>
 
@@ -477,10 +477,10 @@ export default function InboxPage() {
                 type="button"
                 onClick={() => setSelectedUnivFilter('all')}
                 className={`px-3 py-1 rounded-full text-xs font-bold transition-all shrink-0 cursor-pointer ${
-                  selectedUnivFilter === 'all'
-                    ? 'bg-foreground text-white dark:bg-white dark:text-foreground'
-                    : 'bg-white dark:bg-stone-800 border border-border dark:border-stone-700 text-muted-foreground dark:text-stone-300'
-                }`}
+ selectedUnivFilter === 'all'
+ ? 'bg-foreground text-white dark:bg-white dark:text-foreground'
+ : 'bg-white dark:bg-stone-800 border border-border dark:border-stone-700 text-muted-foreground dark:text-stone-300'
+ }`}
               >
                 All Gujarat
               </button>
@@ -490,10 +490,10 @@ export default function InboxPage() {
                   type="button"
                   onClick={() => setSelectedUnivFilter(u.id)}
                   className={`px-3 py-1 rounded-full text-xs font-bold transition-all shrink-0 cursor-pointer ${
-                    selectedUnivFilter === u.id
-                      ? 'bg-primary text-white shadow-2xs'
-                      : 'bg-white dark:bg-stone-800 border border-border dark:border-stone-700 text-muted-foreground dark:text-stone-300'
-                  }`}
+ selectedUnivFilter === u.id
+ ? 'bg-primary text-white shadow-2xs'
+ : 'bg-white dark:bg-stone-800 border border-border dark:border-stone-700 text-muted-foreground dark:text-stone-300'
+ }`}
                 >
                   {u.shortName}
                 </button>
@@ -534,7 +534,7 @@ export default function InboxPage() {
                           <p className="text-xs text-muted-foreground dark:text-stone-400 truncate">
                             {st.branch} {st.division ? `(${st.division})` : ''}
                           </p>
-                          <div className="flex items-center gap-2 text-[10px] text-muted-foreground dark:text-stone-400">
+                          <div className="flex items-center gap-2 text-[11px] text-muted-foreground dark:text-stone-400">
                             <span className="font-semibold text-primary uppercase">{st.university}</span>
                             {st.enrollmentNo && <span>• {st.enrollmentNo}</span>}
                           </div>
@@ -645,7 +645,7 @@ export default function InboxPage() {
             <div className="flex-1 overflow-y-auto p-4 space-y-3 bg-background/50 dark:bg-stone-900/40">
               {activeThreadMessages.length === 0 ? (
                 <div className="text-center py-12 text-muted-foreground dark:text-stone-400 space-y-2">
-                  <Sparkles className="h-8 w-8 mx-auto text-primary" />
+                  <Lightbulb className="h-8 w-8 mx-auto text-primary" />
                   <p className="font-bold text-sm text-foreground dark:text-white">
                     Start of your direct academic chat
                   </p>
@@ -663,14 +663,14 @@ export default function InboxPage() {
                     >
                       <div
                         className={`max-w-[80%] rounded-2xl px-4 py-2.5 text-xs sm:text-sm font-normal shadow-2xs leading-relaxed ${
-                          isMe
-                            ? 'bg-primary text-white rounded-br-xs'
-                            : 'bg-white dark:bg-[#27272A] text-foreground dark:text-white border border-border dark:border-stone-700 rounded-bl-xs'
-                        }`}
+ isMe
+ ? 'bg-primary text-white rounded-br-xs'
+ : 'bg-white dark:bg-[#27272A] text-foreground dark:text-white border border-border dark:border-stone-700 rounded-bl-xs'
+ }`}
                       >
                         {msg.content}
                       </div>
-                      <span className="text-[10px] text-stone-400 px-1 mt-1 font-mono">
+                      <span className="text-[11px] text-stone-400 px-1 mt-1 font-mono">
                         {new Date(msg.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                       </span>
                     </div>

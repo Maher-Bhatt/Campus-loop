@@ -37,17 +37,17 @@ export function CookieConsentBanner() {
   return (
     <aside
       aria-label="Cookie and Storage Consent"
-      className="fixed bottom-4 left-4 right-4 sm:left-auto sm:right-6 sm:max-w-md z-50 animate-in fade-in slide-in-from-bottom-5 duration-300"
+      className="fixed bottom-4 left-4 right-4 sm:left-auto sm:right-6 sm:max-w-md z-50 "
     >
-      <div className="rounded-2xl border border-border/80 bg-background/95 dark:bg-card/95 backdrop-blur-xl p-4 sm:p-5 shadow-2xl space-y-3 ring-1 ring-black/5 dark:ring-white/10">
+      <div className="rounded-lg border border-border bg-card p-4 shadow-xl space-y-3">
         <div className="flex items-start gap-3">
           <div className="h-8 w-8 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0">
             <Cookie className="h-4 w-4" />
           </div>
           <div className="space-y-1">
-            <h3 className="text-xs font-bold uppercase tracking-wider text-foreground flex items-center gap-1.5">
+            <h3 className="text-xs font-bold text-foreground flex items-center gap-1.5">
               <span>Your Privacy & Storage Choices</span>
-              <span className="text-[10px] px-1.5 py-0.2 rounded-full bg-success/20 text-success font-semibold">DPDP 2023</span>
+              <span className="text-[11px] px-1.5 py-0.2 rounded-full bg-success/20 text-success font-semibold">DPDP 2023</span>
             </h3>
             <p className="text-xs text-muted-foreground leading-relaxed">
               We use strictly necessary browser storage to remember your reading progress, theme, and authentication session. We do <strong>not</strong> use advertising cookies or tracking pixels.
@@ -68,14 +68,14 @@ export function CookieConsentBanner() {
             <button
               type="button"
               onClick={handleEssentialOnly}
-              className="h-8 px-3 rounded-full text-xs font-semibold text-muted-foreground hover:text-foreground bg-muted hover:bg-muted/80 transition-colors cursor-pointer"
+              className="h-8 px-3 rounded-md text-xs font-medium text-foreground border border-input bg-card hover:bg-secondary transition-colors cursor-pointer"
             >
               Essential Only
             </button>
             <button
               type="button"
               onClick={handleAcceptAll}
-              className="h-8 px-4 rounded-full text-xs font-bold text-white bg-primary hover:opacity-90 transition-opacity cursor-pointer shadow-xs"
+              className="h-8 px-3 rounded-md text-xs font-medium text-primary-foreground bg-primary hover:bg-primary/90 transition-colors cursor-pointer"
             >
               Accept All
             </button>

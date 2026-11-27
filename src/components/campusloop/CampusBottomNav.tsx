@@ -1,6 +1,7 @@
 import React from 'react';
 import { useLocation, Link } from 'react-router-dom';
-import { Home, Library, BookOpen, Users, User } from 'lucide-react';
+import { Home, Library, ListChecks, Users, User } from 'lucide-react';
+import { PRACTICE_PATHS } from '@/lib/navigation';
 import { useAuth } from '@/contexts/AuthContext';
 import { Haptics, ImpactStyle } from '@capacitor/haptics';
 
@@ -39,7 +40,7 @@ export const CampusBottomNav: React.FC<CampusBottomNavProps> = ({
   const items = [
     { to: '/dashboard', label: 'Home', icon: Home, active: location.pathname === '/dashboard' || location.pathname === '/' },
     { to: '/library', label: 'Library', icon: Library, active: location.pathname.startsWith('/library') },
-    { to: '/subjects', label: 'Subjects', icon: BookOpen, active: location.pathname.startsWith('/subject') },
+    { to: '/practice', label: 'Practice', icon: ListChecks, active: PRACTICE_PATHS.some((p) => location.pathname.startsWith(p)) },
     { to: '/community', label: 'Campus', icon: Users, active: ['/community', '/social', '/explore', '/inbox', '/messages'].some((p) => location.pathname.startsWith(p)), badge: unreadMessagesCount },
     { to: user ? '/profile' : '/auth', label: 'Profile', icon: User, active: location.pathname.startsWith('/profile') || location.pathname === '/auth' },
   ];
@@ -47,7 +48,7 @@ export const CampusBottomNav: React.FC<CampusBottomNavProps> = ({
   return (
     <nav
       aria-label="Primary"
-      className="md:hidden fixed left-0 right-0 bottom-0 z-40 bg-background/95 backdrop-blur-md border-t border-border select-none"
+      className="md:hidden fixed left-0 right-0 bottom-0 z-40 bg-card border-t border-border select-none"
       style={{ paddingBottom: 'env(safe-area-inset-bottom, 0px)' }}
     >
       <div className="grid grid-cols-5 max-w-md mx-auto">
@@ -58,13 +59,13 @@ export const CampusBottomNav: React.FC<CampusBottomNavProps> = ({
             onClick={handleNavClick}
             aria-current={active ? 'page' : undefined}
             className={`relative flex flex-col items-center justify-center gap-0.5 py-2 min-h-[56px] text-[11px] transition-colors ${
-              active ? 'text-primary font-semibold' : 'text-muted-foreground hover:text-foreground font-medium'
-            }`}
+ active ? 'text-foreground font-medium' : 'text-muted-foreground hover:text-foreground'
+ }`}
           >
-            <Icon className="w-5 h-5" strokeWidth={active ? 2.2 : 1.8} />
+            <Icon className={`w-5 h-5 ${active ? 'text-primary' : ''}`} strokeWidth={1.8} />
             <span>{label}</span>
             {badge ? (
-              <span className="absolute top-1.5 left-1/2 ml-2 min-w-[16px] h-4 px-1 rounded-full bg-primary text-primary-foreground text-[10px] font-bold flex items-center justify-center leading-none">
+              <span className="absolute top-1.5 left-1/2 ml-2 min-w-[16px] h-4 px-1 rounded-full bg-primary text-primary-foreground text-[11px] font-bold flex items-center justify-center leading-none">
                 {badge}
               </span>
             ) : null}

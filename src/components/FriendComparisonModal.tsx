@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { X, Trophy, Flame, Zap, Shield, CheckCircle2, Award, Share2, Sparkles, User, ExternalLink } from 'lucide-react';
+import { X, Trophy, Flame, Zap, Shield, CheckCircle2, Award, Share2, Lightbulb, User, ExternalLink } from 'lucide-react';
 import { toast } from 'sonner';
 import { ClassmateProfile } from '@/data/communityData';
 import { useGamification } from '@/hooks/useGamification';
@@ -90,7 +90,7 @@ export function FriendComparisonModal({
             <span className="p-1.5 rounded-lg bg-primary/20 text-primary">
               <Trophy className="h-4 w-4" />
             </span>
-            <span className="text-xs font-bold uppercase tracking-wider text-primary">Head-to-Head Study Comparison</span>
+            <span className="text-xs font-bold text-primary">Head-to-Head Study Comparison</span>
           </div>
           <div className="flex flex-wrap items-center justify-between gap-3 mt-1">
             <div>
@@ -104,10 +104,10 @@ export function FriendComparisonModal({
                 type="button"
                 onClick={() => onToggleFriend(friend.id)}
                 className={`px-3 py-1.5 rounded-xl font-bold text-xs transition-all apple-press shadow-2xs ${
-                  isFriend
-                    ? 'bg-secondary text-muted-foreground hover:text-destructive hover:bg-destructive/10 border border-border'
-                    : 'bg-primary text-primary-foreground hover:opacity-90'
-                }`}
+ isFriend
+ ? 'bg-secondary text-muted-foreground hover:text-destructive hover:bg-destructive/10 border border-border'
+ : 'bg-primary text-primary-foreground hover:opacity-90'
+ }`}
               >
                 {isFriend ? '✓ In Friends List' : '+ Add Study Friend'}
               </button>
@@ -129,7 +129,7 @@ export function FriendComparisonModal({
                     userStats.name.charAt(0).toUpperCase()
                   )}
                 </div>
-                <span className="absolute -bottom-1 -right-1 px-1.5 py-0.5 rounded-full text-[10px] font-bold bg-primary text-primary-foreground shadow">
+                <span className="absolute -bottom-1 -right-1 px-1.5 py-0.5 rounded-full text-[11px] font-bold bg-primary text-primary-foreground shadow">
                   You
                 </span>
               </div>
@@ -150,7 +150,7 @@ export function FriendComparisonModal({
                     friend.name.charAt(0).toUpperCase()
                   )}
                 </div>
-                <span className="absolute -bottom-1 -right-1 px-1.5 py-0.5 rounded-full text-[10px] font-bold bg-secondary text-muted-foreground border shadow">
+                <span className="absolute -bottom-1 -right-1 px-1.5 py-0.5 rounded-full text-[11px] font-bold bg-secondary text-muted-foreground border shadow">
                   Peer
                 </span>
               </div>
@@ -205,11 +205,11 @@ export function FriendComparisonModal({
               <div className="grid grid-cols-2 gap-3 text-xs">
                 <div className={`p-2.5 rounded-lg border text-center ${userStats.attendancePercent >= 75 ? 'bg-primary/10 border-primary/30 text-primary dark:text-primary' : 'bg-destructive/10 border-destructive/30 text-destructive'}`}>
                   <p className="text-base sm:text-lg font-bold">{userStats.attendancePercent}%</p>
-                  <p className="text-[10px] font-medium">{userStats.attendancePercent >= 75 ? '✅ Safe from Detain' : '⚠️ Below 75% Threshold'}</p>
+                  <p className="text-[11px] font-medium">{userStats.attendancePercent >= 75 ? '✅ Safe from Detain' : '⚠️ Below 75% Threshold'}</p>
                 </div>
                 <div className={`p-2.5 rounded-lg border text-center ${friend.attendancePercent >= 75 ? 'bg-primary/10 border-primary/30 text-primary dark:text-primary' : 'bg-destructive/10 border-destructive/30 text-destructive'}`}>
                   <p className="text-base sm:text-lg font-bold">{friend.attendancePercent}%</p>
-                  <p className="text-[10px] font-medium">{friend.attendancePercent >= 75 ? '✅ Safe from Detain' : '⚠️ Below 75% Threshold'}</p>
+                  <p className="text-[11px] font-medium">{friend.attendancePercent >= 75 ? '✅ Safe from Detain' : '⚠️ Below 75% Threshold'}</p>
                 </div>
               </div>
             </div>
@@ -236,12 +236,12 @@ export function FriendComparisonModal({
             <div className="grid grid-cols-2 gap-3">
               <div className="p-3 rounded-xl bg-secondary/30 border border-border/70 text-center">
                 <Award className="h-4 w-4 text-primary mx-auto mb-1" />
-                <p className="text-[10px] text-muted-foreground uppercase font-bold">Badges Earned</p>
+                <p className="text-[11px] text-muted-foreground uppercase font-bold">Badges Earned</p>
                 <p className="text-base font-bold text-foreground mt-0.5">{userStats.badgesCount} vs {friend.badgesCount}</p>
               </div>
               <div className="p-3 rounded-xl bg-secondary/30 border border-border/70 text-center">
                 <CheckCircle2 className="h-4 w-4 text-primary mx-auto mb-1" />
-                <p className="text-[10px] text-muted-foreground uppercase font-bold">Topics Finished</p>
+                <p className="text-[11px] text-muted-foreground uppercase font-bold">Topics Finished</p>
                 <p className="text-base font-bold text-foreground mt-0.5">{userStats.topicsCompleted} vs {friend.topicsCompleted}</p>
               </div>
             </div>

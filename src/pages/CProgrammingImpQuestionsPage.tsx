@@ -276,7 +276,7 @@ function QuestionCard({ q, idx }: { q: (typeof IMP_QUESTIONS)[0]["questions"][0]
         <div className="px-4 pb-4 border-t border-border/50 space-y-4 pt-4">
           {q.answer3 && (
             <div>
-              <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-2">3-Mark Answer</p>
+              <p className="text-xs font-semibold text-muted-foreground mb-2">3-Mark Answer</p>
               <p className="text-sm text-foreground/80 whitespace-pre-line leading-relaxed">{q.answer3}</p>
               {q.code3 && (
                 <pre className="mt-2 bg-muted rounded p-3 text-xs overflow-x-auto text-foreground/90 font-mono leading-relaxed">
@@ -287,7 +287,7 @@ function QuestionCard({ q, idx }: { q: (typeof IMP_QUESTIONS)[0]["questions"][0]
           )}
           {q.answer5 && (
             <div>
-              <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-2">5-Mark Answer</p>
+              <p className="text-xs font-semibold text-muted-foreground mb-2">5-Mark Answer</p>
               <p className="text-sm text-foreground/80 whitespace-pre-line leading-relaxed">{q.answer5}</p>
               {q.code5 && (
                 <pre className="mt-2 bg-muted rounded p-3 text-xs overflow-x-auto text-foreground/90 font-mono leading-relaxed">
@@ -431,8 +431,8 @@ export default function CProgrammingImpQuestionsPage() {
             ["malloc", "Always check NULL + free()"],
           ].map(([k, v]) => (
             <div key={k}>
-              <p className="text-[10px] font-bold text-primary">{k}</p>
-              <p className="text-[10px] text-muted-foreground leading-tight">{v}</p>
+              <p className="text-[11px] font-bold text-primary">{k}</p>
+              <p className="text-[11px] text-muted-foreground leading-tight">{v}</p>
             </div>
           ))}
         </div>
@@ -444,12 +444,12 @@ export default function CProgrammingImpQuestionsPage() {
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
               className={`flex-1 flex items-center justify-center gap-1.5 h-8 rounded text-xs font-medium transition-colors apple-press ${
-                activeTab === tab.id ? "bg-background shadow-sm text-foreground" : "text-muted-foreground hover:text-foreground"
-              }`}
+ activeTab === tab.id ? "bg-background shadow-sm text-foreground" : "text-muted-foreground hover:text-foreground"
+ }`}
             >
               <tab.icon className="h-3.5 w-3.5" />
               {tab.label}
-              <span className={`text-[10px] tabular-nums ${activeTab === tab.id ? "text-primary" : "text-muted-foreground/60"}`}>
+              <span className={`text-[11px] tabular-nums ${activeTab === tab.id ? "text-primary" : "text-muted-foreground/60"}`}>
                 {tab.count}
               </span>
             </button>

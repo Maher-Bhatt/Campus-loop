@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { X, Send, Sparkles, FileText, CheckCircle2 } from "lucide-react";
+import { X, Send, Lightbulb, FileText, CheckCircle2 } from 'lucide-react';
 import { toast } from "sonner";
 import { useAuth } from "@/contexts/AuthContext";
 import { useGamification } from "@/hooks/useGamification";
@@ -70,10 +70,10 @@ export function StudentContributionModal({
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm animate-fade-in">
       <div className="w-full max-w-lg bg-card border border-border rounded-2xl shadow-lg overflow-hidden flex flex-col">
         {/* Header */}
-        <div className="p-4 sm:p-5 bg-gradient-to-r from-foreground via-primary to-[#27272A] text-white flex items-center justify-between border-b border-[#FAFAFA]/30 shrink-0">
+        <div className="p-4 sm:p-5 bg-foreground text-white flex items-center justify-between border-b border-[#FAFAFA]/30 shrink-0">
           <div className="flex items-center gap-2">
             <div className="p-2 rounded-xl bg-[#FAFAFA] text-foreground">
-              <Sparkles className="h-5 w-5" />
+              <Lightbulb className="h-5 w-5" />
             </div>
             <div>
               <h3 className="font-bold text-sm sm:text-base text-white font-display">

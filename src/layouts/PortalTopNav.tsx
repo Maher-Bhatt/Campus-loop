@@ -5,12 +5,8 @@ import {
   Search,
   Bell,
   Clock,
-  Calendar,
-  Maximize2,
-  Minimize2,
   LogIn,
   PanelLeftOpen,
-  PanelLeftClose,
 } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 import { useGamification } from "@/hooks/useGamification";
@@ -18,7 +14,6 @@ import { usePomodoro } from "@/contexts/PomodoroContext";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { CampusAvatar } from "@/components/campusloop/CampusAvatar";
 import { CampusLoopLogo } from "@/components/campusloop/CampusLoopLogo";
-import { UniversityDropdown } from "@/components/campusloop/UniversityDropdown";
 import { resolveAvatarUrl } from "@/components/UserAvatar";
 import { openTimetable } from "@/components/GlobalTimetableModal";
 import { buildNotifications, markNotificationsRead, NOTIFICATIONS_EVENT, type AppNotification } from "@/lib/notifications";
@@ -35,6 +30,7 @@ interface PortalTopNavProps {
   onOpenSearch?: () => void;
   isFocusMode?: boolean;
   onToggleFocusMode?: () => void;
+  onOpenHelp?: () => void;
 }
 
 export function PortalTopNav({
@@ -42,6 +38,7 @@ export function PortalTopNav({
   onOpenSearch,
   isFocusMode = false,
   onToggleFocusMode,
+  onOpenHelp,
 }: PortalTopNavProps) {
   const navigate = useNavigate();
   const location = useLocation();
@@ -69,124 +66,73 @@ export function PortalTopNav({
 
   const markAllRead = () => markNotificationsRead(notifications.map((n) => n.id));
 
+  const minutes = String(Math.floor(timeLeft / 60)).padStart(2, "0");
+  const seconds = String(timeLeft % 60).padStart(2, "0");
+  const isAdmin = role === "admin" || user?.email?.toLowerCase() === "maherbhatt01@gmail.com";
+  const iconBtn = "relative inline-flex h-9 w-9 items-center justify-center rounded-md text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors cursor-pointer";
+
   return (
-    <header className="shrink-0 z-30 bg-background/85 backdrop-blur-md border-b border-border px-3 sm:px-6 flex items-center justify-between transition-all pt-[env(safe-area-inset-top,0px)] h-[calc(3.75rem+env(safe-area-inset-top,0px))] w-full">
-      {/* Left: Mobile Sidebar Trigger + CampusLoop Logo */}
-      <div className="flex items-center gap-2.5 sm:gap-3">
-        <button
-          onClick={onToggleSidebar}
-          className="md:hidden p-2 rounded-full text-stone-600 dark:text-stone-300 hover:bg-background dark:hover:bg-stone-800 transition-colors cursor-pointer"
-          title="Toggle Navigation Menu"
-        >
-          <Menu className="h-5 w-5" />
+    <header className="shrink-0 z-30 bg-background border-b border-border px-3 sm:px-6 flex items-center gap-3 pt-[env(safe-area-inset-top,0px)] h-[calc(3.5rem+env(safe-area-inset-top,0px))] w-full">
+      <button onClick={onToggleSidebar} className={`md:hidden ${iconBtn}`} aria-label="Open menu">
+        <Menu className="h-5 w-5" />
+      </button>
+
+      <Link
+        to="/dashboard"
+        className={`items-center shrink-0 ${isFocusMode ? "flex" : "flex md:hidden"}`}
+        aria-label="CampusLoop home"
+      >
+        <CampusLoopLogo size="sm" />
+      </Link>
+
+      {isFocusMode && onToggleFocusMode && (
+        <button onClick={onToggleFocusMode} className={`hidden md:inline-flex ${iconBtn}`} title="Show sidebar (F)" aria-label="Show sidebar">
+          <PanelLeftOpen className="h-[18px] w-[18px]" />
         </button>
+      )}
 
-        {/* CampusLoop Logo (mobile or when sidebar is collapsed) */}
-        <Link 
-          to="/dashboard" 
-          className={`items-center gap-2 group select-none shrink-0 ${isFocusMode ? 'flex' : 'flex md:hidden'}`} 
-          title="CampusLoop Home"
-        >
-          <CampusLoopLogo size="sm" showSubtitle />
-        </Link>
+      <button
+        onClick={onOpenSearch}
+        className="ml-auto md:ml-0 flex items-center gap-2 h-9 w-9 md:w-full md:max-w-sm justify-center md:justify-start md:px-3 rounded-md md:border md:border-border md:bg-card text-muted-foreground hover:text-foreground md:hover:border-foreground/25 text-sm transition-colors cursor-pointer"
+        aria-label="Search"
+        title="Search (Ctrl + K)"
+      >
+        <Search className="h-4 w-4 shrink-0" />
+        <span className="hidden md:inline">Search notes, topics, questions</span>
+        <kbd className="hidden lg:inline-flex ml-auto">Ctrl K</kbd>
+      </button>
 
-        {/* Desktop Sidebar Minimize / Expand Button */}
-        {onToggleFocusMode && (
+      <div className="flex items-center gap-1 md:ml-auto">
+        {isRunning && (
           <button
-            onClick={onToggleFocusMode}
-            className={`hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-full border text-xs font-semibold transition-all cursor-pointer ${
-              isFocusMode
-                ? "bg-primary text-white border-transparent font-bold"
-                : "border-border dark:border-stone-800 text-muted-foreground dark:text-stone-400 hover:text-foreground dark:hover:text-white hover:bg-background dark:hover:bg-stone-800"
-            }`}
-            title={isFocusMode ? "Expand Sidebar (F)" : "Minimize Sidebar (F)"}
+            onClick={() => setIsModalOpen(true)}
+            className="hidden sm:inline-flex items-center gap-1.5 h-8 px-2.5 rounded-md bg-accent text-accent-foreground text-xs font-medium tabular-nums cursor-pointer"
+            title="Focus timer"
           >
-            {isFocusMode ? (
-              <>
-                <PanelLeftOpen className="h-4 w-4" />
-                <span className="text-[11px] font-bold">Sidebar</span>
-              </>
-            ) : (
-              <PanelLeftClose className="h-4 w-4" />
-            )}
+            <Clock className="h-3.5 w-3.5" />
+            {minutes}:{seconds}
           </button>
         )}
-      </div>
 
-      {/* Right: Search + Timetable + Focus + Notifications + Theme + Profile */}
-      <div className="flex items-center gap-2 sm:gap-2.5">
-        {/* Universal Search Pill */}
-        <button
-          onClick={onOpenSearch}
-          className="flex items-center gap-2 h-10 px-3.5 md:min-w-[15rem] rounded-full bg-card border border-border text-muted-foreground hover:text-foreground hover:border-primary/40 text-xs transition-colors cursor-pointer group"
-          title="Search Notes, Practicals and Question Banks (Ctrl + K)"
-        >
-          <Search className="h-4 w-4 text-stone-400 group-hover:text-primary transition-colors" />
-          <span className="hidden md:inline font-medium whitespace-nowrap">Search notes and topics</span>
-          <span className="md:hidden font-medium">Search...</span>
-          <kbd className="hidden lg:inline-flex ml-auto items-center px-1.5 py-0.5 text-[10px] font-mono font-semibold bg-secondary border border-border rounded-md text-muted-foreground">
-            ⌘K
-          </kbd>
-        </button>
-
-        {/* Timetables / Viva Schedule Pill */}
-        <button
-          onClick={() => openTimetable("exams")}
-          className="hidden md:flex items-center gap-1.5 h-10 px-3 rounded-full text-xs font-semibold border border-border bg-card text-foreground hover:border-primary/40 transition-colors cursor-pointer shrink-0"
-          title="Semester 3 exam schedule"
-        >
-          <Calendar className="h-3.5 w-3.5 text-primary" />
-          <span className="hidden xl:inline">Exams</span>
-        </button>
-
-        {/* Pomodoro Focus Pill */}
-        <button
-          onClick={() => setIsModalOpen(true)}
-          className={`hidden lg:flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold border transition-all shrink-0 cursor-pointer ${
-            isRunning
-              ? "bg-accent text-accent-foreground border-primary/40 font-bold"
-              : "bg-background dark:bg-stone-800 text-muted-foreground dark:text-stone-400 border-border dark:border-stone-700 hover:text-foreground dark:hover:text-white"
-          }`}
-          title="Study Focus Timer"
-        >
-          <Clock className="h-3.5 w-3.5" />
-          <span className="font-mono text-[11px]">
-            {isRunning
-              ? `${String(Math.floor(timeLeft / 60)).padStart(2, "0")}:${String(timeLeft % 60).padStart(2, "0")}`
-              : "Focus"}
-          </span>
-        </button>
-
-        {/* Notifications Dropdown with Dot */}
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <button
-              className="relative p-2 rounded-full text-stone-600 dark:text-stone-300 hover:bg-background dark:hover:bg-stone-800 transition-colors cursor-pointer"
-              title="Notifications"
-            >
-              <Bell className="h-5 w-5" />
-              {unreadCount > 0 && (
-                <span className="absolute top-1.5 right-1.5 w-2.5 h-2.5 bg-primary rounded-full border-2 border-white dark:border-foreground" />
-              )}
+            <button className={iconBtn} aria-label={unreadCount ? `Notifications, ${unreadCount} unread` : "Notifications"}>
+              <Bell className="h-[18px] w-[18px]" />
+              {unreadCount > 0 && <span className="absolute top-2 right-2 w-2 h-2 bg-primary rounded-full" />}
             </button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="w-80 p-2 rounded-2xl shadow-lg border border-border dark:border-stone-800 bg-white dark:bg-card text-foreground">
-            <div className="flex items-center justify-between px-3 py-2 border-b border-border dark:border-stone-800">
-              <span className="font-bold text-sm text-foreground dark:text-white">Campus Notifications</span>
+          <DropdownMenuContent align="end" className="w-80 p-0 rounded-lg">
+            <div className="flex items-center justify-between px-3 py-2.5 border-b border-border">
+              <span className="text-sm font-semibold">Notifications</span>
               {unreadCount > 0 && (
-                <button
-                  onClick={markAllRead}
-                  className="text-xs font-semibold text-primary hover:underline cursor-pointer"
-                >
+                <button onClick={markAllRead} className="text-xs font-medium text-primary hover:underline cursor-pointer">
                   Mark all read
                 </button>
               )}
             </div>
-            <div className="max-h-72 overflow-y-auto divide-y divide-border dark:divide-stone-800 py-1">
+            <div className="max-h-80 overflow-y-auto divide-y divide-border">
               {notifications.length === 0 ? (
-                <div className="p-4 text-center text-xs text-stone-500">
-                  No notifications yet.
-                </div>
+                <p className="p-6 text-center text-sm text-muted-foreground">You're all caught up.</p>
               ) : (
                 notifications.map((notif) => (
                   <div
@@ -197,16 +143,18 @@ export function PortalTopNav({
                       markNotificationsRead([notif.id]);
                       if (notif.href) navigate(notif.href);
                     }}
-                    className={`p-3 hover:bg-secondary rounded-xl transition-colors ${notif.href ? "cursor-pointer" : ""}`}
+                    className={`px-3 py-2.5 hover:bg-secondary transition-colors ${notif.href ? "cursor-pointer" : ""}`}
                   >
-                    <div className="flex items-center gap-1.5 mb-1">
-                      {!notif.read && <span className="w-2 h-2 rounded-full bg-primary shrink-0" />}
-                      <span className="font-bold text-xs text-foreground dark:text-white truncate">{notif.title}</span>
+                    <div className="flex items-start gap-2">
+                      <span className={`mt-1.5 w-1.5 h-1.5 rounded-full shrink-0 ${notif.read ? "bg-transparent" : "bg-primary"}`} />
+                      <div className="min-w-0">
+                        <p className="text-sm font-medium text-foreground">{notif.title}</p>
+                        <p className="text-xs text-muted-foreground leading-relaxed">{notif.message}</p>
+                        <p className="mt-0.5 text-[11px] text-muted-foreground">
+                          {new Date(notif.timestamp).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
+                        </p>
+                      </div>
                     </div>
-                    <p className="text-xs text-muted-foreground dark:text-stone-400 leading-relaxed">{notif.message}</p>
-                    <span className="text-[10px] text-stone-400 font-medium mt-1 block">
-                      {new Date(notif.timestamp).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
-                    </span>
                   </div>
                 ))
               )}
@@ -214,64 +162,47 @@ export function PortalTopNav({
           </DropdownMenuContent>
         </DropdownMenu>
 
-        {/* Theme Toggle (Light / Dark) */}
         <ThemeToggle />
 
-        {/* Profile Avatar / Sign In */}
         {!user ? (
-          <Link
-            to="/auth"
-            className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-primary text-white text-xs font-bold shadow-xs hover:bg-primary transition-all cursor-pointer"
-          >
-            <LogIn className="h-3.5 w-3.5" />
-            <span>Sign In</span>
+          <Link to="/auth" className="ml-1 inline-flex items-center gap-1.5 h-9 px-3.5 rounded-md bg-foreground text-background text-sm font-medium hover:bg-foreground/90">
+            <LogIn className="h-4 w-4" />
+            Sign in
           </Link>
         ) : (
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <button className="flex items-center gap-1.5 p-0.5 rounded-full hover:ring-2 hover:ring-primary transition-all cursor-pointer">
+              <button className="ml-1 rounded-full cursor-pointer focus-visible:ring-2 focus-visible:ring-ring" aria-label="Account menu">
                 <CampusAvatar
                   src={resolveAvatarUrl(profile, user)}
                   name={profile?.display_name || user?.email || "Student"}
-                  size={36}
-                  limeRing
+                  size={32}
                 />
               </button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="w-60 p-2 rounded-2xl shadow-lg border border-border dark:border-stone-800 bg-white dark:bg-card text-foreground">
-              <div className="px-3 py-2.5 border-b border-border dark:border-stone-800 mb-1">
-                <p className="font-bold text-sm text-foreground dark:text-white truncate">
-                  {profile?.display_name || user?.email?.split("@")[0] || "Student"}
+            <DropdownMenuContent align="end" className="w-60 rounded-lg">
+              <div className="px-2 py-2">
+                <p className="text-sm font-medium truncate">{profile?.display_name || user?.email?.split("@")[0] || "Student"}</p>
+                <p className="text-xs text-muted-foreground truncate">{user?.email}</p>
+                <p className="mt-1 text-xs text-muted-foreground">
+                  {game.streakDays}-day streak · {game.xp} XP
                 </p>
-                <p className="text-xs text-muted-foreground dark:text-stone-400 truncate">{user?.email}</p>
-                <div className="mt-1.5 flex items-center gap-2">
-                  <span className="text-xs font-bold text-primary flex items-center gap-1 bg-primary/10 dark:bg-primary/15 px-2 py-0.5 rounded-full">
-                    ⚡ {game.streakDays}d Streak
-                  </span>
-                  <span className="text-xs text-stone-500 font-semibold">
-                    {game.xp} XP
-                  </span>
-                </div>
               </div>
-
-              <DropdownMenuItem onClick={() => navigate("/profile")} className="cursor-pointer text-xs rounded-xl">
-                Profile & Badges
-              </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => navigate("/calculator")} className="cursor-pointer text-xs rounded-xl">
-                Attendance & SGPA
-              </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => navigate("/bookmarks")} className="cursor-pointer text-xs rounded-xl">
-                Saved Bookmarks
-              </DropdownMenuItem>
-              {(role === "admin" || user?.email?.toLowerCase() === "maherbhatt01@gmail.com") && (
-                <DropdownMenuItem onClick={() => navigate("/admin")} className="cursor-pointer text-xs font-bold text-primary rounded-xl">
-                  Admin Portal
+              <DropdownMenuSeparator />
+              <DropdownMenuItem onClick={() => navigate("/profile")}>Profile</DropdownMenuItem>
+              <DropdownMenuItem onClick={() => navigate("/bookmarks")}>Bookmarks</DropdownMenuItem>
+              <DropdownMenuItem onClick={() => setIsModalOpen(true)}>Focus timer</DropdownMenuItem>
+              <DropdownMenuItem onClick={() => openTimetable("exams")}>Exam timetable</DropdownMenuItem>
+              {onToggleFocusMode && (
+                <DropdownMenuItem onClick={onToggleFocusMode} className="hidden md:flex">
+                  {isFocusMode ? "Show sidebar" : "Hide sidebar"}
+                  <span className="ml-auto text-xs text-muted-foreground">F</span>
                 </DropdownMenuItem>
               )}
+              {onOpenHelp && <DropdownMenuItem onClick={onOpenHelp}>Help and support</DropdownMenuItem>}
+              {isAdmin && <DropdownMenuItem onClick={() => navigate("/admin")}>Admin</DropdownMenuItem>}
               <DropdownMenuSeparator />
-              <DropdownMenuItem onClick={() => signOut()} className="cursor-pointer text-xs text-destructive rounded-xl">
-                Sign Out
-              </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => signOut()}>Sign out</DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         )}

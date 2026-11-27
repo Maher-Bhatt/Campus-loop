@@ -138,7 +138,7 @@ export function AdminAnnouncementsTab({
 
         <button
           onClick={() => setShowCreate(!showCreate)}
-          className="px-4 py-2 rounded-xl bg-[#FAFAFA] hover:bg-muted text-foreground text-xs font-bold flex items-center gap-1.5 transition-all active:scale-95 self-start sm:self-auto cursor-pointer"
+          className="px-4 py-2 rounded-xl bg-[#FAFAFA] hover:bg-muted text-foreground text-xs font-bold flex items-center gap-1.5 transition-all self-start sm:self-auto cursor-pointer"
         >
           <Plus className="h-4 w-4" />
           <span>New Announcement</span>
@@ -158,7 +158,7 @@ export function AdminAnnouncementsTab({
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="text-[11px] font-bold uppercase tracking-wider text-stone-400 block mb-1">
+              <label className="text-[11px] font-bold text-stone-400 block mb-1">
                 Headline Title
               </label>
               <input
@@ -171,7 +171,7 @@ export function AdminAnnouncementsTab({
             </div>
 
             <div>
-              <label className="text-[11px] font-bold uppercase tracking-wider text-stone-400 block mb-1">
+              <label className="text-[11px] font-bold text-stone-400 block mb-1">
                 Alert Banner Tone
               </label>
               <select
@@ -188,7 +188,7 @@ export function AdminAnnouncementsTab({
           </div>
 
           <div>
-            <label className="text-[11px] font-bold uppercase tracking-wider text-stone-400 block mb-1">
+            <label className="text-[11px] font-bold text-stone-400 block mb-1">
               Detailed Notice Message
             </label>
             <textarea
@@ -204,7 +204,7 @@ export function AdminAnnouncementsTab({
           {/* Targeting row */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
             <div>
-              <label className="text-[11px] font-bold uppercase tracking-wider text-stone-400 block mb-1">
+              <label className="text-[11px] font-bold text-stone-400 block mb-1">
                 Target Semester
               </label>
               <select
@@ -221,7 +221,7 @@ export function AdminAnnouncementsTab({
             </div>
 
             <div>
-              <label className="text-[11px] font-bold uppercase tracking-wider text-stone-400 block mb-1">
+              <label className="text-[11px] font-bold text-stone-400 block mb-1">
                 Target Branch
               </label>
               <select
@@ -238,7 +238,7 @@ export function AdminAnnouncementsTab({
             </div>
 
             <div>
-              <label className="text-[11px] font-bold uppercase tracking-wider text-stone-400 block mb-1">
+              <label className="text-[11px] font-bold text-stone-400 block mb-1">
                 Audience Group
               </label>
               <select
@@ -256,7 +256,7 @@ export function AdminAnnouncementsTab({
           {/* Scheduling dates row */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
             <div>
-              <label className="text-[11px] font-bold uppercase tracking-wider text-stone-400 block mb-1">
+              <label className="text-[11px] font-bold text-stone-400 block mb-1">
                 Scheduled Start (Optional)
               </label>
               <input
@@ -267,7 +267,7 @@ export function AdminAnnouncementsTab({
               />
             </div>
             <div>
-              <label className="text-[11px] font-bold uppercase tracking-wider text-stone-400 block mb-1">
+              <label className="text-[11px] font-bold text-stone-400 block mb-1">
                 Expiration / Auto-hide Date (Optional)
               </label>
               <input
@@ -315,10 +315,10 @@ export function AdminAnnouncementsTab({
         <button
           onClick={() => setViewFilter("active")}
           className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-colors ${
-            viewFilter === "active"
-              ? "bg-[#FAFAFA]/15 text-[#FAFAFA] border border-[#FAFAFA]/30"
-              : "text-stone-400 hover:text-white"
-          }`}
+ viewFilter === "active"
+ ? "bg-[#FAFAFA]/15 text-[#FAFAFA] border border-[#FAFAFA]/30"
+ : "text-stone-400 hover:text-white"
+ }`}
         >
           <Radio className="h-3.5 w-3.5" />
           <span>Active Banners ({categorizedAnnouncements.active.length})</span>
@@ -327,10 +327,10 @@ export function AdminAnnouncementsTab({
         <button
           onClick={() => setViewFilter("drafts")}
           className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-colors ${
-            viewFilter === "drafts"
-              ? "bg-primary/15 text-primary border border-primary/30"
-              : "text-stone-400 hover:text-white"
-          }`}
+ viewFilter === "drafts"
+ ? "bg-primary/15 text-primary border border-primary/30"
+ : "text-stone-400 hover:text-white"
+ }`}
         >
           <FileEdit className="h-3.5 w-3.5" />
           <span>Drafts ({categorizedAnnouncements.drafts.length})</span>
@@ -339,10 +339,10 @@ export function AdminAnnouncementsTab({
         <button
           onClick={() => setViewFilter("history")}
           className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-colors ${
-            viewFilter === "history"
-              ? "bg-stone-700 text-white"
-              : "text-stone-400 hover:text-white"
-          }`}
+ viewFilter === "history"
+ ? "bg-stone-700 text-white"
+ : "text-stone-400 hover:text-white"
+ }`}
         >
           <Archive className="h-3.5 w-3.5" />
           <span>History & Expired ({categorizedAnnouncements.history.length})</span>
@@ -372,40 +372,40 @@ export function AdminAnnouncementsTab({
                   <div className="space-y-1 min-w-0">
                     <div className="flex items-center gap-2 flex-wrap">
                       <span
-                        className={`px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider ${
-                          isErr
-                            ? "bg-destructive/20 text-destructive border border-destructive/30"
-                            : isWarn
-                            ? "bg-primary/20 text-primary border border-primary/30"
-                            : "bg-primary/20 text-primary border border-primary/30"
-                        }`}
+                        className={`px-2 py-0.5 rounded-full text-[11px] font-bold ${
+ isErr
+ ? "bg-destructive/20 text-destructive border border-destructive/30"
+ : isWarn
+ ? "bg-primary/20 text-primary border border-primary/30"
+ : "bg-primary/20 text-primary border border-primary/30"
+ }`}
                       >
                         {ann.type}
                       </span>
 
                       {ann.draft ? (
-                        <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-stone-700 text-stone-300">
+                        <span className="px-2 py-0.5 rounded-full text-[11px] font-bold bg-stone-700 text-stone-300">
                           Draft
                         </span>
                       ) : ann.active ? (
-                        <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-primary/15 text-primary border border-primary/30 flex items-center gap-1">
+                        <span className="px-2 py-0.5 rounded-full text-[11px] font-bold bg-primary/15 text-primary border border-primary/30 flex items-center gap-1">
                           <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
                           Broadcasting
                         </span>
                       ) : (
-                        <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-stone-700 text-stone-400">
+                        <span className="px-2 py-0.5 rounded-full text-[11px] font-bold bg-stone-700 text-stone-400">
                           Inactive
                         </span>
                       )}
 
                       {ann.target_semester && (
-                        <span className="px-2 py-0.5 rounded-md text-[10px] font-mono bg-stone-900 border border-stone-700 text-[#FAFAFA]">
+                        <span className="px-2 py-0.5 rounded-md text-[11px] font-mono bg-stone-900 border border-stone-700 text-[#FAFAFA]">
                           Sem {ann.target_semester}
                         </span>
                       )}
 
                       {ann.target_branch && (
-                        <span className="px-2 py-0.5 rounded-md text-[10px] font-mono bg-stone-900 border border-stone-700 text-primary">
+                        <span className="px-2 py-0.5 rounded-md text-[11px] font-mono bg-stone-900 border border-stone-700 text-primary">
                           {ann.target_branch}
                         </span>
                       )}
@@ -421,10 +421,10 @@ export function AdminAnnouncementsTab({
                     <button
                       onClick={() => onToggleActive(ann.id, !ann.active)}
                       className={`px-3 py-1.5 rounded-xl text-xs font-bold border transition-colors ${
-                        ann.active
-                          ? "bg-primary/10 text-primary border-primary/30 hover:bg-primary/20"
-                          : "bg-primary/10 text-primary border-primary/30 hover:bg-primary/20"
-                      }`}
+ ann.active
+ ? "bg-primary/10 text-primary border-primary/30 hover:bg-primary/20"
+ : "bg-primary/10 text-primary border-primary/30 hover:bg-primary/20"
+ }`}
                     >
                       {ann.active ? "Pause" : "Activate"}
                     </button>

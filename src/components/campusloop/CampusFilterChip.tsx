@@ -12,22 +12,22 @@ export const CampusFilterChip = React.forwardRef<HTMLButtonElement, CampusFilter
       <button
         ref={ref}
         type="button"
-        className={`h-10 px-5 rounded-full text-sm font-semibold inline-flex items-center gap-2 transition-all duration-150 select-none cursor-pointer shrink-0 ${
-          active
-            ? 'bg-foreground text-white shadow-sm dark:bg-white dark:text-foreground'
-            : 'bg-white dark:bg-card text-foreground dark:text-stone-200 border border-border dark:border-stone-800 hover:border-stone-400 active:scale-[0.98]'
-        } ${className}`}
+        className={`h-8 px-3 rounded-md text-[13px] font-medium inline-flex items-center gap-1.5 transition-colors select-none cursor-pointer shrink-0 ${
+ active
+ ? 'bg-foreground text-background'
+ : 'bg-card text-muted-foreground border border-border hover:text-foreground hover:border-foreground/25'
+ } ${className}`}
         {...props}
       >
         {icon && <span className="shrink-0">{icon}</span>}
         <span>{children}</span>
         {count !== undefined && (
           <span
-            className={`text-xs px-1.5 py-0.5 rounded-full font-bold ${
-              active
-                ? 'bg-stone-800 text-stone-300 dark:bg-stone-200 dark:text-stone-800'
-                : 'bg-stone-100 text-stone-600 dark:bg-stone-800 dark:text-stone-300'
-            }`}
+            className={`text-xs px-1 rounded font-medium tabular-nums ${
+ active
+ ? 'bg-background/20 text-background'
+ : 'bg-secondary text-muted-foreground'
+ }`}
           >
             {count}
           </span>

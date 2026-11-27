@@ -120,7 +120,7 @@ export function AdminErrorsTab() {
             <ShieldAlert className="h-5 w-5 text-destructive" />
           </div>
           <div>
-            <p className="text-[10px] uppercase font-bold text-stone-400 tracking-wide">
+            <p className="text-[11px] uppercase font-bold text-stone-400 tracking-wide">
               Unresolved Crashes
             </p>
             <p className="text-xl font-semibold text-white">{unresolvedCount}</p>
@@ -132,7 +132,7 @@ export function AdminErrorsTab() {
             <AlertTriangle className="h-5 w-5 text-primary" />
           </div>
           <div>
-            <p className="text-[10px] uppercase font-bold text-stone-400 tracking-wide">
+            <p className="text-[11px] uppercase font-bold text-stone-400 tracking-wide">
               Total Logged Exceptions
             </p>
             <p className="text-xl font-semibold text-white">{errors.length}</p>
@@ -144,7 +144,7 @@ export function AdminErrorsTab() {
             <CheckCircle2 className="h-5 w-5 text-primary" />
           </div>
           <div>
-            <p className="text-[10px] uppercase font-bold text-stone-400 tracking-wide">
+            <p className="text-[11px] uppercase font-bold text-stone-400 tracking-wide">
               Unique Fault Routes
             </p>
             <p className="text-xl font-semibold text-white">{availableRoutes.length}</p>
@@ -222,8 +222,8 @@ export function AdminErrorsTab() {
               <div
                 key={err.id}
                 className={`bg-stone-800 border rounded-2xl p-4 transition-all shadow-sm ${
-                  isUnresolved ? "border-primary/30 bg-stone-800" : "border-stone-700/60 opacity-75"
-                }`}
+ isUnresolved ? "border-primary/30 bg-stone-800" : "border-stone-700/60 opacity-75"
+ }`}
               >
                 <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3">
                   <div className="space-y-1 min-w-0 flex-1">
@@ -232,11 +232,11 @@ export function AdminErrorsTab() {
                         {err.route}
                       </span>
                       {isUnresolved ? (
-                        <span className="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-destructive/15 text-destructive border border-destructive/30">
+                        <span className="px-2 py-0.5 rounded-full text-[11px] font-bold bg-destructive/15 text-destructive border border-destructive/30">
                           Unresolved
                         </span>
                       ) : (
-                        <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-primary/10 text-primary border border-primary/30">
+                        <span className="px-2 py-0.5 rounded-full text-[11px] font-bold bg-primary/10 text-primary border border-primary/30">
                           Resolved
                         </span>
                       )}
@@ -313,7 +313,7 @@ export function AdminErrorsTab() {
 
             <div className="bg-stone-900 border border-stone-950 rounded-2xl p-4 overflow-hidden relative">
               <div className="flex items-center justify-between pb-2 border-b border-stone-800 mb-2">
-                <span className="text-[10px] font-mono uppercase text-stone-400">Stack Trace</span>
+                <span className="text-[11px] font-mono uppercase text-stone-400">Stack Trace</span>
                 <button
                   onClick={copyStackToClipboard}
                   className="flex items-center gap-1 text-[11px] text-stone-300 hover:text-white font-medium bg-stone-800 px-2 py-1 rounded-md"

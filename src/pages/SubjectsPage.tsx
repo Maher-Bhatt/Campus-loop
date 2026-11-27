@@ -29,7 +29,7 @@ import {
   Zap,
   GraduationCap,
   Layers,
-  Sparkles,
+  Lightbulb,
   ChevronDown,
   ChevronRight,
   ExternalLink,
@@ -55,7 +55,7 @@ import {
   LineChart,
   Table,
   CheckSquare
-} from "lucide-react";
+} from 'lucide-react';
 import { BackToTop } from "@/components/BackToTop";
 
 // Department icon helper
@@ -69,7 +69,7 @@ function getDeptIcon(id: string) {
     case "me": return <Cog className="h-4 w-4" />;
     case "ce": return <Building className="h-4 w-4" />;
     case "bca": return <Layers className="h-4 w-4" />;
-    case "mca": return <Sparkles className="h-4 w-4" />;
+    case "mca": return <Lightbulb className="h-4 w-4" />;
     default: return <GraduationCap className="h-4 w-4" />;
   }
 }
@@ -113,88 +113,40 @@ function SubjectCard({
 
   return (
     <div
+      role="link"
+      tabIndex={0}
       onClick={() => navigateRef(`/subject/${sub.id}`)}
-      className="group relative rounded-2xl border border-border dark:border-stone-800 bg-white dark:bg-card hover:border-primary/50 transition-all p-5 flex flex-col justify-between gap-4 card-lift press cursor-pointer select-none shadow-xs"
+      onKeyDown={(e) => e.key === "Enter" && navigateRef(`/subject/${sub.id}`)}
+      className="group flex flex-col gap-3 rounded-xl border border-border bg-card p-4 hover:border-foreground/25 transition-colors cursor-pointer"
     >
-      <div className="space-y-3">
-        <div className="flex items-center justify-between gap-2">
-          <div className="flex items-center gap-1.5 flex-wrap">
-            <span className="px-2.5 py-0.5 rounded-full font-mono text-[10px] font-bold bg-primary/10 text-primary dark:bg-primary/15 dark:text-primary">
-              {sub.code || "SUB"}
-            </span>
-            <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-background dark:bg-stone-800 text-stone-600 dark:text-stone-400">
-              {isBca ? "BCA" : "B.Tech"} · Sem {sub.semester}
-            </span>
-          </div>
-          <span className="text-[11px] font-medium text-muted-foreground dark:text-stone-400 flex items-center gap-1">
-            <BookOpen className="h-3 w-3" />
-            {totalUnits} Units · {totalTopics} Topics
-          </span>
-        </div>
-
-        <h3 className="font-bold text-base text-foreground dark:text-white group-hover:text-primary transition-colors leading-snug">
-          {sub.name}
-        </h3>
-
-        <p className="text-[11px] text-muted-foreground dark:text-stone-400 line-clamp-2 leading-relaxed">
-          {sub.description || "Detailed syllabus notes, algorithmic proofs, diagrams, and exam review questions."}
-        </p>
-
-        {/* Units Chips */}
-        <div className="pt-1">
-          <div className="flex flex-wrap gap-1.5">
-            {sub.units?.slice(0, 3).map((unit: any, idx: number) => (
-              <span
-                key={unit.id}
-                className="text-[10px] px-2 py-0.5 rounded-md bg-background dark:bg-stone-800 text-stone-600 dark:text-stone-400 border border-border/60 dark:border-stone-700/60 font-medium"
-              >
-                U{idx + 1}: {unit.title.split(":")[1]?.trim() || unit.title}
-              </span>
-            ))}
-            {sub.units?.length > 3 && (
-              <span className="text-[10px] px-1.5 py-0.5 rounded-md text-muted-foreground font-medium">
-                +{sub.units.length - 3} more
-              </span>
-            )}
-          </div>
-        </div>
+      <div className="flex items-center gap-2 text-xs text-muted-foreground">
+        <span className="font-mono">{sub.code || "—"}</span>
+        <span>·</span>
+        <span>{isBca ? "BCA" : "B.Tech"} · Semester {sub.semester}</span>
       </div>
 
-      <div className="pt-3 border-t border-border dark:border-stone-800 flex items-center justify-between">
-        {/* Progress bar */}
-        <div className="flex items-center gap-2">
-          <div className="w-16 sm:w-20 bg-stone-200 dark:bg-stone-800 h-1.5 rounded-full overflow-hidden">
-            <div
-              className="bg-primary h-full rounded-full transition-all duration-300"
-              style={{ width: `${progressPct}%` }}
-            />
-          </div>
-          <span className="text-[10px] font-mono text-muted-foreground dark:text-stone-400 font-semibold">
-            {progressPct}%
-          </span>
-        </div>
+      <div>
+        <h3 className="font-medium text-foreground leading-snug group-hover:text-primary">{sub.name}</h3>
+        <p className="mt-0.5 text-xs text-muted-foreground">{totalUnits} units · {totalTopics} topics</p>
+      </div>
 
-        <div className="flex items-center gap-2">
-          {hasImpQuestions && (
-            <button
-              type="button"
-              onClick={(e) => {
-                e.stopPropagation();
-                navigateRef(`/imp-questions/${sub.id}`);
-              }}
-              className="px-2.5 py-1 rounded-full bg-primary/10 hover:bg-primary/10 text-primary font-bold text-[10px] press flex items-center gap-1 cursor-pointer"
-              title="Solved Exam Questions"
-            >
-              <Zap className="h-3 w-3" />
-              <span>IMP</span>
-            </button>
-          )}
-
-          <span className="text-xs font-bold text-foreground group-hover:text-primary group-hover:translate-x-1 transition-all flex items-center gap-1 font-display">
-            <span>Explore</span>
-            <ArrowRight className="h-3.5 w-3.5" />
-          </span>
+      <div className="mt-auto flex items-center gap-3 pt-1">
+        <div className="h-1 flex-1 max-w-[8rem] overflow-hidden rounded-full bg-secondary">
+          <div className="h-full bg-primary" style={{ width: `${progressPct}%` }} />
         </div>
+        <span className="text-xs tabular-nums text-muted-foreground">{progressPct}%</span>
+        {hasImpQuestions && (
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              navigateRef(`/imp-questions/${sub.id}`);
+            }}
+            className="inline-btn ml-auto text-xs font-medium text-primary hover:underline underline-offset-4 cursor-pointer"
+          >
+            Important questions
+          </button>
+        )}
       </div>
     </div>
   );
@@ -301,192 +253,79 @@ export default function SubjectsPage() {
   }, [selectedCourse, selectedSemester, searchQuery]);
 
   return (
-    <div className="p-4 sm:p-6 lg:p-8 max-w-7xl mx-auto w-full text-foreground fade-in space-y-7 select-none">
-      {/* Breadcrumb */}
-      <div className="flex items-center gap-2 text-xs text-muted-foreground">
-        <Link to="/dashboard" className="hover:text-foreground transition-colors press">
-          Dashboard
-        </Link>
-        <span>/</span>
-        <span className="text-foreground font-medium">Pan-India University Academic Registry</span>
-      </div>
+    <div className="page-wide text-foreground space-y-6">
+      <header>
+        <h1 className="page-title">Subjects</h1>
+        <p className="page-subtitle">Unit-by-unit topic notes with practicals and exam questions. Pick your semester to see only your subjects.</p>
+      </header>
 
-      {/* Hero Header Banner */}
-      <div className="relative overflow-hidden rounded-2xl border border-border dark:border-stone-800 bg-white dark:bg-card p-6 sm:p-8 lg:p-10 shadow-xs">
-        <div className="relative z-10 max-w-4xl space-y-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-primary/10 text-primary dark:bg-primary/15 dark:text-primary text-xs font-bold border border-primary/20">
-            <GraduationCap className="h-4 w-4 text-primary" />
-            <span>{currentUniversity.shortName} · AICTE & UGC Accredited Multi-Department Curriculum</span>
-            <span className="text-muted-foreground/40">·</span>
-            <span className="text-muted-foreground font-medium">{subjects.length} Interactive Subjects</span>
-          </div>
-
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight font-display text-foreground dark:text-white">
-            Engineering, BCA, Specializations & IIMB Analytics Registry
-          </h1>
-
-          <p className="text-sm sm:text-base text-stone-600 dark:text-stone-400 leading-relaxed">
-            Deep-researched curricula for <strong>B.Tech in AI & Data Science (16 Dedicated AI Subjects)</strong>, 
-            <strong> Cyber Security</strong>, <strong> Cloud & DevOps</strong>, <strong> BCA Specializations</strong>, and <strong> IIM Bangalore (IIMB) PGP-BA & Decision Sciences</strong> with full topic breakdowns.
-          </p>
-
-          {/* Quick Metrics Bar */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
-            <div className="bg-background dark:bg-stone-800/80 border border-border dark:border-stone-800 rounded-2xl p-3 text-center">
-              <div className="text-xl sm:text-2xl font-bold font-mono text-foreground dark:text-white">{curriculumStats.totalSubjectsAcrossAllDepts}</div>
-              <div className="text-[10px] text-muted-foreground dark:text-stone-400 font-bold uppercase tracking-wider mt-0.5">Cataloged Subjects</div>
-            </div>
-            <div className="bg-background dark:bg-stone-800/80 border border-border dark:border-stone-800 rounded-2xl p-3 text-center">
-              <div className="text-xl sm:text-2xl font-bold font-mono text-primary">{subjects.length}</div>
-              <div className="text-[10px] text-muted-foreground dark:text-stone-400 font-bold uppercase tracking-wider mt-0.5">Interactive Subjects</div>
-            </div>
-            <div className="bg-background dark:bg-stone-800/80 border border-border dark:border-stone-800 rounded-2xl p-3 text-center">
-              <div className="text-xl sm:text-2xl font-bold font-mono text-primary">{iimbStats.totalTopics}+ Topics</div>
-              <div className="text-[10px] text-muted-foreground dark:text-stone-400 font-bold uppercase tracking-wider mt-0.5">IIMB Master Topics</div>
-            </div>
-            <div className="bg-background dark:bg-stone-800/80 border border-border dark:border-stone-800 rounded-2xl p-3 text-center">
-              <div className="text-xl sm:text-2xl font-bold font-mono text-success">1,900+ Topics</div>
-              <div className="text-[10px] text-muted-foreground dark:text-stone-400 font-bold uppercase tracking-wider mt-0.5">Avg Degree Topics</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Main View Mode Tabs (4 Tabs) */}
-      <div className="flex items-center gap-2 border-b border-border dark:border-stone-800 pb-3 overflow-x-auto scrollbar-none">
-        <button
-          type="button"
-          onClick={() => setActiveTab("interactive")}
-          className={`px-5 py-2.5 rounded-full text-xs font-bold transition-all cursor-pointer whitespace-nowrap flex items-center gap-2 ${
-            activeTab === "interactive"
-              ? "bg-primary text-white shadow-xs"
-              : "bg-background dark:bg-stone-800 text-muted-foreground hover:text-foreground dark:hover:text-white"
-          }`}
-        >
-          <BookOpen className="h-4 w-4" />
-          <span>Interactive Study Notes ({subjects.length} Subjects)</span>
-        </button>
-
-        <button
-          type="button"
-          onClick={() => setActiveTab("iimb-topics")}
-          className={`px-5 py-2.5 rounded-full text-xs font-bold transition-all cursor-pointer whitespace-nowrap flex items-center gap-2 ${
-            activeTab === "iimb-topics"
-              ? "bg-primary text-white shadow-xs"
-              : "bg-background dark:bg-stone-800 text-muted-foreground hover:text-foreground dark:hover:text-white"
-          }`}
-        >
-          <BarChart3 className="h-4 w-4" />
-          <span>Topics Breakdown & IIMB Analytics ({iimbStats.totalTopics}+ Topics)</span>
-        </button>
-
-        <button
-          type="button"
-          onClick={() => setActiveTab("specializations")}
-          className={`px-5 py-2.5 rounded-full text-xs font-bold transition-all cursor-pointer whitespace-nowrap flex items-center gap-2 ${
-            activeTab === "specializations"
-              ? "bg-primary text-white shadow-xs"
-              : "bg-background dark:bg-stone-800 text-muted-foreground hover:text-foreground dark:hover:text-white"
-          }`}
-        >
-          <Brain className="h-4 w-4" />
-          <span>Specializations & Course Counts (Deep Research)</span>
-        </button>
-
-        <button
-          type="button"
-          onClick={() => setActiveTab("curriculum")}
-          className={`px-5 py-2.5 rounded-full text-xs font-bold transition-all cursor-pointer whitespace-nowrap flex items-center gap-2 ${
-            activeTab === "curriculum"
-              ? "bg-primary text-white shadow-xs"
-              : "bg-background dark:bg-stone-800 text-muted-foreground hover:text-foreground dark:hover:text-white"
-          }`}
-        >
-          <GraduationCap className="h-4 w-4" />
-          <span>Pan-India Department Catalog ({curriculumStats.totalSubjectsAcrossAllDepts} Subjects)</span>
-        </button>
-      </div>
+      {/* View tabs: short labels, underline style */}
+      <nav aria-label="Subject views" className="flex gap-5 border-b border-border overflow-x-auto no-scrollbar">
+        {([
+          ["interactive", "Study notes"],
+          ["specializations", "Specialisations"],
+          ["curriculum", "All departments"],
+          ["iimb-topics", "IIMB analytics"],
+        ] as const).map(([id, label]) => (
+          <button
+            key={id}
+            type="button"
+            onClick={() => setActiveTab(id)}
+            aria-current={activeTab === id ? "page" : undefined}
+            className={`-mb-px whitespace-nowrap border-b-2 pb-2.5 text-sm transition-colors cursor-pointer ${
+              activeTab === id ? "border-primary font-medium text-foreground" : "border-transparent text-muted-foreground hover:text-foreground"
+            }`}
+          >
+            {label}
+          </button>
+        ))}
+      </nav>
 
       {/* ========================================================================= */}
       {/* VIEW 1: INTERACTIVE STUDY SUBJECTS */}
       {/* ========================================================================= */}
       {activeTab === "interactive" && (
-        <div className="space-y-6">
-          {/* Filter Chips & Search Bar */}
-          <div className="rounded-2xl bg-white dark:bg-card border border-border dark:border-stone-800 p-4 sm:p-5 shadow-xs space-y-4">
-            {/* Row 1: Degree Switcher */}
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-              <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none">
-                <span className="text-xs font-bold text-muted-foreground shrink-0 mr-1">Degree:</span>
-                {[
-                  { id: "all", label: `All Degrees (${subjects.length})` },
-                  { id: "btech", label: `B.Tech Engineering (${btechSubjects.length})` },
-                  { id: "bca", label: `BCA (${bcaSubjects.length} Subjects)` },
-                ].map((course) => {
-                  const isActive = selectedCourse === course.id;
-                  return (
-                    <button
-                      key={course.id}
-                      type="button"
-                      onClick={() => setSelectedCourse(course.id as any)}
-                      className={`px-4 py-2 rounded-full text-xs font-bold transition-all cursor-pointer whitespace-nowrap border ${
-                        isActive
-                          ? "bg-primary text-white border-primary shadow-xs"
-                          : "bg-background dark:bg-stone-800 text-muted-foreground dark:text-stone-300 border-border dark:border-stone-700 hover:text-foreground dark:hover:text-white"
-                      }`}
-                    >
-                      {course.label}
-                    </button>
-                  );
-                })}
-              </div>
-
-              {/* Search Bar */}
-              <div className="relative min-w-[240px] sm:w-72">
-                <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-stone-400" />
-                <input
-                  type="text"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Search subject, code, or topic..."
-                  className="w-full pl-10 pr-4 py-2 rounded-full text-xs bg-background dark:bg-stone-800/80 border border-border dark:border-stone-700 focus:outline-none focus:border-primary text-foreground dark:text-white placeholder:text-stone-400 transition-all"
-                />
-              </div>
+        <div className="space-y-5">
+          <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
+            <div className="relative flex-1 sm:max-w-sm">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Search subject, code or topic"
+                aria-label="Search subjects"
+                className="h-9 w-full rounded-md border border-input bg-card pl-9 pr-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
+              />
             </div>
-
-            {/* Row 2: Semester Pills */}
-            <div className="flex items-center gap-2 overflow-x-auto pt-2 border-t border-border/60 dark:border-stone-800/80 scrollbar-none">
-              <span className="text-xs font-bold text-muted-foreground shrink-0 mr-1">Semester:</span>
-              <button
-                type="button"
-                onClick={() => setSelectedSemester("all")}
-                className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-all cursor-pointer ${
-                  selectedSemester === "all"
-                    ? "bg-foreground text-white dark:bg-white dark:text-stone-900"
-                    : "bg-background dark:bg-stone-800 text-stone-600 dark:text-stone-400 hover:text-foreground dark:hover:text-white"
-                }`}
+            <div className="flex gap-2">
+              <select
+                value={selectedCourse}
+                onChange={(e) => setSelectedCourse(e.target.value as "all" | "btech" | "bca")}
+                aria-label="Degree"
+                className="h-9 rounded-md border border-input bg-card px-2.5 text-sm text-foreground cursor-pointer"
               >
-                All Semesters
-              </button>
-              {[1, 2, 3, 4, 5, 6, 7, 8].map((sem) => (
-                <button
-                  key={sem}
-                  type="button"
-                  onClick={() => setSelectedSemester(sem)}
-                  className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-all cursor-pointer whitespace-nowrap ${
-                    selectedSemester === sem
-                      ? "bg-primary text-white shadow-xs"
-                      : "bg-background dark:bg-stone-800 text-stone-600 dark:text-stone-400 hover:text-foreground dark:hover:text-white"
-                  }`}
-                >
-                  Sem {sem}
-                </button>
-              ))}
+                <option value="all">All degrees</option>
+                <option value="btech">B.Tech ({btechSubjects.length})</option>
+                <option value="bca">BCA ({bcaSubjects.length})</option>
+              </select>
+              <select
+                value={String(selectedSemester)}
+                onChange={(e) => setSelectedSemester(e.target.value === "all" ? "all" : Number(e.target.value))}
+                aria-label="Semester"
+                className="h-9 rounded-md border border-input bg-card px-2.5 text-sm text-foreground cursor-pointer"
+              >
+                <option value="all">All semesters</option>
+                {[1, 2, 3, 4, 5, 6, 7, 8].map((sem) => (
+                  <option key={sem} value={sem}>Semester {sem}</option>
+                ))}
+              </select>
             </div>
+            <span className="text-sm text-muted-foreground sm:ml-auto">{filteredSubjects.length} subjects</span>
           </div>
 
           {/* Subjects Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3">
             {filteredSubjects.map((sub) => {
               const totalTopicIds = getAllTopicIds(sub.id);
               const completedCount = totalTopicIds.filter((tId) => isCompleted(tId)).length;
@@ -506,12 +345,9 @@ export default function SubjectsPage() {
           </div>
 
           {filteredSubjects.length === 0 && (
-            <div className="text-center py-16 bg-white dark:bg-card rounded-2xl border border-border dark:border-stone-800 p-8">
-              <BookOpen className="h-10 w-10 text-stone-400 mx-auto mb-3 opacity-60" />
-              <h3 className="font-bold text-base text-foreground dark:text-white mb-1">No Subjects Found</h3>
-              <p className="text-xs text-stone-500 max-w-sm mx-auto">
-                No matching subjects found for your search query or semester selection. Try clearing filters.
-              </p>
+            <div className="rounded-xl border border-border bg-card px-6 py-12 text-center">
+              <p className="font-medium text-foreground">No subjects match</p>
+              <p className="mt-1 text-sm text-muted-foreground">Try another semester, or clear the search.</p>
             </div>
           )}
         </div>
@@ -523,7 +359,7 @@ export default function SubjectsPage() {
       {activeTab === "iimb-topics" && (
         <div className="space-y-8">
           {/* Section Banner */}
-          <div className="rounded-2xl bg-gradient-to-r from-primary/15 to-primary/15 text-white p-6 sm:p-8 space-y-4 shadow-sm">
+          <div className="rounded-2xl bg-primary/15 text-white p-6 sm:p-8 space-y-4 shadow-sm">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-sm text-primary text-xs font-bold border border-white/20">
               <BarChart3 className="h-4 w-4" />
               <span>Deep Research · AICTE / UGC Topic Taxonomy & IIM Bangalore (IIMB) DCAL</span>
@@ -557,7 +393,7 @@ export default function SubjectsPage() {
                   className="rounded-2xl border border-border dark:border-stone-800 bg-white dark:bg-card p-5 space-y-4 shadow-xs"
                 >
                   <div className="flex items-center justify-between">
-                    <span className="text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-primary/10 text-primary dark:bg-primary/15 dark:text-primary">
+                    <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-primary/10 text-primary dark:bg-primary/15 dark:text-primary">
                       {stat.durationYears} Years · {stat.totalSemesters} Terms
                     </span>
                     <span className="text-xs font-mono font-bold text-stone-500">
@@ -579,13 +415,13 @@ export default function SubjectsPage() {
                       <div className="text-base font-bold font-mono text-primary">
                         {stat.totalSyllabusTopics.toLocaleString()}
                       </div>
-                      <div className="text-[9px] font-bold text-stone-500 uppercase mt-0.5">Theory Topics</div>
+                      <div className="text-[11px] font-bold text-stone-500 uppercase mt-0.5">Theory Topics</div>
                     </div>
                     <div className="bg-background dark:bg-stone-800/60 p-2.5 rounded-xl text-center">
                       <div className="text-base font-bold font-mono text-success">
                         {stat.labExperimentsCount}
                       </div>
-                      <div className="text-[9px] font-bold text-stone-500 uppercase mt-0.5">Lab Experiments</div>
+                      <div className="text-[11px] font-bold text-stone-500 uppercase mt-0.5">Lab Experiments</div>
                     </div>
                   </div>
 
@@ -645,10 +481,10 @@ export default function SubjectsPage() {
                     type="button"
                     onClick={() => setSelectedIimbDept(area.id)}
                     className={`px-3.5 py-1.5 rounded-full text-xs font-bold transition-all cursor-pointer whitespace-nowrap border ${
-                      isActive
-                        ? "bg-primary text-white border-primary/60 shadow-xs"
-                        : "bg-background dark:bg-stone-800 text-muted-foreground dark:text-stone-300 border-border dark:border-stone-700 hover:text-foreground dark:hover:text-white"
-                    }`}
+ isActive
+ ? "bg-primary text-white border-primary/60 shadow-xs"
+ : "bg-background dark:bg-stone-800 text-muted-foreground dark:text-stone-300 border-border dark:border-stone-700 hover:text-foreground dark:hover:text-white"
+ }`}
                   >
                     {area.label}
                   </button>
@@ -665,16 +501,16 @@ export default function SubjectsPage() {
                     key={c.id}
                     onClick={() => setSelectedIimbCourseId(c.id)}
                     className={`p-3.5 rounded-2xl border transition-all cursor-pointer card-lift select-none flex flex-col justify-between gap-2 ${
-                      isSelected
-                        ? "bg-primary/10 border-primary dark:bg-primary/15 dark:border-primary/60 shadow-xs"
-                        : "bg-white dark:bg-card border-border dark:border-stone-800 hover:border-stone-300"
-                    }`}
+ isSelected
+ ? "bg-primary/10 border-primary dark:bg-primary/15 dark:border-primary/60 shadow-xs"
+ : "bg-white dark:bg-card border-border dark:border-stone-800 hover:border-stone-300"
+ }`}
                   >
                     <div className="flex items-center justify-between">
-                      <span className="font-mono text-[10px] font-bold text-primary dark:text-primary">
+                      <span className="font-mono text-[11px] font-bold text-primary dark:text-primary">
                         {c.code}
                       </span>
-                      <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-primary/10 text-primary dark:bg-primary/15 dark:text-primary">
+                      <span className="text-[11px] font-bold px-2 py-0.5 rounded-full bg-primary/10 text-primary dark:bg-primary/15 dark:text-primary">
                         {c.totalTopics} Topics
                       </span>
                     </div>
@@ -683,7 +519,7 @@ export default function SubjectsPage() {
                       {c.name}
                     </h4>
 
-                    <div className="text-[10px] text-stone-500 flex items-center justify-between pt-1 border-t border-stone-200/60 dark:border-stone-800">
+                    <div className="text-[11px] text-stone-500 flex items-center justify-between pt-1 border-t border-stone-200/60 dark:border-stone-800">
                       <span>{c.term}</span>
                       <span className="font-bold">{c.credits} Credits</span>
                     </div>
@@ -722,27 +558,27 @@ export default function SubjectsPage() {
                     <span className="text-2xl sm:text-3xl font-bold font-mono text-primary">
                       {selectedIimbCourse.totalTopics}
                     </span>
-                    <span className="text-[10px] text-stone-500 font-semibold">{selectedIimbCourse.credits} Statutory Credits</span>
+                    <span className="text-[11px] text-stone-500 font-semibold">{selectedIimbCourse.credits} Statutory Credits</span>
                   </div>
                 </div>
 
                 {/* Faculty & Pedagogy Meta Bar */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <div className="p-4 rounded-xl bg-background dark:bg-stone-800/40 border border-border dark:border-stone-800 space-y-1">
-                    <div className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">Lead Faculty (IIMB)</div>
+                    <div className="text-[11px] font-bold text-muted-foreground">Lead Faculty (IIMB)</div>
                     <div className="font-bold text-xs text-foreground dark:text-white">{selectedIimbCourse.leadFaculty}</div>
                   </div>
 
                   <div className="p-4 rounded-xl bg-background dark:bg-stone-800/40 border border-border dark:border-stone-800 space-y-1">
-                    <div className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">Pedagogy & Lab Setup</div>
+                    <div className="text-[11px] font-bold text-muted-foreground">Pedagogy & Lab Setup</div>
                     <div className="font-bold text-xs text-foreground dark:text-white line-clamp-1">{selectedIimbCourse.pedagogy}</div>
                   </div>
 
                   <div className="p-4 rounded-xl bg-background dark:bg-stone-800/40 border border-border dark:border-stone-800 space-y-1">
-                    <div className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">Tools & Environments</div>
+                    <div className="text-[11px] font-bold text-muted-foreground">Tools & Environments</div>
                     <div className="flex flex-wrap gap-1">
                       {selectedIimbCourse.toolsUsed.map(tool => (
-                        <span key={tool} className="text-[10px] px-2 py-0.5 rounded-md bg-white dark:bg-stone-800 font-mono font-bold text-primary border border-stone-200 dark:border-stone-700">
+                        <span key={tool} className="text-[11px] px-2 py-0.5 rounded-md bg-white dark:bg-stone-800 font-mono font-bold text-primary border border-stone-200 dark:border-stone-700">
                           {tool}
                         </span>
                       ))}
@@ -789,7 +625,7 @@ export default function SubjectsPage() {
                               {unit.unitTitle}
                             </span>
                           </div>
-                          <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-white dark:bg-stone-800 text-stone-600 dark:text-stone-400 border border-stone-200 dark:border-stone-700">
+                          <span className="text-[11px] font-mono font-bold px-2 py-0.5 rounded-full bg-white dark:bg-stone-800 text-stone-600 dark:text-stone-400 border border-stone-200 dark:border-stone-700">
                             {unit.topicCount} Topics
                           </span>
                         </div>
@@ -831,11 +667,11 @@ export default function SubjectsPage() {
                 <table className="w-full text-left text-xs">
                   <thead className="bg-background dark:bg-stone-800/80 border-b border-border dark:border-stone-800 text-stone-700 dark:text-stone-300">
                     <tr>
-                      <th className="py-3 px-4 font-bold uppercase tracking-wider w-1/4">Curricular Dimension</th>
-                      <th className="py-3 px-4 font-bold uppercase tracking-wider text-primary dark:text-primary w-3/8">
+                      <th className="py-3 px-4 font-bold w-1/4">Curricular Dimension</th>
+                      <th className="py-3 px-4 font-bold text-primary dark:text-primary w-3/8">
                         IIT Bombay (Computer Science & Engg)
                       </th>
-                      <th className="py-3 px-4 font-bold uppercase tracking-wider text-primary dark:text-primary w-3/8">
+                      <th className="py-3 px-4 font-bold text-primary dark:text-primary w-3/8">
                         IIM Bangalore (Decision Sciences & PGP-BA)
                       </th>
                     </tr>
@@ -882,10 +718,10 @@ export default function SubjectsPage() {
                     type="button"
                     onClick={() => setSelectedSpecId(spec.id)}
                     className={`px-4 py-2 rounded-full text-xs font-bold transition-all cursor-pointer whitespace-nowrap flex items-center gap-2 border ${
-                      isSelected
-                        ? "bg-primary text-white border-primary shadow-xs"
-                        : "bg-background dark:bg-stone-800 text-muted-foreground dark:text-stone-300 border-border dark:border-stone-700 hover:text-foreground dark:hover:text-white"
-                    }`}
+ isSelected
+ ? "bg-primary text-white border-primary shadow-xs"
+ : "bg-background dark:bg-stone-800 text-muted-foreground dark:text-stone-300 border-border dark:border-stone-700 hover:text-foreground dark:hover:text-white"
+ }`}
                   >
                     {getSpecIcon(spec.id)}
                     <span>{spec.shortName}</span>
@@ -934,23 +770,23 @@ export default function SubjectsPage() {
                 <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 pt-2">
                   <div className="bg-background dark:bg-stone-800/60 border border-border dark:border-stone-800 rounded-2xl p-3.5 text-center">
                     <div className="text-xl sm:text-2xl font-bold font-mono text-primary">{activeSpecialization.totalCredits}</div>
-                    <div className="text-[10px] text-muted-foreground font-bold uppercase tracking-wider mt-0.5">Total Credits</div>
+                    <div className="text-[11px] text-muted-foreground font-bold mt-0.5">Total Credits</div>
                   </div>
                   <div className="bg-background dark:bg-stone-800/60 border border-border dark:border-stone-800 rounded-2xl p-3.5 text-center">
                     <div className="text-xl sm:text-2xl font-bold font-mono text-foreground dark:text-white">{activeSpecialization.totalCoursesCount}</div>
-                    <div className="text-[10px] text-muted-foreground font-bold uppercase tracking-wider mt-0.5">Total Courses</div>
+                    <div className="text-[11px] text-muted-foreground font-bold mt-0.5">Total Courses</div>
                   </div>
                   <div className="bg-background dark:bg-stone-800/60 border border-border dark:border-stone-800 rounded-2xl p-3.5 text-center">
                     <div className="text-xl sm:text-2xl font-bold font-mono text-primary">{activeSpecialization.specializationSubjectsCount}</div>
-                    <div className="text-[10px] text-muted-foreground font-bold uppercase tracking-wider mt-0.5">Dedicated AI / Core</div>
+                    <div className="text-[11px] text-muted-foreground font-bold mt-0.5">Dedicated AI / Core</div>
                   </div>
                   <div className="bg-background dark:bg-stone-800/60 border border-border dark:border-stone-800 rounded-2xl p-3.5 text-center">
                     <div className="text-xl sm:text-2xl font-bold font-mono text-success">{activeSpecialization.practicalLabsCount}</div>
-                    <div className="text-[10px] text-muted-foreground font-bold uppercase tracking-wider mt-0.5">Practical Labs</div>
+                    <div className="text-[11px] text-muted-foreground font-bold mt-0.5">Practical Labs</div>
                   </div>
                   <div className="bg-background dark:bg-stone-800/60 border border-border dark:border-stone-800 rounded-2xl p-3.5 text-center col-span-2 sm:col-span-1">
                     <div className="text-xl sm:text-2xl font-bold font-mono text-primary">{activeSpecialization.capstoneProjectsCount}</div>
-                    <div className="text-[10px] text-muted-foreground font-bold uppercase tracking-wider mt-0.5">Capstones & Intern</div>
+                    <div className="text-[11px] text-muted-foreground font-bold mt-0.5">Capstones & Intern</div>
                   </div>
                 </div>
 
@@ -1024,7 +860,7 @@ export default function SubjectsPage() {
                       <div className="space-y-2">
                         <div className="flex items-center justify-between gap-2">
                           <div className="flex items-center gap-2">
-                            <span className="w-5 h-5 rounded-full bg-primary/10 text-primary dark:bg-primary/15 dark:text-primary font-mono text-[10px] font-bold flex items-center justify-center">
+                            <span className="w-5 h-5 rounded-full bg-primary/10 text-primary dark:bg-primary/15 dark:text-primary font-mono text-[11px] font-bold flex items-center justify-center">
                               {idx + 1}
                             </span>
                             <span className="font-mono text-xs font-bold text-primary dark:text-primary">
@@ -1032,13 +868,13 @@ export default function SubjectsPage() {
                             </span>
                           </div>
                           <div className="flex items-center gap-1.5">
-                            <span className="text-[10px] px-2 py-0.5 rounded-full bg-background dark:bg-stone-800 text-stone-600 dark:text-stone-400 font-medium border border-stone-200 dark:border-stone-700">
+                            <span className="text-[11px] px-2 py-0.5 rounded-full bg-background dark:bg-stone-800 text-stone-600 dark:text-stone-400 font-medium border border-stone-200 dark:border-stone-700">
                               Sem {sub.semester}
                             </span>
-                            <span className="text-[10px] px-2 py-0.5 rounded-full bg-primary/10 text-primary dark:bg-primary/15 dark:text-primary font-semibold">
+                            <span className="text-[11px] px-2 py-0.5 rounded-full bg-primary/10 text-primary dark:bg-primary/15 dark:text-primary font-semibold">
                               {sub.category}
                             </span>
-                            <span className="text-[10px] font-bold font-mono text-stone-700 dark:text-stone-300">
+                            <span className="text-[11px] font-bold font-mono text-stone-700 dark:text-stone-300">
                               {sub.credits} Credits
                             </span>
                           </div>
@@ -1068,7 +904,7 @@ export default function SubjectsPage() {
               {/* 4-Year Academic Progression Roadmap */}
               <div className="rounded-2xl border border-border dark:border-stone-800 bg-white dark:bg-card p-6 sm:p-8 space-y-4 shadow-xs">
                 <h3 className="text-lg font-bold text-foreground dark:text-white flex items-center gap-2">
-                  <Sparkles className="h-5 w-5 text-primary" />
+                  <Lightbulb className="h-5 w-5 text-primary" />
                   <span>Academic Progression Roadmap</span>
                 </h3>
 
@@ -1078,7 +914,7 @@ export default function SubjectsPage() {
                       key={stage.stage}
                       className="p-4 rounded-2xl bg-background dark:bg-stone-800/40 border border-border dark:border-stone-800 space-y-2 relative"
                     >
-                      <div className="text-[10px] font-bold font-mono text-primary dark:text-primary">
+                      <div className="text-[11px] font-bold font-mono text-primary dark:text-primary">
                         PHASE {idx + 1} · {stage.semesters}
                       </div>
                       <h4 className="font-bold text-xs text-foreground dark:text-white leading-snug">
@@ -1087,7 +923,7 @@ export default function SubjectsPage() {
                       <p className="text-[11px] text-stone-600 dark:text-stone-400 leading-relaxed">
                         <strong>Focus:</strong> {stage.focus}
                       </p>
-                      <div className="text-[10px] text-success dark:text-success font-medium pt-1 border-t border-stone-200 dark:border-stone-700">
+                      <div className="text-[11px] text-success dark:text-success font-medium pt-1 border-t border-stone-200 dark:border-stone-700">
                         🎯 {stage.milestone}
                       </div>
                     </div>
@@ -1140,10 +976,10 @@ export default function SubjectsPage() {
                       setSelectedCurriculumSem("all");
                     }}
                     className={`px-4 py-2 rounded-full text-xs font-bold transition-all cursor-pointer whitespace-nowrap flex items-center gap-2 border ${
-                      isSelected
-                        ? "bg-primary text-white border-primary shadow-xs"
-                        : "bg-background dark:bg-stone-800 text-muted-foreground dark:text-stone-300 border-border dark:border-stone-700 hover:text-foreground dark:hover:text-white"
-                    }`}
+ isSelected
+ ? "bg-primary text-white border-primary shadow-xs"
+ : "bg-background dark:bg-stone-800 text-muted-foreground dark:text-stone-300 border-border dark:border-stone-700 hover:text-foreground dark:hover:text-white"
+ }`}
                   >
                     {getDeptIcon(dept.id)}
                     <span>{dept.shortName}</span>
@@ -1177,7 +1013,7 @@ export default function SubjectsPage() {
                 <div className="flex items-center gap-3">
                   <div className="text-center px-4 py-2 rounded-2xl bg-background dark:bg-stone-800 border border-border dark:border-stone-700">
                     <div className="text-xl font-mono font-bold text-foreground dark:text-white">{activeDepartment.totalSubjects}</div>
-                    <div className="text-[10px] text-stone-500 font-bold uppercase">Department Subjects</div>
+                    <div className="text-[11px] text-stone-500 font-bold uppercase">Department Subjects</div>
                   </div>
                 </div>
               </div>
@@ -1204,10 +1040,10 @@ export default function SubjectsPage() {
               type="button"
               onClick={() => setSelectedCurriculumSem("all")}
               className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-all cursor-pointer ${
-                selectedCurriculumSem === "all"
-                  ? "bg-foreground text-white dark:bg-white dark:text-stone-900"
-                  : "bg-background dark:bg-stone-800 text-stone-600 dark:text-stone-400 hover:text-foreground dark:hover:text-white"
-              }`}
+ selectedCurriculumSem === "all"
+ ? "bg-foreground text-white dark:bg-white dark:text-stone-900"
+ : "bg-background dark:bg-stone-800 text-stone-600 dark:text-stone-400 hover:text-foreground dark:hover:text-white"
+ }`}
             >
               All Semesters ({activeDepartment.semesters.length})
             </button>
@@ -1217,10 +1053,10 @@ export default function SubjectsPage() {
                 type="button"
                 onClick={() => setSelectedCurriculumSem(sem.semester)}
                 className={`px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all cursor-pointer whitespace-nowrap ${
-                  selectedCurriculumSem === sem.semester
-                    ? "bg-primary text-white shadow-xs"
-                    : "bg-background dark:bg-stone-800 text-stone-600 dark:text-stone-400 hover:text-foreground dark:hover:text-white"
-                }`}
+ selectedCurriculumSem === sem.semester
+ ? "bg-primary text-white shadow-xs"
+ : "bg-background dark:bg-stone-800 text-stone-600 dark:text-stone-400 hover:text-foreground dark:hover:text-white"
+ }`}
               >
                 Semester {sem.semester} ({sem.subjects.length})
               </button>
@@ -1270,14 +1106,14 @@ export default function SubjectsPage() {
                         >
                           <div className="space-y-2">
                             <div className="flex items-center justify-between gap-2">
-                              <span className="px-2.5 py-0.5 rounded-full font-mono text-[10px] font-bold bg-primary/10 text-primary dark:bg-primary/15 dark:text-primary">
+                              <span className="px-2.5 py-0.5 rounded-full font-mono text-[11px] font-bold bg-primary/10 text-primary dark:bg-primary/15 dark:text-primary">
                                 {subject.code}
                               </span>
                               <div className="flex items-center gap-1.5">
-                                <span className="text-[10px] px-2 py-0.5 rounded-full bg-white dark:bg-stone-800 text-stone-600 dark:text-stone-400 font-medium border border-stone-200 dark:border-stone-700">
+                                <span className="text-[11px] px-2 py-0.5 rounded-full bg-white dark:bg-stone-800 text-stone-600 dark:text-stone-400 font-medium border border-stone-200 dark:border-stone-700">
                                   {subject.category}
                                 </span>
-                                <span className="text-[10px] font-bold font-mono text-stone-700 dark:text-stone-300">
+                                <span className="text-[11px] font-bold font-mono text-stone-700 dark:text-stone-300">
                                   {subject.credits} Credits
                                 </span>
                               </div>
@@ -1296,7 +1132,7 @@ export default function SubjectsPage() {
                               {subject.keyTopics.map((topic) => (
                                 <span
                                   key={topic}
-                                  className="text-[10px] px-2 py-0.5 rounded-md bg-white dark:bg-stone-800 text-stone-600 dark:text-stone-400 font-medium border border-stone-200 dark:border-stone-700"
+                                  className="text-[11px] px-2 py-0.5 rounded-md bg-white dark:bg-stone-800 text-stone-600 dark:text-stone-400 font-medium border border-stone-200 dark:border-stone-700"
                                 >
                                   {topic}
                                 </span>

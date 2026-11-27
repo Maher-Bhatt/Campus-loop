@@ -146,7 +146,7 @@ export function PomodoroProvider({ children }: { children: React.ReactNode }) {
             unlockAchievement('focus-hero');
             setSessionCount((prev) => prev + 1);
 
-            toast.success('🎉 Pomodoro Focus Sprint Completed!', {
+            toast.success('Pomodoro Focus Sprint Completed!', {
               description: `You focused for ${studyMinutes} minutes! +50 XP awarded. Take a 5-minute breather.`,
               duration: 6000,
             });
@@ -155,7 +155,7 @@ export function PomodoroProvider({ children }: { children: React.ReactNode }) {
             setTimeLeft(breakMinutes * 60);
           } else {
             playChime(true);
-            toast.info('☕ Break finished! Ready for another study sprint?', {
+            toast.info('Break finished! Ready for another study sprint?', {
               description: 'Click Start Focus to keep up your momentum.',
               duration: 5000,
             });

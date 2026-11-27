@@ -13,12 +13,12 @@ import {
   FolderDown,
   Zap,
   ArrowLeft,
-  Sparkles,
+  Lightbulb,
   Award,
   Layers,
   Clock,
   GraduationCap
-} from "lucide-react";
+} from 'lucide-react';
 import { SUBJECT_IMP_DATA } from "@/data/impQuestionsData";
 import { useState, useMemo, useEffect } from "react";
 import { SearchDialog } from "@/components/SearchDialog";
@@ -207,7 +207,7 @@ export default function SubjectDashboard() {
                 <div className="text-2xl sm:text-3xl font-bold text-foreground dark:text-white font-mono">
                   {progress}%
                 </div>
-                <div className="text-[10px] uppercase font-bold text-muted-foreground dark:text-stone-400 tracking-wider">
+                <div className="text-[11px] uppercase font-bold text-muted-foreground dark:text-stone-400 tracking-wider">
                   Syllabus Mastered
                 </div>
               </div>
@@ -217,7 +217,7 @@ export default function SubjectDashboard() {
                   style={{ width: `${progress}%` }}
                 />
               </div>
-              <span className="text-[10px] font-semibold text-muted-foreground">
+              <span className="text-[11px] font-semibold text-muted-foreground">
                 {completedTopicsCount} of {totalTopics} topics read
               </span>
             </div>
@@ -259,7 +259,7 @@ export default function SubjectDashboard() {
               onClick={() => navigate(`/mock-exam`)}
               className="px-4 py-2 rounded-full bg-accent hover:bg-accent text-foreground text-xs font-semibold transition-all shadow-xs flex items-center gap-1.5 cursor-pointer ml-auto"
             >
-              <Sparkles className="w-3.5 h-3.5 text-foreground" />
+              <Lightbulb className="w-3.5 h-3.5 text-foreground" />
               <span>Practice MCQs</span>
             </button>
           </div>
@@ -280,12 +280,12 @@ export default function SubjectDashboard() {
                   type="button"
                   onClick={() => navigate(`/subject/${sib.id}`)}
                   className={`px-3.5 py-1.5 rounded-full text-xs font-bold transition-all shrink-0 cursor-pointer flex items-center gap-1.5 border ${
-                    isCurrent
-                      ? "bg-foreground text-white dark:bg-white dark:text-foreground border-transparent shadow-xs"
-                      : "bg-white dark:bg-card text-muted-foreground dark:text-stone-400 hover:text-foreground dark:hover:text-white border-border dark:border-stone-800"
-                  }`}
+ isCurrent
+ ? "bg-foreground text-white dark:bg-white dark:text-foreground border-transparent shadow-xs"
+ : "bg-white dark:bg-card text-muted-foreground dark:text-stone-400 hover:text-foreground dark:hover:text-white border-border dark:border-stone-800"
+ }`}
                 >
-                  {sib.code && <span className="opacity-70 font-mono text-[10px]">{sib.code}</span>}
+                  {sib.code && <span className="opacity-70 font-mono text-[11px]">{sib.code}</span>}
                   <span>{shortName}</span>
                 </button>
               );
@@ -346,8 +346,8 @@ export default function SubjectDashboard() {
                     <div className="w-7 h-7 rounded-full flex items-center justify-center text-muted-foreground hover:bg-background dark:hover:bg-stone-800 transition-colors">
                       <ChevronDown
                         className={`w-4 h-4 transition-transform duration-200 ${
-                          isCollapsed ? "-rotate-90" : "rotate-0"
-                        }`}
+ isCollapsed ? "-rotate-90" : "rotate-0"
+ }`}
                       />
                     </div>
                   </div>
@@ -370,10 +370,10 @@ export default function SubjectDashboard() {
                           <div className="flex items-center gap-3.5 flex-1 min-w-0">
                             <div
                               className={`w-7 h-7 rounded-full flex items-center justify-center shrink-0 text-xs font-bold transition-colors ${
-                                completed
-                                  ? "bg-success/10 text-success dark:bg-success/10 dark:text-success"
-                                  : "bg-background text-muted-foreground dark:bg-stone-800 dark:text-stone-400 group-hover:bg-primary/10 group-hover:text-primary"
-                              }`}
+ completed
+ ? "bg-success/10 text-success dark:bg-success/10 dark:text-success"
+ : "bg-background text-muted-foreground dark:bg-stone-800 dark:text-stone-400 group-hover:bg-primary/10 group-hover:text-primary"
+ }`}
                             >
                               {completed ? (
                                 <CheckCircle className="w-4 h-4" />
@@ -388,17 +388,17 @@ export default function SubjectDashboard() {
                               </h4>
                               <div className="flex items-center gap-2 mt-1 flex-wrap">
                                 {mcqCount > 0 && (
-                                  <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-primary/10 text-primary dark:bg-primary/15 dark:text-primary">
+                                  <span className="px-2 py-0.5 rounded-full text-[11px] font-bold bg-primary/10 text-primary dark:bg-primary/15 dark:text-primary">
                                     {mcqCount} Practice MCQs
                                   </span>
                                 )}
                                 {topic.examples && topic.examples.length > 0 && (
-                                  <span className="px-2 py-0.5 rounded-full text-[10px] font-medium bg-background dark:bg-stone-800 text-stone-600 dark:text-stone-400">
+                                  <span className="px-2 py-0.5 rounded-full text-[11px] font-medium bg-background dark:bg-stone-800 text-stone-600 dark:text-stone-400">
                                     Solved Examples
                                   </span>
                                 )}
                                 {topic.theoryQuestions && topic.theoryQuestions.length > 0 && (
-                                  <span className="px-2 py-0.5 rounded-full text-[10px] font-medium bg-background dark:bg-stone-800 text-stone-600 dark:text-stone-400">
+                                  <span className="px-2 py-0.5 rounded-full text-[11px] font-medium bg-background dark:bg-stone-800 text-stone-600 dark:text-stone-400">
                                     {topic.theoryQuestions.length} Exam Q&A
                                   </span>
                                 )}

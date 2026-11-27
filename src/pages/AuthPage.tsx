@@ -10,7 +10,7 @@ import { setRobots } from "@/lib/pageMeta";
 type Mode = "signin" | "signup" | "forgot" | "reset";
 
 const field =
-  "w-full rounded-lg border border-border bg-card px-3.5 py-2.5 text-[15px] text-foreground placeholder:text-muted-foreground focus:border-primary/60 focus:outline-none";
+  "h-11 w-full rounded-md border border-input bg-background px-3 text-[15px] text-foreground placeholder:text-muted-foreground focus:border-primary focus:ring-2 focus:ring-primary/20 focus:outline-none";
 
 /** Where to go after signing in: back to the page that asked for sign-in, else the dashboard. */
 function useReturnPath() {
@@ -139,24 +139,9 @@ export default function AuthPage() {
 
   return (
     <PublicLayout>
-      <section className="mx-auto grid max-w-6xl gap-12 px-5 py-14 sm:px-8 lg:grid-cols-[1fr_minmax(0,26rem)] lg:py-20">
-        <div className="hidden lg:block">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">CampusLoop account</p>
-          <h1 className="mt-4 text-5xl font-medium leading-[1.05] text-foreground">
-            Study on any device, <em className="text-primary">pick up where you left off.</em>
-          </h1>
-          <ul className="mt-8 space-y-3 text-[16px] text-muted-foreground">
-            <li>• The Library is free to read without an account.</li>
-            <li>• An account adds quizzes, timed mock papers, question banks and the coding lab.</li>
-            <li>• Your campus feed, clubs and messages live here too.</li>
-          </ul>
-          <Link to="/library" className="mt-8 inline-block text-sm font-medium text-primary hover:underline underline-offset-4">
-            Just want to read? Open the Library
-          </Link>
-        </div>
-
-        <div className="surface-card p-7 sm:p-8">
-          <h2 className="text-3xl font-medium text-foreground">{heading.t}</h2>
+      <section className="mx-auto w-full max-w-md px-5 py-10 sm:py-16">
+        <div className="rounded-xl border border-border bg-card p-6 sm:p-8">
+          <h1 className="text-2xl font-semibold tracking-tight text-foreground">{heading.t}</h1>
           <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{heading.d}</p>
 
           {(mode === "signin" || mode === "signup") && (
@@ -165,7 +150,7 @@ export default function AuthPage() {
                 type="button"
                 disabled={googleBusy || busy}
                 onClick={handleGoogleSignIn}
-                className="flex w-full items-center justify-center gap-3 rounded-full border border-border/80 bg-card px-5 py-3 text-sm font-medium text-foreground hover:bg-secondary/70 hover:border-foreground/30 transition-all shadow-xs disabled:opacity-60 cursor-pointer"
+                className="flex h-11 w-full items-center justify-center gap-3 rounded-md border border-input bg-card px-4 text-sm font-medium text-foreground hover:bg-secondary transition-colors disabled:opacity-60 cursor-pointer"
               >
                 {googleBusy ? (
                   <Loader2 className="h-4 w-4 animate-spin text-primary" />
@@ -192,11 +177,10 @@ export default function AuthPage() {
                 <span>{mode === "signup" ? "Sign up with Google" : "Continue with Google"}</span>
               </button>
 
-              <div className="relative my-5 flex items-center justify-center">
-                <div className="w-full border-t border-border" />
-                <span className="bg-card px-3 text-[11px] font-medium uppercase tracking-wider text-muted-foreground shrink-0">
-                  or continue with email
-                </span>
+              <div className="my-5 flex items-center gap-3 text-xs text-muted-foreground">
+                <span className="h-px flex-1 bg-border" />
+                or use email
+                <span className="h-px flex-1 bg-border" />
               </div>
             </div>
           )}
@@ -254,7 +238,7 @@ export default function AuthPage() {
               <button
                 type="submit"
                 disabled={busy}
-                className="flex w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 py-3 text-sm font-medium text-background hover:bg-primary hover:text-primary-foreground transition-colors disabled:opacity-60 cursor-pointer"
+                className="flex h-11 w-full items-center justify-center gap-2 rounded-md bg-primary px-4 text-sm font-medium text-primary-foreground hover:bg-primary/90 transition-colors disabled:opacity-60 cursor-pointer"
               >
                 {busy && <Loader2 className="h-4 w-4 animate-spin" />}
                 {{ signin: "Sign in", signup: "Create account", forgot: "Send reset link", reset: "Save new password" }[mode]}
@@ -280,6 +264,10 @@ export default function AuthPage() {
             <Link to="/refund" className="underline text-foreground">Refund Policy</Link>.
           </p>
         </div>
+        <p className="mt-6 text-center text-sm text-muted-foreground">
+          Just want to read?{" "}
+          <Link to="/library" className="font-medium text-foreground underline underline-offset-4 hover:text-primary">Open the Library</Link>, no account needed.
+        </p>
       </section>
     </PublicLayout>
   );

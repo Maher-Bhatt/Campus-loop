@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Volume2, VolumeX, Play, Pause, RotateCcw, SkipForward, SkipBack, Sparkles, Mic } from 'lucide-react';
+import { Volume2, VolumeX, Play, Pause, RotateCcw, SkipForward, SkipBack, Lightbulb, Mic } from 'lucide-react';
 import { toast } from 'sonner';
 import { aiVoice, VoicePlaybackState } from '@/utils/aiVoiceEngine';
 
@@ -88,20 +88,20 @@ export function AudioNotesPlayer({ title, textToRead, className = '' }: AudioNot
         <div className="flex items-center gap-2.5 min-w-0">
           <div
             className={`w-9 h-9 rounded-xl flex items-center justify-center shrink-0 transition-all ${
-              voiceState.isPlaying && !voiceState.isPaused
-                ? 'bg-primary text-primary-foreground shadow-md ring-2 ring-primary/20 animate-pulse'
-                : 'bg-secondary text-muted-foreground'
-            }`}
+ voiceState.isPlaying && !voiceState.isPaused
+ ? 'bg-primary text-primary-foreground shadow-md ring-2 ring-primary/20 animate-pulse'
+ : 'bg-secondary text-muted-foreground'
+ }`}
           >
             {voiceState.isPlaying ? <Volume2 className="h-4 w-4" /> : <VolumeX className="h-4 w-4" />}
           </div>
           <div className="min-w-0">
             <div className="flex items-center gap-1.5 flex-wrap">
               <span className="text-xs sm:text-sm font-bold text-foreground">Continuous Audio Lecture</span>
-              <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-primary/10 text-primary dark:text-primary flex items-center gap-1 border border-primary/20">
+              <span className="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-primary/10 text-primary dark:text-primary flex items-center gap-1 border border-primary/20">
                 <Mic className="h-2.5 w-2.5" /> Read aloud
               </span>
-              <span className="text-[10px] font-mono text-muted-foreground hidden sm:inline">
+              <span className="text-[11px] font-mono text-muted-foreground hidden sm:inline">
                 ({voiceState.voiceName})
               </span>
             </div>
@@ -191,7 +191,7 @@ export function AudioNotesPlayer({ title, textToRead, className = '' }: AudioNot
               style={{ width: `${progressPercent}%` }}
             />
           </div>
-          <div className="flex justify-between items-center text-[10px] text-muted-foreground mt-1 font-mono">
+          <div className="flex justify-between items-center text-[11px] text-muted-foreground mt-1 font-mono">
             <span>Sentence {voiceState.currentIndex + 1} of {voiceState.totalSentences}</span>
             <span>{progressPercent}% completed</span>
           </div>

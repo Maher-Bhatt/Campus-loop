@@ -2,61 +2,34 @@ import React from 'react';
 
 export interface CampusLoopLogoProps {
   size?: 'sm' | 'md' | 'lg' | number;
+  /** Kept for API compatibility; the subtitle is no longer shown. */
   showSubtitle?: boolean;
   className?: string;
 }
 
-export const CampusLoopLogo: React.FC<CampusLoopLogoProps> = ({
-  size: rawSize = 'md',
-  showSubtitle = false,
-  className = '',
-}) => {
-  // Accept numeric pixel sizes too (e.g. size={32}) and map them to the nearest preset
+const MARK = { sm: 22, md: 24, lg: 30 } as const;
+const TEXT = { sm: 'text-[15px]', md: 'text-base', lg: 'text-xl' } as const;
+
+/** Plain wordmark: a small open-loop mark and the product name in one ink colour. */
+export const CampusLoopLogo: React.FC<CampusLoopLogoProps> = ({ size: rawSize = 'md', className = '' }) => {
   const size: 'sm' | 'md' | 'lg' =
     typeof rawSize === 'number' ? (rawSize <= 28 ? 'sm' : rawSize <= 34 ? 'md' : 'lg') : rawSize;
-  const iconSizes = {
-    sm: 'w-7 h-7 rounded-lg text-sm',
-    md: 'w-8 h-8 rounded-xl text-base',
-    lg: 'w-10 h-10 rounded-2xl text-lg',
-  };
-
-  const textSizes = {
-    sm: 'text-base',
-    md: 'text-lg md:text-xl',
-    lg: 'text-2xl',
-  };
+  const px = MARK[size];
 
   return (
-    <div className={`inline-flex items-center gap-2.5 select-none ${className}`}>
-      {/* Blue Rounded Square with Loop Mark */}
-      <div
-        className={`${iconSizes[size]} bg-primary flex items-center justify-center text-white font-bold shadow-xs shrink-0`}
-      >
-        <svg
-          viewBox="0 0 24 24"
+    <span className={`inline-flex items-center gap-2 select-none ${className}`}>
+      <svg width={px} height={px} viewBox="0 0 24 24" aria-hidden className="shrink-0">
+        <rect width="24" height="24" rx="6" className="fill-foreground" />
+        <path
+          d="M15.5 8.2A5 5 0 1 0 17 12"
           fill="none"
-          stroke="currentColor"
-          strokeWidth="3"
+          strokeWidth="2.4"
           strokeLinecap="round"
-          strokeLinejoin="round"
-          className="w-5 h-5"
-        >
-          <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 14a4 4 0 1 1 4-4 4 4 0 0 1-4 4z" />
-          <circle cx="12" cy="12" r="2" fill="currentColor" stroke="none" />
-        </svg>
-      </div>
-
-      <div className="flex flex-col leading-none">
-        <div className={`font-bold tracking-tight ${textSizes[size]} flex items-baseline gap-0.5`}>
-          <span className="text-foreground dark:text-white">Campus</span>
-          <span className="text-primary">Loop</span>
-        </div>
-        {showSubtitle && (
-          <span className="text-[10px] font-semibold text-muted-foreground dark:text-stone-400 tracking-wider uppercase mt-0.5">
-            Student study platform
-          </span>
-        )}
-      </div>
-    </div>
+          className="stroke-background"
+        />
+        <circle cx="17" cy="8" r="1.6" className="fill-primary" />
+      </svg>
+      <span className={`font-semibold tracking-tight text-foreground ${TEXT[size]}`}>CampusLoop</span>
+    </span>
   );
 };
